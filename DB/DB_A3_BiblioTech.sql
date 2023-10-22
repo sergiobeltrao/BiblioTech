@@ -2,33 +2,55 @@ CREATE DATABASE DB_BiblioTech;
 
 USE DB_BiblioTech;
 
-CREATE TABLE Livro ( 
-	Li_ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	Li_Titulo VARCHAR (100),
-	Li_Autor VARCHAR (100),
-	Li_ISBN VARCHAR (100),
-	Li_Pagina INT,
-	Li_Quantidade VARCHAR (100),
-	Li_Categoria VARCHAR (50),
-	Li_Editora VARCHAR (50),
-	Li_Versao VARCHAR (40),
-	Li_Integridade CHAR (2),
-	Li_Avalicacao VARCHAR (4),
-	Li_Sinopse TEXT 
-    );
+CREATE TABLE Livros ( 
+	ID_livros int PRIMARY KEY AUTO_INCREMENT,
+	Nome_livro varchar (100) NOT NULL,
+	ISBN Varchar (100)NOT NULL,
+	Ano_publicacao DATE, 
+	Paginas INT (4)NOT NULL,
+	Quantidade INT,
+	Categoria varchar (50)NOT NULL,
+	Preco FLOAT (5.2)
+);
 
-INSERT INTO Livro ( Li_Titulo, Li_Autor, Li_ISBN, Li_Pagina, Li_Categoria, Li_Editora ) VALUES
-( 'O Segredo das Estrelas', 'Laura Smith', '978-1234567890', 320, 'Ficção Científica', 'Galáxia Editora');
+INSERT INTO Livros VALUES(
+	NULL, 'O Segredo das Estrelas', '978-1234567890', '1980-10-12', 320, 10,  'Ficção Científica', '180.20');
+SELECT * FROM Livros;
 
-INSERT INTO livro ( Li_Titulo, Li_Autor, Li_ISBN, Li_Pagina, Li_Categoria, Li_Editora, Li_Versao ) VALUES
-( 'Caminho das Sombras', 'John Doe', '978-0987654321', 480, 'Fantasia Épica', 'Mundo Mágico Publicações', 'Altas'),
-( 'A Cidade dos Suspiros', 'Maria Silva', '978-5432109876', 256, 'Romance', 'Amor & Drama Editora', 'Atlas'),
-( 'Aventuras no Espaço-Tempo', 'Carlos Rodrigues', '978-1122334455', 400, 'Ficção Científica', 'Via Láctea Livros', 'Edição Limitada'),
-( 'Noites de Mistério', 'Isabel Pereira', '978-5555555555', 384, 'Suspense', 'Editora Enigma', 'Edição de Bolso'),
-( 'O Legado Perdido', 'Roberto Santos', '978-9876543210', 320, 'Fantasia', 'Terra dos Sonhos Publicações', 'Edição Revisada'),
-( 'Trilhas de Aventura', 'Lucas Ribeiro', '978-1357924680', 416, 'Ação e Aventura', 'Editora Desbravadores', 'Edição Definitiva'),
-( 'Segredos Obscuros', 'Mariana Lima', '978-1111222233', 272, 'Thriller', 'Editora Mistério Sombrio', 'Edição de Colecionador'),
-( 'Além da Imaginação', 'Pedro Carvalho', '978-9876543211', 352, 'Ficção Científica', 'Universo Paralelo Editora', 'Edição Especial'),
-( 'O Enigma do Passado', 'Ana Santos', '978-4444333222', 304, 'Mistério', 'Editora Enigmas e Revelações', 'Edição Limitada');
+CREATE TABLE Autores(
+	ID_autor INT PRIMARY KEY AUTO_INCREMENT,
+	Nome_autor varchar (100)NOT NULL,
+	Data_Nascimento DATE,
+	Nacionalidade VARCHAR (50) NOT NULL,
+	Biografia TEXT,
+	Genero ENUM ('MAS', 'FEM', 'OUTROS'),
+	ID_FK_Livros INT,
+	FOREIGN KEY (ID_FK_Livros) REFERENCES Livros(ID_livros)
+	);
+	
+INSERT INTO Autores (ID_autor, Nome_autor, Data_Nascimento, Nacionalidade, Genero, ID_FK_Livros) VALUES (
+		NULL, 'Laura Bens', '1997-01-27', 'Brazil', 'FEM', 1 );
+SELECT * FROM Autores;
 
-SELECT * FROM livro;
+CREATE TABLE Editoras (
+	ID_Editora INT PRIMARY KEY AUTO_INCREMENT,
+	Nome_Editora VARCHAR (50) NOT NULL,
+	Telefone VARCHAR (12) NOT NULL,
+	Endereço varchar (100)NOT NULL, /*Este talvez vire uma tabela*/
+	ID_FK_Livros INT,
+	FOREIGN KEY (ID_FK_Livros) REFERENCES Livros(ID_livros)
+	);
+	
+SELECT * FROM Editoras;
+INSERT INTO Editoras (Nome_Editora, Telefone, Endereço) VALUES ( 'Galáxia Editora', '12345678', 'SP, Centro, AV. Paulista');
+SELECT Nome_autor, Nome_livro FROM Autores INNER JOIN Livros;
+
+
+
+
+
+
+
+
+
+
