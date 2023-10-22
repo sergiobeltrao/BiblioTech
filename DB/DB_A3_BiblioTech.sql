@@ -43,14 +43,6 @@ CREATE TABLE Editoras (
 	
 SELECT * FROM Editoras;
 INSERT INTO Editoras (Nome_Editora, Telefone, Endereço) VALUES ( 'Galáxia Editora', '12345678', 'SP, Centro, AV. Paulista');
-SELECT Nome_autor, Nome_livro FROM Autores INNER JOIN Livros;
 
-
-
-
-
-
-
-
-
-
+ALTER TABLE Editoras ADD CONSTRAINT Livros_X_Editor FOREIGN KEY (ID_FK_Livros) REFERENCES Livros(ID_livros);
+ALTER TABLE Autores ADD CONSTRAINT Livros_X_Autor FOREIGN KEY (ID_FK_Livros) REFERENCES Livros(ID_livros);
