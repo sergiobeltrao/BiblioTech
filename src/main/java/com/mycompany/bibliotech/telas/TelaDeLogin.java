@@ -8,7 +8,7 @@ package com.mycompany.bibliotech.telas;
  *
  * @author Sergio
  */
-import com.mycompany.bibliotech.dao.UsuarioDAO;
+import com.mycompany.bibliotech.dao.UsuarioLoginDAO;
 
 /* CÓDIGO ANTERIOR A CONNECTIONFACTORY. REMOVER APÓS OS TESTES.
 import java.sql.*;
@@ -163,7 +163,7 @@ public class TelaDeLogin extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
 
-        UsuarioDAO dao = new UsuarioDAO();
+        UsuarioLoginDAO dao = new UsuarioLoginDAO();
 
         if (dao.checkLogin(campoUsuario.getText(), campoSenha.getText())) {
             new TelaPrincipal().setVisible(true);

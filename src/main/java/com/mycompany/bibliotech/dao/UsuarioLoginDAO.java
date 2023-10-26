@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.mycompany.bibliotech.connection.ConnectionFactory;
 
-public class UsuarioDAO {
+public class UsuarioLoginDAO {
 
     public boolean checkLogin(String login, String senha) {
 
@@ -31,7 +31,7 @@ public class UsuarioDAO {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioLoginDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
