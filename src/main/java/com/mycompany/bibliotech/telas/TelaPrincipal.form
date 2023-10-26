@@ -78,7 +78,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="SairButton2" max="32767" attributes="0"/>
+                          <Component id="btnEncerrarSessao" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -95,7 +95,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="CadLivroButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="SairButton2" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnEncerrarSessao" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -124,12 +124,12 @@
             <Property name="text" type="java.lang.String" value="Cadastro de livros"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="SairButton2">
+        <Component class="javax.swing.JButton" name="btnEncerrarSessao">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Sair"/>
+            <Property name="text" type="java.lang.String" value="Encerrar sess&#xe3;o"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SairButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEncerrarSessaoActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
