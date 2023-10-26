@@ -9,13 +9,16 @@ USE BIBLIOTECH;
 
 -- Cria a tabela e seus respectivos atributos
 CREATE TABLE USUARIOS(
-USR_NOME varchar(20) not null,
-USR_SENHA varchar(16) not null
+USR_ID INT PRIMARY KEY AUTO_INCREMENT,
+USR_NOME VARCHAR(20) not null,
+USR_SENHA VARCHAR(16) not null
 );
 
 -- Insert de usuário
 INSERT INTO USUARIOS(USR_NOME, USR_SENHA)
 VALUES('admin', 'admin');
+INSERT INTO USUARIOS(USR_NOME, USR_SENHA)
+VALUES('sergio', 'senha123');
 
 -- Printando todos os dados.
 SELECT * FROM USUARIOS;
