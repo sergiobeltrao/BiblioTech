@@ -8,9 +8,14 @@ package com.mycompany.bibliotech;
  *
  * @author Sergio
  */
+import com.mycompany.bibliotech.dao.UsuarioDAO;
+
+/* CÓDIGO ANTERIOR A CONNECTIONFACTORY. REMOVER APÓS OS TESTES.
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+*/
+
 import javax.swing.JOptionPane;
 
 public class TelaDeLogin extends javax.swing.JFrame {
@@ -22,9 +27,12 @@ public class TelaDeLogin extends javax.swing.JFrame {
      */
     public TelaDeLogin() {
         initComponents();
-        Connect();
+        
+        // CÓDIGO ANTERIOR A CONNECTIONFACTORY. REMOVER APÓS OS TESTES.
+        // Connect();
     }
 
+    /* CÓDIGO ANTERIOR A CONNECTIONFACTORY. REMOVER APÓS OS TESTES.
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
@@ -39,7 +47,7 @@ public class TelaDeLogin extends javax.swing.JFrame {
             Logger.getLogger(TelaDeLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    */
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -155,6 +163,17 @@ public class TelaDeLogin extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
 
+        UsuarioDAO dao = new UsuarioDAO();
+
+        if (dao.checkLogin(campoUsuario.getText(), campoSenha.getText())) {
+            new TelaPrincipal().setVisible(true);
+            this.dispose();
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Esse usuário ou senha é inválido");
+        }
+
+        /* CÓDIGO ANTERIOR A CONNECTIONFACTORY. REMOVER APÓS OS TESTES.
         String user = campoUsuario.getText();
         String pwd = new String(campoSenha.getPassword());
 
@@ -176,6 +195,7 @@ public class TelaDeLogin extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(TelaDeLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
+         */
 
     }//GEN-LAST:event_btnEntrarActionPerformed
 
