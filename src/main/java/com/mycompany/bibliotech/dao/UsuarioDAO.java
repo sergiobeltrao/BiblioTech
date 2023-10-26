@@ -1,12 +1,12 @@
 package com.mycompany.bibliotech.dao;
 
-import com.mycompany.bibliotech.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import com.mycompany.bibliotech.connection.ConnectionFactory;
 
 public class UsuarioDAO {
 

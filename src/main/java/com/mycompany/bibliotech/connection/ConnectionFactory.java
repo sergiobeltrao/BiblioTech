@@ -1,4 +1,4 @@
-package com.mycompany.bibliotech;
+package com.mycompany.bibliotech.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
