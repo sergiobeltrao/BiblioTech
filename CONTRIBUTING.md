@@ -16,7 +16,7 @@ As mensagens dos commits vão ser feitas com base na *Commit Message Format* do 
   │       │             │
   │       │             └─⫸ Resumo em tempo presente. Sem letras maiúsculas, acentuação e ponto final.
   │       │
-  │       └─⫸ Escopo do commit: readme|gitignore|nbproj|login|home|database|contributing|gui|caduser
+  │       └─⫸ Escopo do commit: readme|gitignore|nbproj|login|home|database|contributing|gui|caduser|jobject
   │
   └─⫸ Tipo do commit: build|docs|feat|fix|perf|refactor|gitres|style
 ```
@@ -43,6 +43,7 @@ Escopo
 * contributing: Relacionado ao arquivo das diretrizes de contribuição.
 * gui: Relacionado à interface gráfica.
 * caduser: Relacionado ao cadastro de usuário
+* jobject: Objeto Java 
 
 Exemplos de mensagem:
 
