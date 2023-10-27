@@ -17,9 +17,9 @@ CREATE TABLE USUARIO (
 );
 
 INSERT INTO USUARIO VALUES
-  ( NULL, 'admin', 'admin', 'ADMIN', 'Bruno', 'Fernades', '1990-02-28', 'bruno@email.com',  NOW(), 'MAS'),
-  ( NULL, 'sergio', 'sergio', 'BIBLIOTECARIO', 'Sérgio', 'Beltrão', '1990-02-28', 'sergio@email.com',  NOW(), 'MAS'),
-  ( NULL, 'john', 'john', 'CLIENTE', 'Jonatas', 'Sousa', '1990-02-28', 'john@email.com',  NOW(), 'MAS');
+  ( NULL, 'admin', 'admin', 'ADMIN', 'Bruno', 'Fernades', '1990-02-28', 'bruno@email.com',  NOW(), 'MASC', '11111111111'),
+  ( NULL, 'sergio', 'sergio', 'BIBLIOTECARIO', 'Sérgio', 'Beltrão', '1990-02-28', 'sergio@email.com',  NOW(), 'MASC', '22222222222'),
+  ( NULL, 'john', 'john', 'CLIENTE', 'Jonatas', 'Sousa', '1990-02-28', 'john@email.com',  NOW(), 'MASC','33333333333');
   
   CREATE TABLE TELEFONE (
 	TEL_ID INT PRIMARY KEY AUTO_INCREMENT,
