@@ -1,20 +1,14 @@
--- Banco de testes com informações básicas para
--- testar a conectividade entre o programa e o MySQL
+-- Banco para testes iniciais
 
--- Cria o banco
 CREATE DATABASE BIBLIOTECH;
 
--- Seleciona o banco que será usado
 USE BIBLIOTECH;
 
--- Cria a tabela e seus respectivos atributos
 CREATE TABLE USUARIO (
   USE_ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  
-  USE_NICK VARCHAR(30) NOT NULL UNIQUE,  /*USAR NO LOGIN*/
-  USE_SENHA VARCHAR(100) NOT NULL,   /*USAR NO LOGIN*/
-  USE_TYPE ENUM('ADMIN', 'BIBLIOTECARIO', 'CLIENTE') NOT NULL,   /*USAR NO LOGIN*/
-  
+  USE_NICK VARCHAR(30) NOT NULL UNIQUE,  /* USAR NO LOGIN */
+  USE_SENHA VARCHAR(100) NOT NULL,   /* USAR NO LOGIN */
+  USE_TYPE ENUM('ADMIN', 'BIBLIOTECARIO', 'CLIENTE') NOT NULL,   /* USAR NO LOGIN */
   USE_NOME VARCHAR(50) NOT NULL,
   USE_SOBRENOME VARCHAR(50),
   USE_DATANASC DATE,
@@ -24,10 +18,11 @@ CREATE TABLE USUARIO (
 );
 
 INSERT INTO USUARIO VALUES
-  ( NULL, 'Admin', 'Admin', 'ADMIN', 'Bruno', 'Fernades', '1990-02-28', 'bruno@email.com',  NOW(), 'MAS'),
-  ( NULL, 'Usuario', 'Admin', 'BIBLIOTECARIO', 'Sergio', 'Beltrão', '1990-02-28', 'sergio@email.com',  NOW(), 'MAS');
+  ( NULL, 'admin', 'admin', 'ADMIN', 'Bruno', 'Fernades', '1990-02-28', 'bruno@email.com',  NOW(), 'MAS'),
+  ( NULL, 'sergio', 'sergio', 'BIBLIOTECARIO', 'Sérgio', 'Beltrão', '1990-02-28', 'sergio@email.com',  NOW(), 'MAS'),
+  ( NULL, 'john', 'john', 'CLIENTE', 'Jonatas', 'Sousa', '1990-02-28', 'john@email.com',  NOW(), 'MAS');
   
-  CREATE TABLE FUNCIONARIO (
+CREATE TABLE FUNCIONARIO (
   FUN_ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   FUN_ENTRADA DATE NOT NULL,
   FUN_SAIDA DATE,
@@ -84,20 +79,6 @@ CREATE TABLE ENDERECO (
 );
 
 INSERT INTO ENDERECO VALUES (NULL, 'Dolores', 13, 'APTO', 'Mooca', 'Sao Paulo', 'SP', 'BRASIL', '987321654');
+
 SHOW COLUMNS FROM ENDERECO;
-ALTER TABLE ENDERECO MODIFY COLUMN END_UF VARCHAR (2);
-
-
-
--- Cria a tabela e seus respectivos atributos
-CREATE TABLE USUARIOS(
-USR_ID INT PRIMARY KEY AUTO_INCREMENT,
-USR_NOME VARCHAR(20) not null,
-USR_SENHA VARCHAR(16) not null
-);
-
--- Insert de usuário
-INSERT INTO USUARIOS(USR_NOME, USR_SENHA)
-VALUES('admin', 'admin');
-INSERT INTO USUARIOS(USR_NOME, USR_SENHA)
-VALUES('sergio', 'senha123');
+SELECT * FROM USUARIO;
