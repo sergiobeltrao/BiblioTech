@@ -10,33 +10,36 @@ import com.mycompany.bibliotech.connection.ConnectionFactory;
 
 public class UsuarioLoginDAO {
 
-    public boolean checkLogin(String login, String senha) {
+    public String checkLogin(String login, String senha) {
 
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        boolean check = false;
+        String userType = null;
+        
+        // A = Administrador, F = Funcionário, C = Cliente
+        String[] userTypesToCheck = {"ADMIN", "BIBLIOTECARIO", "CLIENTE"};
 
         try {
+            for (String userTypeToCheck : userTypesToCheck) {
+                stmt = con.prepareStatement("SELECT USE_TYPE FROM USUARIO WHERE USE_NICK = ? AND USE_SENHA = ? AND USE_TYPE = ?");
+                stmt.setString(1, login);
+                stmt.setString(2, senha);
+                stmt.setString(3, userTypeToCheck);
 
-            stmt = con.prepareStatement("SELECT * FROM USUARIOS WHERE USR_NOME = ? AND USR_SENHA = ?");
+                rs = stmt.executeQuery();
 
-            stmt.setString(1, login);
-            stmt.setString(2, senha);
-
-            rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                check = true;
+                if (rs.next()) {
+                    userType = userTypeToCheck;
+                    break; // Saia do loop se encontrar uma correspondência
+                }
             }
-
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioLoginDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
 
-        return check;
-
+        return userType;
     }
 }
