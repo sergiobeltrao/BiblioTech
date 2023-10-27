@@ -288,6 +288,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SenhaTxt1ActionPerformed
 
+    private void VoltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarButtonActionPerformed
+                    new TelaPrincipalAdministrador().setVisible(true);
+            this.dispose();
+    }//GEN-LAST:event_VoltarButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
