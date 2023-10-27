@@ -16,13 +16,13 @@ public class UsuarioLoginDAO {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         String userType = null;
-        
+
         // A = Administrador, F = Funcionário, C = Cliente
         String[] userTypesToCheck = {"ADMIN", "BIBLIOTECARIO", "CLIENTE"};
 
         try {
             for (String userTypeToCheck : userTypesToCheck) {
-                stmt = con.prepareStatement("SELECT USE_TYPE FROM USUARIO WHERE USE_NICK = ? AND USE_SENHA = ? AND USE_TYPE = ?");
+                stmt = con.prepareStatement("SELECT * FROM USUARIO WHERE USE_NICK = ? AND USE_SENHA = ? AND USE_TYPE = ?");
                 stmt.setString(1, login);
                 stmt.setString(2, senha);
                 stmt.setString(3, userTypeToCheck);
