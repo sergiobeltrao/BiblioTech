@@ -301,6 +301,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         });
 
         dataNascChooser.setBorder(javax.swing.BorderFactory.createTitledBorder("Data de Nascimento"));
+        dataNascChooser.setToolTipText("2004-08-07");
         dataNascChooser.setDateFormatString("yyyy-MM-dd");
 
         resenhaTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -483,9 +484,38 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
         user.setUserNick(nickTxt.getText());
         user.setUserSenha(new String(senhaTxt.getPassword()));
+        
+        String valorUserCargo = cargoBox.getSelectedItem().toString();
+        String valorSelecionado = "CLIENTE";
+
+        if (valorUserCargo.equals("ADMIN")) {
+            valorSelecionado = "ADMIN";
+        } else if (valorUserCargo.equals("BIBLIOTECARIO")) {
+            valorSelecionado = "BIBLIOTECARIO";
+        } else {
+            valorSelecionado = "CLIENTE";
+        }
+
+        user.setUserType(valorSelecionado);
+        
         user.setUserNome(nomeTxt.getText());
         user.setUserSobrenome(sobrenomeTxt.getText());
+        user.setUserDataNasc(dataNascChooser.getDate());
         user.setUserEmail(emailTxt.getText());
+        
+        String valorUserSexo = sexoBox.getSelectedItem().toString();
+        String valorSelecionad = "OUTRO";
+
+        if (valorUserSexo.equals("MASC")) {
+            valorSelecionad = "MASC";
+        } else if (valorUserSexo.equals("FEM")) {
+            valorSelecionad = "FEM";
+        } else {
+            valorSelecionad = "OUTRO";
+        }
+
+        user.setUserType(valorSelecionado);
+        
         user.setUserCpf(cpfTxt.getText());
 
         dao.cadastrarUsuario(user);

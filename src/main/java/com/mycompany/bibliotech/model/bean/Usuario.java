@@ -1,17 +1,18 @@
 package com.mycompany.bibliotech.model.bean;
 
+import java.util.Date;
+
 public class Usuario {
 
     private int userId;
     private String userNick;
     private String userSenha;
-    // USE_TYPE
+    private String userType;
     private String userNome;
     private String userSobrenome;
-    // USE_DATANASC
+    private String userSexo;
     private String userEmail;
-    // USE_CRIA
-    //USE_SEXO
+    private Date userDataNasc;
     private String userCpf;
 
     public int getUserId() {
@@ -71,4 +72,29 @@ public class Usuario {
         this.userCpf = userCpf;
     }
 
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
+    public String getUserSexo() {
+        return userSexo;
+    }
+
+    public void setUserSexo(String userSexo) {
+        this.userSexo = userSexo;
+    }
+
+    public Date getUserDataNasc() {
+        return userDataNasc;
+    }
+
+    public void setUserDataNasc(Date userDataNasc) {
+        this.userDataNasc = userDataNasc;
+    }
+
+    
 }

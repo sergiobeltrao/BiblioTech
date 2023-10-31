@@ -268,6 +268,7 @@
             <TitledBorder title="Data de Nascimento"/>
           </Border>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="2004-08-07"/>
         <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
       </Properties>
     </Component>
