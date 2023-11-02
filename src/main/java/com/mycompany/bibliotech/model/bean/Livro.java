@@ -8,8 +8,17 @@ public class Livro {
     private int anoDePublicacao;
     private int numeroDePaginas;
     private int quantidadeLivro;
-    private String catrgoria;
+    private String categoria;
+    private String subCategoria;
     private double preco;
+
+    public String getSubCategoria() {
+        return subCategoria;
+    }
+
+    public void setSubCategoria(String subCategoria) {
+        this.subCategoria = subCategoria;
+    }
 
     public int getId() {
         return id;
@@ -59,12 +68,12 @@ public class Livro {
         this.quantidadeLivro = quantidadeLivro;
     }
 
-    public String getCatrgoria() {
-        return catrgoria;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setCatrgoria(String catrgoria) {
-        this.catrgoria = catrgoria;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public double getPreco() {
