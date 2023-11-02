@@ -3,9 +3,11 @@ package com.mycompany.bibliotech.telas;
 import com.mycompany.bibliotech.dao.LivroCategoriaDAO;
 import com.mycompany.bibliotech.dao.AutorDAO;
 import com.mycompany.bibliotech.dao.AutorNacionalidadeDAO;
+import com.mycompany.bibliotech.dao.AvaliacaoDAO;
 import com.mycompany.bibliotech.dao.EditoraDAO;
 import com.mycompany.bibliotech.dao.LivroDAO;
 import com.mycompany.bibliotech.model.bean.Autor;
+import com.mycompany.bibliotech.model.bean.Avaliacao;
 import com.mycompany.bibliotech.model.bean.Editora;
 import com.mycompany.bibliotech.model.bean.Livro;
 import javax.swing.table.DefaultTableModel;
@@ -242,10 +244,11 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnInsertLayout.createSequentialGroup()
-                        .addGroup(pnInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cboxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboxSubCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtQuantidade))
+                        .addGroup(pnInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtQuantidade, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cboxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cboxSubCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtNomeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -335,10 +338,12 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         Livro lv = new Livro();
         Autor aut = new Autor();
         Editora ed = new Editora();
+        Avaliacao av = new Avaliacao();
 
         LivroDAO lvdao = new LivroDAO();
         AutorDAO autdao = new AutorDAO();
         EditoraDAO eddao = new EditoraDAO();
+        AvaliacaoDAO avdao = new AvaliacaoDAO();
 
         // Livro
         lv.setTitulo(txtTitulo.getText());
@@ -376,9 +381,26 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         lv.setCategoria(categoriaSelecionada);
         lv.setSubCategoria(subCategoriaSelecionada);
 
+        
+        /* CAUSA BUG. VOU CORRIGIR
+        // Avaliação do livro
+        String notaInseridaPeloUsuario = cboxAvaliacaoDoLivro.getSelectedItem().toString();
+        String notaDoUsuario = "";
+
+        if (notaInseridaPeloUsuario.equals("Selecione")) {
+            notaDoUsuario = "Não informado";
+        } else {
+            notaDoUsuario = notaInseridaPeloUsuario;
+        }
+
+        String notaFormatada = notaDoUsuario.substring(0, 1);
+
+        av.setAvaliacaoDoUsuario(notaFormatada);
+        */
         lvdao.create(lv);
         autdao.create(aut);
         eddao.create(ed);
+        //avdao.create(av);
 
         // Para que a leitura da tabela seja feita novamente
         // após salvar novas informações
