@@ -82,8 +82,9 @@ public class TelaDeLogin extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("X");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton1.setBorder(new javax.swing.border.MatteBorder(null));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -92,6 +93,7 @@ public class TelaDeLogin extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(480, 0, 15, 15);
 
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/armazem imagem/novatela2.gif"))); // NOI18N
         jLabel2.setText("telaLogin");
         getContentPane().add(jLabel2);
