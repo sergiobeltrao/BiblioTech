@@ -15,8 +15,8 @@ public class TelaDeLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        campoSenha = new javax.swing.JPasswordField();
         btnEntrar = new javax.swing.JButton();
+        campoSenha = new javax.swing.JPasswordField();
         campoUsuario = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -30,6 +30,19 @@ public class TelaDeLogin extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
+        btnEntrar.setBackground(new java.awt.Color(51, 51, 51));
+        btnEntrar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEntrar.setText("Entrar");
+        btnEntrar.setBorder(null);
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEntrar);
+        btnEntrar.setBounds(220, 390, 70, 25);
+
         campoSenha.setBackground(new java.awt.Color(0, 0, 0));
         campoSenha.setFont(new java.awt.Font("Serif", 0, 16)); // NOI18N
         campoSenha.setForeground(new java.awt.Color(255, 255, 255));
@@ -42,19 +55,6 @@ public class TelaDeLogin extends javax.swing.JFrame {
         });
         getContentPane().add(campoSenha);
         campoSenha.setBounds(110, 330, 300, 35);
-
-        btnEntrar.setBackground(new java.awt.Color(0, 0, 0));
-        btnEntrar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEntrar.setText("Entrar");
-        btnEntrar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
-        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEntrarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnEntrar);
-        btnEntrar.setBounds(210, 390, 70, 25);
 
         campoUsuario.setBackground(new java.awt.Color(0, 0, 0));
         campoUsuario.setFont(new java.awt.Font("Serif", 0, 16)); // NOI18N
@@ -84,14 +84,14 @@ public class TelaDeLogin extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("X");
-        jButton1.setBorder(new javax.swing.border.MatteBorder(null));
+        jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(480, 0, 15, 15);
+        jButton1.setBounds(475, 0, 20, 20);
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/armazem imagem/novatela2.gif"))); // NOI18N
