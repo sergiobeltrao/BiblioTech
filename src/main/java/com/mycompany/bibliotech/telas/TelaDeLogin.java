@@ -92,12 +92,12 @@ public class TelaDeLogin extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(480, 0, 15, 15);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/novatela2.gif"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/armazem imagem/novatela2.gif"))); // NOI18N
         jLabel2.setText("telaLogin");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 500, 500);
 
-        setSize(new java.awt.Dimension(499, 500));
+        setSize(new java.awt.Dimension(497, 499));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
