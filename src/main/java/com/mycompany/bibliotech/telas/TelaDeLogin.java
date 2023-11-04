@@ -100,7 +100,7 @@ public class TelaDeLogin extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 500, 500);
 
-        setSize(new java.awt.Dimension(497, 499));
+        setSize(new java.awt.Dimension(498, 499));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
