@@ -1,12 +1,14 @@
 package com.mycompany.bibliotech.model.bean;
 
+import java.util.Date;
+
 public class Autor {
 
     private int id;
     private String nome;
     private String sexo;
     private String nacionalidade;
-    private String dataDeNascimento;
+    private Date dataDeNascimento;
     private String bibliografia;
 
     public int getId() {
@@ -41,11 +43,11 @@ public class Autor {
         this.nacionalidade = nacionalidade;
     }
 
-    public String getDataDeNascimento() {
+    public Date getDataDeNascimento() {
         return dataDeNascimento;
     }
 
-    public void setDataDeNascimento(String dataDeNascimento) {
+    public void setDataDeNascimento(Date dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
     }
 

@@ -11,6 +11,15 @@ public class Livro {
     private String categoria;
     private String subCategoria;
     private double preco;
+    private String idioma;
+
+    public String getIdioma() {
+        return idioma;
+    }
+
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
+    }
 
     public String getSubCategoria() {
         return subCategoria;

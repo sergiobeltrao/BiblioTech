@@ -3,10 +3,28 @@ package com.mycompany.bibliotech.model.bean;
 public class Avaliacao {
 
     private int id;
+    private int livroAvaliado;
     private String avaliacaoDoUsuario;
     private String avaliacaoTotal;
     private String comentarioAvaliacao;
     private String dataDeAvaliacao;
+    private String usuarioQueAvaliou;
+
+    public int getLivroAvaliado() {
+        return livroAvaliado;
+    }
+
+    public void setLivroAvaliado(int livroAvaliado) {
+        this.livroAvaliado = livroAvaliado;
+    }
+
+    public String getUsuarioQueAvaliou() {
+        return usuarioQueAvaliou;
+    }
+
+    public void setUsuarioQueAvaliou(String usuarioQueAvaliou) {
+        this.usuarioQueAvaliou = usuarioQueAvaliou;
+    }
 
     public int getId() {
         return id;
