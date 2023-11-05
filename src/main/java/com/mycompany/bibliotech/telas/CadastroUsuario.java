@@ -1,5 +1,6 @@
 package com.mycompany.bibliotech.telas;
 
+import com.mycompany.bibliotech.model.bean.Usuario;
 import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
@@ -300,6 +301,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
         });
 
         dataNascChooser.setBorder(javax.swing.BorderFactory.createTitledBorder("Data de Nascimento"));
+        dataNascChooser.setToolTipText("2004-08-07");
+        dataNascChooser.setDateFormatString("yyyy-MM-dd");
 
         resenhaTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         resenhaTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Re-Senha", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
@@ -425,7 +428,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(173, 173, 173)
                         .addComponent(enterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(618, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -466,7 +469,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
                             .addComponent(resenhaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(enterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(voltarButton)
                 .addGap(15, 15, 15))
         );
@@ -475,34 +478,53 @@ public class CadastroUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonActionPerformed
-     String nome = nomeTxt.getText();
-    String sobrenome = sobrenomeTxt.getText();
-    String cpf = cpfTxt.getText();
-    String email = emailTxt.getText();
-    String resenha = new String(resenhaTxt.getPassword());
-    String senha = new String(senhaTxt.getPassword());
-    String nickname = nickTxt.getText();
-    String sexo = (String) sexoBox.getSelectedItem();
-    String dataNascimento = ((JTextField) dataNascChooser.getDateEditor().getUiComponent()).getText();
-    String endereco = endTxt.getText();
-    String bairro = bairroTxt.getText();
-    String cidade = cidadeTxt.getText();
-    String uf = ufTxt.getText();
-    String cep = cepTxt.getText();
-    String telefone = foneTxt.getText();
-    String cargo = (String) cargoBox.getSelectedItem();
 
-    UsuarioCadastroDAO dao = new UsuarioCadastroDAO();
-    if (dao.cadastrarUsuario(nome, sobrenome, cpf, email, senha, nickname, sexo, dataNascimento, endereco, bairro, cidade, uf, cep, telefone, cargo)) {
-        JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!!");
-    } else {
-        JOptionPane.showMessageDialog(null, "Cadastro falhou!!");
-    }
+        Usuario user = new Usuario();
+        UsuarioCadastroDAO dao = new UsuarioCadastroDAO();
+
+        user.setUserNick(nickTxt.getText());
+        user.setUserSenha(new String(senhaTxt.getPassword()));
+        
+        String valorUserCargo = cargoBox.getSelectedItem().toString();
+        String valorSelecionado = "CLIENTE";
+
+        if (valorUserCargo.equals("ADMIN")) {
+            valorSelecionado = "ADMIN";
+        } else if (valorUserCargo.equals("BIBLIOTECARIO")) {
+            valorSelecionado = "BIBLIOTECARIO";
+        } else {
+            valorSelecionado = "CLIENTE";
+        }
+
+        user.setUserType(valorSelecionado);
+        
+        user.setUserNome(nomeTxt.getText());
+        user.setUserSobrenome(sobrenomeTxt.getText());
+        user.setUserDataNasc(dataNascChooser.getDate());
+        user.setUserEmail(emailTxt.getText());
+        
+        String valorUserSexo = sexoBox.getSelectedItem().toString();
+        String valorSelecionad = "OUTRO";
+
+        if (valorUserSexo.equals("MASC")) {
+            valorSelecionad = "MASC";
+        } else if (valorUserSexo.equals("FEM")) {
+            valorSelecionad = "FEM";
+        } else {
+            valorSelecionad = "OUTRO";
+        }
+
+        user.setUserType(valorSelecionado);
+        
+        user.setUserCpf(cpfTxt.getText());
+
+        dao.cadastrarUsuario(user);
+
     }//GEN-LAST:event_enterButtonActionPerformed
 
     private void nickTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nickTxtActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_nickTxtActionPerformed
 
     private void emailTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTxtActionPerformed
@@ -550,8 +572,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_senhaTxtActionPerformed
 
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
-                    new TelaPrincipalAdministrador().setVisible(true);
-            this.dispose();
+        new TelaPrincipalAdministrador().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_voltarButtonActionPerformed
 
     private void cpfTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfTxtActionPerformed

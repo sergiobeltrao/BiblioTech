@@ -39,7 +39,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="campoCentral" max="32767" attributes="0"/>
-                  <Component id="menuLateral" pref="726" max="32767" attributes="0"/>
+                  <Component id="menuLateral" pref="708" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -74,7 +74,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                           <Component id="txtMenuPrincipal" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="83" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="79" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -124,7 +124,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="CadLivroButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cadastro de livros"/>
+            <Property name="text" type="java.lang.String" value="Cadastro de Livros"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CadLivroButtonActionPerformed"/>
@@ -132,7 +132,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnEncerrarSessao">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Encerrar sess&#xe3;o"/>
+            <Property name="text" type="java.lang.String" value="Encerrar Sess&#xe3;o"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEncerrarSessaoActionPerformed"/>
@@ -155,7 +155,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="283" max="-2" attributes="0"/>
                   <Component id="txtTemporario" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="284" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -164,7 +164,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="344" max="-2" attributes="0"/>
                   <Component id="txtTemporario" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="344" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
