@@ -54,14 +54,61 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     private void initComponents() {
 
         kGradientPanel1 = new keeptoo.KGradientPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Avaliações");
         setPreferredSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
         getContentPane().setLayout(null);
-        getContentPane().add(kGradientPanel1);
-        kGradientPanel1.setBounds(0, 0, 800, 600);
 
-        setSize(new java.awt.Dimension(814, 607));
+        kGradientPanel1.setkEndColor(new java.awt.Color(0, 0, 0));
+        kGradientPanel1.setkGradientFocus(25);
+        kGradientPanel1.setkStartColor(new java.awt.Color(255, 255, 255));
+        kGradientPanel1.setLayout(null);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel3.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.setLayout(null);
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Sinopse", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Serif", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel3.add(jPanel2);
+        jPanel2.setBounds(10, 340, 320, 300);
+
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)), "Nome do livro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Serif", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        jTextField1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jPanel3.add(jTextField1);
+        jTextField1.setBounds(20, 20, 300, 45);
+
+        kGradientPanel1.add(jPanel3);
+        jPanel3.setBounds(20, 20, 340, 650);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel1.setLayout(null);
+
+        jLabel2.setFont(new java.awt.Font("Serif", 0, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("imagem do livro...");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(160, 300, 259, 47);
+
+        kGradientPanel1.add(jPanel1);
+        jPanel1.setBounds(380, 20, 600, 650);
+
+        getContentPane().add(kGradientPanel1);
+        kGradientPanel1.setBounds(0, 0, 1000, 680);
+
+        setSize(new java.awt.Dimension(1294, 727));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -101,6 +148,11 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField jTextField1;
     private keeptoo.KGradientPanel kGradientPanel1;
     // End of variables declaration//GEN-END:variables
 }
