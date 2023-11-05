@@ -32,8 +32,18 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         txtMenuPrincipal.setBorder(null);
 
         CadUserButton.setText("Cadastro de Usuarios");
+        CadUserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadUserButtonActionPerformed(evt);
+            }
+        });
 
         CadLivroButton.setText("Cadastro de livros");
+        CadLivroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadLivroButtonActionPerformed(evt);
+            }
+        });
 
         btnEncerrarSessao.setText("Encerrar sessão");
         btnEncerrarSessao.addActionListener(new java.awt.event.ActionListener() {
@@ -145,8 +155,8 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_CadLivroButtonActionPerformed
 
     private void CadUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadUserButtonActionPerformed
-        // new CadastroUsuario().setVisible(true);
-        // this.setVisible(false);
+        new CadastroUsuario().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_CadUserButtonActionPerformed
 
     /**

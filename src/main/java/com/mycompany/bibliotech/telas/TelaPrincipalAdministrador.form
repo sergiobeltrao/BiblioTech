@@ -118,11 +118,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastro de Usuarios"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CadUserButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="CadLivroButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastro de livros"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CadLivroButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnEncerrarSessao">
           <Properties>
