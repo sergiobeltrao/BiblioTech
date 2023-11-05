@@ -48,6 +48,7 @@ public class TelaDeLogin extends javax.swing.JFrame {
         campoSenha.setForeground(new java.awt.Color(255, 255, 255));
         campoSenha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         campoSenha.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+        campoSenha.setCaretColor(new java.awt.Color(255, 255, 255));
         campoSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoSenhaActionPerformed(evt);
@@ -60,7 +61,13 @@ public class TelaDeLogin extends javax.swing.JFrame {
         campoUsuario.setFont(new java.awt.Font("Serif", 0, 16)); // NOI18N
         campoUsuario.setForeground(new java.awt.Color(255, 255, 255));
         campoUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        campoUsuario.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        campoUsuario.setActionCommand("null");
+        campoUsuario.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+        campoUsuario.setCaretColor(new java.awt.Color(255, 255, 255));
+        campoUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campoUsuario.setName(""); // NOI18N
+        campoUsuario.setOpaque(true);
+        campoUsuario.setVerifyInputWhenFocusTarget(false);
         campoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoUsuarioActionPerformed(evt);
@@ -68,6 +75,7 @@ public class TelaDeLogin extends javax.swing.JFrame {
         });
         getContentPane().add(campoUsuario);
         campoUsuario.setBounds(110, 270, 300, 35);
+        campoUsuario.getAccessibleContext().setAccessibleName("");
 
         jLabel1.setFont(new java.awt.Font("Serif", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));

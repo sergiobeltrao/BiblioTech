@@ -4,6 +4,12 @@
  */
 package com.mycompany.bibliotech.telas;
 
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+
 /**
  *
  * @author jonat
@@ -17,6 +23,27 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         initComponents();
     }
 
+    private static class Jpanel {
+
+        public Jpanel() {
+        }
+    }
+
+    class jPanelGradient extends Jpanel {
+
+        protected void paintComponet(Graphics g) {
+            Graphics2D g2d = (Graphics2D) g;
+            int width = getWidth();
+            int heigth = getHeight();
+            Color color1 = new Color(52, 143, 80);
+            Color color2 = new Color(86, 180, 211);
+            GradientPaint gp = new GradientPaint(0, 0, color1, 180, heigth, color2);
+            g2d.setPaint(gp);
+            g2d.fillRect(0, 0, width, heigth);
+        }
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,29 +53,16 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        kGradientPanel1 = new keeptoo.KGradientPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
+        getContentPane().add(kGradientPanel1);
+        kGradientPanel1.setBounds(0, 0, 800, 600);
 
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1098, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 718, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(-130, 0, 1100, 720);
-
-        pack();
+        setSize(new java.awt.Dimension(814, 607));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -87,6 +101,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private keeptoo.KGradientPanel kGradientPanel1;
     // End of variables declaration//GEN-END:variables
 }
