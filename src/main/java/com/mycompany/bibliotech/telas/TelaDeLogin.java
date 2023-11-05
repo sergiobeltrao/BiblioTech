@@ -102,8 +102,7 @@ public class TelaDeLogin extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(475, 0, 20, 20);
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/armazem imagem/telalogin.gif"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem/telalogin.gif"))); // NOI18N
         jLabel2.setText("telaLogin");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 500, 500);
