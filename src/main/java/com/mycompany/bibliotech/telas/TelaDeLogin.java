@@ -3,11 +3,19 @@ package com.mycompany.bibliotech.telas;
 import com.mycompany.bibliotech.dao.UsuarioLoginDAO;
 
 import javax.swing.JOptionPane;
+import java.awt.event.KeyEvent;
+
 
 public class TelaDeLogin extends javax.swing.JFrame {
 
     public TelaDeLogin() {
         initComponents();
+        
+        campoSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+    public void keyPressed(java.awt.event.KeyEvent evt) {
+        campoSenhaKeyPressed(evt);
+    }
+});
 
     }
 
@@ -52,6 +60,11 @@ public class TelaDeLogin extends javax.swing.JFrame {
         campoSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoSenhaActionPerformed(evt);
+            }
+        });
+        campoSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoSenhaKeyPressed(evt);
             }
         });
         getContentPane().add(campoSenha);
@@ -150,6 +163,14 @@ public class TelaDeLogin extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void campoSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoSenhaKeyPressed
+        // TODO add your handling code here:
+      if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        // Pressionou Enter, executar ação de login
+        btnEntrarActionPerformed(null);
+    }
+    }//GEN-LAST:event_campoSenhaKeyPressed
 
     /**
      * @param args the command line arguments
