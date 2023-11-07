@@ -477,18 +477,19 @@
                   <Font name="Segoe UI" size="13" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="11">
+                  <StringArray count="12">
                     <StringItem index="0" value="N&#xe3;o Informada"/>
-                    <StringItem index="1" value="10 - Extraordin&#xe1;rio"/>
-                    <StringItem index="2" value="9 - Incr&#xed;vel"/>
-                    <StringItem index="3" value="8 - Excelente"/>
-                    <StringItem index="4" value="7 - Muito Bom"/>
-                    <StringItem index="5" value="6 - Bom"/>
+                    <StringItem index="1" value="10 - Excelente"/>
+                    <StringItem index="2" value="9 - &#xd3;timo"/>
+                    <StringItem index="3" value="8 - Muito Bom"/>
+                    <StringItem index="4" value="7 - Bom"/>
+                    <StringItem index="5" value="6 - Satisfat&#xf3;rio"/>
                     <StringItem index="6" value="5 - Regular"/>
-                    <StringItem index="7" value="4 - Mediano"/>
-                    <StringItem index="8" value="3 - Insatisfat&#xf3;rio"/>
-                    <StringItem index="9" value="2 - Ruim"/>
+                    <StringItem index="7" value="4 - Abaixo da M&#xe9;dia"/>
+                    <StringItem index="8" value="3 - Ruim"/>
+                    <StringItem index="9" value="2 - Muito Ruim"/>
                     <StringItem index="10" value="1 - P&#xe9;ssimo"/>
+                    <StringItem index="11" value="0 - Inaceit&#xe1;vel"/>
                   </StringArray>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
