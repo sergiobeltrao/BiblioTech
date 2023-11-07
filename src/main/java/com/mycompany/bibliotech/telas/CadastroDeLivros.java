@@ -3,11 +3,10 @@ package com.mycompany.bibliotech.telas;
 import com.mycompany.bibliotech.dao.LivroCategoriaDAO;
 import com.mycompany.bibliotech.dao.AutorDAO;
 import com.mycompany.bibliotech.dao.AvaliacaoDAO;
-import com.mycompany.bibliotech.dao.EditoraDAO;
+
 import com.mycompany.bibliotech.dao.LivroDAO;
 import com.mycompany.bibliotech.model.bean.Autor;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
-import com.mycompany.bibliotech.model.bean.Editora;
 import com.mycompany.bibliotech.model.bean.Livro;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -68,11 +67,11 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         cboxAvaliacaoDoLivro = new javax.swing.JComboBox<>();
         txtNomeDaEditora = new javax.swing.JTextField();
         cboxLivroIdioma = new javax.swing.JComboBox<>();
-        voltarButton = new javax.swing.JButton();
+        btnTelaPrinCadLivro = new javax.swing.JButton();
         btnLimparLivro = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnDeletar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnProximaTela = new javax.swing.JButton();
         cadAutor = new javax.swing.JPanel();
         boxBibliografiaAutor = new javax.swing.JScrollPane();
         txtAutorBibliografia = new javax.swing.JTextArea();
@@ -83,6 +82,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         txtDeBoasVindasAutor = new javax.swing.JTextField();
         btnFinalizarCadastro = new javax.swing.JButton();
         btnLimparAutor = new javax.swing.JButton();
+        btnTelaPrinCadAutor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -156,7 +156,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         txtAnoDePublicacao.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ano de Publicação *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
 
         cboxCategoria.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        cboxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada" }));
         cboxCategoria.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Categoria *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
         cboxCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,7 +165,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         });
 
         cboxSubCategoria.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxSubCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        cboxSubCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada" }));
         cboxSubCategoria.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sub-categoria *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
         cboxSubCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,7 +180,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         txtPreco.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Preço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
 
         cboxAvaliacaoDoLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxAvaliacaoDoLivro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1" }));
+        cboxAvaliacaoDoLivro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada", "10 - Extraordinário", "9 - Incrível", "8 - Excelente", "7 - Muito Bom", "6 - Bom", "5 - Regular", "4 - Mediano", "3 - Insatisfatório", "2 - Ruim", "1 - Péssimo" }));
         cboxAvaliacaoDoLivro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Avaliação", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
         cboxAvaliacaoDoLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,14 +192,14 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         txtNomeDaEditora.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nome da Editora", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
 
         cboxLivroIdioma.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxLivroIdioma.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        cboxLivroIdioma.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informado" }));
         cboxLivroIdioma.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Idioma *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
 
-        voltarButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        voltarButton.setText("Voltar");
-        voltarButton.addActionListener(new java.awt.event.ActionListener() {
+        btnTelaPrinCadLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        btnTelaPrinCadLivro.setText("Tela Principal");
+        btnTelaPrinCadLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarButtonActionPerformed(evt);
+                btnTelaPrinCadLivroActionPerformed(evt);
             }
         });
 
@@ -217,11 +217,11 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         btnDeletar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         btnDeletar.setText("Deletar");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jButton1.setText("Próxima Tela");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnProximaTela.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        btnProximaTela.setText("Próxima Tela");
+        btnProximaTela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnProximaTelaActionPerformed(evt);
             }
         });
 
@@ -249,7 +249,10 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(txtNumeroDePaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(voltarButton)
+                                        .addGroup(cadLivrosLayout.createSequentialGroup()
+                                            .addComponent(btnTelaPrinCadLivro)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(btnLimparLivro))
                                         .addGroup(cadLivrosLayout.createSequentialGroup()
                                             .addComponent(cboxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(18, 18, 18)
@@ -262,9 +265,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadLivrosLayout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnLimparLivro)
+                                .addComponent(btnProximaTela)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnEditar)
                                 .addGap(18, 18, 18)
@@ -304,8 +305,8 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                     .addComponent(btnDeletar)
                     .addComponent(btnEditar)
                     .addComponent(btnLimparLivro)
-                    .addComponent(voltarButton)
-                    .addComponent(jButton1))
+                    .addComponent(btnTelaPrinCadLivro)
+                    .addComponent(btnProximaTela))
                 .addGap(21, 21, 21))
         );
 
@@ -323,7 +324,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         boxBibliografiaAutor.setViewportView(txtAutorBibliografia);
 
         cboxNacionalidadeDoAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxNacionalidadeDoAutor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        cboxNacionalidadeDoAutor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada" }));
         cboxNacionalidadeDoAutor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nacionalidade", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
         cboxNacionalidadeDoAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -333,15 +334,15 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         calendarNasciAutor.setBackground(new java.awt.Color(255, 255, 255));
         calendarNasciAutor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Data de Nascimento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
-        calendarNasciAutor.setToolTipText("2000-12-20");
-        calendarNasciAutor.setDateFormatString("yyyy-MM-dd");
+        calendarNasciAutor.setToolTipText("20-12-2000");
+        calendarNasciAutor.setDateFormatString("dd/MM/yyyy");
         calendarNasciAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         calendarNasciAutor.setMaxSelectableDate(new java.util.Date(253370779274000L));
         calendarNasciAutor.setMinSelectableDate(new java.util.Date(-62135755126000L));
 
         cboxAutorSexo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxAutorSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não informado", "Masculino", "Feminino" }));
-        cboxAutorSexo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gênero", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        cboxAutorSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informado", "Masculino", "Feminino" }));
+        cboxAutorSexo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sexo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
         cboxAutorSexo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxAutorSexoActionPerformed(evt);
@@ -374,16 +375,26 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             }
         });
 
+        btnTelaPrinCadAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        btnTelaPrinCadAutor.setText("Tela Principal");
+        btnTelaPrinCadAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTelaPrinCadAutorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout cadAutorLayout = new javax.swing.GroupLayout(cadAutor);
         cadAutor.setLayout(cadAutorLayout);
         cadAutorLayout.setHorizontalGroup(
             cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cadAutorLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(cadAutorLayout.createSequentialGroup()
-                        .addComponent(btnLimparAutor)
+                        .addComponent(btnTelaPrinCadAutor)
                         .addGap(18, 18, 18)
+                        .addComponent(btnLimparAutor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnFinalizarCadastro))
                     .addGroup(cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(cadAutorLayout.createSequentialGroup()
@@ -416,7 +427,8 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFinalizarCadastro)
-                    .addComponent(btnLimparAutor))
+                    .addComponent(btnLimparAutor)
+                    .addComponent(btnTelaPrinCadAutor))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -450,12 +462,10 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         Livro lv = new Livro();
         Autor aut = new Autor();
-        Editora ed = new Editora();
         Avaliacao av = new Avaliacao();
 
         LivroDAO lvdao = new LivroDAO();
         AutorDAO autdao = new AutorDAO();
-        EditoraDAO eddao = new EditoraDAO();
         AvaliacaoDAO avdao = new AvaliacaoDAO();
 
         // Livro
@@ -467,6 +477,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         lv.setPreco(Double.parseDouble(txtPreco.getText()));
         String idiomaSelecionado = cboxLivroIdioma.getSelectedItem().toString();
         lv.setIdioma(idiomaSelecionado);
+        lv.setEditora(txtNomeDaEditora.getText());
 
         // Autor
         aut.setNome(txtNomeDoAutor.getText());
@@ -487,8 +498,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         aut.setSexo(valorSelecionado);
 
-        // Editora
-        ed.setNome(txtNomeDaEditora.getText());
+        
 
         // Pegando os dados das ComboBox de categoria de livro
         String categoriaSelecionada = cboxCategoria.getSelectedItem().toString();
@@ -497,13 +507,13 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         lv.setSubCategoria(subCategoriaSelecionada);
 
         // Avaliação do livro
-        String notaInseridaPeloUsuario = cboxAvaliacaoDoLivro.getSelectedItem().toString();
+        String notaInseridaPeloUsuario = cboxAvaliacaoDoLivro.getSelectedItem().toString().substring(0, 2);
         av.setAvaliacaoDoUsuario(notaInseridaPeloUsuario);
+
         av.setComentarioAvaliacao(txtComentarioAvaliacao.getText());
 
         lvdao.create(lv);
         autdao.create(aut);
-        eddao.create(ed);
         avdao.create(av, txtTitulo.getText());
 
         // Para que a leitura da tabela seja feita novamente
@@ -529,29 +539,29 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         LivroCategoriaDAO.listarSubCategoria(cboxSubCategoria, idCategoria);
     }
 
-    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
+    private void btnTelaPrinCadLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTelaPrinCadLivroActionPerformed
         new TelaPrincipalAdministrador().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_voltarButtonActionPerformed
+    }//GEN-LAST:event_btnTelaPrinCadLivroActionPerformed
 
     private void cboxAutorSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxAutorSexoActionPerformed
 
     }//GEN-LAST:event_cboxAutorSexoActionPerformed
 
     private void btnLimparLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparLivroActionPerformed
-        // Limpar os campos já preenchidos e define valor "Selecione" para todas as JComboBox
+        // Limpar os campos já preenchidos e define valor "Não Informado" para todas as JComboBox
 
         txtTitulo.setText("");
         txtISBN.setText("");
         txtAnoDePublicacao.setText("");
         txtNumeroDePaginas.setText("");
-        cboxCategoria.setSelectedItem("Selecione");
-        cboxSubCategoria.setSelectedItem("Selecione");
+        cboxCategoria.setSelectedItem("Não Informada");
+        cboxSubCategoria.setSelectedItem("Não Informada");
         txtQuantidade.setText("");
         txtPreco.setText("");
-        cboxLivroIdioma.setSelectedItem("Selecione");
+        cboxLivroIdioma.setSelectedItem("Não Informado");
         txtNomeDaEditora.setText("");
-        cboxAvaliacaoDoLivro.setSelectedItem("Selecione");
+        cboxAvaliacaoDoLivro.setSelectedItem("Não Informada");
         txtComentarioAvaliacao.setText("");
 
     }//GEN-LAST:event_btnLimparLivroActionPerformed
@@ -559,16 +569,19 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     private void cboxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxCategoriaActionPerformed
         // Executar após o clique final na ComboBox
         String dados[] = String.valueOf(cboxCategoria.getSelectedItem()).split(" - ");
-        if (!dados[0].equalsIgnoreCase("Selecione")) {
+        if (!dados[0].equalsIgnoreCase("Não Informada")) {
             cboxSubCategoria.removeAllItems();
-            cboxSubCategoria.addItem("Selecione");
+            cboxSubCategoria.addItem("Não Informada");
             listarSubCategoria(dados[0]);
 
+        } else {
+            cboxSubCategoria.removeAllItems();
+            cboxSubCategoria.addItem("Não Informada");
         }
     }//GEN-LAST:event_cboxCategoriaActionPerformed
 
     private void cboxSubCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxSubCategoriaActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_cboxSubCategoriaActionPerformed
 
     private void cboxNacionalidadeDoAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxNacionalidadeDoAutorActionPerformed
@@ -583,20 +596,25 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDeBoasVindasLivroActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnProximaTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximaTelaActionPerformed
         this.janelaDeAbas.setSelectedIndex(1);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnProximaTelaActionPerformed
 
     private void btnLimparAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparAutorActionPerformed
         // Limpar os campos já preenchidos e define valor "Selecione" para todas as JComboBox
 
         txtNomeDoAutor.setText("");
-        cboxAutorSexo.setSelectedItem("Não informado");
-        // Colocar a Data de Nascimento também
-        cboxNacionalidadeDoAutor.setSelectedItem("Selecione");
+        cboxAutorSexo.setSelectedItem("Não Informado");
+        calendarNasciAutor.setCalendar(null);
+        cboxNacionalidadeDoAutor.setSelectedItem("Não Informada");
         txtAutorBibliografia.setText("");
 
     }//GEN-LAST:event_btnLimparAutorActionPerformed
+
+    private void btnTelaPrinCadAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTelaPrinCadAutorActionPerformed
+        new TelaPrincipalAdministrador().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnTelaPrinCadAutorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -641,6 +659,9 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     private javax.swing.JButton btnFinalizarCadastro;
     private javax.swing.JButton btnLimparAutor;
     private javax.swing.JButton btnLimparLivro;
+    private javax.swing.JButton btnProximaTela;
+    private javax.swing.JButton btnTelaPrinCadAutor;
+    private javax.swing.JButton btnTelaPrinCadLivro;
     private javax.swing.JPanel cadAutor;
     private javax.swing.JPanel cadLivros;
     private com.toedter.calendar.JDateChooser calendarNasciAutor;
@@ -650,7 +671,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboxLivroIdioma;
     private javax.swing.JComboBox<String> cboxNacionalidadeDoAutor;
     private javax.swing.JComboBox<String> cboxSubCategoria;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane janelaDeAbas;
     private javax.swing.JPanel pnSelect;
@@ -667,6 +687,5 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     private javax.swing.JTextField txtPreco;
     private javax.swing.JTextField txtQuantidade;
     private javax.swing.JTextField txtTitulo;
-    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 }

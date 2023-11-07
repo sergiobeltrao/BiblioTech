@@ -18,7 +18,7 @@ public class LivroDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("INSERT INTO LIVRO (ID_LIVRO, LIV_NOME_LIVRO, LIV_ISBN, LIV_ANO, LIV_PAGINA, LIV_QUANTIDADE, LIV_CATEGORIA, LIV_SUBCATEGORIA, LIV_PRECO, LIV_IDIOMA) VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            stmt = con.prepareStatement("INSERT INTO LIVRO (ID_LIVRO, LIV_NOME_LIVRO, LIV_ISBN, LIV_ANO, LIV_PAGINA, LIV_QUANTIDADE, LIV_CATEGORIA, LIV_SUBCATEGORIA, LIV_PRECO, LIV_IDIOMA, LIV_EDITORA) VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             stmt.setString(1, lv.getTitulo());
             stmt.setString(2, lv.getIsbn());
@@ -29,6 +29,7 @@ public class LivroDAO {
             stmt.setString(7, lv.getSubCategoria());
             stmt.setDouble(8, lv.getPreco());
             stmt.setString(9, lv.getIdioma());
+            stmt.setString(10, lv.getEditora());
 
             // Para preparar o SQL e executar
             stmt.executeUpdate();
@@ -41,16 +42,15 @@ public class LivroDAO {
         }
     }
 
-    
-    public static void listaDeIdiomas(JComboBox<String> comboBox){
-                try {
+    public static void listaDeIdiomas(JComboBox<String> comboBox) {
+        try {
             Connection con = ConnectionFactory.getConnection();
             String sql = "SELECT * FROM IDIOMA";
             PreparedStatement comando = con.prepareStatement(sql);
             ResultSet resultado = comando.executeQuery();
 
             comboBox.removeAllItems();
-            comboBox.addItem("Selecione");
+            comboBox.addItem("Não Informado");
 
             while (resultado.next()) {
                 comboBox.addItem(resultado.getString("IDI_NOME"));
@@ -59,7 +59,7 @@ public class LivroDAO {
             JOptionPane.showMessageDialog(null, "Erro ao ler a tabela de idiomas: " + ex);
         }
     }
-    
+
     // Para o retorno dos dados do banco na gtable
     public List<Livro> read() {
         Connection con = ConnectionFactory.getConnection();

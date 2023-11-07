@@ -12,6 +12,15 @@ public class Livro {
     private String subCategoria;
     private double preco;
     private String idioma;
+    private String editora;
+
+    public String getEditora() {
+        return editora;
+    }
+
+    public void setEditora(String editora) {
+        this.editora = editora;
+    }
 
     public String getIdioma() {
         return idioma;

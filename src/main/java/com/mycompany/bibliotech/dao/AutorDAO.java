@@ -82,7 +82,7 @@ public class AutorDAO {
             ResultSet resultado = comando.executeQuery();
 
             comboBox.removeAllItems();
-            comboBox.addItem("Selecione");
+            comboBox.addItem("Não Informada");
 
             while (resultado.next()) {
                 comboBox.addItem(resultado.getString("NAC_NOME"));

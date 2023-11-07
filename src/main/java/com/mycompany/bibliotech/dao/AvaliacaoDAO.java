@@ -30,13 +30,14 @@ public class AvaliacaoDAO {
                 JOptionPane.showMessageDialog(null, "Erro ao consultar ID_LIVRO para tabela de avaliações");
             }
 
-            stmt = con.prepareStatement("INSERT INTO AVALIACAO (ID, AVA_FK_LIVRO, AVA_USUARIO, AVA_TOTAL, AVA_COMENTARIO, AVA_DATA_AVALIACAO, AVA_FK_USUARIO) VALUES(NULL, ?, ?, '9.0', ?, NOW(), 2)");
+            stmt = con.prepareStatement("INSERT INTO AVALIACAO (ID_AVALIACAO, AVA_FK_LIVRO, AVA_USUARIO, AVA_TOTAL, AVA_COMENTARIO, AVA_DATA_AVALIACAO, AVA_FK_USUARIO) VALUES(NULL, ?, ?, '9.0', ?, NOW(), 1)");
 
             // O AVA_TOTAL ainda será implementado, deixei um valor qualquer.
             // Implementar captura do USE_ID com base no usuário logado para preencher o AVA_FK_USUARIO.
             stmt.setInt(1, idLivro);
             stmt.setString(2, av.getAvaliacaoDoUsuario());
             stmt.setString(3, av.getComentarioAvaliacao());
+            //stmt.setString(4, algumacoisa);
 
             // Para preparar o SQL e executar
             stmt.executeUpdate();
