@@ -39,7 +39,7 @@ public class UsuarioLoginDAO {
         } finally {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
-
         return userType;
+
     }
 }

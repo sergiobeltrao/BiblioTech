@@ -203,7 +203,11 @@
                                               <Component id="txtNumeroDePaginas" min="-2" pref="185" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                              <Component id="voltarButton" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="btnTelaPrinCadLivro" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="btnLimparLivro" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                               <Group type="102" attributes="0">
                                                   <Component id="cboxCategoria" min="-2" pref="185" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -222,9 +226,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnLimparLivro" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnProximaTela" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="btnEditar" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -276,8 +278,8 @@
                           <Component id="btnDeletar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnEditar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnLimparLivro" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="voltarButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnTelaPrinCadLivro" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnProximaTela" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
                   </Group>
@@ -398,7 +400,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="Selecione"/>
+                    <StringItem index="0" value="N&#xe3;o Informada"/>
                   </StringArray>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -423,7 +425,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="Selecione"/>
+                    <StringItem index="0" value="N&#xe3;o Informada"/>
                   </StringArray>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -476,17 +478,17 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="11">
-                    <StringItem index="0" value="Selecione"/>
-                    <StringItem index="1" value="10"/>
-                    <StringItem index="2" value="9"/>
-                    <StringItem index="3" value="8"/>
-                    <StringItem index="4" value="7"/>
-                    <StringItem index="5" value="6"/>
-                    <StringItem index="6" value="5"/>
-                    <StringItem index="7" value="4"/>
-                    <StringItem index="8" value="3"/>
-                    <StringItem index="9" value="2"/>
-                    <StringItem index="10" value="1"/>
+                    <StringItem index="0" value="N&#xe3;o Informada"/>
+                    <StringItem index="1" value="10 - Extraordin&#xe1;rio"/>
+                    <StringItem index="2" value="9 - Incr&#xed;vel"/>
+                    <StringItem index="3" value="8 - Excelente"/>
+                    <StringItem index="4" value="7 - Muito Bom"/>
+                    <StringItem index="5" value="6 - Bom"/>
+                    <StringItem index="6" value="5 - Regular"/>
+                    <StringItem index="7" value="4 - Mediano"/>
+                    <StringItem index="8" value="3 - Insatisfat&#xf3;rio"/>
+                    <StringItem index="9" value="2 - Ruim"/>
+                    <StringItem index="10" value="1 - P&#xe9;ssimo"/>
                   </StringArray>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -525,7 +527,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="Selecione"/>
+                    <StringItem index="0" value="N&#xe3;o Informado"/>
                   </StringArray>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -540,15 +542,15 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="voltarButton">
+            <Component class="javax.swing.JButton" name="btnTelaPrinCadLivro">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="13" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Voltar"/>
+                <Property name="text" type="java.lang.String" value="Tela Principal"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="voltarButtonActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTelaPrinCadLivroActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnLimparLivro">
@@ -578,7 +580,7 @@
                 <Property name="text" type="java.lang.String" value="Deletar"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="btnProximaTela">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="13" style="0"/>
@@ -586,7 +588,7 @@
                 <Property name="text" type="java.lang.String" value="Pr&#xf3;xima Tela"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProximaTelaActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -610,10 +612,12 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="btnLimparAutor" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnTelaPrinCadAutor" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnLimparAutor" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnFinalizarCadastro" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -656,6 +660,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnFinalizarCadastro" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnLimparAutor" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnTelaPrinCadAutor" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="24" max="32767" attributes="0"/>
                   </Group>
@@ -701,7 +706,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="Selecione"/>
+                    <StringItem index="0" value="N&#xe3;o Informada"/>
                   </StringArray>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -731,8 +736,8 @@
                     </TitledBorder>
                   </Border>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="2000-12-20"/>
-                <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+                <Property name="toolTipText" type="java.lang.String" value="20-12-2000"/>
+                <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="13" style="0"/>
                 </Property>
@@ -751,14 +756,14 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="3">
-                    <StringItem index="0" value="N&#xe3;o informado"/>
+                    <StringItem index="0" value="N&#xe3;o Informado"/>
                     <StringItem index="1" value="Masculino"/>
                     <StringItem index="2" value="Feminino"/>
                   </StringArray>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="G&#xea;nero">
+                    <TitledBorder title="Sexo">
                       <Font PropertyName="font" name="Segoe UI" size="13" style="0"/>
                     </TitledBorder>
                   </Border>
@@ -821,6 +826,17 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimparAutorActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnTelaPrinCadAutor">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="13" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Tela Principal"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTelaPrinCadAutorActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

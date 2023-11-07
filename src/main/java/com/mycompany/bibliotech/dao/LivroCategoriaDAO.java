@@ -18,7 +18,7 @@ public class LivroCategoriaDAO {
             ResultSet resultado = comando.executeQuery();
 
             comboBox.removeAllItems();
-            comboBox.addItem("Selecione");
+            comboBox.addItem("Não Informada");
 
             while (resultado.next()) {
                 comboBox.addItem(String.valueOf(resultado.getInt("CAT_ID")) + " - " + resultado.getString("CAT_NOME"));
@@ -31,7 +31,7 @@ public class LivroCategoriaDAO {
     public static void listarSubCategoria(JComboBox<String> comboBox, String idCategoria) {
         try {
             comboBox.removeAllItems();
-            comboBox.addItem("Selecione");
+            comboBox.addItem("Não Informada");
 
             if (idCategoria != null && !idCategoria.isEmpty()) {
                 // Verifica se idCategoria é um número válido antes de converter.
