@@ -5,6 +5,8 @@ import com.mycompany.bibliotech.model.bean.Usuario;
 import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;
 import com.mycompany.bibliotech.dao.EnderecoDAO;
 import com.mycompany.bibliotech.model.bean.Endereco;
+import com.mycompany.bibliotech.dao.TelefoneDAO;
+import com.mycompany.bibliotech.model.bean.Telefone;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
@@ -13,6 +15,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.*;
+import javax.swing.text.MaskFormatter;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.text.ParseException;
 
 public class CadastroUsuario extends javax.swing.JFrame {
 
@@ -59,7 +68,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     }
 
     public void setFoneTxt(JTextField foneTxt) {
-        this.foneTxt = foneTxt;
+        this.foneTxt = (JFormattedTextField) foneTxt;
     }
 
     public void setjCalendar1(JCalendar jCalendar1) {
@@ -146,7 +155,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         return enterButton;
     }
 
-    public JTextField getFoneTxt() {
+    public JFormattedTextField getFoneTxt() {
         return foneTxt;
     }
 
@@ -222,6 +231,14 @@ public class CadastroUsuario extends javax.swing.JFrame {
         this.paisTxt = paisTxt;
     }
 
+    public JComboBox<String> getTelefoneTipoBox() {
+        return telefoneTipoBox;
+    }
+
+    public void setTelefoneTipoBox(JComboBox<String> telefoneTipoBox) {
+        this.telefoneTipoBox = telefoneTipoBox;
+    }
+
     
     
     @SuppressWarnings("unchecked")
@@ -235,19 +252,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         campoCentral = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        foneTxt = new javax.swing.JTextField();
-        senhaTxt = new javax.swing.JPasswordField();
-        cpfTxt = new javax.swing.JTextField();
-        sexoBox = new javax.swing.JComboBox<>();
-        sobrenomeTxt = new javax.swing.JTextField();
-        enterButton = new javax.swing.JButton();
-        nickTxt = new javax.swing.JTextField();
-        emailTxt = new javax.swing.JTextField();
-        nomeTxt = new javax.swing.JTextField();
-        cargoBox = new javax.swing.JComboBox<>();
-        dataNascChooser = new com.toedter.calendar.JDateChooser();
-        resenhaTxt = new javax.swing.JPasswordField();
         jPanel2 = new javax.swing.JPanel();
         cboxCategoria2 = new javax.swing.JComboBox<>();
         cboxSubCategoria2 = new javax.swing.JComboBox<>();
@@ -262,6 +266,20 @@ public class CadastroUsuario extends javax.swing.JFrame {
         paisTxt = new javax.swing.JTextField();
         numTxt = new javax.swing.JTextField();
         compTxt = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        senhaTxt = new javax.swing.JPasswordField();
+        cpfTxt = new javax.swing.JTextField();
+        sexoBox = new javax.swing.JComboBox<>();
+        sobrenomeTxt = new javax.swing.JTextField();
+        enterButton = new javax.swing.JButton();
+        nickTxt = new javax.swing.JTextField();
+        emailTxt = new javax.swing.JTextField();
+        nomeTxt = new javax.swing.JTextField();
+        cargoBox = new javax.swing.JComboBox<>();
+        dataNascChooser = new com.toedter.calendar.JDateChooser();
+        resenhaTxt = new javax.swing.JPasswordField();
+        telefoneTipoBox = new javax.swing.JComboBox<>();
+        foneTxt = new javax.swing.JFormattedTextField();
         menuLateral = new javax.swing.JPanel();
         txtMenuPrincipal = new javax.swing.JTextField();
         CadUserButton = new javax.swing.JButton();
@@ -293,172 +311,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         campoCentral.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
-
-        foneTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        foneTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Telefone", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
-        foneTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                foneTxtActionPerformed(evt);
-            }
-        });
-
-        senhaTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        senhaTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Senha", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
-        senhaTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                senhaTxtActionPerformed(evt);
-            }
-        });
-
-        cpfTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cpfTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CPF", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
-        cpfTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cpfTxtActionPerformed(evt);
-            }
-        });
-
-        sexoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MASC", "FEM", "OUTRO" }));
-        sexoBox.setBorder(javax.swing.BorderFactory.createTitledBorder("Sexo"));
-        sexoBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sexoBoxActionPerformed(evt);
-            }
-        });
-
-        sobrenomeTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        sobrenomeTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sobrenome", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
-        sobrenomeTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sobrenomeTxtActionPerformed(evt);
-            }
-        });
-
-        enterButton.setText("Cadastrar");
-        enterButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enterButtonActionPerformed(evt);
-            }
-        });
-
-        nickTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nickTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nickname", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
-        nickTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nickTxtActionPerformed(evt);
-            }
-        });
-
-        emailTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        emailTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Email", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
-        emailTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailTxtActionPerformed(evt);
-            }
-        });
-
-        nomeTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nomeTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nome", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
-        nomeTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeTxtActionPerformed(evt);
-            }
-        });
-
-        cargoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMIN", "BIBLIOTECARIO", "CLIENTE" }));
-        cargoBox.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo"));
-        cargoBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cargoBoxActionPerformed(evt);
-            }
-        });
-
-        dataNascChooser.setBorder(javax.swing.BorderFactory.createTitledBorder("Data de Nascimento"));
-        dataNascChooser.setToolTipText("2004-08-07");
-        dataNascChooser.setDateFormatString("yyyy-MM-dd");
-
-        resenhaTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        resenhaTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Re-Senha", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
-        resenhaTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resenhaTxtActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(foneTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 332, Short.MAX_VALUE)
-                                .addComponent(enterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(nomeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dataNascChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(sobrenomeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(sexoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(nickTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cpfTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(senhaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cargoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(resenhaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nomeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dataNascChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(sobrenomeTxt)
-                    .addComponent(sexoBox, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cpfTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nickTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(foneTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(senhaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(resenhaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cargoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(221, 221, 221)
-                .addComponent(enterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(177, 177, 177))
-        );
-
-        jTabbedPane1.addTab("Cadastro usuario", jPanel1);
-        jPanel1.getAccessibleContext().setAccessibleDescription("");
 
         cboxCategoria2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         cboxCategoria2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada" }));
@@ -642,6 +494,190 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Cadastro endereço", jPanel3);
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
+
+        senhaTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        senhaTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Senha", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        senhaTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                senhaTxtActionPerformed(evt);
+            }
+        });
+
+        cpfTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cpfTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CPF", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        cpfTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cpfTxtActionPerformed(evt);
+            }
+        });
+
+        sexoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MASC", "FEM", "OUTRO" }));
+        sexoBox.setBorder(javax.swing.BorderFactory.createTitledBorder("Sexo"));
+        sexoBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sexoBoxActionPerformed(evt);
+            }
+        });
+
+        sobrenomeTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        sobrenomeTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sobrenome", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        sobrenomeTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sobrenomeTxtActionPerformed(evt);
+            }
+        });
+
+        enterButton.setText("Cadastrar");
+        enterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enterButtonActionPerformed(evt);
+            }
+        });
+
+        nickTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nickTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nickname", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        nickTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nickTxtActionPerformed(evt);
+            }
+        });
+
+        emailTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        emailTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Email", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        emailTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailTxtActionPerformed(evt);
+            }
+        });
+
+        nomeTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nomeTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nome", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        nomeTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomeTxtActionPerformed(evt);
+            }
+        });
+
+        cargoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMIN", "BIBLIOTECARIO", "CLIENTE" }));
+        cargoBox.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo"));
+        cargoBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargoBoxActionPerformed(evt);
+            }
+        });
+
+        dataNascChooser.setBorder(javax.swing.BorderFactory.createTitledBorder("Data de Nascimento"));
+        dataNascChooser.setToolTipText("2004-08-07");
+        dataNascChooser.setDateFormatString("yyyy-MM-dd");
+
+        resenhaTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        resenhaTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Re-Senha", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        resenhaTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resenhaTxtActionPerformed(evt);
+            }
+        });
+
+        telefoneTipoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RESIDENCIAL", "COMERCIAL", "CELULAR" }));
+        telefoneTipoBox.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de número"));
+        telefoneTipoBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                telefoneTipoBoxActionPerformed(evt);
+            }
+        });
+
+        foneTxt.setBorder(javax.swing.BorderFactory.createTitledBorder("Telefone"));
+        try {
+            foneTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        foneTxt.setText("(  )      -    ");
+        foneTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                foneTxtActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(telefoneTipoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(foneTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 332, Short.MAX_VALUE)
+                                .addComponent(enterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(senhaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cargoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(resenhaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(nomeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dataNascChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(sobrenomeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(sexoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(nickTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cpfTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nomeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dataNascChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(sobrenomeTxt)
+                    .addComponent(sexoBox, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cpfTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nickTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(telefoneTipoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(foneTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(resenhaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cargoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(senhaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addComponent(enterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(177, 177, 177))
+        );
+
+        jTabbedPane1.addTab("Cadastro usuario", jPanel1);
+        jPanel1.getAccessibleContext().setAccessibleDescription("");
+
         javax.swing.GroupLayout campoCentralLayout = new javax.swing.GroupLayout(campoCentral);
         campoCentral.setLayout(campoCentralLayout);
         campoCentralLayout.setHorizontalGroup(
@@ -750,8 +786,10 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
         Usuario user = new Usuario();
         Endereco end = new Endereco();
+        Telefone tel = new Telefone();
         UsuarioCadastroDAO dao = new UsuarioCadastroDAO();
         EnderecoDAO enddao = new EnderecoDAO();
+        TelefoneDAO fonedao = new TelefoneDAO();
 
         user.setUserNick(nickTxt.getText());
         user.setUserSenha(new String(senhaTxt.getPassword()));
@@ -784,6 +822,20 @@ public class CadastroUsuario extends javax.swing.JFrame {
         } else {
             valorSelecionad = "OUTRO";
         }
+        user.setUserSexo(valorSelecionad);
+
+        String valorTipo = telefoneTipoBox.getSelectedItem().toString();
+        String valorSelecionada = "CELULAR";
+
+        if (valorTipo.equals("CELULAR")) {
+            valorSelecionada = "CELULAR";
+        } else if (valorTipo.equals("COMERCIAL")) {
+            valorSelecionada = "COMERCIAL";
+        } else {
+            valorSelecionada = "RESIDENCIAL";
+        }
+        tel.setTipo(valorSelecionada);
+        tel.setTelefone(foneTxt.getText());
         
         end.setCep(cepTxt.getText());
         end.setPais(paisTxt.getText());
@@ -791,6 +843,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         end.setUf(ufTxt.getText());
         end.setComp(compTxt.getText());
         end.setCidade(cidadeTxt.getText());
+        
         String text = numTxt.getText();
         int numb = 0;
         try {
@@ -804,6 +857,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
         
         dao.cadastrarUsuario(user);
         enddao.cadastrarEndereco(end, nickTxt.getText(), cepTxt.getText(), numb);
+        fonedao.cadastrarTelefone(tel, nickTxt.getText(), foneTxt.getText(), telefoneTipoBox.getSelectedItem().toString());
+        
 
     }//GEN-LAST:event_enterButtonActionPerformed
 
@@ -827,10 +882,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private void resenhaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resenhaTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_resenhaTxtActionPerformed
-
-    private void foneTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foneTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_foneTxtActionPerformed
 
     private void senhaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaTxtActionPerformed
         // TODO add your handling code here:
@@ -932,6 +983,14 @@ public class CadastroUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_compTxtActionPerformed
 
+    private void telefoneTipoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefoneTipoBoxActionPerformed
+
+    }//GEN-LAST:event_telefoneTipoBoxActionPerformed
+
+    private void foneTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foneTxtActionPerformed
+        // TODO add your handling code here:   
+    }//GEN-LAST:event_foneTxtActionPerformed
+
     
         public void listarCategorias1() {
         LivroCategoriaDAO.listarCategorias(cboxCategoria1);
@@ -1003,7 +1062,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField emailTxt;
     private javax.swing.JTextField endTxt;
     private javax.swing.JButton enterButton;
-    private javax.swing.JTextField foneTxt;
+    private javax.swing.JFormattedTextField foneTxt;
     private com.toedter.calendar.JCalendar jCalendar1;
     private com.toedter.calendar.JCalendar jCalendar2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
@@ -1022,6 +1081,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JPasswordField senhaTxt;
     private javax.swing.JComboBox<String> sexoBox;
     private javax.swing.JTextField sobrenomeTxt;
+    private javax.swing.JComboBox<String> telefoneTipoBox;
     private javax.swing.JTextField txtMenuPrincipal;
     private javax.swing.JTextField ufTxt;
     // End of variables declaration//GEN-END:variables
