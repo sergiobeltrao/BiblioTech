@@ -1,7 +1,10 @@
 package com.mycompany.bibliotech.telas;
 
+import com.mycompany.bibliotech.dao.LivroCategoriaDAO;
 import com.mycompany.bibliotech.model.bean.Usuario;
 import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;
+import com.mycompany.bibliotech.dao.EnderecoDAO;
+import com.mycompany.bibliotech.model.bean.Endereco;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
@@ -15,6 +18,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
     public CadastroUsuario() {
         initComponents();
+        listarCategorias1();
+        listarCategorias2();
     }
 
     public void setBairroTxt(JTextField bairroTxt) {
@@ -193,6 +198,32 @@ public class CadastroUsuario extends javax.swing.JFrame {
         return ufTxt;
     }
 
+    public JTextField getCompTxt() {
+        return compTxt;
+    }
+
+    public void setCompTxt(JTextField compTxt) {
+        this.compTxt = compTxt;
+    }
+
+    public JTextField getNumTxt() {
+        return numTxt;
+    }
+
+    public void setNumTxt(JTextField numTxt) {
+        this.numTxt = numTxt;
+    }
+
+    public JTextField getPaisTxt() {
+        return paisTxt;
+    }
+
+    public void setPaisTxt(JTextField paisTxt) {
+        this.paisTxt = paisTxt;
+    }
+
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -217,13 +248,20 @@ public class CadastroUsuario extends javax.swing.JFrame {
         cargoBox = new javax.swing.JComboBox<>();
         dataNascChooser = new com.toedter.calendar.JDateChooser();
         resenhaTxt = new javax.swing.JPasswordField();
+        jPanel2 = new javax.swing.JPanel();
+        cboxCategoria2 = new javax.swing.JComboBox<>();
+        cboxSubCategoria2 = new javax.swing.JComboBox<>();
+        cboxCategoria1 = new javax.swing.JComboBox<>();
+        cboxSubCategoria1 = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         endTxt = new javax.swing.JTextField();
         ufTxt = new javax.swing.JTextField();
         bairroTxt = new javax.swing.JTextField();
         cidadeTxt = new javax.swing.JTextField();
         cepTxt = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
+        paisTxt = new javax.swing.JTextField();
+        numTxt = new javax.swing.JTextField();
+        compTxt = new javax.swing.JTextField();
         menuLateral = new javax.swing.JPanel();
         txtMenuPrincipal = new javax.swing.JTextField();
         CadUserButton = new javax.swing.JButton();
@@ -422,6 +460,75 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jTabbedPane1.addTab("Cadastro usuario", jPanel1);
         jPanel1.getAccessibleContext().setAccessibleDescription("");
 
+        cboxCategoria2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        cboxCategoria2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada" }));
+        cboxCategoria2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Categoria 2 *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        cboxCategoria2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxCategoria2ActionPerformed(evt);
+            }
+        });
+
+        cboxSubCategoria2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        cboxSubCategoria2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada" }));
+        cboxSubCategoria2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sub-categoria 2 *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        cboxSubCategoria2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxSubCategoria2ActionPerformed(evt);
+            }
+        });
+
+        cboxCategoria1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        cboxCategoria1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada" }));
+        cboxCategoria1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Categoria 1 *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        cboxCategoria1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxCategoria1ActionPerformed(evt);
+            }
+        });
+
+        cboxSubCategoria1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        cboxSubCategoria1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada" }));
+        cboxSubCategoria1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sub-categoria 1 *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        cboxSubCategoria1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxSubCategoria1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(cboxCategoria1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboxSubCategoria1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(cboxCategoria2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboxSubCategoria2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(274, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboxCategoria1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboxSubCategoria1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboxCategoria2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboxSubCategoria2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(514, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Tipos de livro favorito", jPanel2);
+
         endTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         endTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
         endTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -462,6 +569,30 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
+        paisTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        paisTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "País", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        paisTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                paisTxtActionPerformed(evt);
+            }
+        });
+
+        numTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        numTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Número", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        numTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numTxtActionPerformed(evt);
+            }
+        });
+
+        compTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        compTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Complemento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        compTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                compTxtActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -472,13 +603,19 @@ public class CadastroUsuario extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(cepTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cidadeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(paisTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(endTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(endTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(compTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ufTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bairroTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cidadeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ufTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(numTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bairroTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -487,30 +624,23 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cepTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cidadeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(paisTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(endTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bairroTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ufTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ufTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(614, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cidadeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(compTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(numTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bairroTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(392, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Cadastro endereço", jPanel3);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 656, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 782, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Tipos de livro favorito", jPanel2);
 
         javax.swing.GroupLayout campoCentralLayout = new javax.swing.GroupLayout(campoCentral);
         campoCentral.setLayout(campoCentralLayout);
@@ -525,7 +655,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
             campoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(campoCentralLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addGap(47, 47, 47))
         );
 
@@ -608,7 +738,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campoCentral, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(campoCentral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(menuLateral, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -619,7 +749,9 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonActionPerformed
 
         Usuario user = new Usuario();
+        Endereco end = new Endereco();
         UsuarioCadastroDAO dao = new UsuarioCadastroDAO();
+        EnderecoDAO enddao = new EnderecoDAO();
 
         user.setUserNick(nickTxt.getText());
         user.setUserSenha(new String(senhaTxt.getPassword()));
@@ -652,12 +784,26 @@ public class CadastroUsuario extends javax.swing.JFrame {
         } else {
             valorSelecionad = "OUTRO";
         }
-
-        user.setUserType(valorSelecionado);
         
+        end.setCep(cepTxt.getText());
+        end.setPais(paisTxt.getText());
+        end.setRua(endTxt.getText());
+        end.setUf(ufTxt.getText());
+        end.setComp(compTxt.getText());
+        end.setCidade(cidadeTxt.getText());
+        String text = numTxt.getText();
+        int numb = 0;
+        try {
+                    numb = Integer.parseInt(text);
+                    } catch (NumberFormatException e) {
+            }
+        end.setNum(numb);
+        end.setBairro(bairroTxt.getText());
+        user.setUserType(valorSelecionado);
         user.setUserCpf(cpfTxt.getText());
-
+        
         dao.cadastrarUsuario(user);
+        enddao.cadastrarEndereco(end, nickTxt.getText(), cepTxt.getText(), numb);
 
     }//GEN-LAST:event_enterButtonActionPerformed
 
@@ -738,6 +884,71 @@ public class CadastroUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cepTxtActionPerformed
 
+    private void cboxCategoria2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxCategoria2ActionPerformed
+        // Executar após o clique final na ComboBox
+        String dados[] = String.valueOf(cboxCategoria2.getSelectedItem()).split(" - ");
+        if (!dados[0].equalsIgnoreCase("Não Informada")) {
+            cboxSubCategoria2.removeAllItems();
+            cboxSubCategoria2.addItem("Não Informada");
+            listarSubCategoria2(dados[0]);
+
+        } else {
+            cboxSubCategoria2.removeAllItems();
+            cboxSubCategoria2.addItem("Não Informada");
+        }
+    }//GEN-LAST:event_cboxCategoria2ActionPerformed
+
+    private void cboxSubCategoria2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxSubCategoria2ActionPerformed
+
+    }//GEN-LAST:event_cboxSubCategoria2ActionPerformed
+
+    private void cboxCategoria1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxCategoria1ActionPerformed
+        // TODO add your handling code here:
+                String dados[] = String.valueOf(cboxCategoria1.getSelectedItem()).split(" - ");
+        if (!dados[0].equalsIgnoreCase("Não Informada")) {
+            cboxSubCategoria1.removeAllItems();
+            cboxSubCategoria1.addItem("Não Informada");
+            listarSubCategoria1(dados[0]);
+
+        } else {
+            cboxSubCategoria1.removeAllItems();
+            cboxSubCategoria1.addItem("Não Informada");
+        }
+    }//GEN-LAST:event_cboxCategoria1ActionPerformed
+
+    private void cboxSubCategoria1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxSubCategoria1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxSubCategoria1ActionPerformed
+
+    private void paisTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paisTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_paisTxtActionPerformed
+
+    private void numTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numTxtActionPerformed
+
+    private void compTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_compTxtActionPerformed
+
+    
+        public void listarCategorias1() {
+        LivroCategoriaDAO.listarCategorias(cboxCategoria1);
+    }
+
+    public void listarSubCategoria1(String idCategoria) {
+        LivroCategoriaDAO.listarSubCategoria(cboxSubCategoria1, idCategoria);
+    }
+    
+        public void listarCategorias2() {
+        LivroCategoriaDAO.listarCategorias(cboxCategoria2);
+    }
+
+    public void listarSubCategoria2(String idCategoria) {
+        LivroCategoriaDAO.listarSubCategoria(cboxSubCategoria2, idCategoria);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -780,8 +991,13 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btnEncerrarSessao;
     private javax.swing.JPanel campoCentral;
     private javax.swing.JComboBox<String> cargoBox;
+    private javax.swing.JComboBox<String> cboxCategoria1;
+    private javax.swing.JComboBox<String> cboxCategoria2;
+    private javax.swing.JComboBox<String> cboxSubCategoria1;
+    private javax.swing.JComboBox<String> cboxSubCategoria2;
     private javax.swing.JTextField cepTxt;
     private javax.swing.JTextField cidadeTxt;
+    private javax.swing.JTextField compTxt;
     private javax.swing.JTextField cpfTxt;
     private com.toedter.calendar.JDateChooser dataNascChooser;
     private javax.swing.JTextField emailTxt;
@@ -800,6 +1016,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel menuLateral;
     private javax.swing.JTextField nickTxt;
     private javax.swing.JTextField nomeTxt;
+    private javax.swing.JTextField numTxt;
+    private javax.swing.JTextField paisTxt;
     private javax.swing.JPasswordField resenhaTxt;
     private javax.swing.JPasswordField senhaTxt;
     private javax.swing.JComboBox<String> sexoBox;
