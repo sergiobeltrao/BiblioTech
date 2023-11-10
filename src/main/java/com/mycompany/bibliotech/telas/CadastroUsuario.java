@@ -285,6 +285,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         CadUserButton = new javax.swing.JButton();
         CadLivroButton = new javax.swing.JButton();
         btnEncerrarSessao = new javax.swing.JButton();
+        avaliacaoButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -411,7 +412,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        foneTxt.setText("(  )      -    ");
         foneTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 foneTxtActionPerformed(evt);
@@ -724,6 +724,13 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
+        avaliacaoButton.setText("Avaliações");
+        avaliacaoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                avaliacaoButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menuLateralLayout = new javax.swing.GroupLayout(menuLateral);
         menuLateral.setLayout(menuLateralLayout);
         menuLateralLayout.setHorizontalGroup(
@@ -738,10 +745,13 @@ public class CadastroUsuario extends javax.swing.JFrame {
                     .addGroup(menuLateralLayout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addComponent(txtMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 83, Short.MAX_VALUE))
+                        .addGap(0, 79, Short.MAX_VALUE))
                     .addGroup(menuLateralLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(menuLateralLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(avaliacaoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         menuLateralLayout.setVerticalGroup(
@@ -753,7 +763,9 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 .addComponent(CadUserButton)
                 .addGap(18, 18, 18)
                 .addComponent(CadLivroButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 557, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(avaliacaoButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 522, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao)
                 .addGap(15, 15, 15))
         );
@@ -991,6 +1003,12 @@ public class CadastroUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:   
     }//GEN-LAST:event_foneTxtActionPerformed
 
+    private void avaliacaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avaliacaoButtonActionPerformed
+        new TelaAvaliacao().setVisible(true);
+        this.setVisible(false);
+// TODO add your handling code here:
+    }//GEN-LAST:event_avaliacaoButtonActionPerformed
+
     
         public void listarCategorias1() {
         LivroCategoriaDAO.listarCategorias(cboxCategoria1);
@@ -1046,6 +1064,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CadLivroButton;
     private javax.swing.JButton CadUserButton;
+    private javax.swing.JButton avaliacaoButton;
     private javax.swing.JTextField bairroTxt;
     private javax.swing.JButton btnEncerrarSessao;
     private javax.swing.JPanel campoCentral;

@@ -17,6 +17,7 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         CadUserButton = new javax.swing.JButton();
         CadLivroButton = new javax.swing.JButton();
         btnEncerrarSessao = new javax.swing.JButton();
+        avaliacaoButton = new javax.swing.JButton();
         campoCentral = new javax.swing.JPanel();
         txtTemporario = new javax.swing.JTextField();
 
@@ -52,6 +53,13 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
             }
         });
 
+        avaliacaoButton.setText("Avaliações");
+        avaliacaoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                avaliacaoButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menuLateralLayout = new javax.swing.GroupLayout(menuLateral);
         menuLateral.setLayout(menuLateralLayout);
         menuLateralLayout.setHorizontalGroup(
@@ -69,7 +77,10 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
                         .addGap(0, 79, Short.MAX_VALUE))
                     .addGroup(menuLateralLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(menuLateralLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(avaliacaoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         menuLateralLayout.setVerticalGroup(
@@ -81,6 +92,8 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
                 .addComponent(CadUserButton)
                 .addGap(18, 18, 18)
                 .addComponent(CadLivroButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(avaliacaoButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao)
                 .addGap(15, 15, 15))
@@ -112,7 +125,7 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
             .addGroup(campoCentralLayout.createSequentialGroup()
                 .addGap(344, 344, 344)
                 .addComponent(txtTemporario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(326, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -160,6 +173,12 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_CadUserButtonActionPerformed
 
+    private void avaliacaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avaliacaoButtonActionPerformed
+        new TelaAvaliacao().setVisible(true);
+        this.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_avaliacaoButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -199,6 +218,7 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CadLivroButton;
     private javax.swing.JButton CadUserButton;
+    private javax.swing.JButton avaliacaoButton;
     private javax.swing.JButton btnEncerrarSessao;
     private javax.swing.JPanel campoCentral;
     private javax.swing.JPanel menuLateral;
