@@ -345,6 +345,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTituloActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtDeBoasVindasLivro">
               <Properties>
@@ -378,6 +381,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNumeroDePaginasActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtAnoDePublicacao">
               <Properties>
@@ -392,6 +398,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAnoDePublicacaoActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="cboxCategoria">
               <Properties>
@@ -470,6 +479,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPrecoActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="cboxAvaliacaoDoLivro">
               <Properties>
