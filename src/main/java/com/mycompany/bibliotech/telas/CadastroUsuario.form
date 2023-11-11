@@ -836,10 +836,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="CadUserButton" alignment="0" max="32767" attributes="0"/>
-                              <Component id="CadLivroButton" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="CadUserButton" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
@@ -854,6 +851,10 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="avaliacaoButton" max="32767" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="CadLivroButton" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -866,11 +867,11 @@
                   <Component id="txtMenuPrincipal" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="CadUserButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="CadLivroButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="avaliacaoButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="522" max="32767" attributes="0"/>
+                  <EmptySpace pref="528" max="32767" attributes="0"/>
                   <Component id="btnEncerrarSessao" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               </Group>
