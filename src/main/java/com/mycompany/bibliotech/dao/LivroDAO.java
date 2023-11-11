@@ -1,6 +1,7 @@
 package com.mycompany.bibliotech.dao;
 
 import com.mycompany.bibliotech.connection.ConnectionFactory;
+import com.mycompany.bibliotech.model.bean.Autor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -18,7 +19,7 @@ public class LivroDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("INSERT INTO LIVRO (ID_LIVRO, LIV_NOME_LIVRO, LIV_ISBN, LIV_ANO, LIV_PAGINA, LIV_QUANTIDADE, LIV_CATEGORIA, LIV_SUBCATEGORIA, LIV_PRECO, LIV_IDIOMA, LIV_EDITORA) VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            stmt = con.prepareStatement("INSERT INTO LIVRO (ID_LIVRO, LIV_NOME_LIVRO, LIV_ISBN, LIV_ANO, LIV_PAGINA, LIV_QUANTIDADE, LIV_CATEGORIA, LIV_SUBCATEGORIA, LIV_PRECO, LIV_IDIOMA, LIV_EDITORA, LIV_SINOPSE) VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             stmt.setString(1, lv.getTitulo());
             stmt.setString(2, lv.getIsbn());
@@ -30,6 +31,7 @@ public class LivroDAO {
             stmt.setDouble(8, lv.getPreco());
             stmt.setString(9, lv.getIdioma());
             stmt.setString(10, lv.getEditora());
+            stmt.setString(11, lv.getSinopse());
 
             // Para preparar o SQL e executar
             stmt.executeUpdate();
@@ -69,7 +71,7 @@ public class LivroDAO {
         List<Livro> livros = new ArrayList<>();
 
         try {
-            stmt = con.prepareCall("SELECT * FROM LIVRO");
+            stmt = con.prepareCall("SELECT ID_LIVRO, LIV_NOME_LIVRO, LIV_ISBN, LIV_ANO, LIV_PAGINA, LIV_CATEGORIA, LIV_SUBCATEGORIA, LIV_IDIOMA, LIV_EDITORA FROM LIVRO");
             rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -80,10 +82,10 @@ public class LivroDAO {
                 livro.setIsbn(rs.getString("LIV_ISBN"));
                 livro.setAnoDePublicacao(rs.getInt("LIV_ANO"));
                 livro.setNumeroDePaginas(rs.getInt("LIV_PAGINA"));
-                livro.setQuantidadeLivro(rs.getInt("LIV_QUANTIDADE"));
                 livro.setCategoria(rs.getString("LIV_CATEGORIA"));
                 livro.setSubCategoria(rs.getString("LIV_SUBCATEGORIA"));
-                livro.setPreco(rs.getDouble("LIV_PRECO"));
+                livro.setIdioma(rs.getString("LIV_IDIOMA"));
+                livro.setEditora(rs.getString("LIV_EDITORA"));
 
                 livros.add(livro);
 

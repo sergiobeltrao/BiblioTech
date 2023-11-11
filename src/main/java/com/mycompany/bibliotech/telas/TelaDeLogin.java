@@ -1,22 +1,27 @@
 package com.mycompany.bibliotech.telas;
 
+import com.mycompany.bibliotech.dao.AvaliacaoDAO;
 import com.mycompany.bibliotech.dao.UsuarioLoginDAO;
+import com.mycompany.bibliotech.model.bean.ApplicationContext;
+import com.mycompany.bibliotech.model.bean.Login;
 
 import javax.swing.JOptionPane;
 import java.awt.event.KeyEvent;
-
 
 public class TelaDeLogin extends javax.swing.JFrame {
 
     public TelaDeLogin() {
         initComponents();
-        
-        campoSenha.addKeyListener(new java.awt.event.KeyAdapter() {
-    public void keyPressed(java.awt.event.KeyEvent evt) {
-        campoSenhaKeyPressed(evt);
-    }
-});
 
+        // BUG: ACABA ABRINDO DUAS JANELAS. RESOLVER DEPOIS.
+        /*
+        campoSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoSenhaKeyPressed(evt);
+
+            }
+        });
+         */
     }
 
     @SuppressWarnings("unchecked")
@@ -130,6 +135,10 @@ public class TelaDeLogin extends javax.swing.JFrame {
         UsuarioLoginDAO dao = new UsuarioLoginDAO();
         String userType = dao.checkLogin(campoUsuario.getText(), campoSenha.getText());
 
+        Login lg = new Login();
+        lg.setNick(campoUsuario.getText());
+        ApplicationContext.setLogin(lg);
+
         if (userType != null) {
             // Login bem-sucedido
             if (userType.equals("ADMIN")) {
@@ -165,11 +174,10 @@ public class TelaDeLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void campoSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoSenhaKeyPressed
-        // TODO add your handling code here:
-      if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-        // Pressionou Enter, executar ação de login
-        btnEntrarActionPerformed(null);
-    }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            // Pressionou Enter, executar ação de login
+            btnEntrarActionPerformed(null);
+        }
     }//GEN-LAST:event_campoSenhaKeyPressed
 
     /**

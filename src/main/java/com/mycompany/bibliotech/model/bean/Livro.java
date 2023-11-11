@@ -13,6 +13,15 @@ public class Livro {
     private double preco;
     private String idioma;
     private String editora;
+    private String sinopse;
+
+    public String getSinopse() {
+        return sinopse;
+    }
+
+    public void setSinopse(String sinopse) {
+        this.sinopse = sinopse;
+    }
 
     public String getEditora() {
         return editora;

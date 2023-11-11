@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 public class AvaliacaoDAO {
 
-    public void create(Avaliacao av, String nomeDoLivro) {
+    public void create(Avaliacao av, String nomeDoLivro, String nomeDoUsuario) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
 
@@ -30,14 +30,28 @@ public class AvaliacaoDAO {
                 JOptionPane.showMessageDialog(null, "Erro ao consultar ID_LIVRO para tabela de avaliações");
             }
 
-            stmt = con.prepareStatement("INSERT INTO AVALIACAO (ID_AVALIACAO, AVA_FK_LIVRO, AVA_USUARIO, AVA_TOTAL, AVA_COMENTARIO, AVA_DATA_AVALIACAO, AVA_FK_USUARIO) VALUES(NULL, ?, ?, '9.0', ?, NOW(), 1)");
+            // Pega o usuário que está avaliando
+            String idDoUsuarioQueAvaliou = "SELECT USE_ID FROM USUARIO WHERE USE_NICK = ?";
+            stmt = con.prepareStatement(idDoUsuarioQueAvaliou);
+            stmt.setString(1, nomeDoUsuario);
+            ResultSet resultadoUser = stmt.executeQuery();
+            int idDoUser = 0;
+
+            if (resultadoUser.next()) {
+                idDoUser = resultadoUser.getInt("USE_ID");
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao consultar USE_ID para tabela de avaliações");
+            }
+
+            // Faz o insert na tabela AVALIACAO
+            stmt = con.prepareStatement("INSERT INTO AVALIACAO (ID_AVALIACAO, AVA_FK_LIVRO, AVA_USUARIO, AVA_TOTAL, AVA_COMENTARIO, AVA_DATA_AVALIACAO, AVA_FK_USUARIO) VALUES(NULL, ?, ?, '9.0', ?, NOW(), ?)");
 
             // O AVA_TOTAL ainda será implementado, deixei um valor qualquer.
             // Implementar captura do USE_ID com base no usuário logado para preencher o AVA_FK_USUARIO.
             stmt.setInt(1, idLivro);
             stmt.setString(2, av.getAvaliacaoDoUsuario());
             stmt.setString(3, av.getComentarioAvaliacao());
-            //stmt.setString(4, algumacoisa);
+            stmt.setInt(4, idDoUser);
 
             // Para preparar o SQL e executar
             stmt.executeUpdate();
