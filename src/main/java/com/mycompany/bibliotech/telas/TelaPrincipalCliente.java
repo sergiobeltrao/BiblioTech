@@ -149,8 +149,6 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEncerrarSessao1ActionPerformed
 
     private void avaliacaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avaliacaoButtonActionPerformed
-        new TelaAvaliacao().setVisible(true);
-        this.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_avaliacaoButtonActionPerformed
 
