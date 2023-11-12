@@ -13,11 +13,33 @@ public class Avaliacao {
     private String txtBuscaAlfa;
     private String txtBuscaLivro;
     private String txtNomeAutor;
-    private String txtPaginas;
-    private String txtAno;
+    private int txtPaginas;
+    private int txtAno;
     private String txtEditora;
     private String txtComentario;
 
+    public Avaliacao() {
+    }
+
+    public Avaliacao(int livroAvaliado, String avaliacaoDoUsuario, String avaliacaoTotal, String comentarioAvaliacao, String dataDeAvaliacao, String usuarioQueAvaliou, String txtBuscaCad, String txtBuscaAlfa, String txtBuscaLivro, String txtNomeAutor, int txtPaginas, int txtAno, String txtEditora, String txtComentario) {
+        this.livroAvaliado = livroAvaliado;
+        this.avaliacaoDoUsuario = avaliacaoDoUsuario;
+        this.avaliacaoTotal = avaliacaoTotal;
+        this.comentarioAvaliacao = comentarioAvaliacao;
+        this.dataDeAvaliacao = dataDeAvaliacao;
+        this.usuarioQueAvaliou = usuarioQueAvaliou;
+        this.txtBuscaCad = txtBuscaCad;
+        this.txtBuscaAlfa = txtBuscaAlfa;
+        this.txtBuscaLivro = txtBuscaLivro;
+        this.txtNomeAutor = txtNomeAutor;
+        this.txtPaginas = txtPaginas;
+        this.txtAno = txtAno;
+        this.txtEditora = txtEditora;
+        this.txtComentario = txtComentario;
+    }
+
+     
+    
     public String getTxtBuscaCad() {
         return txtBuscaCad;
     }
@@ -50,19 +72,19 @@ public class Avaliacao {
         this.txtNomeAutor = txtNomeAutor;
     }
 
-    public String getTxtPaginas() {
+    public int getTxtPaginas() {
         return txtPaginas;
     }
 
-    public void setTxtPaginas(String txtPaginas) {
+    public void setTxtPaginas(int txtPaginas) {
         this.txtPaginas = txtPaginas;
     }
 
-    public String getTxtAno() {
+    public int getTxtAno() {
         return txtAno;
     }
 
-    public void setTxtAno(String txtAno) {
+    public void setTxtAno(int txtAno) {
         this.txtAno = txtAno;
     }
 

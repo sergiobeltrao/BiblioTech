@@ -153,4 +153,16 @@ ALTER TABLE ENDERECO_CHAVE ADD CONSTRAINT FOREIGN KEY (ENDERECO_USER) REFERENCES
 /* SHOW COLUMNS FROM ENDERECO;
 -- Na tabela USUARIO, a coluna USE_SENHA é uma senha e deve ser armazenada de forma segura, o uso de uma senha de texto simples não é recomendado.
 
+INSERT INTO AVALIACAO (AVA_FK_LIVRO, AVA_USUARIO, AVA_TOTAL, AVA_COMENTARIO, AVA_FK_USUARIO)
+VALUES (
+  (SELECT ID_LIVRO FROM LIVRO WHERE LIV_NOME_LIVRO = 'O Segredo das Estrelas'),
+  1, -- substitua pelo ID do usuário que está fazendo o comentário
+  4.5, -- substitua pela nota da avaliação
+  'Este livro é incrível!', -- substitua pelo comentário desejado
+  1 -- substitua pelo ID do usuário que está fazendo o comentário
+);
+
+
+
+
 */
