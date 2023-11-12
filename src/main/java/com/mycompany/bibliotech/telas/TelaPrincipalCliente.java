@@ -27,7 +27,11 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         txtUsrCliente = new javax.swing.JTextField();
-        btnEncerrarSessao = new javax.swing.JButton();
+        menuLateral = new javax.swing.JPanel();
+        txtMenuPrincipal = new javax.swing.JTextField();
+        CadLivroButton = new javax.swing.JButton();
+        btnEncerrarSessao1 = new javax.swing.JButton();
+        avaliacaoButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,25 +45,79 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
             }
         });
 
-        btnEncerrarSessao.setText("Encerrar sessão");
-        btnEncerrarSessao.addActionListener(new java.awt.event.ActionListener() {
+        menuLateral.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        menuLateral.setPreferredSize(new java.awt.Dimension(272, 40));
+
+        txtMenuPrincipal.setEditable(false);
+        txtMenuPrincipal.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        txtMenuPrincipal.setText("Menu Principal");
+        txtMenuPrincipal.setBorder(null);
+
+        CadLivroButton.setText("Cadastro de Livros");
+        CadLivroButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEncerrarSessaoActionPerformed(evt);
+                CadLivroButtonActionPerformed(evt);
             }
         });
+
+        btnEncerrarSessao1.setText("Encerrar Sessão");
+        btnEncerrarSessao1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEncerrarSessao1ActionPerformed(evt);
+            }
+        });
+
+        avaliacaoButton.setText("Avaliações");
+        avaliacaoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                avaliacaoButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout menuLateralLayout = new javax.swing.GroupLayout(menuLateral);
+        menuLateral.setLayout(menuLateralLayout);
+        menuLateralLayout.setHorizontalGroup(
+            menuLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuLateralLayout.createSequentialGroup()
+                .addGroup(menuLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menuLateralLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(CadLivroButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(menuLateralLayout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(txtMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 83, Short.MAX_VALUE))
+                    .addGroup(menuLateralLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnEncerrarSessao1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(menuLateralLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(avaliacaoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        menuLateralLayout.setVerticalGroup(
+            menuLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuLateralLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(CadLivroButton)
+                .addGap(18, 18, 18)
+                .addComponent(avaliacaoButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEncerrarSessao1)
+                .addGap(15, 15, 15))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(btnEncerrarSessao))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(465, 465, 465)
-                        .addComponent(txtUsrCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addComponent(menuLateral, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(179, 179, 179)
+                .addComponent(txtUsrCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(472, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -67,9 +125,8 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(315, 315, 315)
                 .addComponent(txtUsrCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 316, Short.MAX_VALUE)
-                .addComponent(btnEncerrarSessao)
-                .addGap(25, 25, 25))
+                .addContainerGap(364, Short.MAX_VALUE))
+            .addComponent(menuLateral, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
         );
 
         pack();
@@ -80,10 +137,22 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsrClienteActionPerformed
 
-    private void btnEncerrarSessaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncerrarSessaoActionPerformed
+    private void CadLivroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadLivroButtonActionPerformed
+        new CadastroDeLivros().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_CadLivroButtonActionPerformed
+
+    private void btnEncerrarSessao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncerrarSessao1ActionPerformed
+        // TODO add your handling code here:
         new TelaDeLogin().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btnEncerrarSessaoActionPerformed
+    }//GEN-LAST:event_btnEncerrarSessao1ActionPerformed
+
+    private void avaliacaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avaliacaoButtonActionPerformed
+        new TelaAvaliacao().setVisible(true);
+        this.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_avaliacaoButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,7 +193,11 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEncerrarSessao;
+    private javax.swing.JButton CadLivroButton;
+    private javax.swing.JButton avaliacaoButton;
+    private javax.swing.JButton btnEncerrarSessao1;
+    private javax.swing.JPanel menuLateral;
+    private javax.swing.JTextField txtMenuPrincipal;
     private javax.swing.JTextField txtUsrCliente;
     // End of variables declaration//GEN-END:variables
 }
