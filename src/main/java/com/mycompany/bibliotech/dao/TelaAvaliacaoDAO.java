@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class TelaAvaliacaoDAO {
 
-    public List<Avaliacao> findAll() {
+    public List<Avaliacao> find() {
         Connection con = ConnectionFactory.getConnection();
         String sql = "SELECT L.LIV_NOME_LIVRO, L.LIV_PAGINA, L.LIV_ANO, L.LIV_EDITORA, A.AVA_COMENTARIO"
                 + "FROM LIVRO L LEFT JOIN AVALIACAO A ON L.ID_LIVRO = A.AVA_FK_LIVRO"
@@ -42,6 +42,7 @@ public class TelaAvaliacaoDAO {
                 avaliacao.setTxtAno(rs.getInt("LIV_ANO"));
                 avaliacao.setTxtEditora(rs.getString("LIV_EDITORA"));
                 avaliacao.setTxtComentario(rs.getString("AVA_COMENTARIO"));
+                Avaliacao.add(avaliacao);
 
             }
         } catch (SQLException ex) {

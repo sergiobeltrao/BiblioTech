@@ -1,11 +1,14 @@
 package com.mycompany.bibliotech.telas;
 
+import com.mycompany.bibliotech.dao.TelaAvaliacaoDAO;
+import com.mycompany.bibliotech.model.bean.Avaliacao;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
-
 /**
  *
  * @author jonat
@@ -17,6 +20,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
      */
     public TelaAvaliacao() {
         initComponents();
+
     }
 
     /**
@@ -181,15 +185,13 @@ public class TelaAvaliacao extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtBuscarCad, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addGap(96, 96, 96)
-                                    .addComponent(jLabel2))
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
                                     .addComponent(txtBuscaAlfa, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(47, 47, 47)
-                                    .addComponent(txtBuscar)))
+                                    .addComponent(txtBuscar))
+                                .addComponent(jLabel2))
                             .addGap(33, 33, 33))
                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtLivro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -343,7 +345,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBuscaAlfaActionPerformed
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
-         
 
     }//GEN-LAST:event_txtBuscarActionPerformed
 
