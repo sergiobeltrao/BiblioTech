@@ -7,10 +7,8 @@ public class Livro {
     private String isbn;
     private int anoDePublicacao;
     private int numeroDePaginas;
-    private int quantidadeLivro;
     private String categoria;
     private String subCategoria;
-    private double preco;
     private String idioma;
     private String editora;
     private String sinopse;
@@ -87,28 +85,12 @@ public class Livro {
         this.numeroDePaginas = numeroDePaginas;
     }
 
-    public int getQuantidadeLivro() {
-        return quantidadeLivro;
-    }
-
-    public void setQuantidadeLivro(int quantidadeLivro) {
-        this.quantidadeLivro = quantidadeLivro;
-    }
-
     public String getCategoria() {
         return categoria;
     }
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
-    }
-
-    public double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(double preco) {
-        this.preco = preco;
     }
 
 }

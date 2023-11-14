@@ -72,44 +72,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="txtDeBoasVindasLivro" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="txtTitulo" min="-2" pref="390" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                      <Component id="txtQuantidade" min="-2" pref="185" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txtPreco" min="-2" pref="185" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtISBN" min="-2" pref="390" max="-2" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <Component id="txtAnoDePublicacao" min="-2" pref="185" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="txtNumeroDePaginas" min="-2" pref="185" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="cboxCategoria" min="-2" pref="185" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="cboxSubCategoria" min="-2" pref="185" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="btnTelaPrinCadLivro" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="btnLimparLivro" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="cboxLivroIdioma" min="-2" pref="390" max="-2" attributes="0"/>
-                                          <Component id="txtNomeDaEditora" alignment="0" min="-2" pref="390" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
+                              <Component id="txtTitulo" min="-2" pref="390" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="txtNomeDaEditora" min="-2" pref="390" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="btnProximaAbaLivro" min="-2" max="-2" attributes="0"/>
@@ -118,8 +87,30 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="btnDeletarLivro" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="boxSinopse" min="-2" pref="390" max="-2" attributes="0"/>
+                                  <Component id="cboxLivroIdioma" min="-2" pref="390" max="-2" attributes="0"/>
                               </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtISBN" min="-2" pref="390" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="txtAnoDePublicacao" min="-2" pref="185" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="txtNumeroDePaginas" min="-2" pref="185" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="cboxCategoria" min="-2" pref="185" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="cboxSubCategoria" min="-2" pref="185" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="btnTelaPrinCadLivro" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnLimparLivro" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="boxSinopse" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="37" max="32767" attributes="0"/>
@@ -132,31 +123,27 @@
                       <EmptySpace pref="17" max="32767" attributes="0"/>
                       <Component id="txtDeBoasVindasLivro" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtTitulo" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                          <Component id="cboxLivroIdioma" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                          <Component id="txtNomeDaEditora" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtTitulo" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                                  <Component id="txtQuantidade" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                                  <Component id="txtPreco" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cboxLivroIdioma" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
-                                  <Component id="txtISBN" min="-2" pref="45" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="txtISBN" min="-2" pref="45" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="txtAnoDePublicacao" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                                   <Component id="txtNumeroDePaginas" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                                  <Component id="txtNomeDaEditora" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="cboxSubCategoria" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                                  <Component id="cboxCategoria" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="boxSinopse" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cboxSubCategoria" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="cboxCategoria" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                          <Component id="boxSinopse" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="26" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -232,6 +219,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAnoDePublicacaoActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNumeroDePaginas">
               <Properties>
@@ -299,37 +289,6 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtQuantidade">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="13" style="0"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Quantidade">
-                      <Font PropertyName="font" name="Segoe UI" size="13" style="0"/>
-                    </TitledBorder>
-                  </Border>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtPreco">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="13" style="0"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Pre&#xe7;o">
-                      <Font PropertyName="font" name="Segoe UI" size="13" style="0"/>
-                    </TitledBorder>
-                  </Border>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPrecoActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="cboxLivroIdioma">
               <Properties>

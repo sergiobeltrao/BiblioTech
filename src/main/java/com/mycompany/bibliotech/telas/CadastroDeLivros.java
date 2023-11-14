@@ -80,8 +80,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         txtNumeroDePaginas = new javax.swing.JTextField();
         cboxCategoria = new javax.swing.JComboBox<>();
         cboxSubCategoria = new javax.swing.JComboBox<>();
-        txtQuantidade = new javax.swing.JTextField();
-        txtPreco = new javax.swing.JTextField();
         cboxLivroIdioma = new javax.swing.JComboBox<>();
         txtNomeDaEditora = new javax.swing.JTextField();
         boxSinopse = new javax.swing.JScrollPane();
@@ -140,9 +138,19 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         txtAnoDePublicacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtAnoDePublicacao.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ano de Publicação *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        txtAnoDePublicacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAnoDePublicacaoActionPerformed(evt);
+            }
+        });
 
         txtNumeroDePaginas.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtNumeroDePaginas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Número de Páginas *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        txtNumeroDePaginas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumeroDePaginasActionPerformed(evt);
+            }
+        });
 
         cboxCategoria.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         cboxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada" }));
@@ -161,12 +169,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                 cboxSubCategoriaActionPerformed(evt);
             }
         });
-
-        txtQuantidade.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtQuantidade.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Quantidade", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
-
-        txtPreco.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtPreco.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Preço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
 
         cboxLivroIdioma.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         cboxLivroIdioma.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informado" }));
@@ -220,35 +222,12 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cadLivrosLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtDeBoasVindasLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(cadLivrosLayout.createSequentialGroup()
-                        .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(cadLivrosLayout.createSequentialGroup()
-                                .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(cadLivrosLayout.createSequentialGroup()
-                                .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(cadLivrosLayout.createSequentialGroup()
-                                        .addComponent(txtAnoDePublicacao, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtNumeroDePaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadLivrosLayout.createSequentialGroup()
-                                        .addComponent(cboxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cboxSubCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(cadLivrosLayout.createSequentialGroup()
-                                        .addComponent(btnTelaPrinCadLivro)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnLimparLivro)))
-                                .addGap(18, 18, 18)
-                                .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cboxLivroIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNomeDaEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNomeDaEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(cadLivrosLayout.createSequentialGroup()
@@ -257,7 +236,24 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                                 .addComponent(btnEditarLivro)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnDeletarLivro))
-                            .addComponent(boxSinopse, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cboxLivroIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(cadLivrosLayout.createSequentialGroup()
+                        .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(cadLivrosLayout.createSequentialGroup()
+                                .addComponent(txtAnoDePublicacao, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNumeroDePaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadLivrosLayout.createSequentialGroup()
+                                .addComponent(cboxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cboxSubCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(cadLivrosLayout.createSequentialGroup()
+                                .addComponent(btnTelaPrinCadLivro)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnLimparLivro)))
+                        .addGap(18, 18, 18)
+                        .addComponent(boxSinopse)))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         cadLivrosLayout.setVerticalGroup(
@@ -266,26 +262,23 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE)
                 .addComponent(txtDeBoasVindasLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboxLivroIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNomeDaEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(cadLivrosLayout.createSequentialGroup()
-                        .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboxLivroIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtAnoDePublicacao, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNumeroDePaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNomeDaEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(boxSinopse))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboxSubCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNumeroDePaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cboxSubCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(boxSinopse, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTelaPrinCadLivro)
@@ -576,35 +569,32 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
     private void btnFinalizarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarCadastroActionPerformed
 
-        Livro lv = new Livro();
-        Autor aut = new Autor();
-        Avaliacao av = new Avaliacao();
-        Login lg = ApplicationContext.getLogin();
+        Livro livro = new Livro();
+        Autor autor = new Autor();
+        Avaliacao avaliacao = new Avaliacao();
+        Login login = ApplicationContext.getLogin();
 
-        LivroDAO lvdao = new LivroDAO();
-        AutorDAO autdao = new AutorDAO();
-        AvaliacaoDAO avdao = new AvaliacaoDAO();
+        LivroDAO livrodao = new LivroDAO();
+        AutorDAO autordao = new AutorDAO();
+        AvaliacaoDAO avaliacaodao = new AvaliacaoDAO();
 
         // Livro
-        lv.setTitulo(txtTitulo.getText());
-        lv.setIsbn(txtISBN.getText());
-        lv.setAnoDePublicacao(Integer.parseInt(txtAnoDePublicacao.getText()));
-        lv.setNumeroDePaginas(Integer.parseInt(txtNumeroDePaginas.getText()));
-        lv.setQuantidadeLivro(Integer.parseInt(txtQuantidade.getText()));
-        lv.setPreco(Double.parseDouble(txtPreco.getText()));
-        String idiomaSelecionado = cboxLivroIdioma.getSelectedItem().toString();
-        lv.setIdioma(idiomaSelecionado);
-        lv.setEditora(txtNomeDaEditora.getText());
-        lv.setSinopse(txtSinopseDoLivro.getText());
+        livro.setTitulo(txtTitulo.getText());
+        livro.setIsbn(txtISBN.getText());
+        livro.setAnoDePublicacao(Integer.parseInt(txtAnoDePublicacao.getText()));
+        livro.setNumeroDePaginas(Integer.parseInt(txtNumeroDePaginas.getText()));
+        livro.setIdioma(cboxLivroIdioma.getSelectedItem().toString());
+        livro.setEditora(txtNomeDaEditora.getText());
+        livro.setSinopse(txtSinopseDoLivro.getText());
+        livro.setCategoria(cboxCategoria.getSelectedItem().toString());
+        livro.setSubCategoria(cboxSubCategoria.getSelectedItem().toString());
 
         // Autor
-        aut.setNome(txtNomeDoAutor.getText());
-        aut.setDataDeNascimento(calenNasciAutor.getDate());
-        aut.setBibliografia(txtAutorBibliografia.getText());
-        String comboBoxNacionalidadeAutor = cboxNacionalidadeDoAutor.getSelectedItem().toString();
-        aut.setNacionalidade(comboBoxNacionalidadeAutor);
+        autor.setNome(txtNomeDoAutor.getText());
+        autor.setDataDeNascimento(calenNasciAutor.getDate());
+        autor.setBibliografia(txtAutorBibliografia.getText());
+        autor.setNacionalidade(cboxNacionalidadeDoAutor.getSelectedItem().toString());
 
-        // Opções de sexo do autor
         String valorAutorSexo = cboxAutorSexo.getSelectedItem().toString();
         String valorSelecionado = "OUTRO"; // Padrão
 
@@ -614,23 +604,15 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             valorSelecionado = "FEM";
         }
 
-        aut.setSexo(valorSelecionado);
+        autor.setSexo(valorSelecionado);
 
-        // Pegando os dados das ComboBox de categoria de livro
-        String categoriaSelecionada = cboxCategoria.getSelectedItem().toString();
-        String subCategoriaSelecionada = cboxSubCategoria.getSelectedItem().toString();
-        lv.setCategoria(categoriaSelecionada);
-        lv.setSubCategoria(subCategoriaSelecionada);
+        // Avaliação
+        avaliacao.setAvaliacaoDoUsuario(cboxAvaliacaoDoLivro.getSelectedItem().toString().substring(0, 2));
+        avaliacao.setComentarioAvaliacao(txtComentarioAvaliacao.getText());
 
-        // Avaliação do livro
-        String notaInseridaPeloUsuario = cboxAvaliacaoDoLivro.getSelectedItem().toString().substring(0, 2);
-        av.setAvaliacaoDoUsuario(notaInseridaPeloUsuario);
-
-        av.setComentarioAvaliacao(txtComentarioAvaliacao.getText());
-
-        lvdao.create(lv);
-        autdao.create(aut);
-        avdao.create(av, txtTitulo.getText(), lg.getNick());
+        livrodao.create(livro);
+        autordao.create(autor);
+        avaliacaodao.create(avaliacao, txtTitulo.getText(), login.getNick());
 
         // Para que a leitura da tabela seja feita novamente
         // após salvar novas informações
@@ -673,8 +655,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         txtNumeroDePaginas.setText("");
         cboxCategoria.setSelectedItem("Não Informada");
         cboxSubCategoria.setSelectedItem("Não Informada");
-        txtQuantidade.setText("");
-        txtPreco.setText("");
         cboxLivroIdioma.setSelectedItem("Não Informado");
         txtNomeDaEditora.setText("");
         cboxAvaliacaoDoLivro.setSelectedItem("Não Informada");
@@ -753,6 +733,14 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         this.janelaDeAbas.setSelectedIndex(2);
     }//GEN-LAST:event_btnProximaAbaAutorActionPerformed
 
+    private void txtAnoDePublicacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnoDePublicacaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAnoDePublicacaoActionPerformed
+
+    private void txtNumeroDePaginasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroDePaginasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumeroDePaginasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -827,8 +815,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     private javax.swing.JTextField txtNomeDaEditora;
     private javax.swing.JTextField txtNomeDoAutor;
     private javax.swing.JTextField txtNumeroDePaginas;
-    private javax.swing.JTextField txtPreco;
-    private javax.swing.JTextField txtQuantidade;
     private javax.swing.JTextArea txtSinopseDoLivro;
     private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables
