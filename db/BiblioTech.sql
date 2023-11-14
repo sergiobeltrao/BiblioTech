@@ -71,12 +71,9 @@ CREATE TABLE LIVRO (
     LIV_SINOPSE TEXT
 );
 
-ALTER TABLE LIVRO DROP COLUMN LIV_QUANTIDADE; 
-ALTER TABLE LIVRO DROP COLUMN LIV_PRECO;
-
 INSERT INTO LIVRO VALUES(
-	NULL, 'O Segredo das Estrelas', '978-1234567890', 1980, 320, 10,  '1 - Ficção', '180.20', '40 - Programação', 'Portugues - Brasil', 'Atlas',NULL),
-    (NULL, 'O Alquimista', '978-8584390670', 1988, 208, 20,  '1 - Ficção', '40.15', '4 - Fantasia', 'Português - Brasil', 'Osires', NULL);
+	NULL, 'O Segredo das Estrelas', '978-1234567890', 1980, 320, '1 - Ficção', '40 - Programação', 'Portugues - Brasil', 'Atlas',NULL),
+    (NULL, 'O Alquimista', '978-8584390670', 1988, 208, '1 - Ficção', '4 - Fantasia', 'Português - Brasil', 'Osires', NULL);
 
 
 CREATE TABLE AUTOR(
