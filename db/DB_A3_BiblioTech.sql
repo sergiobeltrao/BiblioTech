@@ -156,10 +156,25 @@ ALTER TABLE ENDERECO_CHAVE ADD CONSTRAINT FOREIGN KEY (ENDERECO_USER) REFERENCES
 INSERT INTO AVALIACAO (AVA_FK_LIVRO, AVA_USUARIO, AVA_TOTAL, AVA_COMENTARIO, AVA_FK_USUARIO)
 VALUES (
   (SELECT ID_LIVRO FROM LIVRO WHERE LIV_NOME_LIVRO = 'O Segredo das Estrelas'),
-  1, -- substitua pelo ID do usuário que está fazendo o comentário
-  4.5, -- substitua pela nota da avaliação
-  'Este livro é incrível!', -- substitua pelo comentário desejado
-  1 -- substitua pelo ID do usuário que está fazendo o comentário
+    
+  SELECT L.LIV_NOME_LIVRO, L.LIV_PAGINA, L.LIV_ANO, L.LIV_EDITORA, "
+                + "A.AVA_COMENTARIO FROM LIVRO L LEFT JOIN AVALIACAO A "
+                + "ON L.ID_LIVRO = A.AVA_FK_LIVRO LEFT JOIN CATEGORIA C ON "
+                + "L.LIV_CATEGORIA = C.CAT_ID WHERE LIV_NOME_LIVRO = ?
+      findTable();
+    public void findTable(){
+        TelaAvaliacaoDAO taDAO = new TelaAvaliacaoDAO(){
+            taDAo.setDefaultCloseOperation(JFram.EXIT_ON_CLOSE);
+            taDAO.setLayout(new FlowLayout());
+                }
+        
+      /*  for (Avaliacao tv: taDAO.find());*
+        
+        
+    }              
+                
+                
+                
 );
 
 
