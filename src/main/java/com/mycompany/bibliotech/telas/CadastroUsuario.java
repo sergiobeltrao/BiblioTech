@@ -808,7 +808,13 @@ public class CadastroUsuario extends javax.swing.JFrame {
         FavoritosDAO favdao = new FavoritosDAO();
         TelefoneDAO fonedao = new TelefoneDAO();
         
-        
+        String senha = new String(senhaTxt.getPassword());
+        String reSenha = new String(resenhaTxt.getPassword());
+
+        if (!senha.equals(reSenha)) {
+        JOptionPane.showMessageDialog(this, "A senha e a re-senha não coincidem. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
+        return; // Não prossegue com o cadastro se as senhas não coincidirem
+         }
 
         user.setUserNick(nickTxt.getText());
         user.setUserSenha(new String(senhaTxt.getPassword()));
