@@ -7,6 +7,8 @@ import com.mycompany.bibliotech.dao.EnderecoDAO;
 import com.mycompany.bibliotech.model.bean.Endereco;
 import com.mycompany.bibliotech.dao.TelefoneDAO;
 import com.mycompany.bibliotech.model.bean.Telefone;
+import com.mycompany.bibliotech.dao.FavoritosDAO;
+import com.mycompany.bibliotech.model.bean.Favoritos;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
@@ -799,10 +801,14 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
         Usuario user = new Usuario();
         Endereco end = new Endereco();
+        Favoritos fav = new Favoritos();
         Telefone tel = new Telefone();
         UsuarioCadastroDAO dao = new UsuarioCadastroDAO();
         EnderecoDAO enddao = new EnderecoDAO();
+        FavoritosDAO favdao = new FavoritosDAO();
         TelefoneDAO fonedao = new TelefoneDAO();
+        
+        
 
         user.setUserNick(nickTxt.getText());
         user.setUserSenha(new String(senhaTxt.getPassword()));
@@ -836,6 +842,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
             valorSelecionad = "OUTRO";
         }
         user.setUserSexo(valorSelecionad);
+        user.setUserType(valorSelecionado);
+        user.setUserCpf(cpfTxt.getText());
 
         String valorTipo = telefoneTipoBox.getSelectedItem().toString();
         String valorSelecionada = "CELULAR";
@@ -865,12 +873,19 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         end.setNum(numb);
         end.setBairro(bairroTxt.getText());
-        user.setUserType(valorSelecionado);
-        user.setUserCpf(cpfTxt.getText());
+        String categoriaSelecionada = cboxCategoria1.getSelectedItem().toString();
+        String subCategoriaSelecionada = cboxSubCategoria1.getSelectedItem().toString();
+        fav.setFavCategoria1(categoriaSelecionada);
+        fav.setFavSub1(subCategoriaSelecionada);
+        String categoriaSelecionad = cboxCategoria2.getSelectedItem().toString();
+        String subCategoriaSelecionad = cboxSubCategoria2.getSelectedItem().toString();
+        fav.setFavCategoria2(categoriaSelecionad);
+        fav.setFavSub2(subCategoriaSelecionad);
         
         dao.cadastrarUsuario(user);
         enddao.cadastrarEndereco(end, nickTxt.getText(), cepTxt.getText(), numb);
         fonedao.cadastrarTelefone(tel, nickTxt.getText(), foneTxt.getText(), telefoneTipoBox.getSelectedItem().toString());
+         favdao.favCreate(fav, nickTxt.getText());
         
 
     }//GEN-LAST:event_enterButtonActionPerformed
