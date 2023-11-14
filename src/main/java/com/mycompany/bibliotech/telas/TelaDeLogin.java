@@ -31,10 +31,10 @@ public class TelaDeLogin extends javax.swing.JFrame {
         btnEntrar = new javax.swing.JButton();
         campoSenha = new javax.swing.JPasswordField();
         campoUsuario = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        txtLogin = new javax.swing.JLabel();
+        txtSenha = new javax.swing.JLabel();
+        btnSair = new javax.swing.JButton();
+        fundoTelaLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela de Login");
@@ -95,35 +95,35 @@ public class TelaDeLogin extends javax.swing.JFrame {
         campoUsuario.setBounds(110, 270, 300, 35);
         campoUsuario.getAccessibleContext().setAccessibleName("");
 
-        jLabel1.setFont(new java.awt.Font("Serif", 0, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Login:");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(60, 270, 50, 35);
+        txtLogin.setFont(new java.awt.Font("Serif", 0, 16)); // NOI18N
+        txtLogin.setForeground(new java.awt.Color(255, 255, 255));
+        txtLogin.setText("Login:");
+        getContentPane().add(txtLogin);
+        txtLogin.setBounds(60, 270, 50, 35);
 
-        jLabel3.setFont(new java.awt.Font("Serif", 0, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Senha:");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(60, 330, 50, 35);
+        txtSenha.setFont(new java.awt.Font("Serif", 0, 16)); // NOI18N
+        txtSenha.setForeground(new java.awt.Color(255, 255, 255));
+        txtSenha.setText("Senha:");
+        getContentPane().add(txtSenha);
+        txtSenha.setBounds(60, 330, 50, 35);
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("X");
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSair.setBackground(new java.awt.Color(0, 0, 0));
+        btnSair.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnSair.setForeground(new java.awt.Color(255, 255, 255));
+        btnSair.setText("X");
+        btnSair.setBorder(null);
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSairActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(475, 0, 20, 20);
+        getContentPane().add(btnSair);
+        btnSair.setBounds(475, 0, 20, 20);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem/telalogin.gif"))); // NOI18N
-        jLabel2.setText("telaLogin");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 500, 500);
+        fundoTelaLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem/telalogin.gif"))); // NOI18N
+        fundoTelaLogin.setText("telaLogin");
+        getContentPane().add(fundoTelaLogin);
+        fundoTelaLogin.setBounds(0, 0, 500, 500);
 
         setSize(new java.awt.Dimension(498, 499));
         setLocationRelativeTo(null);
@@ -168,9 +168,9 @@ public class TelaDeLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoUsuarioActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnSairActionPerformed
 
     private void campoSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoSenhaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -216,11 +216,11 @@ public class TelaDeLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEntrar;
+    private javax.swing.JButton btnSair;
     private javax.swing.JPasswordField campoSenha;
     private javax.swing.JTextField campoUsuario;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel fundoTelaLogin;
+    private javax.swing.JLabel txtLogin;
+    private javax.swing.JLabel txtSenha;
     // End of variables declaration//GEN-END:variables
 }
