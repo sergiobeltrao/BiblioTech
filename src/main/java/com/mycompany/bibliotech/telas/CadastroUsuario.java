@@ -862,12 +862,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         String cpf = cpfTxt.getText();
         CpfDAO cpfdao = new CpfDAO(cpf);
         
-        if(cpfdao.isCPF()) {
-            
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "CPF inválido!!");
-        }
-        
         String senha = new String(senhaTxt.getPassword());
         String reSenha = new String(resenhaTxt.getPassword());
 
@@ -949,6 +943,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         fav.setFavSub2(subCategoriaSelecionad);
         
         if(cpfdao.isCPF()) {
+            user.setUserCpf(cpfTxt.getText());
             dao.cadastrarUsuario(user);
         }else{
             JOptionPane.showMessageDialog(rootPane, "CPF inválido!!");
