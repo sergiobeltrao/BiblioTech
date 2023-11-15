@@ -77,10 +77,10 @@ public class ExcluirUserDAO {
         conexao = ConnectionFactory.getConnection();
 
         // Log para verificar o valor de USE_NOME
-        System.out.println("USE_NOME recebido: " + usuarioSelecionado);
+        System.out.println("USE_NICK recebido: " + usuarioSelecionado);
 
         // Consulta SQL para obter o USE_ID associado ao USE_NOME
-        String sqlId = "SELECT USE_ID FROM USUARIO WHERE USE_NOME = ?";
+        String sqlId = "SELECT USE_ID FROM USUARIO WHERE USE_NICK = ?";
         statement = conexao.prepareStatement(sqlId);
         statement.setString(1, usuarioSelecionado);
         resultSet = statement.executeQuery();
