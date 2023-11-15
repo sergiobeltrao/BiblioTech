@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import com.mycompany.bibliotech.connection.ConnectionFactory;
 import com.mycompany.bibliotech.model.bean.Usuario;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 public class UsuarioCadastroDAO {
@@ -21,10 +23,10 @@ public class UsuarioCadastroDAO {
             stmt.setString(3, user.getUserType());
             stmt.setString(4, user.getUserNome());
             stmt.setString(5, user.getUserSobrenome());
-            
+
             java.util.Date utilDate = user.getUserDataNasc();
-        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-        
+            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+
             stmt.setDate(6, sqlDate);
             stmt.setString(7, user.getUserEmail());
             stmt.setString(8, user.getUserSexo());
@@ -37,6 +39,57 @@ public class UsuarioCadastroDAO {
             JOptionPane.showMessageDialog(null, "Erro ao Cadastrar: " + ex);
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+
+    public void excluirUsuario(String nick) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement("DELETE FROM USUARIO WHERE USE_NICK = ?");
+
+            stmt.setString(1, nick);
+
+            stmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+
+    public void preencherListaUsuarios(JComboBox<String> userList) {
+        Connection conexao = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            // Obtém uma conexão usando a classe ConnectionFactory
+            conexao = ConnectionFactory.getConnection();
+
+            // Consulta SQL para obter os usuários
+            String sql = "SELECT USE_NICK FROM USUARIO";
+
+            // Prepara a instrução SQL
+            statement = conexao.prepareStatement(sql);
+
+            // Executa a consulta
+            resultSet = statement.executeQuery();
+
+            // Preenche a lista de usuários
+            while (resultSet.next()) {
+                String nomeUsuario = resultSet.getString("USE_NICK");
+                userList.addItem(nomeUsuario);
+            }
+
+        } catch (SQLException e) {
+            // Mensagem de erro ao usuário em caso de falha
+            JOptionPane.showMessageDialog(null, "Erro ao obter lista de usuários. Por favor, tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        } finally {
+            // Fecha os recursos
+            ConnectionFactory.closeConnection(conexao, statement, resultSet);
         }
     }
 }

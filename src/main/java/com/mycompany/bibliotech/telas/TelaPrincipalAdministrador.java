@@ -1,14 +1,15 @@
 package com.mycompany.bibliotech.telas;
 
 import com.mycompany.bibliotech.dao.ExcluirUserDAO;
+import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 public class TelaPrincipalAdministrador extends javax.swing.JFrame {
-
 
     public TelaPrincipalAdministrador() {
         initComponents();
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -195,8 +196,45 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_avaliacaoButtonActionPerformed
 
     private void ExcluirUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirUserButtonActionPerformed
-        ExcluirUserDAO ex = new ExcluirUserDAO();
-        ex.mostrarEExcluirUsuario();
+
+        // Implementação Bruno
+        // ExcluirUserDAO ex = new ExcluirUserDAO();
+        // ex.mostrarEExcluirUsuario();
+        
+        // Cria a instância o UsuarioDAO 
+        UsuarioCadastroDAO usercadastrodao = new UsuarioCadastroDAO();
+        // Cria a combobox
+        JComboBox<String> userList = new JComboBox<>();
+        // Preenche a lista de usuários cadastrados no banco
+        usercadastrodao.preencherListaUsuarios(userList);
+        // Exibição da caixa de diálogo para o usuário fazer uma escolha
+        int option = JOptionPane.showConfirmDialog(
+                null,
+                userList,
+                "Selecione um usuário para excluir:",
+                JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE
+        );
+
+        // Verifica se o usuário clicou em "OK" na caixa de diálogo
+        if (option == JOptionPane.OK_OPTION) {
+            String selectedUser = userList.getSelectedItem().toString();
+            // Confirmação para excluir o usuário
+            int confirmOption = JOptionPane.showConfirmDialog(
+                    null,
+                    "Tem certeza que deseja excluir o usuário " + selectedUser + "?",
+                    "Confirmação de exclusão",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE
+            );
+
+            // Verifica se o usuário confirmou a exclusão
+            if (confirmOption == JOptionPane.YES_OPTION) {
+                // Realiza a exclusão do usuário
+                usercadastrodao.excluirUsuario(selectedUser);
+                JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso!");
+            }
+        }
     }//GEN-LAST:event_ExcluirUserButtonActionPerformed
 
     /**
