@@ -291,6 +291,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         CadLivroButton = new javax.swing.JButton();
         btnEncerrarSessao = new javax.swing.JButton();
         avaliacaoButton = new javax.swing.JButton();
+        ExcluirUserButton = new javax.swing.JToggleButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -771,6 +772,13 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
+        ExcluirUserButton.setText("Excluir Usuarios");
+        ExcluirUserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExcluirUserButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menuLateralLayout = new javax.swing.GroupLayout(menuLateral);
         menuLateral.setLayout(menuLateralLayout);
         menuLateralLayout.setHorizontalGroup(
@@ -792,7 +800,10 @@ public class CadastroUsuario extends javax.swing.JFrame {
                         .addComponent(avaliacaoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(menuLateralLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(CadLivroButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(CadLivroButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(menuLateralLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ExcluirUserButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         menuLateralLayout.setVerticalGroup(
@@ -806,7 +817,9 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 .addComponent(CadLivroButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(avaliacaoButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 528, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ExcluirUserButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao)
                 .addGap(15, 15, 15))
         );
@@ -1078,6 +1091,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cpfTxtActionPerformed
 
+    private void ExcluirUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirUserButtonActionPerformed
+        new ExcluirUsuario().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_ExcluirUserButtonActionPerformed
+
     
         public void listarCategorias1() {
         LivroCategoriaDAO.listarCategorias(cboxCategoria1);
@@ -1133,6 +1151,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CadLivroButton;
     private javax.swing.JButton CadUserButton;
+    private javax.swing.JToggleButton ExcluirUserButton;
     private javax.swing.JButton LimparButton;
     private javax.swing.JButton ProxCadEndButton;
     private javax.swing.JButton ProxCadLivButton;
