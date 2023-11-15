@@ -798,13 +798,12 @@ public class CadastroUsuario extends javax.swing.JFrame {
                         .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(menuLateralLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(avaliacaoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(menuLateralLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(CadLivroButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(menuLateralLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(ExcluirUserButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(menuLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ExcluirUserButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(avaliacaoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         menuLateralLayout.setVerticalGroup(
@@ -1100,8 +1099,45 @@ public class CadastroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_cpfTxtActionPerformed
 
     private void ExcluirUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirUserButtonActionPerformed
-        new ExcluirUsuario().setVisible(true);
-        this.setVisible(false);
+
+        // Implementação Bruno
+        // ExcluirUserDAO ex = new ExcluirUserDAO();
+        // ex.mostrarEExcluirUsuario();
+
+        // Cria a instância o UsuarioDAO
+        UsuarioCadastroDAO usercadastrodao = new UsuarioCadastroDAO();
+        // Cria a combobox
+        JComboBox<String> userList = new JComboBox<>();
+        // Preenche a lista de usuários cadastrados no banco
+        usercadastrodao.preencherListaUsuarios(userList);
+        // Exibição da caixa de diálogo para o usuário fazer uma escolha
+        int option = JOptionPane.showConfirmDialog(
+            null,
+            userList,
+            "Selecione um usuário para excluir:",
+            JOptionPane.OK_CANCEL_OPTION,
+            JOptionPane.QUESTION_MESSAGE
+        );
+
+        // Verifica se o usuário clicou em "OK" na caixa de diálogo
+        if (option == JOptionPane.OK_OPTION) {
+            String selectedUser = userList.getSelectedItem().toString();
+            // Confirmação para excluir o usuário
+            int confirmOption = JOptionPane.showConfirmDialog(
+                null,
+                "Tem certeza que deseja excluir o usuário " + selectedUser + "?",
+                "Confirmação de exclusão",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE
+            );
+
+            // Verifica se o usuário confirmou a exclusão
+            if (confirmOption == JOptionPane.YES_OPTION) {
+                // Realiza a exclusão do usuário
+                usercadastrodao.excluirUsuario(selectedUser);
+                JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso!");
+            }
+        }
     }//GEN-LAST:event_ExcluirUserButtonActionPerformed
 
     
