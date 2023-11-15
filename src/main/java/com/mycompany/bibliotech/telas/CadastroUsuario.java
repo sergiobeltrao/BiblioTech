@@ -9,6 +9,7 @@ import com.mycompany.bibliotech.dao.TelefoneDAO;
 import com.mycompany.bibliotech.model.bean.Telefone;
 import com.mycompany.bibliotech.dao.FavoritosDAO;
 import com.mycompany.bibliotech.model.bean.Favoritos;
+import com.mycompany.bibliotech.dao.CpfDAO;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
@@ -858,6 +859,14 @@ public class CadastroUsuario extends javax.swing.JFrame {
         EnderecoDAO enddao = new EnderecoDAO();
         FavoritosDAO favdao = new FavoritosDAO();
         TelefoneDAO fonedao = new TelefoneDAO();
+        String cpf = cpfTxt.getText();
+        CpfDAO cpfdao = new CpfDAO(cpf);
+        
+        if(cpfdao.isCPF()) {
+            
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "CPF inválido!!");
+        }
         
         String senha = new String(senhaTxt.getPassword());
         String reSenha = new String(resenhaTxt.getPassword());
@@ -900,7 +909,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         }
         user.setUserSexo(valorSelecionad);
         user.setUserType(valorSelecionado);
-        user.setUserCpf(cpfTxt.getText());
+       // user.setUserCpf(cpfTxt.getText());
 
         String valorTipo = telefoneTipoBox.getSelectedItem().toString();
         String valorSelecionada = "CELULAR";
@@ -939,7 +948,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
         fav.setFavCategoria2(categoriaSelecionad);
         fav.setFavSub2(subCategoriaSelecionad);
         
-        dao.cadastrarUsuario(user);
+        if(cpfdao.isCPF()) {
+            dao.cadastrarUsuario(user);
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "CPF inválido!!");
+        }
         enddao.cadastrarEndereco(end, nickTxt.getText(), cepTxt.getText(), numb);
         fonedao.cadastrarTelefone(tel, nickTxt.getText(), foneTxt.getText(), telefoneTipoBox.getSelectedItem().toString());
          favdao.favCreate(fav, nickTxt.getText());
