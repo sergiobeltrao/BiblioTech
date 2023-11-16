@@ -10,6 +10,7 @@ import com.mycompany.bibliotech.model.bean.Telefone;
 import com.mycompany.bibliotech.dao.FavoritosDAO;
 import com.mycompany.bibliotech.model.bean.Favoritos;
 import com.mycompany.bibliotech.dao.CpfDAO;
+import com.mycompany.bibliotech.dao.DataDAO;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
@@ -19,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.*;
+import java.util.Date;
 import javax.swing.text.MaskFormatter;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -940,6 +942,15 @@ public class CadastroUsuario extends javax.swing.JFrame {
         String subCategoriaSelecionad = cboxSubCategoria2.getSelectedItem().toString();
         fav.setFavCategoria2(categoriaSelecionad);
         fav.setFavSub2(subCategoriaSelecionad);
+        
+       /*DataDAO d = new DataDAO(data+" "+hora+":00",DataDAO.BarraComHora);   
+        DataDAO Hoje = new DataDAO();
+        
+        if(Hoje.getTimestamp().getTime() < d.getTimestamp().getTime()){
+            JOptionPane.showMessageDialog(rootPane, "Data informada já passou!");
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Data informada ainda está por vir!");
+        }*/
         
         if(cpfdao.isCPF()) {
             user.setUserCpf(cpfTxt.getText());
