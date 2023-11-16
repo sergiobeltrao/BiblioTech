@@ -20,6 +20,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.*;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import javax.swing.text.MaskFormatter;
 import java.awt.event.FocusAdapter;
@@ -244,8 +246,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         this.cpfTxt = cpfTxt;
     }
 
-    
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -862,18 +862,18 @@ public class CadastroUsuario extends javax.swing.JFrame {
         TelefoneDAO fonedao = new TelefoneDAO();
         String cpf = cpfTxt.getText();
         CpfDAO cpfdao = new CpfDAO(cpf);
-        
+
         String senha = new String(senhaTxt.getPassword());
         String reSenha = new String(resenhaTxt.getPassword());
 
         if (!senha.equals(reSenha)) {
-        JOptionPane.showMessageDialog(this, "A senha e a re-senha não coincidem. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
-        return; // Não prossegue com o cadastro se as senhas não coincidirem
-         }
+            JOptionPane.showMessageDialog(this, "A senha e a re-senha não coincidem. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return; // Não prossegue com o cadastro se as senhas não coincidirem
+        }
 
         user.setUserNick(nickTxt.getText());
         user.setUserSenha(new String(senhaTxt.getPassword()));
-        
+
         String valorUserCargo = cargoBox.getSelectedItem().toString();
         String valorSelecionado = "CLIENTE";
 
@@ -886,12 +886,12 @@ public class CadastroUsuario extends javax.swing.JFrame {
         }
 
         user.setUserType(valorSelecionado);
-        
+
         user.setUserNome(nomeTxt.getText());
         user.setUserSobrenome(sobrenomeTxt.getText());
-        user.setUserDataNasc(dataNascChooser.getDate());
+        // user.setUserDataNasc(dataNascChooser.getDate());
         user.setUserEmail(emailTxt.getText());
-        
+
         String valorUserSexo = sexoBox.getSelectedItem().toString();
         String valorSelecionad = "OUTRO";
 
@@ -904,7 +904,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         }
         user.setUserSexo(valorSelecionad);
         user.setUserType(valorSelecionado);
-       // user.setUserCpf(cpfTxt.getText());
+        // user.setUserCpf(cpfTxt.getText());
 
         String valorTipo = telefoneTipoBox.getSelectedItem().toString();
         String valorSelecionada = "CELULAR";
@@ -918,20 +918,20 @@ public class CadastroUsuario extends javax.swing.JFrame {
         }
         tel.setTipo(valorSelecionada);
         tel.setTelefone(foneTxt.getText());
-        
+
         end.setCep(cepTxt.getText());
         end.setPais(paisTxt.getText());
         end.setRua(endTxt.getText());
         end.setUf(ufTxt.getText());
         end.setComp(compTxt.getText());
         end.setCidade(cidadeTxt.getText());
-        
+
         String text = numTxt.getText();
         int numb = 0;
         try {
-                    numb = Integer.parseInt(text);
-                    } catch (NumberFormatException e) {
-            }
+            numb = Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+        }
         end.setNum(numb);
         end.setBairro(bairroTxt.getText());
         String categoriaSelecionada = cboxCategoria1.getSelectedItem().toString();
@@ -942,26 +942,39 @@ public class CadastroUsuario extends javax.swing.JFrame {
         String subCategoriaSelecionad = cboxSubCategoria2.getSelectedItem().toString();
         fav.setFavCategoria2(categoriaSelecionad);
         fav.setFavSub2(subCategoriaSelecionad);
-        
-       /*DataDAO d = new DataDAO(data+" "+hora+":00",DataDAO.BarraComHora);   
-        DataDAO Hoje = new DataDAO();
-        
-        if(Hoje.getTimestamp().getTime() < d.getTimestamp().getTime()){
-            JOptionPane.showMessageDialog(rootPane, "Data informada já passou!");
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "Data informada ainda está por vir!");
-        }*/
-        
-        if(cpfdao.isCPF()) {
+
+        // Obtém a data de nascimento do JDateChooser
+        java.util.Date dataNascimentoUtil = dataNascChooser.getDate();
+
+        // Verifica se a data de nascimento é válida
+        if (dataNascimentoUtil != null) {
+            // Converte LocalDate para Date
+            LocalDate localDateNascimento = dataNascimentoUtil.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            Date dateNascimento = java.sql.Date.valueOf(localDateNascimento);
+
+            LocalDate currentDate = LocalDate.now();
+
+            if (localDateNascimento.isAfter(currentDate)) {
+                JOptionPane.showMessageDialog(rootPane, "Data de nascimento não pode ser no futuro!");
+                return; // Não prossegue com o cadastro se a data de nascimento for no futuro
+            }
+
+            user.setUserDataNasc(dateNascimento);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma data de nascimento válida!");
+            return; // Não prossegue com o cadastro se a data de nascimento não foi selecionada
+        }
+
+        if (cpfdao.isCPF()) {
             user.setUserCpf(cpfTxt.getText());
             dao.cadastrarUsuario(user);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(rootPane, "CPF inválido!!");
         }
         enddao.cadastrarEndereco(end, nickTxt.getText(), cepTxt.getText(), numb);
         fonedao.cadastrarTelefone(tel, nickTxt.getText(), foneTxt.getText(), telefoneTipoBox.getSelectedItem().toString());
-         favdao.favCreate(fav, nickTxt.getText());
-        
+        favdao.favCreate(fav, nickTxt.getText());
+
 
     }//GEN-LAST:event_enterButtonActionPerformed
 
@@ -1050,7 +1063,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
     private void cboxCategoria1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxCategoria1ActionPerformed
         // TODO add your handling code here:
-                String dados[] = String.valueOf(cboxCategoria1.getSelectedItem()).split(" - ");
+        String dados[] = String.valueOf(cboxCategoria1.getSelectedItem()).split(" - ");
         if (!dados[0].equalsIgnoreCase("Não Informada")) {
             cboxSubCategoria1.removeAllItems();
             cboxSubCategoria1.addItem("Não Informada");
@@ -1114,7 +1127,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         // Implementação Bruno
         // ExcluirUserDAO ex = new ExcluirUserDAO();
         // ex.mostrarEExcluirUsuario();
-
         // Cria a instância o UsuarioDAO
         UsuarioCadastroDAO usercadastrodao = new UsuarioCadastroDAO();
         // Cria a combobox
@@ -1123,11 +1135,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
         usercadastrodao.preencherListaUsuarios(userList);
         // Exibição da caixa de diálogo para o usuário fazer uma escolha
         int option = JOptionPane.showConfirmDialog(
-            null,
-            userList,
-            "Selecione um usuário para excluir:",
-            JOptionPane.OK_CANCEL_OPTION,
-            JOptionPane.QUESTION_MESSAGE
+                null,
+                userList,
+                "Selecione um usuário para excluir:",
+                JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE
         );
 
         // Verifica se o usuário clicou em "OK" na caixa de diálogo
@@ -1135,11 +1147,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
             String selectedUser = userList.getSelectedItem().toString();
             // Confirmação para excluir o usuário
             int confirmOption = JOptionPane.showConfirmDialog(
-                null,
-                "Tem certeza que deseja excluir o usuário " + selectedUser + "?",
-                "Confirmação de exclusão",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.WARNING_MESSAGE
+                    null,
+                    "Tem certeza que deseja excluir o usuário " + selectedUser + "?",
+                    "Confirmação de exclusão",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE
             );
 
             // Verifica se o usuário confirmou a exclusão
@@ -1151,23 +1163,22 @@ public class CadastroUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ExcluirUserButtonActionPerformed
 
-    
-        public void listarCategorias1() {
+    public void listarCategorias1() {
         LivroCategoriaDAO.listarCategorias(cboxCategoria1);
     }
 
     public void listarSubCategoria1(String idCategoria) {
         LivroCategoriaDAO.listarSubCategoria(cboxSubCategoria1, idCategoria);
     }
-    
-        public void listarCategorias2() {
+
+    public void listarCategorias2() {
         LivroCategoriaDAO.listarCategorias(cboxCategoria2);
     }
 
     public void listarSubCategoria2(String idCategoria) {
         LivroCategoriaDAO.listarSubCategoria(cboxSubCategoria2, idCategoria);
     }
-    
+
     /**
      * @param args the command line arguments
      */
