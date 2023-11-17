@@ -3,10 +3,14 @@ package com.mycompany.bibliotech.telas;
 import com.mycompany.bibliotech.dao.AvaliacaoDAO;
 import com.mycompany.bibliotech.dao.UsuarioLoginDAO;
 import com.mycompany.bibliotech.model.bean.ApplicationContext;
+import com.mycompany.bibliotech.model.bean.Hash;
 import com.mycompany.bibliotech.model.bean.Login;
 
 import javax.swing.JOptionPane;
 import java.awt.event.KeyEvent;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TelaDeLogin extends javax.swing.JFrame {
 
@@ -132,8 +136,22 @@ public class TelaDeLogin extends javax.swing.JFrame {
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
 
         UsuarioLoginDAO dao = new UsuarioLoginDAO();
-        String userType = dao.checkLogin(campoUsuario.getText(), campoSenha.getText());
 
+        // Implementação da senha usando hash.
+        Hash hash = new Hash();
+        
+        String senhaDigitada = campoSenha.getText();
+        String hashDaSenha = "";
+
+        try {
+            hashDaSenha = hash.geradorDeHash(senhaDigitada);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(TelaDeLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        String userType = dao.checkLogin(campoUsuario.getText(), hashDaSenha);
+
+        // Verifica o tipo do usuário que vai logar.
         Login lg = new Login();
         lg.setNick(campoUsuario.getText());
         ApplicationContext.setLogin(lg);
