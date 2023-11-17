@@ -876,17 +876,28 @@ public class CadastroUsuario extends javax.swing.JFrame {
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        Hash rehash = new Hash();
+        
+        String resenhaDigitada = resenhaTxt.getText();
+        String rehashDaSenha = "";
+
+        try {
+            rehashDaSenha = rehash.geradorDeHash(resenhaDigitada);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
        // String senha = new String(senhaTxt.getPassword());
-        String reSenha = new String(resenhaTxt.getPassword());
+       // String reSenha = new String(resenhaTxt.getPassword());
 
-        if (!hashDaSenha.equals(reSenha)) {
+        if (!hashDaSenha.equals(rehashDaSenha)) {
             JOptionPane.showMessageDialog(this, "A senha e a re-senha não coincidem. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
             return; // Não prossegue com o cadastro se as senhas não coincidirem
         }
 
         user.setUserNick(nickTxt.getText());
-        user.setUserSenha(new String(senhaTxt.getPassword()));
+        user.setUserSenha(new String(rehashDaSenha));
 
         String valorUserCargo = cargoBox.getSelectedItem().toString();
         String valorSelecionado = "CLIENTE";
