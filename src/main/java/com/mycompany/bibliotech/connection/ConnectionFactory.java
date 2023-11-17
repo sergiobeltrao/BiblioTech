@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class ConnectionFactory {
 
@@ -25,7 +26,9 @@ public class ConnectionFactory {
             return DriverManager.getConnection(URL, USER, PASS);
 
         } catch (ClassNotFoundException | SQLException ex) {
-            throw new RuntimeException("Erro de conexão. Por favor verifique.", ex);
+            JOptionPane.showMessageDialog(null, "Problemas com o banco.", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Detalhes do erro", JOptionPane.ERROR_MESSAGE);
+            throw new RuntimeException("Problemas com o banco. Por favor verifique.", ex);
         }
 
     }
