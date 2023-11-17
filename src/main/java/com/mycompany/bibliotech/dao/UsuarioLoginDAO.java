@@ -18,7 +18,7 @@ public class UsuarioLoginDAO {
         String userType = null;
 
         // A = Administrador, F = Funcionário, C = Cliente
-        String[] userTypesToCheck = {"ADMIN", "BIBLIOTECARIO", "CLIENTE"};
+        String[] userTypesToCheck = {"ADMIN", "CLIENTE"};
 
         try {
             for (String userTypeToCheck : userTypesToCheck) {

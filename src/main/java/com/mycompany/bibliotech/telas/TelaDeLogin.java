@@ -139,7 +139,7 @@ public class TelaDeLogin extends javax.swing.JFrame {
 
         // Implementação da senha usando hash.
         Hash hash = new Hash();
-        
+
         String senhaDigitada = campoSenha.getText();
         String hashDaSenha = "";
 
@@ -165,10 +165,6 @@ public class TelaDeLogin extends javax.swing.JFrame {
             } else if (userType.equals("CLIENTE")) {
                 // O usuário é um cliente
                 new TelaPrincipalCliente().setVisible(true);
-                this.dispose();
-            } else if (userType.equals("BIBLIOTECARIO")) {
-                // O usuário é um bibliotecario
-                new TelaPrincipalBibliotecario().setVisible(true);
                 this.dispose();
             }
         } else {
