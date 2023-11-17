@@ -1,6 +1,7 @@
 package com.mycompany.bibliotech.model.bean;
 
 import java.security.NoSuchAlgorithmException;
+import javax.swing.JOptionPane;
 
 public class ConverterParaHash {
 
@@ -11,7 +12,6 @@ public class ConverterParaHash {
         
         Hash hash = new Hash();
         
-        System.out.println("O resultado do hash: " + hash.geradorDeHash(textoParaConverter));
+        JOptionPane.showMessageDialog(null,"O resultado do hash: " + hash.geradorDeHash(textoParaConverter));
     }
-    
 }
