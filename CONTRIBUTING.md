@@ -16,7 +16,7 @@ As mensagens dos commits vão ser feitas com base na *Commit Message Format* do 
   │       │             │
   │       │             └─⫸ Resumo em tempo presente. Sem letras maiúsculas, acentuação e ponto final.
   │       │
-  │       └─⫸ Escopo do commit: readme|gitignore|nbproj|login|home|database|contributing|gui|caduser|cadlivro|jobject|avaliacao
+  │       └─⫸ Escopo do commit: readme|gitignore|nbproj|login|home|database|contributing|gui|caduser|cadlivro|eduser|jobject|avaliacao
   │
   └─⫸ Tipo do commit: build|docs|feat|fix|perf|refactor|gitres|style
 ```
@@ -44,6 +44,7 @@ Escopo
 * gui: Relacionado à interface gráfica.
 * caduser: Relacionado ao cadastro de usuário.
 * cadlivro: Relacionado ao cadastro de livros.
+* eduser: Relacionado a tela de edição de usuário.
 * jobject: Objeto Java.
 * avaliacao: Relacionado a tela geral de avaliação de livros.
 
