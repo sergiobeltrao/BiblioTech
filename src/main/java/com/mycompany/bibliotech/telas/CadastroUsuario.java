@@ -375,7 +375,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
-        cargoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMIN", "BIBLIOTECARIO", "CLIENTE" }));
+        cargoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMIN", "CLIENTE" }));
         cargoBox.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo"));
         cargoBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -904,8 +904,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
         if (valorUserCargo.equals("ADMIN")) {
             valorSelecionado = "ADMIN";
-        } else if (valorUserCargo.equals("BIBLIOTECARIO")) {
-            valorSelecionado = "BIBLIOTECARIO";
         } else {
             valorSelecionado = "CLIENTE";
         }
