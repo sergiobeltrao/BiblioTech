@@ -897,7 +897,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         }
 
         user.setUserNick(nickTxt.getText());
-        user.setUserSenha(new String(rehashDaSenha));
+        user.setUserSenha(new String(hashDaSenha));
 
         String valorUserCargo = cargoBox.getSelectedItem().toString();
         String valorSelecionado = "CLIENTE";
