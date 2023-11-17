@@ -10,6 +10,7 @@ import com.mycompany.bibliotech.model.bean.Telefone;
 import com.mycompany.bibliotech.dao.FavoritosDAO;
 import com.mycompany.bibliotech.model.bean.Favoritos;
 import com.mycompany.bibliotech.dao.CpfDAO;
+import com.mycompany.bibliotech.model.bean.Hash;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
@@ -27,7 +28,10 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CadastroUsuario extends javax.swing.JFrame {
 
@@ -861,11 +865,22 @@ public class CadastroUsuario extends javax.swing.JFrame {
         TelefoneDAO fonedao = new TelefoneDAO();
         String cpf = cpfTxt.getText();
         CpfDAO cpfdao = new CpfDAO(cpf);
+        
+         Hash hash = new Hash();
+        
+        String senhaDigitada = senhaTxt.getText();
+        String hashDaSenha = "";
 
-        String senha = new String(senhaTxt.getPassword());
+        try {
+            hashDaSenha = hash.geradorDeHash(senhaDigitada);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+       // String senha = new String(senhaTxt.getPassword());
         String reSenha = new String(resenhaTxt.getPassword());
 
-        if (!senha.equals(reSenha)) {
+        if (!hashDaSenha.equals(reSenha)) {
             JOptionPane.showMessageDialog(this, "A senha e a re-senha não coincidem. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
             return; // Não prossegue com o cadastro se as senhas não coincidirem
         }
