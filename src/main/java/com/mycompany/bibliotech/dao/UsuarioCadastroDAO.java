@@ -92,4 +92,28 @@ public class UsuarioCadastroDAO {
             ConnectionFactory.closeConnection(conexao, statement, resultSet);
         }
     }
+     public boolean atualizar() { 
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        stmt = con.prepareStatement("UPDATE USUARIO SET nome=?, fone=?, email=? WHERE codigo=?");
+        
+        try {
+            stmt.setString(1, );
+            stmt.setString(2, );
+            stmt.setString(3, );
+            stmt.setInt(4, );
+            
+            stmt.executeUpdate();
+            
+            return true;
+            
+                JOptionPane.showMessageDialog(null, "Edição realizada com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Editar: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+
 }
