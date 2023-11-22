@@ -2,6 +2,8 @@ package com.mycompany.bibliotech.telas;
 
 import com.mycompany.bibliotech.dao.TelaAvaliacaoDAO;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
+import com.mycompany.bibliotech.model.bean.Livro;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -19,7 +21,9 @@ public class TelaAvaliacao extends javax.swing.JFrame {
      * Creates new form TelaAvaliacao
      */
     public TelaAvaliacao() {
+        listarBusca();
         initComponents();
+        
 
     }
 
@@ -42,7 +46,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        txtNomeLivro = new javax.swing.JTextField();
         txtBuscarCad = new javax.swing.JComboBox<>();
         txtBuscaAlfa = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
@@ -62,7 +66,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
 
         scrollPaneWin111.setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        kGradientPanel2.setkEndColor(new java.awt.Color(118, 118, 118));
+        kGradientPanel2.setkEndColor(new java.awt.Color(102, 102, 102));
         kGradientPanel2.setkGradientFocus(10);
         kGradientPanel2.setkStartColor(new java.awt.Color(255, 255, 255));
         kGradientPanel2.setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -108,8 +112,13 @@ public class TelaAvaliacao extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "  Buscar por nome do Livro:  ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        txtNomeLivro.setBackground(new java.awt.Color(255, 255, 255));
+        txtNomeLivro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "  Buscar por nome do Livro:  ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        txtNomeLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeLivroActionPerformed(evt);
+            }
+        });
 
         txtBuscarCad.setBackground(new java.awt.Color(255, 255, 255));
         txtBuscarCad.setForeground(new java.awt.Color(0, 0, 0));
@@ -150,7 +159,12 @@ public class TelaAvaliacao extends javax.swing.JFrame {
 
         txtLivro.setBackground(new java.awt.Color(255, 255, 255));
         txtLivro.setForeground(new java.awt.Color(0, 0, 0));
-        txtLivro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        txtLivro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "item 1" }));
+        txtLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLivroActionPerformed(evt);
+            }
+        });
 
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -180,7 +194,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(txtNomeAutor, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txtNomeLivro, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,7 +216,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNomeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -314,18 +328,18 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollPaneWin111, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollPaneWin111, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollPaneWin111, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollPaneWin111, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        pack();
+        setSize(new java.awt.Dimension(1280, 720));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -345,8 +359,26 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBuscaAlfaActionPerformed
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
-
+        Livro livro = new Livro();
+        livro.setTitulo(txtNomeLivro.getText());
+        TelaAvaliacaoDAO bs = new TelaAvaliacaoDAO();
+        JOptionPane.showMessageDialog(null, txtLivro );
     }//GEN-LAST:event_txtBuscarActionPerformed
+
+    public void listarBusca(){
+        TelaAvaliacaoDAO.listarCategorias(txtLivro);
+    
+    }
+    
+    private void txtNomeLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeLivroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeLivroActionPerformed
+
+    private void txtLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLivroActionPerformed
+           String dados = String.valueOf(txtLivro.getSelectedItem());
+       
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLivroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -398,7 +430,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSlider jSlider2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField4;
     private keeptoo.KGradientPanel kGradientPanel2;
     private raven.scroll.win11.ScrollPaneWin11 scrollPaneWin111;
@@ -407,6 +438,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> txtBuscarCad;
     private javax.swing.JComboBox<String> txtLivro;
     private javax.swing.JTextField txtNomeAutor;
+    private javax.swing.JTextField txtNomeLivro;
     private javax.swing.JLabel txtNumeral1;
     private javax.swing.JTextField txtPaginas;
     private javax.swing.JButton voltaButton;
