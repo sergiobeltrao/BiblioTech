@@ -73,4 +73,38 @@ public class TelefoneDAO {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
+       
+       public void atualizar(Telefone tel) {
+    Connection con = ConnectionFactory.getConnection();
+    PreparedStatement stmt = null;
+
+    try {
+        if (con == null) {
+            JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados.");
+            return;
+        }
+
+        // Montar instrução SQL
+        stmt = con.prepareStatement("UPDATE TELEFONE SET TEL_TIPO=?, TEL_TELEFONE=? WHERE TEL_ID=?");
+
+        // Setar valores para a instrução SQL
+        stmt.setString(1, tel.getTipo());
+        stmt.setString(2, tel.getTelefone());
+        stmt.setInt(3, tel.getId());
+
+        int linhasAfetadas = stmt.executeUpdate();
+
+        if (linhasAfetadas > 0) {
+            con.commit();
+            JOptionPane.showMessageDialog(null, "Telefone atualizado com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhum telefone atualizado. Verifique os dados informados.");
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Erro ao atualizar telefone: " + ex.getMessage());
+        ex.printStackTrace();
+    } finally {
+        ConnectionFactory.closeConnection(con, stmt);
+    }
+}
 }

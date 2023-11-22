@@ -50,4 +50,40 @@ public class FavoritosDAO {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
+    
+    public void atualizar(Favoritos fav) {
+    Connection con = ConnectionFactory.getConnection();
+    PreparedStatement stmt = null;
+
+    try {
+        if (con == null) {
+            JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados.");
+            return;
+        }
+
+        // Prepare SQL statement
+        stmt = con.prepareStatement("UPDATE FAVORITO SET FAV_CATEGORIA1=?, FAV_SUB1=?, FAV_CATEGORIA2=?, FAV_SUB2=? WHERE ID=?");
+
+        // Set values for SQL statement
+        stmt.setString(1, fav.getFavCategoria1());
+        stmt.setString(2, fav.getFavSub1());
+        stmt.setString(3, fav.getFavCategoria2());
+        stmt.setString(4, fav.getFavSub2());
+        stmt.setInt(5, fav.getId());
+
+        int affectedRows = stmt.executeUpdate();
+
+        if (affectedRows > 0) {
+            con.commit();
+            JOptionPane.showMessageDialog(null, "Favorito atualizado com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhum favorito atualizado. Verifique os dados informados.");
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Erro ao atualizar favorito: " + ex.getMessage());
+        ex.printStackTrace();
+    } finally {
+        ConnectionFactory.closeConnection(con, stmt);
+    }
+}
 }

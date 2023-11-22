@@ -670,7 +670,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
-        enterButton.setText("Cadastrar");
+        enterButton.setText("Atualizar cadastro");
         enterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enterButtonActionPerformed(evt);
@@ -993,6 +993,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
             dao.cadastrarUsuario(user);
         } else {
             JOptionPane.showMessageDialog(rootPane, "CPF inválido!!");
+            return;
         }
         enddao.cadastrarEndereco(end, nickTxt.getText(), cepTxt.getText(), numb);
         fonedao.cadastrarTelefone(tel, nickTxt.getText(), foneTxt.getText(), telefoneTipoBox.getSelectedItem().toString());

@@ -2,6 +2,7 @@ package com.mycompany.bibliotech.telas;
 
 import com.mycompany.bibliotech.dao.ExcluirUserDAO;
 import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;
+import com.mycompany.bibliotech.model.bean.Usuario;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
@@ -22,6 +23,7 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         btnEncerrarSessao = new javax.swing.JButton();
         avaliacaoButton = new javax.swing.JButton();
         ExcluirUserButton = new javax.swing.JToggleButton();
+        edicaoUserButton = new javax.swing.JButton();
         campoCentral = new javax.swing.JPanel();
         txtTemporario = new javax.swing.JTextField();
 
@@ -71,6 +73,13 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
             }
         });
 
+        edicaoUserButton.setText("Edição de Usuarios");
+        edicaoUserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edicaoUserButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menuLateralLayout = new javax.swing.GroupLayout(menuLateral);
         menuLateral.setLayout(menuLateralLayout);
         menuLateralLayout.setHorizontalGroup(
@@ -94,7 +103,10 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
                         .addComponent(avaliacaoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(menuLateralLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(ExcluirUserButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(ExcluirUserButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(menuLateralLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(edicaoUserButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         menuLateralLayout.setVerticalGroup(
@@ -110,6 +122,8 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
                 .addComponent(avaliacaoButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ExcluirUserButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(edicaoUserButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao)
                 .addGap(15, 15, 15))
@@ -237,6 +251,129 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ExcluirUserButtonActionPerformed
 
+    private void edicaoUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edicaoUserButtonActionPerformed
+
+        UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
+        Usuario user = new Usuario();
+
+        String userNome = JOptionPane.showInputDialog(this, "Digite o nome do usuário a ser editado:");
+
+        if (userNome != null && !userNome.isEmpty()) {
+            // user.setUserNick(userNome);
+            userdao.buscarUsuarioPorNome(user, userNome);
+
+            // Verifique se os dados foram preenchidos em 'user' após a chamada do método
+
+            if (user.getUserId() != 0) {
+                // Abre a tela de edição com os dados do usuário
+                new EdicaoUsuario().setVisible(true);
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Digite um nome de usuário válido", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+
+        /*    // Exibir um JOptionPane para obter o nick do usuário
+        String nick = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser excluído:");
+
+        // Verificar se o usuário digitou algo
+        if (nick != null && !nick.isEmpty()) {
+            // Aqui você pode adicionar a lógica para buscar as informações do usuário no banco de dados
+            // Substitua a chamada do método 'buscarUsuarioNoBanco' pela sua própria lógica
+            Usuario usuario = buscarUsuarioNoBanco(nick);
+
+            // Verificar se o usuário foi encontrado no banco de dados
+            if (usuario != null) {
+                // Exibir as informações do usuário em uma nova interface gráfica
+                exibirInformacoesDoUsuario(usuario);
+            } else {
+                // Caso o usuário não seja encontrado, exibir uma mensagem informando
+                JOptionPane.showMessageDialog(this, "Usuário não encontrado no banco de dados.");
+            }
+        } else {
+            // Caso o usuário tenha clicado em cancelar ou não digitado nada
+            JOptionPane.showMessageDialog(this, "Operação cancelada ou nenhum nick fornecido.");
+        } */
+        /*String nome = JOptionPane.showInputDialog("Digite o nome da pessoa a ser atualizada");
+        UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
+        Usuario use = new Usuario();
+        if (userdao.buscarPessoa( User, Fone, End)) {
+            // Exibir os detalhes da pessoa atual
+            JOptionPane.showMessageDialog(null, "Detalhes da pessoa:\n" + p.toString());
+
+            // Solicitar as informações atualizadas ao usuário
+            String novoNome = JOptionPane.showInputDialog("Digite o novo nome (ou deixe em branco para manter o mesmo):");
+            String novoFone = JOptionPane.showInputDialog("Digite o novo telefone (ou deixe em branco para manter o mesmo):");
+            String novoEmail = JOptionPane.showInputDialog("Digite o novo email (ou deixe em branco para manter o mesmo):");
+
+            // Atualizar os campos, se forem fornecidos
+            if (!novoNome.isEmpty()) {
+                use.setNome(novoNome);
+            }
+            if (!novoFone.isEmpty()) {
+                use.setFone(novoFone);
+            }
+            if (!novoEmail.isEmpty()) {
+                use.setEmail(novoEmail);
+            }
+
+            // Chamar o método de atualização
+            if (p.atualizar()) {
+                JOptionPane.showMessageDialog(null, "Pessoa atualizada com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Falha ao atualizar a pessoa.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuário não encontrado");
+        }
+        }
+        }  */
+        /*
+        // Método de exemplo para buscar o usuário no banco de dados (substitua pela sua própria lógica)
+        private Usuario buscarUsuarioNoBanco(String nick) {
+            // Adicione sua lógica de busca no banco de dados aqui
+            // Este é apenas um exemplo de um objeto de usuário fictício
+            // Substitua isso pela sua lógica real de consulta ao banco de dados
+            return new Usuario(nick, "Nome do Usuário", "Email do Usuário");
+        }
+
+        // Método de exemplo para exibir as informações do usuário em uma nova interface gráfica
+        private void exibirInformacoesDoUsuario(Usuario usuario) {
+            // Adicione sua lógica para exibir as informações do usuário na nova interface gráfica aqui
+            // Este é apenas um exemplo, substitua pela sua própria lógica
+            JOptionPane.showMessageDialog(this, "Informações do Usuário:\n\nNick: " + usuario.getNick() +
+                "\nNome: " + usuario.getNome() + "\nEmail: " + usuario.getEmail());
+        }
+
+        // Classe de exemplo para representar um usuário (substitua pela sua própria classe de usuário)
+        private class Usuario {
+            private String nick;
+            private String nome;
+            private String email;
+
+            public Usuario(String nick, String nome, String email) {
+                this.nick = nick;
+                this.nome = nome;
+                this.email = email;
+            }
+
+            public String getNick() {
+                return nick;
+            }
+
+            public String getNome() {
+                return nome;
+            }
+
+            public String getEmail() {
+                return email;
+            }
+        }
+    }//GEN-LAST:event_edicaoUserButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -280,6 +417,7 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton avaliacaoButton;
     private javax.swing.JButton btnEncerrarSessao;
     private javax.swing.JPanel campoCentral;
+    private javax.swing.JButton edicaoUserButton;
     private javax.swing.JPanel menuLateral;
     private javax.swing.JTextField txtMenuPrincipal;
     private javax.swing.JTextField txtTemporario;

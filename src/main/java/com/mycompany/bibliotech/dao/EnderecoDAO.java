@@ -80,4 +80,44 @@ public class EnderecoDAO {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
+    
+    public void atualizar(Endereco end) {
+    Connection con = ConnectionFactory.getConnection();
+    PreparedStatement stmt = null;
+
+    try {
+        if (con == null) {
+            JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados.");
+            return;
+        }
+
+        // Montar instrução SQL
+        stmt = con.prepareStatement("UPDATE ENDERECO SET END_RUA=?, END_NUM=?, END_COMP=?, END_BAIRRO=?, END_CIDADE=?, END_UF=?, END_PAIS=?, END_CEP=? WHERE END_ID=?");
+
+        // Setar valores para a instrução SQL
+        stmt.setString(1, end.getRua());
+        stmt.setInt(2, end.getNum());
+        stmt.setString(3, end.getComp());
+        stmt.setString(4, end.getBairro());
+        stmt.setString(5, end.getCidade());
+        stmt.setString(6, end.getUf());
+        stmt.setString(7, end.getPais());
+        stmt.setString(8, end.getCep());
+        stmt.setInt(9, end.getId());
+
+        int linhasAfetadas = stmt.executeUpdate();
+
+        if (linhasAfetadas > 0) {
+            con.commit();
+            JOptionPane.showMessageDialog(null, "Endereço atualizado com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhum endereço atualizado. Verifique os dados informados.");
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Erro ao atualizar endereço: " + ex.getMessage());
+        ex.printStackTrace();
+    } finally {
+        ConnectionFactory.closeConnection(con, stmt);
+    }
+}
 }
