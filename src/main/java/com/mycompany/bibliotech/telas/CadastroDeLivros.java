@@ -9,9 +9,11 @@ import com.mycompany.bibliotech.model.bean.Autor;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
 import com.mycompany.bibliotech.model.bean.Livro;
 import com.mycompany.bibliotech.model.bean.Login;
+import java.awt.event.KeyEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.JTable;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
@@ -142,12 +144,22 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                 txtAnoDePublicacaoActionPerformed(evt);
             }
         });
+        txtAnoDePublicacao.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtAnoDePublicacaoKeyPressed(evt);
+            }
+        });
 
         txtNumeroDePaginas.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtNumeroDePaginas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Número de Páginas *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
         txtNumeroDePaginas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumeroDePaginasActionPerformed(evt);
+            }
+        });
+        txtNumeroDePaginas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNumeroDePaginasKeyPressed(evt);
             }
         });
 
@@ -360,25 +372,22 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             .addGroup(cadAutorLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(cadAutorLayout.createSequentialGroup()
-                        .addComponent(txtDeBoasVindasAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(606, Short.MAX_VALUE))
-                    .addGroup(cadAutorLayout.createSequentialGroup()
-                        .addGroup(cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(cadAutorLayout.createSequentialGroup()
-                                .addComponent(btnTelaPrinCadAutor)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnLimparAutor)
-                                .addGap(902, 902, 902)
-                                .addComponent(btnProximaAbaAutor))
-                            .addGroup(cadAutorLayout.createSequentialGroup()
-                                .addGroup(cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtNomeDoAutor)
-                                    .addComponent(cboxAutorSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cboxNacionalidadeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(boxBibliografiaAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 795, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(40, Short.MAX_VALUE))))
+                    .addComponent(txtDeBoasVindasAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(cadAutorLayout.createSequentialGroup()
+                            .addComponent(btnTelaPrinCadAutor)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnLimparAutor)
+                            .addGap(902, 902, 902)
+                            .addComponent(btnProximaAbaAutor))
+                        .addGroup(cadAutorLayout.createSequentialGroup()
+                            .addGroup(cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtNomeDoAutor)
+                                .addComponent(cboxAutorSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cboxNacionalidadeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addComponent(boxBibliografiaAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 795, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         cadAutorLayout.setVerticalGroup(
             cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -727,6 +736,54 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     private void txtNumeroDePaginasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroDePaginasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroDePaginasActionPerformed
+
+    private void txtAnoDePublicacaoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnoDePublicacaoKeyPressed
+        // Captura o que está digitado e verifica o comprimento.
+        String anoDePublicacao = txtAnoDePublicacao.getText();
+        int tamanho = anoDePublicacao.length();
+
+        // Verifica se o que foi digitado é um número. E se o tamanho é maior que 4.
+        if (evt.getKeyChar() >= '0' && evt.getKeyChar() <= '9') {
+            if (tamanho < 4) {
+                txtAnoDePublicacao.setEditable(true);
+            } else { // Se a quantidade de digitos passar de 4 o campo será desabilitado por 500ms.
+                txtAnoDePublicacao.setEditable(false);
+                Timer timer = new Timer(500, e -> txtAnoDePublicacao.setEditable(true));
+                timer.setRepeats(false);
+                timer.start();
+            }
+        } else { // Permite usar teclas como "Back Space" e "Delete" para corrigir algum erro.
+            if (evt.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode() == KeyEvent.VK_DELETE) {
+                txtAnoDePublicacao.setEditable(true);
+            } else {
+                txtAnoDePublicacao.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_txtAnoDePublicacaoKeyPressed
+
+    private void txtNumeroDePaginasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroDePaginasKeyPressed
+                // Captura o que está digitado e verifica o comprimento.
+        String anoDePublicacao = txtNumeroDePaginas.getText();
+        int tamanho = anoDePublicacao.length();
+
+        // Verifica se o que foi digitado é um número. E se o tamanho é maior que 4.
+        if (evt.getKeyChar() >= '0' && evt.getKeyChar() <= '9') {
+            if (tamanho < 4) {
+                txtNumeroDePaginas.setEditable(true);
+            } else { // Se a quantidade de digitos passar de 4 o campo será desabilitado por 500ms.
+                txtNumeroDePaginas.setEditable(false);
+                Timer timer = new Timer(500, e -> txtNumeroDePaginas.setEditable(true));
+                timer.setRepeats(false);
+                timer.start();
+            }
+        } else { // Permite usar teclas como "Back Space" e "Delete" para corrigir algum erro.
+            if (evt.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode() == KeyEvent.VK_DELETE) {
+                txtNumeroDePaginas.setEditable(true);
+            } else {
+                txtNumeroDePaginas.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_txtNumeroDePaginasKeyPressed
 
     /**
      * @param args the command line arguments
