@@ -10,6 +10,9 @@ import com.mycompany.bibliotech.model.bean.Avaliacao;
 import com.mycompany.bibliotech.model.bean.Livro;
 import com.mycompany.bibliotech.model.bean.Login;
 import java.awt.event.KeyEvent;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.JTable;
@@ -27,6 +30,8 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         listarNacionalidades();
         listarIdiomasDoLivro();
         readJTable();
+        // Impede que o ISBN seja setado sem selecionar o tipo quando abre a tela.
+        formatedIsbn.setEditable(false);
     }
 
     public class CenterRenderer extends DefaultTableCellRenderer {
@@ -77,7 +82,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         cadLivros = new javax.swing.JPanel();
         txtDeBoasVindasLivro = new javax.swing.JTextField();
         txtTitulo = new javax.swing.JTextField();
-        txtISBN = new javax.swing.JTextField();
         txtAnoDePublicacao = new javax.swing.JTextField();
         txtNumeroDePaginas = new javax.swing.JTextField();
         cboxCategoria = new javax.swing.JComboBox<>();
@@ -91,6 +95,8 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         btnProximaAbaLivro = new javax.swing.JButton();
         btnEditarLivro = new javax.swing.JButton();
         btnDeletarLivro = new javax.swing.JButton();
+        formatedIsbn = new javax.swing.JFormattedTextField();
+        cboxIsbnSelect = new javax.swing.JComboBox<>();
         cadAutor = new javax.swing.JPanel();
         txtDeBoasVindasAutor = new javax.swing.JTextField();
         txtNomeDoAutor = new javax.swing.JTextField();
@@ -133,9 +139,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         txtTitulo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtTitulo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Título *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
-
-        txtISBN.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtISBN.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ISBN *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
 
         txtAnoDePublicacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtAnoDePublicacao.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ano de Publicação *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
@@ -227,6 +230,28 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         btnDeletarLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         btnDeletarLivro.setText("Deletar");
 
+        formatedIsbn.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ISBN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        try {
+            formatedIsbn.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        formatedIsbn.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        formatedIsbn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                formatedIsbnActionPerformed(evt);
+            }
+        });
+
+        cboxIsbnSelect.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        cboxIsbnSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "ISBN-13", "ISBN-10" }));
+        cboxIsbnSelect.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        cboxIsbnSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxIsbnSelectActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout cadLivrosLayout = new javax.swing.GroupLayout(cadLivros);
         cadLivros.setLayout(cadLivrosLayout);
         cadLivrosLayout.setHorizontalGroup(
@@ -250,19 +275,23 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                             .addComponent(cboxLivroIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(cadLivrosLayout.createSequentialGroup()
                         .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(cadLivrosLayout.createSequentialGroup()
+                                    .addComponent(txtAnoDePublicacao, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtNumeroDePaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadLivrosLayout.createSequentialGroup()
+                                    .addComponent(cboxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(cboxSubCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(cadLivrosLayout.createSequentialGroup()
+                                    .addComponent(btnTelaPrinCadLivro)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnLimparLivro)))
                             .addGroup(cadLivrosLayout.createSequentialGroup()
-                                .addComponent(txtAnoDePublicacao, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cboxIsbnSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtNumeroDePaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadLivrosLayout.createSequentialGroup()
-                                .addComponent(cboxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cboxSubCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(cadLivrosLayout.createSequentialGroup()
-                                .addComponent(btnTelaPrinCadLivro)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnLimparLivro)))
+                                .addComponent(formatedIsbn)))
                         .addGap(18, 18, 18)
                         .addComponent(boxSinopse)))
                 .addContainerGap(37, Short.MAX_VALUE))
@@ -270,7 +299,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         cadLivrosLayout.setVerticalGroup(
             cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadLivrosLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
                 .addComponent(txtDeBoasVindasLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -280,24 +309,31 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(cadLivrosLayout.createSequentialGroup()
-                        .addComponent(txtISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(formatedIsbn, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                            .addComponent(cboxIsbnSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 45, Short.MAX_VALUE))
+                        .addGap(20, 20, 20)
+                        .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNumeroDePaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAnoDePublicacao, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtAnoDePublicacao, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNumeroDePaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cboxSubCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cboxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboxSubCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(boxSinopse, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTelaPrinCadLivro)
-                    .addComponent(btnLimparLivro)
-                    .addComponent(btnProximaAbaLivro)
-                    .addComponent(btnEditarLivro)
-                    .addComponent(btnDeletarLivro))
-                .addGap(16, 16, 16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadLivrosLayout.createSequentialGroup()
+                        .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnLimparLivro)
+                            .addComponent(btnTelaPrinCadLivro))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadLivrosLayout.createSequentialGroup()
+                        .addGroup(cadLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnDeletarLivro)
+                            .addComponent(btnEditarLivro)
+                            .addComponent(btnProximaAbaLivro))
+                        .addGap(16, 16, 16))))
         );
 
         janelaDeAbas.addTab("Cadastrar Livro", cadLivros);
@@ -578,7 +614,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         // Livro
         livro.setTitulo(txtTitulo.getText());
-        livro.setIsbn(txtISBN.getText());
+        livro.setIsbn(formatedIsbn.getText());
         livro.setAnoDePublicacao(Integer.parseInt(txtAnoDePublicacao.getText()));
         livro.setNumeroDePaginas(Integer.parseInt(txtNumeroDePaginas.getText()));
         livro.setIdioma(cboxLivroIdioma.getSelectedItem().toString());
@@ -647,7 +683,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         // Limpar os campos já preenchidos e define valor "Não Informado" para todas as JComboBox
         txtTitulo.setText("");
-        txtISBN.setText("");
+        formatedIsbn.setText(null);
         txtAnoDePublicacao.setText("");
         txtNumeroDePaginas.setText("");
         cboxCategoria.setSelectedItem("Não Informada");
@@ -657,6 +693,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         cboxAvaliacaoDoLivro.setSelectedItem("Não Informada");
         txtComentarioAvaliacao.setText("");
         txtSinopseDoLivro.setText("");
+        cboxIsbnSelect.setSelectedItem("Selecione");
 
     }//GEN-LAST:event_btnLimparLivroActionPerformed
 
@@ -762,7 +799,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAnoDePublicacaoKeyPressed
 
     private void txtNumeroDePaginasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroDePaginasKeyPressed
-                // Captura o que está digitado e verifica o comprimento.
+        // Captura o que está digitado e verifica o comprimento.
         String anoDePublicacao = txtNumeroDePaginas.getText();
         int tamanho = anoDePublicacao.length();
 
@@ -784,6 +821,42 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_txtNumeroDePaginasKeyPressed
+
+    private void cboxIsbnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxIsbnSelectActionPerformed
+        String selecionado = cboxIsbnSelect.getSelectedItem().toString();
+
+        formatedIsbn.setValue(null);
+
+        if (selecionado.equals("ISBN-13")) {
+            formatedIsbn.setEditable(true);
+            formatedIsbn.setBorder(javax.swing.BorderFactory.createTitledBorder("ISBN-13"));
+            try {
+                formatedIsbn.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-##-###-####-#")));
+            } catch (ParseException ex) {
+                Logger.getLogger(CadastroDeLivros.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else if (selecionado.equals("ISBN-10")) {
+            formatedIsbn.setEditable(true);
+            formatedIsbn.setBorder(javax.swing.BorderFactory.createTitledBorder("ISBN-10"));
+            try {
+                formatedIsbn.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#-###-#####-#")));
+            } catch (ParseException ex) {
+                Logger.getLogger(CadastroDeLivros.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            formatedIsbn.setEditable(false);
+            formatedIsbn.setBorder(javax.swing.BorderFactory.createTitledBorder("ISBN"));
+            try {
+                formatedIsbn.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#############")));
+            } catch (ParseException ex) {
+                Logger.getLogger(CadastroDeLivros.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_cboxIsbnSelectActionPerformed
+
+    private void formatedIsbnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formatedIsbnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formatedIsbnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -841,9 +914,11 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboxAutorSexo;
     private javax.swing.JComboBox<String> cboxAvaliacaoDoLivro;
     private javax.swing.JComboBox<String> cboxCategoria;
+    private javax.swing.JComboBox<String> cboxIsbnSelect;
     private javax.swing.JComboBox<String> cboxLivroIdioma;
     private javax.swing.JComboBox<String> cboxNacionalidadeDoAutor;
     private javax.swing.JComboBox<String> cboxSubCategoria;
+    private javax.swing.JFormattedTextField formatedIsbn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane janelaDeAbas;
     private javax.swing.JPanel pnSelect;
@@ -854,7 +929,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     private javax.swing.JTextField txtDeBoasVindasAutor;
     private javax.swing.JTextField txtDeBoasVindasAvaliacao;
     private javax.swing.JTextField txtDeBoasVindasLivro;
-    private javax.swing.JTextField txtISBN;
     private javax.swing.JTextField txtNomeDaEditora;
     private javax.swing.JTextField txtNomeDoAutor;
     private javax.swing.JTextField txtNumeroDePaginas;
