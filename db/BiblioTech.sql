@@ -71,9 +71,9 @@ CREATE TABLE LIVRO (
     LIV_SINOPSE TEXT
 );
 
-INSERT INTO LIVRO VALUES(
-	NULL, 'O Segredo das Estrelas', '978-1234567890', 1980, 320, '1 - Ficção', '40 - Programação', 'Portugues - Brasil', 'Atlas',NULL),
-    (NULL, 'O Alquimista', '978-8584390670', 1988, 208, '1 - Ficção', '4 - Fantasia', 'Português - Brasil', 'Osires', NULL);
+INSERT INTO LIVRO VALUES
+	(NULL, 'O Segredo das Estrelas', '978-12-345-6789-0', 1980, 320, '1 - Ficção', '40 - Programação', 'Portugues - Brasil', 'Atlas', NULL),
+    (NULL, 'O Alquimista', '978-85-843-9067-0', 1988, 208, '1 - Ficção', '4 - Fantasia', 'Português - Brasil', 'Osires', NULL);
 
 
 CREATE TABLE AUTOR(
@@ -272,7 +272,4 @@ INSERT INTO IDIOMA(IDI_NOME) VALUES ('Akan - Gana'), ('Alemão - Alemanha'), ('A
 SELECT L.LIV_NOME_LIVRO, L.LIV_PAGINA, L.LIV_ANO, L.LIV_EDITORA, A.AVA_COMENTARIO 
 FROM LIVRO L LEFT JOIN AVALIACAO A ON L.ID_LIVRO = A.AVA_FK_LIVRO 
 LEFT JOIN CATEGORIA C ON L.LIV_CATEGORIA = C.CAT_ID WHERE LIV_NOME_LIVRO = 'O Segredo das Estrelas' ;
-
-
-
 

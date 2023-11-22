@@ -9,6 +9,7 @@ import com.mycompany.bibliotech.model.bean.Autor;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
 import com.mycompany.bibliotech.model.bean.Livro;
 import com.mycompany.bibliotech.model.bean.Login;
+import com.mycompany.bibliotech.model.bean.ValidadorIsbn;
 import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -608,6 +609,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         Autor autor = new Autor();
         Avaliacao avaliacao = new Avaliacao();
         Login login = ApplicationContext.getLogin();
+        ValidadorIsbn validadorIsbn = new ValidadorIsbn();
 
         LivroDAO livrodao = new LivroDAO();
         AutorDAO autordao = new AutorDAO();
@@ -616,7 +618,9 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         String isbnDigitado = formatedIsbn.getText();
 
         if (livrodao.verificaDuplicidadeIsbn(isbnDigitado).equals(isbnDigitado)) {
-            JOptionPane.showMessageDialog(null, "Esse ISBN já está cadastrado");
+            JOptionPane.showMessageDialog(null, "Esse ISBN já está cadastrado.");
+        } else if (validadorIsbn.valida(isbnDigitado) == false) {
+            JOptionPane.showMessageDialog(null, "ISBN incorreto.");
         } else {
             // Livro
             livro.setTitulo(txtTitulo.getText());
