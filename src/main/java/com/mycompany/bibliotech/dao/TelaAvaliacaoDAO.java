@@ -1,7 +1,3 @@
-	/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.bibliotech.dao;
 
 import com.mycompany.bibliotech.connection.ConnectionFactory;
@@ -13,27 +9,24 @@ import java.sql.SQLException;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author jonat
- */
-public class TelaAvaliacaoDAO {
 
-    public static void listarCategorias(JComboBox<String> comboBox) {
+public class TelaAvaliacaoDAO {
+    public static void listaTituloDosLivros(JComboBox<String> comboBox) {
         try {
             Connection con = ConnectionFactory.getConnection();
-            String sql = "select LIV_NOME_LIVRO from livro where LIV_NOME_LIVRO like '%?%';";
+            String sql = "SELECT * FROM LIVRO";
             PreparedStatement comando = con.prepareStatement(sql);
             ResultSet resultado = comando.executeQuery();
 
-           
-            comboBox.addItem("");
+            comboBox.removeAllItems();
+            comboBox.addItem("Não Informada");
 
             while (resultado.next()) {
-               // comboBox.addItem(String.valueOf(resultado.getInt("CAT_ID")) + " - " + resultado.getString("CAT_NOME"));
+                comboBox.addItem(resultado.getString("LIV_NOME_LIVRO"));
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao ler a tabela categoria: " + ex);
+            JOptionPane.showMessageDialog(null, "Erro ao ler a tabela de nacionalidades: " + ex);
         }
     }
+    
 }

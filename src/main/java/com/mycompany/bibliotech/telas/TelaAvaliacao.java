@@ -1,11 +1,7 @@
 package com.mycompany.bibliotech.telas;
 
 import com.mycompany.bibliotech.dao.TelaAvaliacaoDAO;
-import com.mycompany.bibliotech.model.bean.Avaliacao;
-import com.mycompany.bibliotech.model.bean.Livro;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
+import javax.swing.JComboBox;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -21,8 +17,9 @@ public class TelaAvaliacao extends javax.swing.JFrame {
      * Creates new form TelaAvaliacao
      */
     public TelaAvaliacao() {
-        listarBusca();
         initComponents();
+        cboxLivro = new JComboBox<>(); // Inicialize o JComboBox na inicialização da classe
+        listarBusca();
         
 
     }
@@ -56,9 +53,9 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
-        txtLivro = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JButton();
+        cboxLivro = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         voltaButton = new javax.swing.JButton();
 
@@ -71,11 +68,9 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         kGradientPanel2.setkStartColor(new java.awt.Color(255, 255, 255));
         kGradientPanel2.setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "  Livro:  ", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        jLabel6.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "  Livro:  ", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("9,9");
         jLabel7.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
@@ -83,7 +78,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         jLabel7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Nota Atual:");
         jLabel8.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
@@ -91,7 +85,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
 
         txtNumeral1.setBackground(new java.awt.Color(0, 0, 0));
         txtNumeral1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        txtNumeral1.setForeground(new java.awt.Color(0, 0, 0));
         txtNumeral1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtNumeral1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -102,31 +95,25 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "  Sinopse:  ", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        jLabel9.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "  Sinopse:  ", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Avalie de 0 a 10");
         jLabel10.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
-        txtNomeLivro.setBackground(new java.awt.Color(255, 255, 255));
-        txtNomeLivro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "  Buscar por nome do Livro:  ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        txtNomeLivro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "  Buscar por nome do Livro:  ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
         txtNomeLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomeLivroActionPerformed(evt);
             }
         });
 
-        txtBuscarCad.setBackground(new java.awt.Color(255, 255, 255));
-        txtBuscarCad.setForeground(new java.awt.Color(0, 0, 0));
         txtBuscarCad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        txtBuscaAlfa.setBackground(new java.awt.Color(255, 255, 255));
         txtBuscaAlfa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtBuscaAlfa.setForeground(new java.awt.Color(0, 0, 0));
         txtBuscaAlfa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         txtBuscaAlfa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,39 +121,27 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText(" Buscar por categoria:");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 0, 0, new java.awt.Color(255, 0, 0)));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText(" Busca por alfabeto:");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 0, 0, new java.awt.Color(255, 0, 0)));
 
         txtNomeAutor.setBackground(new java.awt.Color(204, 204, 204));
-        txtNomeAutor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nome do autor: ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        txtNomeAutor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nome do autor: ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
         txtPaginas.setBackground(new java.awt.Color(204, 204, 204));
-        txtPaginas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Paginas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        txtPaginas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Paginas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
-        jLabel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, " Ano: ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        jLabel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, " Ano: ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
-        jLabel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, " Editora: ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        jLabel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, " Editora: ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
         jTextField4.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "  Comentario:  ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        jTextField4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "  Comentario:  ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
-        txtLivro.setBackground(new java.awt.Color(255, 255, 255));
-        txtLivro.setForeground(new java.awt.Color(0, 0, 0));
-        txtLivro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "item 1" }));
-        txtLivro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLivroActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("  Livro:");
         jLabel5.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
@@ -179,37 +154,38 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             }
         });
 
+        cboxLivro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada" }));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(txtPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(txtNomeAutor, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txtNomeLivro, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtBuscarCad, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addComponent(txtBuscaAlfa, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(47, 47, 47)
-                                    .addComponent(txtBuscar))
-                                .addComponent(jLabel2))
-                            .addGap(33, 33, 33))
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtLivro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel5))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(txtPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNomeAutor, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtNomeLivro, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtBuscarCad, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(txtBuscaAlfa, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(47, 47, 47)
+                                .addComponent(txtBuscar))
+                            .addComponent(jLabel2))
+                        .addGap(33, 33, 33))
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(cboxLivro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -228,9 +204,9 @@ public class TelaAvaliacao extends javax.swing.JFrame {
                     .addComponent(txtBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(txtLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cboxLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtNomeAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,13 +218,10 @@ public class TelaAvaliacao extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Confirmar");
 
         voltaButton.setBackground(new java.awt.Color(204, 204, 204));
         voltaButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        voltaButton.setForeground(new java.awt.Color(0, 0, 0));
         voltaButton.setText("Voltar");
         voltaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -359,26 +332,19 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBuscaAlfaActionPerformed
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
-        Livro livro = new Livro();
-        livro.setTitulo(txtNomeLivro.getText());
-        TelaAvaliacaoDAO bs = new TelaAvaliacaoDAO();
-        JOptionPane.showMessageDialog(null, txtLivro );
+        // Livro livro = new Livro();
+        // livro.setTitulo(txtNomeLivro.getText());
+        // TelaAvaliacaoDAO bs = new TelaAvaliacaoDAO();
+        // JOptionPane.showMessageDialog(null, txtLivro );
     }//GEN-LAST:event_txtBuscarActionPerformed
 
     public void listarBusca(){
-        TelaAvaliacaoDAO.listarCategorias(txtLivro);
-    
+        TelaAvaliacaoDAO.listaTituloDosLivros(cboxLivro);
     }
     
     private void txtNomeLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeLivroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeLivroActionPerformed
-
-    private void txtLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLivroActionPerformed
-           String dados = String.valueOf(txtLivro.getSelectedItem());
-       
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLivroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -417,6 +383,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cboxLivro;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -436,7 +403,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> txtBuscaAlfa;
     private javax.swing.JButton txtBuscar;
     private javax.swing.JComboBox<String> txtBuscarCad;
-    private javax.swing.JComboBox<String> txtLivro;
     private javax.swing.JTextField txtNomeAutor;
     private javax.swing.JTextField txtNomeLivro;
     private javax.swing.JLabel txtNumeral1;
