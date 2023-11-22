@@ -13,6 +13,7 @@ import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.JTable;
@@ -612,44 +613,51 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         AutorDAO autordao = new AutorDAO();
         AvaliacaoDAO avaliacaodao = new AvaliacaoDAO();
 
-        // Livro
-        livro.setTitulo(txtTitulo.getText());
-        livro.setIsbn(formatedIsbn.getText());
-        livro.setAnoDePublicacao(Integer.parseInt(txtAnoDePublicacao.getText()));
-        livro.setNumeroDePaginas(Integer.parseInt(txtNumeroDePaginas.getText()));
-        livro.setIdioma(cboxLivroIdioma.getSelectedItem().toString());
-        livro.setEditora(txtNomeDaEditora.getText());
-        livro.setSinopse(txtSinopseDoLivro.getText());
-        livro.setCategoria(cboxCategoria.getSelectedItem().toString());
-        livro.setSubCategoria(cboxSubCategoria.getSelectedItem().toString());
+        String isbnDigitado = formatedIsbn.getText();
 
-        // Autor
-        autor.setNome(txtNomeDoAutor.getText());
-        autor.setBibliografia(txtAutorBibliografia.getText());
-        autor.setNacionalidade(cboxNacionalidadeDoAutor.getSelectedItem().toString());
+        if (livrodao.verificaDuplicidadeIsbn(isbnDigitado).equals(isbnDigitado)) {
+            JOptionPane.showMessageDialog(null, "Esse ISBN já está cadastrado");
+        } else {
+            // Livro
+            livro.setTitulo(txtTitulo.getText());
+            livro.setIsbn(formatedIsbn.getText());
+            livro.setAnoDePublicacao(Integer.parseInt(txtAnoDePublicacao.getText()));
+            livro.setNumeroDePaginas(Integer.parseInt(txtNumeroDePaginas.getText()));
+            livro.setIdioma(cboxLivroIdioma.getSelectedItem().toString());
+            livro.setEditora(txtNomeDaEditora.getText());
+            livro.setSinopse(txtSinopseDoLivro.getText());
+            livro.setCategoria(cboxCategoria.getSelectedItem().toString());
+            livro.setSubCategoria(cboxSubCategoria.getSelectedItem().toString());
 
-        String valorAutorSexo = cboxAutorSexo.getSelectedItem().toString();
-        String valorSelecionado = "OUTRO"; // Padrão
+            // Autor
+            autor.setNome(txtNomeDoAutor.getText());
+            autor.setBibliografia(txtAutorBibliografia.getText());
+            autor.setNacionalidade(cboxNacionalidadeDoAutor.getSelectedItem().toString());
 
-        if (valorAutorSexo.equals("Masculino")) {
-            valorSelecionado = "MASC";
-        } else if (valorAutorSexo.equals("Feminino")) {
-            valorSelecionado = "FEM";
+            String valorAutorSexo = cboxAutorSexo.getSelectedItem().toString();
+            String valorSelecionado = "OUTRO"; // Padrão
+
+            if (valorAutorSexo.equals("Masculino")) {
+                valorSelecionado = "MASC";
+            } else if (valorAutorSexo.equals("Feminino")) {
+                valorSelecionado = "FEM";
+            }
+
+            autor.setSexo(valorSelecionado);
+
+            // Avaliação
+            avaliacao.setAvaliacaoDoUsuario(cboxAvaliacaoDoLivro.getSelectedItem().toString().substring(0, 2));
+            avaliacao.setComentarioAvaliacao(txtComentarioAvaliacao.getText());
+
+            livrodao.create(livro);
+            autordao.create(autor);
+            avaliacaodao.create(avaliacao, txtTitulo.getText(), login.getNick());
+
+            // Para que a leitura da tabela seja feita novamente
+            // após salvar novas informações
+            readJTable();
         }
 
-        autor.setSexo(valorSelecionado);
-
-        // Avaliação
-        avaliacao.setAvaliacaoDoUsuario(cboxAvaliacaoDoLivro.getSelectedItem().toString().substring(0, 2));
-        avaliacao.setComentarioAvaliacao(txtComentarioAvaliacao.getText());
-
-        livrodao.create(livro);
-        autordao.create(autor);
-        avaliacaodao.create(avaliacao, txtTitulo.getText(), login.getNick());
-
-        // Para que a leitura da tabela seja feita novamente
-        // após salvar novas informações
-        readJTable();
 
     }//GEN-LAST:event_btnFinalizarCadastroActionPerformed
 

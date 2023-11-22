@@ -97,4 +97,34 @@ public class LivroDAO {
         return livros;
     }
 
+    public String verificaDuplicidadeIsbn(String isbn) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String resultado = null;
+
+        try {
+            stmt = con.prepareStatement("SELECT LIV_ISBN FROM LIVRO WHERE LIV_ISBN = ?");
+            stmt.setString(1, isbn);
+
+            rs = stmt.executeQuery();
+
+            // Se houver um resultado, pegue o ISBN retornado
+            if (rs.next()) {
+                resultado = rs.getString("LIV_ISBN");
+            } else {
+                // Para evitar um NullPointerException caso o select não retorne nada.
+                resultado = "";
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na consulta: " + ex);
+        } finally {
+            // Feche as conexões e objetos ResultSet
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return resultado;
+    }
+
 }
