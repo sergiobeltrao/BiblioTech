@@ -233,7 +233,7 @@ INSERT INTO SUBCATEGORIA(SCA_NOME, SCA_CATEGORIA) VALUES ('Guias de Viagem', '13
 INSERT INTO SUBCATEGORIA(SCA_NOME, SCA_CATEGORIA) VALUES ('Futebol', '14'), ('Basquete', '14'), ('Esportes de Aventura', '14'), ('Jogos de Mesa', '14');
 INSERT INTO SUBCATEGORIA(SCA_NOME, SCA_CATEGORIA) VALUES ('Artesanato', '15'), ('Fotografia', '15'), ('Quebra-cabeças', '15'), ('Colecionismo', '15');
 
-INSERT INTO NACIONALIDADE(NAC_NOME) VALUES ('Outra'), ('Afeganistão - Afegã'), ('Albânia - Albanesa'), ('Alemanha - Alemã'), ('Andorra - Andorrana'), ('Angola - Angolana'), ('Antígua e Barbuda - Antiguana'), ('Argentina - Argentina'), ('Armênia - Armênia'),
+INSERT INTO NACIONALIDADE(NAC_NOME) VALUES ('Afeganistão - Afegã'), ('Albânia - Albanesa'), ('Alemanha - Alemã'), ('Andorra - Andorrana'), ('Angola - Angolana'), ('Antígua e Barbuda - Antiguana'), ('Argentina - Argentina'), ('Armênia - Armênia'),
 ('Austrália - Australiana'), ('Áustria - Austríaca'), ('Azerbaijão - Azerbaijana'), ('Bahamas - Bahamense'), ('Barein - Bareinita'), ('Bangladesh - Bangladeshi'), ('Barbados - Barbadiana'), ('Belarus (Bielorrússia) - Bielo-russa'), ('Bélgica - Belga'),
 ('Belize - Belizenha'), ('Benin - Beninense'), ('Bolívia - Boliviana'), ('Bósnia e Herzegovina - Bósnia'), ('Botsuana - Botsuanesa'), ('Brasil - Brasileira'), ('Brunei - Bruneana'), ('Bulgária - Búlgara'), ('Burundi - Burundinesa'), ('Butão - Butanesa'),
 ('Cabo Verde - Cabo-verdiana'), ('Camarões - Camaronesa'), ('Camboja - Cambojana'), ('Canadá - Canadense'), ('Catar - Catari'), ('Cazaquistão - Cazaque'), ('Chade - Chadiana'), ('Chile - Chilena'), ('China - Chinesa'), ('Chipre - Cipriota'),
@@ -254,7 +254,7 @@ INSERT INTO NACIONALIDADE(NAC_NOME) VALUES ('Outra'), ('Afeganistão - Afegã'),
 ('Tajiquistão - Tajique'), ('Tanzânia - Tanzaniana'), ('Togo - Togolesa'), ('Tonga - Tonganesa'), ('Trinidad e Tobago - Trinidadiana'), ('Tunísia - Tunisiana'), ('Turcomenistão - Turcomena'), ('Turquia - Turca'), ('Tuvalu - Tuvaluana'), ('Ucrânia - Ucraniana'),
 ('Uganda - Ugandense'), ('Uruguai - Uruguaia'), ('Uzbequistão - Uzbeque'), ('Vanuatu - Vanuatuense'), ('Vaticano - Vaticana'), ('Venezuela - Venezuelana'), ('Vietnã - Vietnamita'), ('Zâmbia - Zambiana'), ('Zimbábue - Zimbabuana');
 
-INSERT INTO IDIOMA(IDI_NOME) VALUES ('Outro'), ('Akan - Gana'), ('Alemão - Alemanha'), ('Alemão - Áustria'), ('Alemão - Bélgica'), ('Alemão - Suíça'), ('Amharic - Etiópia'), ('Árabe - Arábia Saudita'), ('Árabe - Egito'), ('Árabe - Líbano'), ('Árabe - Síria'),
+INSERT INTO IDIOMA(IDI_NOME) VALUES ('Akan - Gana'), ('Alemão - Alemanha'), ('Alemão - Áustria'), ('Alemão - Bélgica'), ('Alemão - Suíça'), ('Amharic - Etiópia'), ('Árabe - Arábia Saudita'), ('Árabe - Egito'), ('Árabe - Líbano'), ('Árabe - Síria'),
 ('Armenian - Armênia'), ('Armenian - Geórgia'), ('Assamese - Índia (Assam)'), ('Awadhi - Índia (Uttar Pradesh)'), ('Azerbaijani - Azerbaijão'), ('Azerbaijani - Irã'), ('Bengali - Bangladesh'), ('Bengali - Índia (Bengala Ocidental)'),
 ('Bhojpuri - Índia (Bihar, Uttar Pradesh)'), ('Burmês - Mianmar'), ('Cebuano - Filipinas'), ('Chhattisgarhi - Índia (Chhattisgarh)'), ('Chinês (Mandarim) - China'), ('Chinês (Mandarim) - Cingapura'), ('Chinês (Mandarim) - Malásia'), ('Chinês (Mandarim) - Taiwan'),
 ('Coreano - Coreia do Norte'), ('Coreano - Coreia do Sul'), ('Dutch - Bélgica'), ('Dutch - Holanda'), ('Espanhol - Argentina'), ('Espanhol - Colômbia'), ('Espanhol - Espanha'), ('Espanhol - México'), ('Francês - Bélgica'), ('Francês - Canadá'), ('Francês - França'),
