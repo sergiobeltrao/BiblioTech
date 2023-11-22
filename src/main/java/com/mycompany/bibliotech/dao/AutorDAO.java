@@ -17,16 +17,12 @@ public class AutorDAO {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("INSERT INTO AUTOR (ID_AUTOR, AUT_NOME_AUTOR, AUT_DATA_NASC, AUT_NACIONALIDADE, AUT_BIBLIOGRAFIA, AUT_SEXO) VALUES(NULL, ?, ?, ?, ?, ?)");
-
-            java.util.Date utilDate = aut.getDataDeNascimento();
-            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+            stmt = con.prepareStatement("INSERT INTO AUTOR (ID_AUTOR, AUT_NOME_AUTOR, AUT_NACIONALIDADE, AUT_BIBLIOGRAFIA, AUT_SEXO) VALUES(NULL, ?, ?, ?, ?)");
 
             stmt.setString(1, aut.getNome());
-            stmt.setDate(2, sqlDate);
-            stmt.setString(3, aut.getNacionalidade());
-            stmt.setString(4, aut.getBibliografia());
-            stmt.setString(5, aut.getSexo());
+            stmt.setString(2, aut.getNacionalidade());
+            stmt.setString(3, aut.getBibliografia());
+            stmt.setString(4, aut.getSexo());
 
             // Para preparar o SQL e executar
             stmt.executeUpdate();
@@ -56,7 +52,6 @@ public class AutorDAO {
 
                 autor.setId(rs.getInt("ID_AUTOR"));
                 autor.setNome(rs.getString("AUT_NOME_AUTOR"));
-                autor.setDataDeNascimento(rs.getDate("AUT_DATA_NASC"));
                 autor.setNacionalidade(rs.getString("AUT_NACIONALIDADE"));
                 autor.setBibliografia(rs.getString("AUT_BIBLIOGRAFIA"));
                 autor.setSexo(rs.getString("AUT_SEXO"));
