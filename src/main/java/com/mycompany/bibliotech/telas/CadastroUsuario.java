@@ -670,7 +670,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
-        enterButton.setText("Atualizar cadastro");
+        enterButton.setText("Cadastrar");
         enterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enterButtonActionPerformed(evt);
