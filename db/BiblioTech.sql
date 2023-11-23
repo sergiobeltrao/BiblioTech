@@ -83,8 +83,12 @@ CREATE TABLE AUTOR(
 	AUT_SEXO ENUM ('MASC', 'FEM', 'OUTRO')
 );
     
-INSERT INTO AUTOR ( AUT_NOME_AUTOR, AUT_NACIONALIDADE, AUT_SEXO) 
- VALUES ('Laura Bens', 'Brasil - Brasileira', 'FEM' );
+INSERT INTO AUTOR ( AUT_NOME_AUTOR, AUT_NACIONALIDADE, AUT_SEXO) VALUES
+('Laura Bens', 'Brasil - Brasileira', 'FEM' ),
+('Gabriel Torres', 'Brasil - Brasileira', 'MASC' ),
+('Paulo Coelho', 'Brasil - Brasileira', 'MASC' ),
+('George R. R. Martin', 'Estados Unidos - Americana', 'MASC' ),
+('Agatha Christie', 'Reino Unido - Britânica', 'FEM');
 
 
 CREATE TABLE AVALIACAO (

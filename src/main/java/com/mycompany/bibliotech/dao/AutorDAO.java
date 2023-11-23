@@ -84,4 +84,32 @@ public class AutorDAO {
             JOptionPane.showMessageDialog(null, "Erro ao ler a tabela de nacionalidades: " + ex);
         }
     }
+
+    public static void buscarAutor(JComboBox<String> comboBox, String busca) {
+        try {
+            Connection con = ConnectionFactory.getConnection();
+            PreparedStatement stmt = null;
+
+            stmt = con.prepareStatement("SELECT AUT_NOME_AUTOR FROM AUTOR WHERE AUT_NOME_AUTOR LIKE ?");
+
+            stmt.setString(1, "%" + busca + "%");
+
+            ResultSet resultado = stmt.executeQuery();
+
+            comboBox.removeAllItems();
+            boolean encontrouResultado = false;
+
+            while (resultado.next()) {
+                encontrouResultado = true;
+                comboBox.addItem(resultado.getString("AUT_NOME_AUTOR"));
+            }
+
+            if (!encontrouResultado) {
+                comboBox.addItem("Nada encontrado");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao ler a tabela de autores: " + ex);
+        }
+    }
+
 }

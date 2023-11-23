@@ -107,6 +107,11 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         btnTelaPrinCadAutor = new javax.swing.JButton();
         btnLimparAutor = new javax.swing.JButton();
         btnProximaAbaAutor = new javax.swing.JButton();
+        cboxResultadoBuscaAutor = new javax.swing.JComboBox<>();
+        txtAutorPesquisado = new javax.swing.JTextField();
+        btnBuscarAutor = new javax.swing.JButton();
+        btnAdicionarAutor = new javax.swing.JButton();
+        txtAutoresSelecionados = new javax.swing.JTextField();
         cadAvaliacao = new javax.swing.JPanel();
         txtDeBoasVindasAvaliacao = new javax.swing.JTextField();
         cboxAvaliacaoDoLivro = new javax.swing.JComboBox<>();
@@ -336,7 +341,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                         .addGap(16, 16, 16))))
         );
 
-        janelaDeAbas.addTab("Cadastrar Livro", cadLivros);
+        janelaDeAbas.addTab("Livro", cadLivros);
 
         cadAutor.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -392,6 +397,31 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             }
         });
 
+        cboxResultadoBuscaAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        cboxResultadoBuscaAutor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resultado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+
+        txtAutorPesquisado.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txtAutorPesquisado.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pesquisar Autor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+
+        btnBuscarAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        btnBuscarAutor.setText("Buscar");
+        btnBuscarAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarAutorActionPerformed(evt);
+            }
+        });
+
+        btnAdicionarAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        btnAdicionarAutor.setText("Adicionar");
+        btnAdicionarAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarAutorActionPerformed(evt);
+            }
+        });
+
+        txtAutoresSelecionados.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txtAutoresSelecionados.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Autores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+
         javax.swing.GroupLayout cadAutorLayout = new javax.swing.GroupLayout(cadAutor);
         cadAutor.setLayout(cadAutorLayout);
         cadAutorLayout.setHorizontalGroup(
@@ -400,20 +430,30 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtDeBoasVindasAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(cadAutorLayout.createSequentialGroup()
-                            .addComponent(btnTelaPrinCadAutor)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnLimparAutor)
-                            .addGap(902, 902, 902)
-                            .addComponent(btnProximaAbaAutor))
-                        .addGroup(cadAutorLayout.createSequentialGroup()
-                            .addGroup(cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNomeDoAutor)
-                                .addComponent(cboxAutorSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cboxNacionalidadeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(813, 813, 813))))
-                .addContainerGap(40, Short.MAX_VALUE))
+                    .addGroup(cadAutorLayout.createSequentialGroup()
+                        .addGap(727, 727, 727)
+                        .addComponent(btnTelaPrinCadAutor)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnLimparAutor)
+                        .addGap(202, 202, 202)
+                        .addComponent(btnProximaAbaAutor)))
+                .addContainerGap(13, Short.MAX_VALUE))
+            .addGroup(cadAutorLayout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addGroup(cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtAutorPesquisado, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboxResultadoBuscaAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAutoresSelecionados, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAdicionarAutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBuscarAutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtNomeDoAutor)
+                    .addComponent(cboxAutorSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cboxNacionalidadeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(214, 214, 214))
         );
         cadAutorLayout.setVerticalGroup(
             cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -421,20 +461,32 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(txtDeBoasVindasAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(txtNomeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cboxAutorSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cboxNacionalidadeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
+                .addGroup(cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(cadAutorLayout.createSequentialGroup()
+                        .addGroup(cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtAutorPesquisado, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBuscarAutor))
+                        .addGap(18, 18, 18)
+                        .addComponent(cboxResultadoBuscaAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addGroup(cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtAutoresSelecionados, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAdicionarAutor)))
+                    .addGroup(cadAutorLayout.createSequentialGroup()
+                        .addComponent(txtNomeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cboxAutorSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(cboxNacionalidadeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(57, 57, 57)
                 .addGroup(cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLimparAutor)
                     .addComponent(btnTelaPrinCadAutor)
+                    .addComponent(btnLimparAutor)
                     .addComponent(btnProximaAbaAutor))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        janelaDeAbas.addTab("Cadastrar Autor", cadAutor);
+        janelaDeAbas.addTab("Autor", cadAutor);
 
         cadAvaliacao.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -530,7 +582,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                 .addGap(16, 16, 16))
         );
 
-        janelaDeAbas.addTab("Avaliar Livro", cadAvaliacao);
+        janelaDeAbas.addTab("Avaliação", cadAvaliacao);
 
         pnSelect.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -661,7 +713,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             codigoDoErro = 9;
         }
 
-        // Verifica se os campos obrigatórios da aba Avaliar Livro foram preenchidos corretamente.
+        // Verifica se os campos obrigatórios da aba Avaliação foram preenchidos corretamente.
         if (avaliarLivroAvaliacao.equals("Não Informada")) {
             codigoDoErro = 10;
         }
@@ -740,7 +792,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
     public void listarNacionalidades() {
         AutorDAO.listaDeNacionalidades(cboxNacionalidadeDoAutor);
-
     }
 
     public void listarCategorias() {
@@ -938,6 +989,29 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_formatedIsbnActionPerformed
 
+    private void btnBuscarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAutorActionPerformed
+        String pesquisa = txtAutorPesquisado.getText();
+        AutorDAO.buscarAutor(cboxResultadoBuscaAutor, pesquisa);
+    }//GEN-LAST:event_btnBuscarAutorActionPerformed
+
+    private void btnAdicionarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarAutorActionPerformed
+        String autorSelecionado = cboxResultadoBuscaAutor.getSelectedItem().toString();
+        String autoresSelecionados = txtAutoresSelecionados.getText();
+
+        if (autorSelecionado.equals("Selecione") || autorSelecionado.equals("Nada encontrado")) {
+            JOptionPane.showMessageDialog(null, "Selecione um valor válido.");
+        } else {
+            if (autoresSelecionados.isEmpty()) {
+                txtAutoresSelecionados.setText(autorSelecionado);
+            } else {
+                txtAutoresSelecionados.setText(autoresSelecionados + ", " + cboxResultadoBuscaAutor.getSelectedItem().toString());
+            }
+        }
+        // Limpa os campos depois da adicionar o autor.
+        txtAutorPesquisado.setText("");
+        cboxResultadoBuscaAutor.removeAllItems();
+    }//GEN-LAST:event_btnAdicionarAutorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -976,6 +1050,8 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane boxComentarioAvaliacao;
     private javax.swing.JScrollPane boxSinopse;
+    private javax.swing.JButton btnAdicionarAutor;
+    private javax.swing.JButton btnBuscarAutor;
     private javax.swing.JButton btnDeletarLivro;
     private javax.swing.JButton btnEditarLivro;
     private javax.swing.JButton btnFinalizarCadastro;
@@ -996,6 +1072,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboxIsbnSelect;
     private javax.swing.JComboBox<String> cboxLivroIdioma;
     private javax.swing.JComboBox<String> cboxNacionalidadeDoAutor;
+    private javax.swing.JComboBox<String> cboxResultadoBuscaAutor;
     private javax.swing.JComboBox<String> cboxSubCategoria;
     private javax.swing.JFormattedTextField formatedIsbn;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1003,6 +1080,8 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     private javax.swing.JPanel pnSelect;
     private javax.swing.JTable tbSelect;
     private javax.swing.JTextField txtAnoDePublicacao;
+    private javax.swing.JTextField txtAutorPesquisado;
+    private javax.swing.JTextField txtAutoresSelecionados;
     private javax.swing.JTextArea txtComentarioAvaliacao;
     private javax.swing.JTextField txtDeBoasVindasAutor;
     private javax.swing.JTextField txtDeBoasVindasAvaliacao;
