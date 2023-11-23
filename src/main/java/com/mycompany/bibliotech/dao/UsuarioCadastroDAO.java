@@ -136,7 +136,7 @@ public class UsuarioCadastroDAO {
         ConnectionFactory.closeConnection(con, stmt);
     }
 }
-public void buscarUsuarioPorNome(Usuario user, String userNome) {
+public Usuario obterUsuarioPorNome(String userNome) {
     Connection con = ConnectionFactory.getConnection();
     PreparedStatement stmt = null;
 
@@ -148,23 +148,35 @@ public void buscarUsuarioPorNome(Usuario user, String userNome) {
         stmt = con.prepareStatement("SELECT * FROM USUARIO WHERE USE_NICK = ?");
         stmt.setString(1, userNome);
 
-        ResultSet rs = stmt.executeQuery();
+        ResultSet resultSet = stmt.executeQuery();
 
-        if (rs.next()) {
-            // Adapte conforme necessário com os nomes reais das colunas no seu banco de dados
-            user.setUserId(rs.getInt("USE_ID"));
-            user.setUserEmail(rs.getString("USE_EMAIL"));
-            
+        if (resultSet.next()) {
+            Usuario user = new Usuario();
+                user.setUserId(resultSet.getInt("USE_ID"));
+                user.setUserNick(resultSet.getString("USE_NICK"));
+                user.setUserSenha(resultSet.getString("USE_SENHA"));
+                user.setUserType(resultSet.getString("USE_TYPE"));
+                user.setUserNome(resultSet.getString("USE_NOME"));
+                user.setUserSobrenome(resultSet.getString("USE_SOBRENOME"));
+                user.setUserEmail(resultSet.getString("USE_EMAIL"));
+                user.setUserSexo(resultSet.getString("USE_SEXO"));
+                user.setUserDataNasc(resultSet.getDate("USE_DATANASC"));
+                user.setUserCpf(resultSet.getString("USE_CPF"));
+
+            return user;
         } else {
-            JOptionPane.showMessageDialog(null, "Usuário não encontrado.", "Erro", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Usuário não encontrado.");
+            return null;
         }
     } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Erro ao buscar usuário: " + ex.getMessage());
+        System.out.println("Erro ao buscar usuário: " + ex.getMessage());
         ex.printStackTrace();
+        return null;
     } finally {
         ConnectionFactory.closeConnection(con, stmt);
     }
 }
+
 
 
 

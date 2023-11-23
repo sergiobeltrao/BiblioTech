@@ -36,13 +36,19 @@ import java.util.logging.Logger;
 public class EdicaoUsuario extends javax.swing.JFrame {
 
 
-    public EdicaoUsuario() {
-        
-       
-        /*String cpf = cpfTxt.getText();
-        CpfDAO cpfdao = new CpfDAO(cpf);
-        
-        user.setUserNick(nickTxt.getText());
+    public EdicaoUsuario(Usuario user) {
+        /*
+        //Usuario user = new Usuario();
+        Endereco end = new Endereco();
+        Favoritos fav = new Favoritos();
+        Telefone tel = new Telefone();
+        UsuarioCadastroDAO dao = new UsuarioCadastroDAO();
+        EnderecoDAO enddao = new EnderecoDAO();
+        FavoritosDAO favdao = new FavoritosDAO();
+        TelefoneDAO fonedao = new TelefoneDAO();
+       */
+     //   nickTxt.setText(user.getUserNick());
+     /*   user.setUserNick(nickTxt.getText());
         user.setUserSenha(new String(senhaTxt.getPassword()));
         user.setUserType(cargoBox.getSelectedItem().toString());
         user.setUserNome(nomeTxt.getText());
@@ -50,33 +56,65 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         // user.setUserDataNasc(dataNascChooser.getDate());
         user.setUserEmail(emailTxt.getText());
         user.setUserSexo(sexoBox.getSelectedItem().toString());
-        user.setUserDataNasc(dataNascChooser.getDate());
-        user.setUserCpf(cpfTxt.getText());*/
-       /* tel.setTipo(telefoneTipoBox.getSelectedItem().toString());
-        tel.setTelefone(foneTxt.setText());
+       // user.setUserDataNasc(dataNascChooser.getDate());
+        user.setUserCpf(cpfTxt.getText()); */
+        /*
+       tel.setTipo(telefoneTipoBox.getSelectedItem().toString());
+        tel.setTelefone(foneTxt.getText());
+       
         end.setCep(cepTxt.getText());
         end.setPais(paisTxt.getText());
         end.setRua(endTxt.getText());
         end.setUf(ufTxt.getText());
         end.setComp(compTxt.getText());
         end.setCidade(cidadeTxt.getText());
-        end.setNum(numTxt.getText());
+        end.setNum(Integer.parseInt(numTxt.getText()));
         end.setBairro(bairroTxt.getText());
-        String categoriaSelecionada = cboxCategoria1.getSelectedItem().toString();
-        String subCategoriaSelecionada = cboxSubCategoria1.getSelectedItem().toString();
-        fav.setFavCategoria1(categoriaSelecionada);
-        fav.setFavSub1(subCategoriaSelecionada);
-        String categoriaSelecionad = cboxCategoria2.getSelectedItem().toString();
-        String subCategoriaSelecionad = cboxSubCategoria2.getSelectedItem().toString();
-        fav.setFavCategoria2(categoriaSelecionad);
-        fav.setFavSub2(subCategoriaSelecionad);
-       */
-        
+        fav.setFavCategoria1(cboxCategoria1.getSelectedItem().toString());
+        fav.setFavSub1(cboxSubCategoria1.getSelectedItem().toString());
+        fav.setFavCategoria2(cboxCategoria2.getSelectedItem().toString());
+        fav.setFavSub2(cboxSubCategoria2.getSelectedItem().toString());
+        */
         initComponents();
         listarCategorias1();
         listarCategorias2();
+        setUserValues(user);
+        
+      /*  if (nickTxt != null && user != null) {
+            nickTxt.setText(user.getUserNick());}
+            
+        if (nickTxt != null && user != null) {
+            nickTxt.setText(user.getUserNick());}
+*/
     }
-
+    private void setUserValues(Usuario user) {
+       if (user != null) {
+            // Configuração dos campos com base no objeto Usuario
+            nickTxt.setText(user.getUserNick());
+            //senhaTxt.setText(user.getUserSenha());
+            cargoBox.setSelectedItem(user.getUserType());
+            nomeTxt.setText(user.getUserNome());
+            sobrenomeTxt.setText(user.getUserSobrenome());
+            dataNascChooser.setDate(user.getUserDataNasc());
+            emailTxt.setText(user.getUserEmail());
+            sexoBox.setSelectedItem(user.getUserSexo());
+            cpfTxt.setText(user.getUserCpf());
+            // Adicione outros campos conforme necessário
+        }
+    }
+      /* if (endereco != null) {
+            // Configuração dos campos com base no objeto Endereco
+            cepTxt.setText(endereco.getCep());
+            paisTxt.setText(endereco.getPais());
+            ruaTxt.setText(endereco.getRua());
+            ufTxt.setText(endereco.getUf());
+            compTxt.setText(endereco.getComp());
+            cidadeTxt.setText(endereco.getCidade());
+            numTxt.setText(endereco.getNum());
+            bairroTxt.setText(endereco.getBairro());
+            // Adicione outros campos conforme necessário
+        } */
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -999,17 +1037,18 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
     Usuario user = new Usuario();
     
-    String userNome = JOptionPane.showInputDialog(this, "Digite o nome do usuário a ser editado:");
+    String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:");
 
     if (userNome != null && !userNome.isEmpty()) {
        // user.setUserNick(userNome);
-        userdao.buscarUsuarioPorNome(user, userNome);
+        user = userdao.obterUsuarioPorNome(userNome);
 
         // Verifique se os dados foram preenchidos em 'user' após a chamada do método
 
         if (user.getUserId() != 0) {
             // Abre a tela de edição com os dados do usuário
-            new EdicaoUsuario().setVisible(true);
+            EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user);
+           edicaoUsuarioFrame.setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -1161,7 +1200,8 @@ private class Usuario {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EdicaoUsuario().setVisible(true);
+                 Usuario user = new Usuario();
+                new EdicaoUsuario(user).setVisible(true);
             }
         });
     }
