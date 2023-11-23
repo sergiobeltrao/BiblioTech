@@ -153,8 +153,8 @@ public void buscarUsuarioPorNome(Usuario user, String userNome) {
         if (rs.next()) {
             // Adapte conforme necessário com os nomes reais das colunas no seu banco de dados
             user.setUserId(rs.getInt("USE_ID"));
-            //fone.setTelefone(rs.getString("TEL_TELEFONE"));
             user.setUserEmail(rs.getString("USE_EMAIL"));
+            
         } else {
             JOptionPane.showMessageDialog(null, "Usuário não encontrado.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
