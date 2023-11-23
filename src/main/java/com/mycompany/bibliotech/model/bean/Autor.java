@@ -6,7 +6,6 @@ public class Autor {
     private String nome;
     private String sexo;
     private String nacionalidade;
-    private String bibliografia;
 
     public int getId() {
         return id;
@@ -38,14 +37,6 @@ public class Autor {
 
     public void setNacionalidade(String nacionalidade) {
         this.nacionalidade = nacionalidade;
-    }
-
-    public String getBibliografia() {
-        return bibliografia;
-    }
-
-    public void setBibliografia(String bibliografia) {
-        this.bibliografia = bibliografia;
     }
 
 }

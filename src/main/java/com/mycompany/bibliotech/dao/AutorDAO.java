@@ -17,12 +17,11 @@ public class AutorDAO {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("INSERT INTO AUTOR (ID_AUTOR, AUT_NOME_AUTOR, AUT_NACIONALIDADE, AUT_BIBLIOGRAFIA, AUT_SEXO) VALUES(NULL, ?, ?, ?, ?)");
+            stmt = con.prepareStatement("INSERT INTO AUTOR (ID_AUTOR, AUT_NOME_AUTOR, AUT_NACIONALIDADE, AUT_SEXO) VALUES(NULL, ?, ?, ?)");
 
             stmt.setString(1, aut.getNome());
             stmt.setString(2, aut.getNacionalidade());
-            stmt.setString(3, aut.getBibliografia());
-            stmt.setString(4, aut.getSexo());
+            stmt.setString(3, aut.getSexo());
 
             // Para preparar o SQL e executar
             stmt.executeUpdate();
@@ -53,7 +52,6 @@ public class AutorDAO {
                 autor.setId(rs.getInt("ID_AUTOR"));
                 autor.setNome(rs.getString("AUT_NOME_AUTOR"));
                 autor.setNacionalidade(rs.getString("AUT_NACIONALIDADE"));
-                autor.setBibliografia(rs.getString("AUT_BIBLIOGRAFIA"));
                 autor.setSexo(rs.getString("AUT_SEXO"));
 
                 autores.add(autor);

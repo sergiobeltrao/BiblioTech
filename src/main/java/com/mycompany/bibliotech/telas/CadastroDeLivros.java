@@ -104,8 +104,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         txtNomeDoAutor = new javax.swing.JTextField();
         cboxAutorSexo = new javax.swing.JComboBox<>();
         cboxNacionalidadeDoAutor = new javax.swing.JComboBox<>();
-        boxBibliografiaAutor = new javax.swing.JScrollPane();
-        txtAutorBibliografia = new javax.swing.JTextArea();
         btnTelaPrinCadAutor = new javax.swing.JButton();
         btnLimparAutor = new javax.swing.JButton();
         btnProximaAbaAutor = new javax.swing.JButton();
@@ -370,15 +368,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             }
         });
 
-        boxBibliografiaAutor.setBorder(null);
-
-        txtAutorBibliografia.setColumns(20);
-        txtAutorBibliografia.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtAutorBibliografia.setLineWrap(true);
-        txtAutorBibliografia.setRows(5);
-        txtAutorBibliografia.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bibliografia", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
-        boxBibliografiaAutor.setViewportView(txtAutorBibliografia);
-
         btnTelaPrinCadAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         btnTelaPrinCadAutor.setText("Tela Principal");
         btnTelaPrinCadAutor.addActionListener(new java.awt.event.ActionListener() {
@@ -423,8 +412,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                                 .addComponent(txtNomeDoAutor)
                                 .addComponent(cboxAutorSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(cboxNacionalidadeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addComponent(boxBibliografiaAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 795, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGap(813, 813, 813))))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         cadAutorLayout.setVerticalGroup(
@@ -433,15 +421,12 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(txtDeBoasVindasAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(cadAutorLayout.createSequentialGroup()
-                        .addComponent(txtNomeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cboxAutorSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cboxNacionalidadeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(boxBibliografiaAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addComponent(txtNomeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cboxAutorSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(cboxNacionalidadeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77)
                 .addGroup(cadAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLimparAutor)
                     .addComponent(btnTelaPrinCadAutor)
@@ -630,7 +615,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         String autorNome = txtNomeDoAutor.getText();
         String autorSexo = cboxAutorSexo.getSelectedItem().toString();
         String autorNacionalidade = cboxNacionalidadeDoAutor.getSelectedItem().toString();
-        String autorBibliografia = txtAutorBibliografia.getText();
 
         // Captura informações preenchidas na aba Avaliar Livro.
         String avaliarLivroAvaliacao = cboxAvaliacaoDoLivro.getSelectedItem().toString();
@@ -724,7 +708,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
                 autor.setNome(autorNome);
                 autor.setNacionalidade(autorNacionalidade);
-                autor.setBibliografia(autorBibliografia);
 
                 String valorSelecionado = "OUTRO"; // Valor padrão.
 
@@ -835,7 +818,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         txtNomeDoAutor.setText("");
         cboxAutorSexo.setSelectedItem("Não Informado");
         cboxNacionalidadeDoAutor.setSelectedItem("Não Informada");
-        txtAutorBibliografia.setText("");
 
     }//GEN-LAST:event_btnLimparAutorActionPerformed
 
@@ -992,7 +974,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane boxBibliografiaAutor;
     private javax.swing.JScrollPane boxComentarioAvaliacao;
     private javax.swing.JScrollPane boxSinopse;
     private javax.swing.JButton btnDeletarLivro;
@@ -1022,7 +1003,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     private javax.swing.JPanel pnSelect;
     private javax.swing.JTable tbSelect;
     private javax.swing.JTextField txtAnoDePublicacao;
-    private javax.swing.JTextArea txtAutorBibliografia;
     private javax.swing.JTextArea txtComentarioAvaliacao;
     private javax.swing.JTextField txtDeBoasVindasAutor;
     private javax.swing.JTextField txtDeBoasVindasAvaliacao;
