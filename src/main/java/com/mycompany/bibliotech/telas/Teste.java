@@ -9,16 +9,15 @@ public class Teste extends javax.swing.JFrame {
 
     public Teste() {
         initComponents();
-<<<<<<< HEAD
+
         txtAlfabeto.setForeground(new java.awt.Color(0, 0, 0));
         txtAlfabeto.addItem("");
         txtAlfabeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "A", "B", "C", "D", "E", "F", "J", "F", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" }));
         // Lembre-se de descomentar isso se quiser usar o método "listaTituloDosLivros"
         // listarBusca();
-=======
+
         listarCategorias();
-        
->>>>>>> 21ddbd7567fd979f0e10044703b43aa05bc441cf
+
     }
 
     // Você só precisa disso para listar TODOS os livros (sem usar a busca).
@@ -57,11 +56,8 @@ public class Teste extends javax.swing.JFrame {
 
         txtNomeLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<<<<<<< HEAD
                 txtNomeLivroActionPerformed(evt);
-=======
                 txtNomeLivroeActionPerformed(evt);
->>>>>>> 21ddbd7567fd979f0e10044703b43aa05bc441cf
             }
         });
 
@@ -206,7 +202,7 @@ public class Teste extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
 
-<<<<<<< HEAD
+
     private void txtNomeLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeLivroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeLivroActionPerformed
@@ -214,7 +210,7 @@ public class Teste extends javax.swing.JFrame {
     private void txtAlfabetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlfabetoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAlfabetoActionPerformed
-=======
+
     private void txtNomeLivroeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeLivroeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeLivroeActionPerformed
@@ -239,7 +235,7 @@ public class Teste extends javax.swing.JFrame {
             cboxSubCategoriaBusca.addItem("Não Informada");
         }
     }//GEN-LAST:event_cboxCategoriaBuscaActionPerformed
->>>>>>> 21ddbd7567fd979f0e10044703b43aa05bc441cf
+
 
     /**
      * @param args the command line arguments

@@ -68,7 +68,7 @@ public class TelaAvaliacaoDAO {
             // Tive que mandar os % do comando SQL pra cá. Se usar direto no prepareStatement vai
             // dar o erro "parameter index out of range (1 number of parameters which is 0)"
             
-            stmt.setString(1, "%" + busca1  );
+            stmt.setString(1,   busca1 + "%" );
 
             //PreparedStatement comando = con.prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery();
