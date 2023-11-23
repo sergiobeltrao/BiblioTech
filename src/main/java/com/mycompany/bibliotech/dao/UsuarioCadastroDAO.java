@@ -106,7 +106,7 @@ public class UsuarioCadastroDAO {
                 return;
             }
 
-            stmt = con.prepareStatement("UPDATE USUARIO SET USE_NICK=?, USE_SENHA=?, USE_TYPE=?, USE_NOME=?, USE_SOBRENOME=?, USE_DATANASC=?, USE_EMAIL=?, USE_CRIA=?, USE_SEXO=?, USE_CPF=? WHERE USE_ID=?");
+            stmt = con.prepareStatement("UPDATE USUARIO SET USE_NICK=?, USE_SENHA=?, USE_TYPE=?, USE_NOME=?, USE_SOBRENOME=?, USE_DATANASC=?, USE_EMAIL=?, USE_SEXO=?, USE_CPF=? WHERE USE_ID=?");
 
             stmt.setString(1, user.getUserNick());
             stmt.setString(2, user.getUserSenha());

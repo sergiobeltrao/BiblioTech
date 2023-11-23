@@ -846,7 +846,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         String cpf = cpfTxt.getText();
         CpfDAO cpfdao = new CpfDAO(cpf);
         
-         Hash hash = new Hash();
+        /* Hash hash = new Hash();
         
         String senhaDigitada = senhaTxt.getText();
         String hashDaSenha = "";
@@ -875,9 +875,9 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "A senha e a re-senha não coincidem. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
             return; // Não prossegue com o cadastro se as senhas não coincidirem
         }
-
+*/
         user.setUserNick(nickTxt.getText());
-        user.setUserSenha(new String(hashDaSenha));
+      //  user.setUserSenha(new String(hashDaSenha));
 
         String valorUserCargo = cargoBox.getSelectedItem().toString();
         String valorSelecionado = "CLIENTE";
