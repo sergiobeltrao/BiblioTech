@@ -124,11 +124,8 @@
             </Property>
           </Properties>
           <Events>
-<<<<<<< HEAD
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomeLivroActionPerformed"/>
-=======
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomeLivroeActionPerformed"/>
->>>>>>> 21ddbd7567fd979f0e10044703b43aa05bc441cf
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
