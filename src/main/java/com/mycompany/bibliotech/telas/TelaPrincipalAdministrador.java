@@ -253,27 +253,27 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
     private void edicaoUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edicaoUserButtonActionPerformed
 
-        UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
-        Usuario user = new Usuario();
+       UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
+    Usuario user = new Usuario();
+    
+    String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:");
 
-        String userNome = JOptionPane.showInputDialog(this, "Digite o nome do usuário a ser editado:");
+    if (userNome != null && !userNome.isEmpty()) {
+        // Chama o método na UsuarioCadastroDAO para obter os dados do usuário
+        user = userdao.obterUsuarioPorNome(userNome);
 
-        if (userNome != null && !userNome.isEmpty()) {
-            // user.setUserNick(userNome);
-            userdao.buscarUsuarioPorNome(user, userNome);
-
-            // Verifique se os dados foram preenchidos em 'user' após a chamada do método
-
-            if (user.getUserId() != 0) {
-                // Abre a tela de edição com os dados do usuário
-                new EdicaoUsuario().setVisible(true);
-                this.setVisible(false);
-            } else {
-                JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
-            }
+        // Verifica se os dados foram preenchidos em 'user' após a chamada do método
+        if (user.getUserId() != 0) {
+            // Abre a tela de edição com os dados do usuário
+            EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user);
+            edicaoUsuarioFrame.setVisible(true);
+            this.setVisible(false);
         } else {
-            JOptionPane.showMessageDialog(this, "Digite um nome de usuário válido", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
         }
+    } else {
+        JOptionPane.showMessageDialog(this, "Digite um nome de usuário válido", "Erro", JOptionPane.ERROR_MESSAGE);
+    }
         }
 
         /*    // Exibir um JOptionPane para obter o nick do usuário
