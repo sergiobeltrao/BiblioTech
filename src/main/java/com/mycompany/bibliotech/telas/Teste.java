@@ -1,14 +1,16 @@
 package com.mycompany.bibliotech.telas;
 
+import com.mycompany.bibliotech.dao.LivroCategoriaDAO;
 import com.mycompany.bibliotech.dao.TelaAvaliacaoDAO;
 import javax.swing.JOptionPane;
+
 
 public class Teste extends javax.swing.JFrame {
 
     public Teste() {
         initComponents();
-        // Lembre-se de descomentar isso se quiser usar o método "listaTituloDosLivros"
-        // listarBusca();
+        listarCategorias();
+        
     }
 
     // Você só precisa disso para listar TODOS os livros (sem usar a busca).
@@ -29,10 +31,12 @@ public class Teste extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtAlfabeto = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        cboxCategoriaBusca = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        cboxSubCategoriaBusca = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        painelBusca.setBackground(new java.awt.Color(255, 255, 255));
 
         txtNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtNome.setForeground(new java.awt.Color(0, 0, 0));
@@ -43,9 +47,9 @@ public class Teste extends javax.swing.JFrame {
             }
         });
 
-        cboxTeste.addActionListener(new java.awt.event.ActionListener() {
+        txtNomeLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboxTesteActionPerformed(evt);
+                txtNomeLivroeActionPerformed(evt);
             }
         });
 
@@ -69,6 +73,22 @@ public class Teste extends javax.swing.JFrame {
         jLabel2.setText("Nome por ordem alfabetica: ");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
+        cboxCategoriaBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxCategoriaBuscaActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Categoria: ");
+        jLabel3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Sub-Categoria: ");
+        jLabel4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
         javax.swing.GroupLayout painelBuscaLayout = new javax.swing.GroupLayout(painelBusca);
         painelBusca.setLayout(painelBuscaLayout);
         painelBuscaLayout.setHorizontalGroup(
@@ -76,16 +96,20 @@ public class Teste extends javax.swing.JFrame {
             .addGroup(painelBuscaLayout.createSequentialGroup()
                 .addGap(167, 167, 167)
                 .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboxSubCategoriaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(cboxCategoriaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
                     .addGroup(painelBuscaLayout.createSequentialGroup()
                         .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtAlfabeto, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtNomeLivro, javax.swing.GroupLayout.Alignment.LEADING, 0, 350, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addComponent(btnBuscar))
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addContainerGap(661, Short.MAX_VALUE))
+                        .addComponent(btnBuscar)))
+                .addContainerGap(659, Short.MAX_VALUE))
         );
         painelBuscaLayout.setVerticalGroup(
             painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,7 +126,15 @@ public class Teste extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(txtAlfabeto, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(434, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cboxCategoriaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cboxSubCategoriaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(275, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -147,9 +179,30 @@ public class Teste extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
 
-    private void cboxTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxTesteActionPerformed
+    private void txtNomeLivroeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeLivroeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cboxTesteActionPerformed
+    }//GEN-LAST:event_txtNomeLivroeActionPerformed
+
+      public void listarCategorias() {
+        LivroCategoriaDAO.listarCategorias(cboxCategoriaBusca);
+    }
+
+    public void listarSubCategoria(String idCategoria) {
+        LivroCategoriaDAO.listarSubCategoria(cboxSubCategoriaBusca, idCategoria);
+    }
+    
+    private void cboxCategoriaBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxCategoriaBuscaActionPerformed
+        String dados[] = String.valueOf(cboxCategoriaBusca.getSelectedItem()).split(" - ");
+        if (!dados[0].equalsIgnoreCase("Não Informada")) {
+            cboxSubCategoriaBusca.removeAllItems();
+            cboxSubCategoriaBusca.addItem("Não Informada");
+            listarSubCategoria(dados[0]);
+
+        } else {
+            cboxSubCategoriaBusca.removeAllItems();
+            cboxSubCategoriaBusca.addItem("Não Informada");
+        }
+    }//GEN-LAST:event_cboxCategoriaBuscaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,8 +241,12 @@ public class Teste extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JComboBox<String> cboxCategoriaBusca;
+    private javax.swing.JComboBox<String> cboxSubCategoriaBusca;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel painelBusca;
     private javax.swing.JComboBox<String> txtAlfabeto;
     private javax.swing.JTextField txtNome;
