@@ -85,11 +85,10 @@ public class AutorDAO {
         }
     }
 
-    public static void buscarAutor(JComboBox<String> comboBox, String busca) {
+    public static void pesquisaPorNomeAutor(JComboBox<String> comboBox, String busca) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
         try {
-            Connection con = ConnectionFactory.getConnection();
-            PreparedStatement stmt = null;
-
             stmt = con.prepareStatement("SELECT AUT_NOME_AUTOR FROM AUTOR WHERE AUT_NOME_AUTOR LIKE ?");
 
             stmt.setString(1, "%" + busca + "%");
@@ -109,7 +108,54 @@ public class AutorDAO {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao ler a tabela de autores: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
         }
     }
 
+    public void cadastrarAutor(Autor autor) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        try {
+
+            stmt = con.prepareStatement("INSERT INTO AUTOR (ID_AUTOR, AUT_NOME_AUTOR, AUT_NACIONALIDADE, AUT_SEXO)  VALUES(NULL, ?, ?, ?)");
+
+            stmt.setString(1, autor.getNome());
+            stmt.setString(2, autor.getNacionalidade());
+            stmt.setString(3, autor.getSexo());
+
+            stmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Autor cadastrado com sucesso!");
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no cadastro do autor: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+
+    
+    // INCOMPLETO
+    public void verificaSeAutorJaEscaCadastrado(Autor autor) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        try {
+
+            stmt = con.prepareStatement("SELECT * FROM AUTOR WHERE AUT_NOME_AUTOR = ? AND AUT_NACIONALIDADE = ? AND AUT_SEXO = ?");
+            
+            stmt.setString(1, autor.getNome());
+            stmt.setString(2, autor.getNacionalidade());
+            stmt.setString(3, autor.getSexo());
+
+            stmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Autor cadastrado com sucesso!");
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no cadastro do autor: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
 }
