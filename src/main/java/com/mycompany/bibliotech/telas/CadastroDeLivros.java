@@ -232,7 +232,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         btnDeletarLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         btnDeletarLivro.setText("Deletar");
 
-        formatedIsbn.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ISBN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        formatedIsbn.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ISBN *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
         try {
             formatedIsbn.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("")));
         } catch (java.text.ParseException ex) {
@@ -247,7 +247,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         cboxIsbnSelect.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         cboxIsbnSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "ISBN-13", "ISBN-10" }));
-        cboxIsbnSelect.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        cboxIsbnSelect.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
         cboxIsbnSelect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxIsbnSelectActionPerformed(evt);
@@ -350,7 +350,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         txtDeBoasVindasAutor.setFocusable(false);
 
         txtNomeDoAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtNomeDoAutor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nome", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        txtNomeDoAutor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nome *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
 
         cboxAutorSexo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         cboxAutorSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informado", "Masculino", "Feminino" }));
@@ -467,7 +467,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         cboxAvaliacaoDoLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         cboxAvaliacaoDoLivro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada", "10 - Excelente", "9 - Ótimo", "8 - Muito Bom", "7 - Bom", "6 - Satisfatório", "5 - Regular", "4 - Abaixo da Média", "3 - Ruim", "2 - Muito Ruim", "1 - Péssimo", "0 - Inaceitável" }));
-        cboxAvaliacaoDoLivro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Avaliação", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        cboxAvaliacaoDoLivro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Avaliação *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
         cboxAvaliacaoDoLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxAvaliacaoDoLivroActionPerformed(evt);
@@ -480,7 +480,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         txtComentarioAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtComentarioAvaliacao.setLineWrap(true);
         txtComentarioAvaliacao.setRows(5);
-        txtComentarioAvaliacao.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Comentário da Avaliação", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        txtComentarioAvaliacao.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Comentário da Avaliação *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
         boxComentarioAvaliacao.setViewportView(txtComentarioAvaliacao);
 
         btnTelaPrinCadAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -610,59 +610,145 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         Avaliacao avaliacao = new Avaliacao();
         Login login = ApplicationContext.getLogin();
         ValidadorIsbn validadorIsbn = new ValidadorIsbn();
-
         LivroDAO livrodao = new LivroDAO();
         AutorDAO autordao = new AutorDAO();
         AvaliacaoDAO avaliacaodao = new AvaliacaoDAO();
 
-        String isbnDigitado = formatedIsbn.getText();
+        // Captura informações preenchidas na aba Livro.
+        String livroTitulo = txtTitulo.getText();
+        String livroTipoIsbn = cboxIsbnSelect.getSelectedItem().toString();
+        String livroNumeroIsbn = formatedIsbn.getText();
+        String livroAno = txtAnoDePublicacao.getText();
+        String livroNumeroDePaginas = txtNumeroDePaginas.getText();
+        String livroCategoria = cboxCategoria.getSelectedItem().toString();
+        String livroSubCategoria = cboxSubCategoria.getSelectedItem().toString();
+        String livroEditora = txtNomeDaEditora.getText();
+        String livroIdioma = cboxLivroIdioma.getSelectedItem().toString();
+        String livroSinopse = txtSinopseDoLivro.getText();
 
-        if (livrodao.verificaDuplicidadeIsbn(isbnDigitado).equals(isbnDigitado)) {
-            JOptionPane.showMessageDialog(null, "Esse ISBN já está cadastrado.");
-        } else if (validadorIsbn.valida(isbnDigitado) == false) {
-            JOptionPane.showMessageDialog(null, "ISBN incorreto.");
-        } else {
-            // Livro
-            livro.setTitulo(txtTitulo.getText());
-            livro.setIsbn(formatedIsbn.getText());
-            livro.setAnoDePublicacao(Integer.parseInt(txtAnoDePublicacao.getText()));
-            livro.setNumeroDePaginas(Integer.parseInt(txtNumeroDePaginas.getText()));
-            livro.setIdioma(cboxLivroIdioma.getSelectedItem().toString());
-            livro.setEditora(txtNomeDaEditora.getText());
-            livro.setSinopse(txtSinopseDoLivro.getText());
-            livro.setCategoria(cboxCategoria.getSelectedItem().toString());
-            livro.setSubCategoria(cboxSubCategoria.getSelectedItem().toString());
+        // Captura informações preenchidas na aba Autor.
+        String autorNome = txtNomeDoAutor.getText();
+        String autorSexo = cboxAutorSexo.getSelectedItem().toString();
+        String autorNacionalidade = cboxNacionalidadeDoAutor.getSelectedItem().toString();
+        String autorBibliografia = txtAutorBibliografia.getText();
 
-            // Autor
-            autor.setNome(txtNomeDoAutor.getText());
-            autor.setBibliografia(txtAutorBibliografia.getText());
-            autor.setNacionalidade(cboxNacionalidadeDoAutor.getSelectedItem().toString());
+        // Captura informações preenchidas na aba Avaliar Livro.
+        String avaliarLivroAvaliacao = cboxAvaliacaoDoLivro.getSelectedItem().toString();
+        String avaliarLivroComentario = txtComentarioAvaliacao.getText();
 
-            String valorAutorSexo = cboxAutorSexo.getSelectedItem().toString();
-            String valorSelecionado = "OUTRO"; // Padrão
+        // Verifica se os campos obrigatórios da aba Livro foram preenchidos corretamente.
+        // Atribui um número de erro se não.
+        int codigoDoErro = 0;
 
-            if (valorAutorSexo.equals("Masculino")) {
-                valorSelecionado = "MASC";
-            } else if (valorAutorSexo.equals("Feminino")) {
-                valorSelecionado = "FEM";
-            }
-
-            autor.setSexo(valorSelecionado);
-
-            // Avaliação
-            avaliacao.setAvaliacaoDoUsuario(cboxAvaliacaoDoLivro.getSelectedItem().toString().substring(0, 2));
-            avaliacao.setComentarioAvaliacao(txtComentarioAvaliacao.getText());
-
-            livrodao.create(livro);
-            autordao.create(autor);
-            avaliacaodao.create(avaliacao, txtTitulo.getText(), login.getNick());
-
-            // Para que a leitura da tabela seja feita novamente
-            // após salvar novas informações
-            readJTable();
+        if (livroTitulo.isBlank()) {
+            codigoDoErro = 1;
         }
 
+        if (livroTipoIsbn.equals("Selecione")) {
+            codigoDoErro = 2;
+        }
 
+        if (validadorIsbn.valida(livroNumeroIsbn) == false) {
+            codigoDoErro = 3;
+        }
+
+        if (livrodao.verificaDuplicidadeIsbn(livroNumeroIsbn).equals(livroNumeroIsbn)) {
+            codigoDoErro = 4;
+        }
+
+        if (livroAno.isBlank()) {
+            codigoDoErro = 5;
+        }
+
+        if (livroNumeroDePaginas.isBlank()) {
+            codigoDoErro = 6;
+        }
+
+        if (livroCategoria.equals("Não Informada") || livroSubCategoria.equals("Não Informada")) {
+            codigoDoErro = 7;
+        }
+
+        if (livroIdioma.equals("Não Informado")) {
+            codigoDoErro = 8;
+        }
+
+        // Verifica se os campos obrigatórios da aba Autor foram preenchidos corretamente.
+        if (autorNome.isBlank()) {
+            codigoDoErro = 9;
+        }
+
+        // Verifica se os campos obrigatórios da aba Avaliar Livro foram preenchidos corretamente.
+        if (avaliarLivroAvaliacao.equals("Não Informada")) {
+            codigoDoErro = 10;
+        }
+
+        if (avaliarLivroComentario.isBlank()) {
+            codigoDoErro = 11;
+        }
+
+        // Usa o código de erro atribuído anteriormente e mostra uma mensagem.
+        switch (codigoDoErro) {
+            case 1 ->
+                JOptionPane.showMessageDialog(null, "Digite um título válido para o livro.");
+            case 2 ->
+                JOptionPane.showMessageDialog(null, "Selecione o tipo do ISBN.");
+            case 3 ->
+                JOptionPane.showMessageDialog(null, "ISBN inválido.");
+            case 4 ->
+                JOptionPane.showMessageDialog(null, "Esse ISBN já está cadastrado.");
+            case 5 ->
+                JOptionPane.showMessageDialog(null, "Digite o ano de publicação do livro.");
+            case 6 ->
+                JOptionPane.showMessageDialog(null, "Digite o número de páginas do livro.");
+            case 7 ->
+                JOptionPane.showMessageDialog(null, "Você precisa selecionar a categoria e sub-categoria do livro.");
+            case 8 ->
+                JOptionPane.showMessageDialog(null, "Selecione um idioma para o livro.");
+            case 9 ->
+                JOptionPane.showMessageDialog(null, "Informe o nome do autor do livro.");
+            case 10 ->
+                JOptionPane.showMessageDialog(null, "Selecione uma nota para o livro");
+            case 11 ->
+                JOptionPane.showMessageDialog(null, "Faça o comentário da avaliação");
+            default -> { // Caso nenhum erro seja encontrado.
+
+                livro.setTitulo(livroTitulo);
+                livro.setIsbn(livroNumeroIsbn);
+                livro.setAnoDePublicacao(Integer.parseInt(livroAno));
+                livro.setNumeroDePaginas(Integer.parseInt(livroNumeroDePaginas));
+                livro.setCategoria(livroCategoria);
+                livro.setSubCategoria(livroSubCategoria);
+                livro.setIdioma(livroIdioma);
+                livro.setEditora(livroEditora);
+                livro.setSinopse(livroSinopse);
+
+                autor.setNome(autorNome);
+                autor.setNacionalidade(autorNacionalidade);
+                autor.setBibliografia(autorBibliografia);
+
+                String valorSelecionado = "OUTRO"; // Valor padrão.
+
+                if (autorSexo.equals("Masculino")) {
+                    valorSelecionado = "MASC";
+                } else if (autorSexo.equals("Feminino")) {
+                    valorSelecionado = "FEM";
+                }
+
+                autor.setSexo(valorSelecionado);
+
+                // Avaliação
+                avaliacao.setAvaliacaoDoUsuario(avaliarLivroAvaliacao.substring(0, 2));
+                avaliacao.setComentarioAvaliacao(avaliarLivroComentario);
+
+                livrodao.create(livro);
+                autordao.create(autor);
+                avaliacaodao.create(avaliacao, txtTitulo.getText(), login.getNick());
+
+                // Para que a leitura da tabela seja feita novamente
+                // após salvar novas informações
+                readJTable();
+            }
+        }
     }//GEN-LAST:event_btnFinalizarCadastroActionPerformed
 
     public void listarIdiomasDoLivro() {

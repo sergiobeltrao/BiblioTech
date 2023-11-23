@@ -413,7 +413,7 @@
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="ISBN">
+                    <TitledBorder title="ISBN *">
                       <Font PropertyName="font" name="Segoe UI" size="13" style="0"/>
                     </TitledBorder>
                   </Border>
@@ -443,7 +443,7 @@
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Tipo">
+                    <TitledBorder title="Tipo *">
                       <Font PropertyName="font" name="Segoe UI" size="13" style="0"/>
                     </TitledBorder>
                   </Border>
@@ -553,7 +553,7 @@
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Nome">
+                    <TitledBorder title="Nome *">
                       <Font PropertyName="font" name="Segoe UI" size="13" style="0"/>
                     </TitledBorder>
                   </Border>
@@ -782,7 +782,7 @@
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Avalia&#xe7;&#xe3;o">
+                    <TitledBorder title="Avalia&#xe7;&#xe3;o *">
                       <Font PropertyName="font" name="Segoe UI" size="13" style="0"/>
                     </TitledBorder>
                   </Border>
@@ -817,7 +817,7 @@
                     <Property name="rows" type="int" value="5"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Coment&#xe1;rio da Avalia&#xe7;&#xe3;o">
+                        <TitledBorder title="Coment&#xe1;rio da Avalia&#xe7;&#xe3;o *">
                           <Font PropertyName="font" name="Segoe UI" size="13" style="0"/>
                         </TitledBorder>
                       </Border>
