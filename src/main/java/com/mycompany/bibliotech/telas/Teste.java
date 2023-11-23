@@ -167,25 +167,38 @@ public class Teste extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-
+        txtNomeLivro.setMaximumRowCount(5);
+        txtNomeLivro.showPopup();
         // O que faz a mágica acontecer é isso. O restante é no TelaAvaliacaoDAO.
         String busca = txtNome.getText();
         String busca1 = txtAlfabeto.getSelectedItem().toString();
-
+        String buscaCategorias = cboxCategoriaBusca.getSelectedItem().toString().substring(3);
+        String buscaSubCategorias = cboxSubCategoriaBusca.getSelectedItem().toString(); 
+        
+                
         // Aqui eu verifico o tamanho do texto que foi digitado. Se for menor que 1
         // uma mensagem aparerá pedindo para o usuário digitar algo. Eu poderia ter colocado
         // igual a zero (já que menos que 1 é 0) mas vou deixar assim. Acredito que seja
         // bacana limitar o número mínimo de caractéries para fazer uma busca (quem sabe uns
         // três ou quatro). Fica ao seu critério quando for implementar. A mensagem também
         // pode ser melhorada.
+        
+        TelaAvaliacaoDAO.buscaCategorias(txtNomeLivro,buscaCategorias);
+        TelaAvaliacaoDAO.buscaSubCategorias(txtNomeLivro, buscaSubCategorias);
+        
         if (busca.length() < 1 && !busca1.isEmpty()) {
             //busca se txtNome esta vazio e txtAlfabeto não esta
             TelaAvaliacaoDAO.listaAlfabeto(txtNomeLivro, busca1);
+            
         } 
         else if (!busca.isEmpty() && busca1.isEmpty()) {
             //busca se txtAlfabeto não esta e txtNome não esta
             TelaAvaliacaoDAO.listaFiltrada(txtNomeLivro, busca);
+            
         } 
         else if (busca.length() < 1 && busca1.length() < 1 ) {
             txtNomeLivro.removeAllItems();
@@ -198,6 +211,7 @@ public class Teste extends javax.swing.JFrame {
         txtNome.setText("");
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+      
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
@@ -205,6 +219,7 @@ public class Teste extends javax.swing.JFrame {
 
     private void txtNomeLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeLivroActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtNomeLivroActionPerformed
 
     private void txtAlfabetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlfabetoActionPerformed
@@ -225,7 +240,8 @@ public class Teste extends javax.swing.JFrame {
     
     private void cboxCategoriaBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxCategoriaBuscaActionPerformed
         String dados[] = String.valueOf(cboxCategoriaBusca.getSelectedItem()).split(" - ");
-        if (!dados[0].equalsIgnoreCase("Não Informada")) {
+               
+          if (!dados[0].equalsIgnoreCase("Não Informada")) {
             cboxSubCategoriaBusca.removeAllItems();
             cboxSubCategoriaBusca.addItem("Não Informada");
             listarSubCategoria(dados[0]);
@@ -233,9 +249,8 @@ public class Teste extends javax.swing.JFrame {
         } else {
             cboxSubCategoriaBusca.removeAllItems();
             cboxSubCategoriaBusca.addItem("Não Informada");
-        }
     }//GEN-LAST:event_cboxCategoriaBuscaActionPerformed
-
+    }
 
     /**
      * @param args the command line arguments

@@ -83,4 +83,58 @@ public class TelaAvaliacaoDAO {
             JOptionPane.showMessageDialog(null, "Erro ao bucar livro cabaço " + ex);
         }
     }
+    
+    public static void buscaCategorias (JComboBox<String> comboBox, String buscaCategorias) {
+    
+        try {
+            
+            Connection con = ConnectionFactory.getConnection();
+            PreparedStatement stmt = null;
+            
+            stmt = con.prepareStatement("SELECT LIV_NOME_LIVRO FROM LIVRO WHERE LIV_CATEGORIA = ?");
+            
+            stmt.setString(1, buscaCategorias);
+            
+            ResultSet resultado = stmt.executeQuery();
+            
+            comboBox.removeAllItems();
+            comboBox.addItem("Resultados");
+            
+            
+            while (resultado.next()) {
+                comboBox.addItem(resultado.getString("LIV_NOME_LIVRO"));
+            }             
+                    
+        } catch (SQLException ex){
+            JOptionPane.showMessageDialog(null, " Erro ao buscar livro " + ex);            
+        }
+        
+    }
+    
+    public static void buscaSubCategorias (JComboBox<String> comboBox, String buscaSubCategorias) {
+    
+        try {
+            
+            Connection con = ConnectionFactory.getConnection();
+            PreparedStatement stmt = null;
+            
+            stmt = con.prepareStatement("SELECT LIV_NOME_LIVRO FROM LIVRO WHERE LIV_SUBCATEGORIA = ?");
+            
+            stmt.setString(1, buscaSubCategorias);
+            
+            ResultSet resultado = stmt.executeQuery();
+            
+            comboBox.removeAllItems();
+            comboBox.addItem("Resultados");
+            
+            
+            while (resultado.next()) {
+                comboBox.addItem(resultado.getString("LIV_NOME_LIVRO"));
+            }               
+                    
+        } catch (SQLException ex){
+            JOptionPane.showMessageDialog(null, " Erro ao buscar livro " + ex);            
+        }
+        
+    }
 }

@@ -126,5 +126,4 @@ public class LivroDAO {
 
         return resultado;
     }
-
 }
