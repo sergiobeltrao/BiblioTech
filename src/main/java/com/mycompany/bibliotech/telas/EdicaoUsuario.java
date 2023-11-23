@@ -36,7 +36,50 @@ import java.util.logging.Logger;
 public class EdicaoUsuario extends javax.swing.JFrame {
 
 
-    public EdicaoUsuario() {
+    public EdicaoUsuario(Usuario user, UsuarioCadastroDAO userdao) {
+        
+       
+        String cpf = cpfTxt.getText();
+        CpfDAO cpfdao = new CpfDAO(cpf);
+        
+        user.setUserNick(nickTxt.getText());
+        user.setUserSenha(new String(senhaTxt.getPassword()));
+        String valorUserCargo = cargoBox.getSelectedItem().toString();
+        String valorSelecionado = "CLIENTE";
+        if (valorUserCargo.equals("ADMIN")) {
+            valorSelecionado = "ADMIN";
+        } else {
+            valorSelecionado = "CLIENTE";
+        }
+        user.setUserType(valorSelecionado);
+        user.setUserNome(nomeTxt.getText());
+        user.setUserSobrenome(sobrenomeTxt.getText());
+        // user.setUserDataNasc(dataNascChooser.getDate());
+        user.setUserEmail(emailTxt.getText());
+        user.setUserSexo(sexoBox.getSelectedItem().toString());
+        user.setUserType(valorSelecionado);
+        user.setUserDataNasc(dataNascChooser.getDate());
+        user.setUserCpf(cpfTxt.setText());
+        tel.setTipo(telefoneTipoBox.getSelectedItem().toString());
+        tel.setTelefone(foneTxt.getText());
+        end.setCep(cepTxt.getText());
+        end.setPais(paisTxt.getText());
+        end.setRua(endTxt.getText());
+        end.setUf(ufTxt.getText());
+        end.setComp(compTxt.getText());
+        end.setCidade(cidadeTxt.getText());
+        end.setNum(numTxt.getText());
+        end.setBairro(bairroTxt.getText());
+        String categoriaSelecionada = cboxCategoria1.getSelectedItem().toString();
+        String subCategoriaSelecionada = cboxSubCategoria1.getSelectedItem().toString();
+        fav.setFavCategoria1(categoriaSelecionada);
+        fav.setFavSub1(subCategoriaSelecionada);
+        String categoriaSelecionad = cboxCategoria2.getSelectedItem().toString();
+        String subCategoriaSelecionad = cboxSubCategoria2.getSelectedItem().toString();
+        fav.setFavCategoria2(categoriaSelecionad);
+        fav.setFavSub2(subCategoriaSelecionad);
+       
+        
         initComponents();
         listarCategorias1();
         listarCategorias2();
@@ -431,7 +474,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             }
         });
 
-        enterButton.setText("Cadastrar");
+        enterButton.setText("Atualizar cadastro");
         enterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enterButtonActionPerformed(evt);
@@ -744,7 +787,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonActionPerformed
                                         
      // Verifica se o usuário está sendo editado
-    Usuario user = new Usuario();
+        Usuario user = new Usuario();
         Endereco end = new Endereco();
         Favoritos fav = new Favoritos();
         Telefone tel = new Telefone();
@@ -974,7 +1017,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
         if (user.getUserId() != 0) {
             // Abre a tela de edição com os dados do usuário
-            new EdicaoUsuario().setVisible(true);
+            new EdicaoUsuario(user, userdao).setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -1126,7 +1169,7 @@ private class Usuario {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EdicaoUsuario().setVisible(true);
+                new EdicaoUsuario(user, userdao).setVisible(true);
             }
         });
     }
