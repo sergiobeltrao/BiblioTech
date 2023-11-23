@@ -38,6 +38,12 @@ public class Teste extends javax.swing.JFrame {
             }
         });
 
+        cboxTeste.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxTesteActionPerformed(evt);
+            }
+        });
+
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +113,10 @@ public class Teste extends javax.swing.JFrame {
     private void txtTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTesteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTesteActionPerformed
+
+    private void cboxTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxTesteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxTesteActionPerformed
 
     /**
      * @param args the command line arguments

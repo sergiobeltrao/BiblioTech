@@ -36,32 +36,24 @@ import java.util.logging.Logger;
 public class EdicaoUsuario extends javax.swing.JFrame {
 
 
-    public EdicaoUsuario(Usuario user, UsuarioCadastroDAO userdao) {
+    public EdicaoUsuario() {
         
        
-        String cpf = cpfTxt.getText();
+        /*String cpf = cpfTxt.getText();
         CpfDAO cpfdao = new CpfDAO(cpf);
         
         user.setUserNick(nickTxt.getText());
         user.setUserSenha(new String(senhaTxt.getPassword()));
-        String valorUserCargo = cargoBox.getSelectedItem().toString();
-        String valorSelecionado = "CLIENTE";
-        if (valorUserCargo.equals("ADMIN")) {
-            valorSelecionado = "ADMIN";
-        } else {
-            valorSelecionado = "CLIENTE";
-        }
-        user.setUserType(valorSelecionado);
+        user.setUserType(cargoBox.getSelectedItem().toString());
         user.setUserNome(nomeTxt.getText());
         user.setUserSobrenome(sobrenomeTxt.getText());
         // user.setUserDataNasc(dataNascChooser.getDate());
         user.setUserEmail(emailTxt.getText());
         user.setUserSexo(sexoBox.getSelectedItem().toString());
-        user.setUserType(valorSelecionado);
         user.setUserDataNasc(dataNascChooser.getDate());
-        user.setUserCpf(cpfTxt.setText());
-        tel.setTipo(telefoneTipoBox.getSelectedItem().toString());
-        tel.setTelefone(foneTxt.getText());
+        user.setUserCpf(cpfTxt.getText());*/
+       /* tel.setTipo(telefoneTipoBox.getSelectedItem().toString());
+        tel.setTelefone(foneTxt.setText());
         end.setCep(cepTxt.getText());
         end.setPais(paisTxt.getText());
         end.setRua(endTxt.getText());
@@ -78,7 +70,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         String subCategoriaSelecionad = cboxSubCategoria2.getSelectedItem().toString();
         fav.setFavCategoria2(categoriaSelecionad);
         fav.setFavSub2(subCategoriaSelecionad);
-       
+       */
         
         initComponents();
         listarCategorias1();
@@ -1017,7 +1009,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
         if (user.getUserId() != 0) {
             // Abre a tela de edição com os dados do usuário
-            new EdicaoUsuario(user, userdao).setVisible(true);
+            new EdicaoUsuario().setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -1169,7 +1161,7 @@ private class Usuario {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EdicaoUsuario(user, userdao).setVisible(true);
+                new EdicaoUsuario().setVisible(true);
             }
         });
     }
