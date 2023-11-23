@@ -142,6 +142,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         jTextField4.setBackground(new java.awt.Color(204, 204, 204));
         jTextField4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "  Comentario:  ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("  Livro:");
         jLabel5.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);

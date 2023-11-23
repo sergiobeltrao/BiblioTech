@@ -22,19 +22,24 @@ public class Teste extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panTeste = new javax.swing.JPanel();
-        txtTeste = new javax.swing.JTextField();
-        cboxTeste = new javax.swing.JComboBox<>();
+        painelBusca = new javax.swing.JPanel();
+        txtNome = new javax.swing.JTextField();
+        txtNomeLivro = new javax.swing.JComboBox<>();
         btnBuscar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtAlfabeto = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panTeste.setBackground(new java.awt.Color(255, 255, 255));
+        painelBusca.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtTeste.setBorder(javax.swing.BorderFactory.createTitledBorder("Digite o título do livro"));
-        txtTeste.addActionListener(new java.awt.event.ActionListener() {
+        txtNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtNome.setForeground(new java.awt.Color(0, 0, 0));
+        txtNome.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Digite o título do livro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTesteActionPerformed(evt);
+                txtNomeActionPerformed(evt);
             }
         });
 
@@ -45,41 +50,67 @@ public class Teste extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panTesteLayout = new javax.swing.GroupLayout(panTeste);
-        panTeste.setLayout(panTesteLayout);
-        panTesteLayout.setHorizontalGroup(
-            panTesteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panTesteLayout.createSequentialGroup()
-                .addContainerGap(468, Short.MAX_VALUE)
-                .addGroup(panTesteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cboxTeste, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTeste, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panTesteLayout.createSequentialGroup()
-                        .addGap(278, 278, 278)
-                        .addComponent(btnBuscar)))
-                .addGap(462, 462, 462))
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Nome do livro:");
+        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        txtAlfabeto.setForeground(new java.awt.Color(0, 0, 0));
+        txtAlfabeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C", "D", "E", "F", "J", "F", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" }));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Nome por ordem alfabetica: ");
+        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        javax.swing.GroupLayout painelBuscaLayout = new javax.swing.GroupLayout(painelBusca);
+        painelBusca.setLayout(painelBuscaLayout);
+        painelBuscaLayout.setHorizontalGroup(
+            painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelBuscaLayout.createSequentialGroup()
+                .addGap(167, 167, 167)
+                .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(painelBuscaLayout.createSequentialGroup()
+                        .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtAlfabeto, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtNomeLivro, javax.swing.GroupLayout.Alignment.LEADING, 0, 350, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBuscar))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addContainerGap(661, Short.MAX_VALUE))
         );
-        panTesteLayout.setVerticalGroup(
-            panTesteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panTesteLayout.createSequentialGroup()
-                .addGap(211, 211, 211)
-                .addComponent(txtTeste, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(cboxTeste, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71)
-                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(282, Short.MAX_VALUE))
+        painelBuscaLayout.setVerticalGroup(
+            painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelBuscaLayout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNomeLivro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(txtAlfabeto, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(434, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panTeste, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(painelBusca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panTeste, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(painelBusca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(1294, 727));
@@ -89,7 +120,7 @@ public class Teste extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
 
         // O que faz a mágica acontecer é isso. O restante é no TelaAvaliacaoDAO.
-        String busca = txtTeste.getText();
+        String busca = txtNome.getText();
 
         // Aqui eu verifico o tamanho do texto que foi digitado. Se for menor que 1
         // uma mensagem aparerá pedindo para o usuário digitar algo. Eu poderia ter colocado
@@ -99,16 +130,16 @@ public class Teste extends javax.swing.JFrame {
         // pode ser melhorada.
         if (busca.length() < 1) {
             JOptionPane.showMessageDialog(null, "Digite algo!");
-            cboxTeste.removeAllItems(); // Limba a ComboBox se tentar pesquisar sem texto
+            txtNomeLivro.removeAllItems(); // Limba a ComboBox se tentar pesquisar sem texto
             // depois de ter pesquisado com.
         } else {
-            TelaAvaliacaoDAO.listaFiltrada(cboxTeste, busca);
+            TelaAvaliacaoDAO.listaFiltrada(txtNomeLivro, busca);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void txtTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTesteActionPerformed
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTesteActionPerformed
+    }//GEN-LAST:event_txtNomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,8 +178,11 @@ public class Teste extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JComboBox<String> cboxTeste;
-    private javax.swing.JPanel panTeste;
-    private javax.swing.JTextField txtTeste;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel painelBusca;
+    private javax.swing.JComboBox<String> txtAlfabeto;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JComboBox<String> txtNomeLivro;
     // End of variables declaration//GEN-END:variables
 }
