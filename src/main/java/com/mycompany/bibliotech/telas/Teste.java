@@ -7,6 +7,9 @@ public class Teste extends javax.swing.JFrame {
 
     public Teste() {
         initComponents();
+        txtAlfabeto.setForeground(new java.awt.Color(0, 0, 0));
+        txtAlfabeto.addItem("");
+        txtAlfabeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "A", "B", "C", "D", "E", "F", "J", "F", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" }));
         // Lembre-se de descomentar isso se quiser usar o método "listaTituloDosLivros"
         // listarBusca();
     }
@@ -43,9 +46,9 @@ public class Teste extends javax.swing.JFrame {
             }
         });
 
-        cboxTeste.addActionListener(new java.awt.event.ActionListener() {
+        txtNomeLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboxTesteActionPerformed(evt);
+                txtNomeLivroActionPerformed(evt);
             }
         });
 
@@ -62,7 +65,11 @@ public class Teste extends javax.swing.JFrame {
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         txtAlfabeto.setForeground(new java.awt.Color(0, 0, 0));
-        txtAlfabeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C", "D", "E", "F", "J", "F", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" }));
+        txtAlfabeto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAlfabetoActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -127,6 +134,7 @@ public class Teste extends javax.swing.JFrame {
 
         // O que faz a mágica acontecer é isso. O restante é no TelaAvaliacaoDAO.
         String busca = txtNome.getText();
+        String busca1 = txtAlfabeto.getSelectedItem().toString();
 
         // Aqui eu verifico o tamanho do texto que foi digitado. Se for menor que 1
         // uma mensagem aparerá pedindo para o usuário digitar algo. Eu poderia ter colocado
@@ -134,22 +142,36 @@ public class Teste extends javax.swing.JFrame {
         // bacana limitar o número mínimo de caractéries para fazer uma busca (quem sabe uns
         // três ou quatro). Fica ao seu critério quando for implementar. A mensagem também
         // pode ser melhorada.
-        if (busca.length() < 1) {
-            JOptionPane.showMessageDialog(null, "Digite algo!");
-            txtNomeLivro.removeAllItems(); // Limba a ComboBox se tentar pesquisar sem texto
-            // depois de ter pesquisado com.
-        } else {
+        if (busca.length() < 1 && !busca1.isEmpty()) {
+            //busca se txtNome esta vazio e txtAlfabeto não esta
+            TelaAvaliacaoDAO.listaAlfabeto(txtNomeLivro, busca1);
+        } 
+        else if (!busca.isEmpty() && busca1.isEmpty()) {
+            //busca se txtAlfabeto não esta e txtNome não esta
             TelaAvaliacaoDAO.listaFiltrada(txtNomeLivro, busca);
+        } 
+        else if (busca.length() < 1 && busca1.length() < 1 ) {
+            txtNomeLivro.removeAllItems();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Preencha apenas um dos campos!");
+        txtNomeLivro.removeAllItems();
+        }
+        txtAlfabeto.setSelectedIndex(0);
+        txtNome.setText("");
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
 
-    private void cboxTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxTesteActionPerformed
+    private void txtNomeLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeLivroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cboxTesteActionPerformed
+    }//GEN-LAST:event_txtNomeLivroActionPerformed
+
+    private void txtAlfabetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlfabetoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAlfabetoActionPerformed
 
     /**
      * @param args the command line arguments

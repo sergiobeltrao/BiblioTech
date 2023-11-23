@@ -117,7 +117,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboxTesteActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomeLivroActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -149,33 +149,12 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="23">
-                <StringItem index="0" value="A"/>
-                <StringItem index="1" value="B"/>
-                <StringItem index="2" value="C"/>
-                <StringItem index="3" value="D"/>
-                <StringItem index="4" value="E"/>
-                <StringItem index="5" value="F"/>
-                <StringItem index="6" value="J"/>
-                <StringItem index="7" value="F"/>
-                <StringItem index="8" value="L"/>
-                <StringItem index="9" value="M"/>
-                <StringItem index="10" value="N"/>
-                <StringItem index="11" value="O"/>
-                <StringItem index="12" value="P"/>
-                <StringItem index="13" value="Q"/>
-                <StringItem index="14" value="R"/>
-                <StringItem index="15" value="S"/>
-                <StringItem index="16" value="T"/>
-                <StringItem index="17" value="U"/>
-                <StringItem index="18" value="V"/>
-                <StringItem index="19" value="W"/>
-                <StringItem index="20" value="X"/>
-                <StringItem index="21" value="Y"/>
-                <StringItem index="22" value="Z"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAlfabetoActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>

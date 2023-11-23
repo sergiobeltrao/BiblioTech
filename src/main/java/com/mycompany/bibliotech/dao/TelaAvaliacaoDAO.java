@@ -57,4 +57,30 @@ public class TelaAvaliacaoDAO {
             JOptionPane.showMessageDialog(null, "Erro ao ler a tabela de livros: " + ex);
         }
     }
+    public static void listaAlfabeto(JComboBox<String> comboBox, String busca1) {
+
+        try {
+            Connection con = ConnectionFactory.getConnection();
+            PreparedStatement stmt = null;
+
+            stmt = con.prepareStatement("SELECT LIV_NOME_LIVRO FROM LIVRO WHERE LIV_NOME_LIVRO LIKE ?");
+
+            // Tive que mandar os % do comando SQL pra cá. Se usar direto no prepareStatement vai
+            // dar o erro "parameter index out of range (1 number of parameters which is 0)"
+            
+            stmt.setString(1, "%" + busca1  );
+
+            //PreparedStatement comando = con.prepareStatement(sql);
+            ResultSet resultado = stmt.executeQuery();
+
+            comboBox.removeAllItems();
+            comboBox.addItem("Resultados...");
+
+            while (resultado.next()) {
+                comboBox.addItem(resultado.getString("LIV_NOME_LIVRO"));
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao bucar livro cabaço " + ex);
+        }
+    }
 }
