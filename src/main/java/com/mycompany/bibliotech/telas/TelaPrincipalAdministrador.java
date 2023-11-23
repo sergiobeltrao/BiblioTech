@@ -1,8 +1,15 @@
 package com.mycompany.bibliotech.telas;
 
+import com.mycompany.bibliotech.dao.EnderecoDAO;
 import com.mycompany.bibliotech.dao.ExcluirUserDAO;
+import com.mycompany.bibliotech.dao.FavoritosDAO;
+import com.mycompany.bibliotech.dao.TelefoneDAO;
 import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;
+import com.mycompany.bibliotech.model.bean.Endereco;
+import com.mycompany.bibliotech.model.bean.Favoritos;
+import com.mycompany.bibliotech.model.bean.Telefone;
 import com.mycompany.bibliotech.model.bean.Usuario;
+
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
@@ -253,20 +260,28 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
     private void edicaoUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edicaoUserButtonActionPerformed
 
-       UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
+    UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
     Usuario user = new Usuario();
+    Endereco endereco = new Endereco();
+    Favoritos favoritos = new Favoritos();
+    Telefone telefone = new Telefone();
+    EnderecoDAO enddao = new EnderecoDAO();
+    FavoritosDAO favdao = new FavoritosDAO();
+    TelefoneDAO fonedao = new TelefoneDAO();
     
     String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:");
 
     if (userNome != null && !userNome.isEmpty()) {
-        // Chama o método na UsuarioCadastroDAO para obter os dados do usuário
+       // user.setUserNick(userNome);
         user = userdao.obterUsuarioPorNome(userNome);
+        
 
-        // Verifica se os dados foram preenchidos em 'user' após a chamada do método
+        // Verifique se os dados foram preenchidos em 'user' após a chamada do método
+
         if (user.getUserId() != 0) {
             // Abre a tela de edição com os dados do usuário
-            EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user);
-            edicaoUsuarioFrame.setVisible(true);
+            EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
+           edicaoUsuarioFrame.setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);

@@ -36,7 +36,7 @@ import java.util.logging.Logger;
 public class EdicaoUsuario extends javax.swing.JFrame {
 
 
-    public EdicaoUsuario(Usuario user) {
+    public EdicaoUsuario(Usuario user, Endereco endereco, Telefone telefone, Favoritos favoritos) {
         /*
         //Usuario user = new Usuario();
         Endereco end = new Endereco();
@@ -79,6 +79,9 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         listarCategorias1();
         listarCategorias2();
         setUserValues(user);
+        setEnderecoValues(user.getEndereco());
+        setTelefoneValues(user.getTelefone());
+        setFavoritosValues(user.getFavoritos());
         
       /*  if (nickTxt != null && user != null) {
             nickTxt.setText(user.getUserNick());}
@@ -102,18 +105,33 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             // Adicione outros campos conforme necessário
         }
     }
-      /* if (endereco != null) {
-            // Configuração dos campos com base no objeto Endereco
-            cepTxt.setText(endereco.getCep());
-            paisTxt.setText(endereco.getPais());
-            ruaTxt.setText(endereco.getRua());
-            ufTxt.setText(endereco.getUf());
-            compTxt.setText(endereco.getComp());
-            cidadeTxt.setText(endereco.getCidade());
-            numTxt.setText(endereco.getNum());
-            bairroTxt.setText(endereco.getBairro());
-            // Adicione outros campos conforme necessário
-        } */
+    private void setEnderecoValues(Endereco endereco) {
+    if (endereco != null) {
+        cepTxt.setText(endereco.getCep());
+        paisTxt.setText(endereco.getPais());
+        endTxt.setText(endereco.getRua());
+        ufTxt.setText(endereco.getUf());
+        compTxt.setText(endereco.getComp());
+        cidadeTxt.setText(endereco.getCidade());
+        numTxt.setText(String.valueOf(endereco.getNum()));        
+        bairroTxt.setText(endereco.getBairro());
+        // Adicione outros campos conforme necessário
+        }
+    }
+    private void setTelefoneValues(Telefone telefone) {
+    if (telefone != null) {
+        telefoneTipoBox.setSelectedItem(telefone.getTipo());
+        foneTxt.setText(telefone.getTelefone());
+        }
+    }
+    private void setFavoritosValues(Favoritos favoritos) {
+    if (favoritos != null) {
+         cboxCategoria1.setSelectedItem(favoritos.getFavCategoria1());
+        cboxSubCategoria1.setSelectedItem(favoritos.getFavSub1());
+        cboxCategoria2.setSelectedItem(favoritos.getFavCategoria2());
+        cboxSubCategoria2.setSelectedItem(favoritos.getFavSub2());
+    }
+}
     
 
     @SuppressWarnings("unchecked")
@@ -1036,6 +1054,9 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                                                
     UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
     Usuario user = new Usuario();
+    Endereco endereco = new Endereco();
+    Favoritos favoritos = new Favoritos();
+    Telefone telefone = new Telefone();
     
     String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:");
 
@@ -1047,7 +1068,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
         if (user.getUserId() != 0) {
             // Abre a tela de edição com os dados do usuário
-            EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user);
+            EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
            edicaoUsuarioFrame.setVisible(true);
             this.setVisible(false);
         } else {
@@ -1200,8 +1221,11 @@ private class Usuario {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                 Usuario user = new Usuario();
-                new EdicaoUsuario(user).setVisible(true);
+                Usuario user = new Usuario();
+                Endereco endereco = new Endereco();
+                Favoritos favoritos = new Favoritos();
+                Telefone telefone = new Telefone();
+                new EdicaoUsuario(user, endereco, telefone, favoritos).setVisible(true);
             }
         });
     }

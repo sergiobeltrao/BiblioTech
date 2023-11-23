@@ -14,6 +14,9 @@ public class Usuario {
     private String userEmail;
     private Date userDataNasc;
     private String userCpf;
+    private Endereco endereco;
+    private Telefone telefone;
+    private Favoritos favoritos;
 
     public int getUserId() {
         return userId;
@@ -94,6 +97,30 @@ public class Usuario {
 
     public void setUserDataNasc(Date userDataNasc) {
         this.userDataNasc = userDataNasc;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public Telefone getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(Telefone telefone) {
+        this.telefone = telefone;
+    }
+
+    public Favoritos getFavoritos() {
+        return favoritos;
+    }
+
+    public void setFavoritos(Favoritos favoritos) {
+        this.favoritos = favoritos;
     }
 
     
