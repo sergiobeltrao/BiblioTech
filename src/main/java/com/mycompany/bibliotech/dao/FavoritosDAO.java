@@ -51,7 +51,7 @@ public class FavoritosDAO {
         }
     }
     
-    public void atualizar(Favoritos fav, String userIdEmEdicao) {
+    public void atualizar(Favoritos fav, String userId) {
     Connection con = ConnectionFactory.getConnection();
     PreparedStatement stmt = null;
 
@@ -63,43 +63,44 @@ public class FavoritosDAO {
 
         con.setAutoCommit(false);  // Desativa o autocommit
 
-        String consultaSQL = "SELECT USE_ID FROM USUARIO WHERE USE_NICK = ?";
+       /* String consultaSQL = "SELECT USE_ID FROM USUARIO WHERE USE_NICK = ?";
             stmt = con.prepareStatement(consultaSQL);
-            stmt.setString(1, userIdEmEdicao);
+            stmt.setString(1, userId);
             ResultSet resultado = stmt.executeQuery();
-            int userId = 0;
+            int useId = 0;
 
             // Verifica se há resultados
             if (resultado.next()) {
-                userId = resultado.getInt("USE_ID");
+                useId = resultado.getInt("USE_ID");
             } else {
                 JOptionPane.showMessageDialog(null, "Erro ao consultar USE_ID para tabela de favorito");
                 return;  // Encerre o método se não encontrar o usuário
-            }
+            }*/
         
         String consultSQL = "SELECT ID FROM FAVORITO WHERE FAV_USUARIO = ?";
             stmt = con.prepareStatement(consultSQL);
-            stmt.setInt(1, userId);
+            stmt.setInt(1, Integer.parseInt(userId));
             ResultSet resultad = stmt.executeQuery();
             int favId = 0;
 
             // Verifica se há resultados
             if (resultad.next()) {
-                favId = resultad.getInt("FAV_USUARIO");
+                favId = resultad.getInt("ID");
             } else {
-                JOptionPane.showMessageDialog(null, "Erro ao consultar USE_ID para tabela de usuario");
+                JOptionPane.showMessageDialog(null, "Erro ao consultar ID para tabela de favorito");
                 return;  // Encerre o método se não encontrar o usuário
             }
         
         // Prepare SQL statement
-        stmt = con.prepareStatement("UPDATE FAVORITO SET FAV_CATEGORIA1=?, FAV_SUB1=?, FAV_CATEGORIA2=?, FAV_SUB2=? WHERE ID=?");
+        stmt = con.prepareStatement("UPDATE FAVORITO SET FAV_CATEGORIA1=?, FAV_SUB1=?, FAV_CATEGORIA2=?, FAV_SUB2=?, FAV_USUARIO=? WHERE ID=?");
 
         // Set values for SQL statement
         stmt.setString(1, fav.getFavCategoria1());
         stmt.setString(2, fav.getFavSub1());
         stmt.setString(3, fav.getFavCategoria2());
         stmt.setString(4, fav.getFavSub2());
-        stmt.setInt(5, favId);
+        stmt.setInt(5, Integer.parseInt(userId));
+        stmt.setInt(6, favId);
 
         int affectedRows = stmt.executeUpdate();
 

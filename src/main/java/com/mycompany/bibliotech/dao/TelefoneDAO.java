@@ -74,7 +74,7 @@ public class TelefoneDAO {
         }
     }
        
-       public void atualizar(Telefone tel, String userIdEmEdicao) {
+       public void atualizar(Telefone tel, String userId) {
     Connection con = ConnectionFactory.getConnection();
     PreparedStatement stmt = null;
 
@@ -93,8 +93,7 @@ public class TelefoneDAO {
 "LEFT JOIN TELEFONE T ON TU.TELEFONE_FONE = T.TEL_ID\n" +
 "LEFT JOIN FAVORITO F ON U.USE_ID = F.FAV_USUARIO WHERE USE_ID = ?";
             stmt = con.prepareStatement(consultaTelefoneExistenteSQL);
-            stmt.setString(1, tel.getTelefone());
-            stmt.setString(2,tel.getTipo());
+            stmt.setString(1, userId);
             ResultSet resultadoTelefoneExistente = stmt.executeQuery();
 
             int telefoneExistenteId = 0;
