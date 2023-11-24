@@ -95,6 +95,8 @@ public class Teste extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtIdioma = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        jSlider2 = new javax.swing.JSlider();
+        txtNumeral1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -204,6 +206,18 @@ public class Teste extends javax.swing.JFrame {
         jLabel10.setText("Idioma:");
         jLabel10.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
+        jSlider2.setMaximum(10);
+        jSlider2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSlider2StateChanged(evt);
+            }
+        });
+
+        txtNumeral1.setBackground(new java.awt.Color(0, 0, 0));
+        txtNumeral1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        txtNumeral1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtNumeral1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         javax.swing.GroupLayout painelBuscaLayout = new javax.swing.GroupLayout(painelBusca);
         painelBusca.setLayout(painelBuscaLayout);
         painelBuscaLayout.setHorizontalGroup(
@@ -220,33 +234,36 @@ public class Teste extends javax.swing.JFrame {
                     .addGroup(painelBuscaLayout.createSequentialGroup()
                         .addComponent(cboxAlfabeto, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(146, 146, 146)
-                        .addComponent(btnBuscar)))
+                        .addComponent(btnBuscar))
+                    .addGroup(painelBuscaLayout.createSequentialGroup()
+                        .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNumeral1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(87, 87, 87)
-                .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
-                    .addComponent(cboxNomeLivro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtNomeAutor)
-                    .addGroup(painelBuscaLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(62, 62, 62)
-                        .addComponent(jLabel9))
-                    .addGroup(painelBuscaLayout.createSequentialGroup()
-                        .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(txtAno)))
-                    .addGroup(painelBuscaLayout.createSequentialGroup()
-                        .addComponent(txtPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(txtIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtIdioma)
-                    .addGroup(painelBuscaLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel1)
+                        .addComponent(cboxNomeLivro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5)
+                        .addComponent(txtNomeAutor)
+                        .addGroup(painelBuscaLayout.createSequentialGroup()
+                            .addComponent(jLabel7)
+                            .addGap(62, 62, 62)
+                            .addComponent(jLabel9))
+                        .addGroup(painelBuscaLayout.createSequentialGroup()
+                            .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel6))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel8)
+                                .addComponent(txtAno)))
+                        .addGroup(painelBuscaLayout.createSequentialGroup()
+                            .addComponent(txtPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(29, 29, 29)
+                            .addComponent(txtIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtIdioma))
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(326, Short.MAX_VALUE))
         );
         painelBuscaLayout.setVerticalGroup(
@@ -295,11 +312,18 @@ public class Teste extends javax.swing.JFrame {
                         .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel10)
-                .addGap(2, 2, 2)
-                .addComponent(txtIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(306, Short.MAX_VALUE))
+                .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelBuscaLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelBuscaLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtNumeral1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(296, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -398,6 +422,11 @@ public class Teste extends javax.swing.JFrame {
             cboxSubCategoriaBusca.addItem("Não Informada");
     }//GEN-LAST:event_cboxCategoriaBuscaActionPerformed
     }
+    private void jSlider2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider2StateChanged
+        txtNumeral1.setText(String.valueOf(jSlider2.getValue()));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jSlider2StateChanged
+        
 
     /**
      * @param args the command line arguments
@@ -459,12 +488,14 @@ public class Teste extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JSlider jSlider2;
     private javax.swing.JPanel painelBusca;
     private javax.swing.JTextField txtAno;
     private javax.swing.JTextField txtEditora;
     private javax.swing.JTextField txtIdioma;
     private javax.swing.JTextField txtIsbn;
     private javax.swing.JTextField txtNomeAutor;
+    private javax.swing.JLabel txtNumeral1;
     private javax.swing.JTextField txtPaginas;
     private javax.swing.JTextField txtTituloBusca;
     // End of variables declaration//GEN-END:variables
