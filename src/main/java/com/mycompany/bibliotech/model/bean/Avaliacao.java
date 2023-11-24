@@ -17,6 +17,42 @@ public class Avaliacao {
     private int txtAno;
     private String txtEditora;
     private String txtComentario;
+    private String txtIdioma;
+    private String txtIsbn;
+    private String txtNomeLivro;
+
+    public String getTxtNomeLivro() {
+        return txtNomeLivro;
+    }
+
+    public void setTxtNomeLivro(String txtNomeLivro) {
+        this.txtNomeLivro = txtNomeLivro;
+    }
+
+    public Avaliacao(String txtNomeLivro) {
+        this.txtNomeLivro = txtNomeLivro;
+    }
+
+    public String getTxtIdioma() {
+        return txtIdioma;
+    }
+
+    public void setTxtIdioma(String txtIdioma) {
+        this.txtIdioma = txtIdioma;
+    }
+
+    public String getTxtIsbn() {
+        return txtIsbn;
+    }
+
+    public void setTxtIsbn(String txtIsbn) {
+        this.txtIsbn = txtIsbn;
+    }
+
+    public Avaliacao(String txtIdioma, String txtIsbn) {
+        this.txtIdioma = txtIdioma;
+        this.txtIsbn = txtIsbn;
+    }
 
     public Avaliacao() {
     }

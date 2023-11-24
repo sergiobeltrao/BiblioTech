@@ -2,21 +2,41 @@ package com.mycompany.bibliotech.telas;
 
 import com.mycompany.bibliotech.dao.LivroCategoriaDAO;
 import com.mycompany.bibliotech.dao.TelaAvaliacaoDAO;
+import com.mycompany.bibliotech.model.bean.Avaliacao;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
-
 
 public class Teste extends javax.swing.JFrame {
 
-    public Teste() {
+    public Teste(Avaliacao avaliacao) {
         initComponents();
+        setPesquisarValues(avaliacao);
 
         cboxAlfabeto.setForeground(new java.awt.Color(0, 0, 0));
         cboxAlfabeto.addItem("");
-        cboxAlfabeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "A", "B", "C", "D", "E", "F", "J", "F", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" }));
+        cboxAlfabeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"", "A", "B", "C", 
+            "D", "E", "F", "J", "F", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"}));
+         cboxNomeLivro.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            cboxNomeLivroeActionPerformed(evt);
+        }
+    });
         // Lembre-se de descomentar isso se quiser usar o método "listaTituloDosLivros"
         // listarBusca();
 
         listarCategorias();
+
+    }
+
+    private void setPesquisarValues(Avaliacao avaliacao) {
+        if (avaliacao != null) {
+            txtAno.setText(String.valueOf(avaliacao.getTxtAno()));
+            txtEditora.setText(avaliacao.getTxtEditora());
+            txtIdioma.setText(avaliacao.getTxtIdioma());
+            txtIsbn.setText(avaliacao.getTxtIsbn());
+            txtNomeAutor.setText(avaliacao.getTxtNomeAutor());
+            txtPaginas.setText(String.valueOf(avaliacao.getTxtPaginas()));
+        }
 
     }
 
@@ -42,6 +62,18 @@ public class Teste extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         cboxSubCategoriaBusca = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
+        txtNomeAutor = new javax.swing.JTextField();
+        txtEditora = new javax.swing.JTextField();
+        txtPaginas = new javax.swing.JTextField();
+        txtAno = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txtIsbn = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtIdioma = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,7 +110,7 @@ public class Teste extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Nome por ordem alfabetica: ");
+        jLabel2.setText("busca por Letra:");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         cboxCategoriaBusca.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +129,60 @@ public class Teste extends javax.swing.JFrame {
         jLabel4.setText("Sub-Categoria: ");
         jLabel4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
+        txtNomeAutor.setEditable(false);
+        txtNomeAutor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtNomeAutor.setForeground(new java.awt.Color(0, 0, 0));
+
+        txtEditora.setEditable(false);
+        txtEditora.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEditora.setForeground(new java.awt.Color(0, 0, 0));
+
+        txtPaginas.setEditable(false);
+        txtPaginas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtPaginas.setForeground(new java.awt.Color(0, 0, 0));
+
+        txtAno.setEditable(false);
+        txtAno.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtAno.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Autor:");
+        jLabel5.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Editora:");
+        jLabel6.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Paginas:");
+        jLabel7.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Ano:");
+        jLabel8.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        txtIsbn.setEditable(false);
+        txtIsbn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtIsbn.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("ISBN:");
+        jLabel9.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        txtIdioma.setEditable(false);
+        txtIdioma.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtIdioma.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("Idioma:");
+        jLabel10.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
         javax.swing.GroupLayout painelBuscaLayout = new javax.swing.GroupLayout(painelBusca);
         painelBusca.setLayout(painelBuscaLayout);
         painelBuscaLayout.setHorizontalGroup(
@@ -104,55 +190,102 @@ public class Teste extends javax.swing.JFrame {
             .addGroup(painelBuscaLayout.createSequentialGroup()
                 .addGap(167, 167, 167)
                 .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cboxSubCategoriaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(cboxCategoriaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
+                    .addComponent(txtTituloBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel1)
+                    .addComponent(cboxCategoriaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(cboxSubCategoriaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(painelBuscaLayout.createSequentialGroup()
-                        .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtTituloBusca, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboxAlfabeto, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cboxNomeLivro, javax.swing.GroupLayout.Alignment.LEADING, 0, 350, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
+                        .addComponent(cboxAlfabeto, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(146, 146, 146)
                         .addComponent(btnBuscar)))
-                .addContainerGap(659, Short.MAX_VALUE))
+                .addGap(87, 87, 87)
+                .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1)
+                    .addComponent(cboxNomeLivro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtNomeAutor)
+                    .addGroup(painelBuscaLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(62, 62, 62)
+                        .addComponent(jLabel9))
+                    .addGroup(painelBuscaLayout.createSequentialGroup()
+                        .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(txtAno)))
+                    .addGroup(painelBuscaLayout.createSequentialGroup()
+                        .addComponent(txtPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(txtIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdioma)
+                    .addGroup(painelBuscaLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(326, Short.MAX_VALUE))
         );
         painelBuscaLayout.setVerticalGroup(
             painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelBuscaLayout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(txtTituloBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(51, 51, 51)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboxNomeLivro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(cboxAlfabeto, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cboxCategoriaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cboxSubCategoriaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(275, Short.MAX_VALUE))
+                    .addComponent(cboxNomeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTituloBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelBuscaLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cboxAlfabeto, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboxCategoriaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboxSubCategoriaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelBuscaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNomeAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel10)
+                .addGap(2, 2, 2)
+                .addComponent(txtIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(306, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(painelBusca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(painelBusca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,46 +296,43 @@ public class Teste extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
-    
+
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
 
-    cboxNomeLivro.setEnabled(true);
-        
-    cboxNomeLivro.setMaximumRowCount(5);
-    cboxNomeLivro.showPopup();
-    
-    String busca = txtTituloBusca.getText();
-    String buscaCategorias = cboxCategoriaBusca.getSelectedItem().toString();
-    String buscaSubCategorias = cboxSubCategoriaBusca.getSelectedItem().toString();
-    String buscaAlfabeto = cboxAlfabeto.getSelectedItem().toString();
-    
-    if (!busca.isEmpty() && buscaAlfabeto.isEmpty()) {
-        // Busca simples por uma parte do nome
-        TelaAvaliacaoDAO.listaFiltrada(cboxNomeLivro, busca);
-    } else if (buscaAlfabeto.isEmpty() && !buscaCategorias.isEmpty()) {
-        // Busca por categorias
-        TelaAvaliacaoDAO.buscaCategorias(cboxNomeLivro, buscaCategorias);
-    } else if (buscaAlfabeto.isEmpty() && !buscaSubCategorias.isEmpty()) {
-        // Busca por subcategorias
-        TelaAvaliacaoDAO.buscaSubCategorias(cboxNomeLivro, buscaSubCategorias);
-    } else if (!buscaAlfabeto.isEmpty() && busca.isEmpty()) {
-        // Busca em ordem alfabética
-        TelaAvaliacaoDAO.listaAlfabeto(cboxNomeLivro, buscaAlfabeto);
-    } else {
-        JOptionPane.showMessageDialog(null, "Preencha apenas um dos campos!");
-        cboxNomeLivro.removeAllItems();
-    }
-    
-    cboxAlfabeto.setSelectedIndex(0);
-    txtTituloBusca.setText("");
-    
-    }//GEN-LAST:event_btnBuscarActionPerformed
+        cboxNomeLivro.setEnabled(true);
 
+        cboxNomeLivro.setMaximumRowCount(5);
+        cboxNomeLivro.showPopup();
+
+        String busca = txtTituloBusca.getText();
+        String buscaCategorias = cboxCategoriaBusca.getSelectedItem().toString();
+        String buscaSubCategorias = cboxSubCategoriaBusca.getSelectedItem().toString();
+        String buscaAlfabeto = cboxAlfabeto.getSelectedItem().toString();
+
+        if (!busca.isEmpty() && buscaAlfabeto.isEmpty()) {
+            // Busca simples por uma parte do nome
+            TelaAvaliacaoDAO.listaFiltrada(cboxNomeLivro, busca);
+        } else if (buscaAlfabeto.isEmpty() && !buscaCategorias.isEmpty()) {
+            // Busca por categorias
+            TelaAvaliacaoDAO.buscaCategorias(cboxNomeLivro, buscaCategorias);
+        } else if (buscaAlfabeto.isEmpty() && !buscaSubCategorias.isEmpty()) {
+            // Busca por subcategorias
+            TelaAvaliacaoDAO.buscaSubCategorias(cboxNomeLivro, buscaSubCategorias);
+        } else if (!buscaAlfabeto.isEmpty() && busca.isEmpty()) {
+            // Busca em ordem alfabética
+            TelaAvaliacaoDAO.listaAlfabeto(cboxNomeLivro, buscaAlfabeto);
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha apenas um dos campos!");
+            cboxNomeLivro.removeAllItems();
+        }
+
+        cboxAlfabeto.setSelectedIndex(0);
+        txtTituloBusca.setText("");
+
+    }//GEN-LAST:event_btnBuscarActionPerformed
     private void txtNomeLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeLivroActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_txtNomeLivroActionPerformed
 
     private void cboxAlfabetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxAlfabetoActionPerformed
@@ -210,21 +340,32 @@ public class Teste extends javax.swing.JFrame {
     }//GEN-LAST:event_cboxAlfabetoActionPerformed
 
     private void cboxNomeLivroeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxNomeLivroeActionPerformed
-        // TODO add your handling code here:
+        // Obtém o item selecionado
+        String pesquisar = cboxNomeLivro.getSelectedItem().toString();
+
+        // Verifica se o item selecionado não é nulo ou vazio
+        if (pesquisar != null && !pesquisar.isEmpty()) {
+            try {
+                TelaAvaliacaoDAO taDAO = new TelaAvaliacaoDAO();
+                taDAO.find(pesquisar);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao selecionar o livro." + ex);
+            }
+        }
     }//GEN-LAST:event_cboxNomeLivroeActionPerformed
 
-      public void listarCategorias() {
+    public void listarCategorias() {
         LivroCategoriaDAO.listarCategorias(cboxCategoriaBusca);
     }
 
     public void listarSubCategoria(String idCategoria) {
         LivroCategoriaDAO.listarSubCategoria(cboxSubCategoriaBusca, idCategoria);
     }
-    
+
     private void cboxCategoriaBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxCategoriaBuscaActionPerformed
         String dados[] = String.valueOf(cboxCategoriaBusca.getSelectedItem()).split(" - ");
-               
-          if (!dados[0].equalsIgnoreCase("Não Informada")) {
+
+        if (!dados[0].equalsIgnoreCase("Não Informada")) {
             cboxSubCategoriaBusca.removeAllItems();
             cboxSubCategoriaBusca.addItem("Não Informada");
             listarSubCategoria(dados[0]);
@@ -249,23 +390,32 @@ public class Teste extends javax.swing.JFrame {
                 if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Teste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Teste.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Teste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Teste.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Teste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Teste.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Teste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Teste.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Teste().setVisible(true);
+                Avaliacao avaliacao = new Avaliacao();
+                new Teste(avaliacao).setVisible(true);
             }
         });
     }
@@ -277,10 +427,22 @@ public class Teste extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboxNomeLivro;
     private javax.swing.JComboBox<String> cboxSubCategoriaBusca;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel painelBusca;
+    private javax.swing.JTextField txtAno;
+    private javax.swing.JTextField txtEditora;
+    private javax.swing.JTextField txtIdioma;
+    private javax.swing.JTextField txtIsbn;
+    private javax.swing.JTextField txtNomeAutor;
+    private javax.swing.JTextField txtPaginas;
     private javax.swing.JTextField txtTituloBusca;
     // End of variables declaration//GEN-END:variables
 }
