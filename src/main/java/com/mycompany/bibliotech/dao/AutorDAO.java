@@ -13,29 +13,29 @@ import javax.swing.JOptionPane;
 
 public class AutorDAO {
 
-    public void create(Autor aut) {
+    public void cadastraAutor(Autor autor) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("INSERT INTO AUTOR (ID_AUTOR, AUT_NOME_AUTOR, AUT_NACIONALIDADE, AUT_SEXO) VALUES(NULL, ?, ?, ?)");
 
-            stmt.setString(1, aut.getNome());
-            stmt.setString(2, aut.getNacionalidade());
-            stmt.setString(3, aut.getSexo());
+            stmt = con.prepareStatement("INSERT INTO AUTOR (ID_AUTOR, AUT_NOME_AUTOR, AUT_NACIONALIDADE, AUT_SEXO)  VALUES(NULL, ?, ?, ?)");
 
-            // Para preparar o SQL e executar
+            stmt.setString(1, autor.getNome());
+            stmt.setString(2, autor.getNacionalidade());
+            stmt.setString(3, autor.getSexo());
+
             stmt.executeUpdate();
 
-            // Desativado por enquanto para evitar duplicidade de mensagens
-            // JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
+            JOptionPane.showMessageDialog(null, "Autor cadastrado. Use o mecanismo de pesquisa para selecionar.");
+
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro nos dados do autor: " + ex);
+            JOptionPane.showMessageDialog(null, "Erro no cadastro do autor: " + ex);
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
 
-    public List<Autor> read() {
+    public List<Autor> leTabelaAutoresCompleta() {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -67,11 +67,14 @@ public class AutorDAO {
         return autores;
     }
 
-    public static void listaDeNacionalidades(JComboBox<String> comboBox) {
+    public static void listaNacionalidadesParaAutores(JComboBox<String> comboBox) {
+
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+
         try {
-            Connection con = ConnectionFactory.getConnection();
-            String sql = "SELECT * FROM NACIONALIDADE";
-            PreparedStatement comando = con.prepareStatement(sql);
+            stmt = con.prepareStatement("SELECT * FROM NACIONALIDADE");
+            PreparedStatement comando = stmt;
             ResultSet resultado = comando.executeQuery();
 
             comboBox.removeAllItems();
@@ -82,10 +85,12 @@ public class AutorDAO {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao ler a tabela de nacionalidades: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
         }
     }
 
-    public static void pesquisaPorNomeAutor(JComboBox<String> comboBox, String busca) {
+    public static void pesquisaAutorPorNomeAutor(JComboBox<String> comboBox, String busca) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
@@ -113,49 +118,29 @@ public class AutorDAO {
         }
     }
 
-    public void cadastrarAutor(Autor autor) {
+    public boolean verificaSeAutorJaEstaCadastrado(Autor autor) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
+        ResultSet resultado = null;
+        boolean encontrouResultado = false;
+
         try {
-
-            stmt = con.prepareStatement("INSERT INTO AUTOR (ID_AUTOR, AUT_NOME_AUTOR, AUT_NACIONALIDADE, AUT_SEXO)  VALUES(NULL, ?, ?, ?)");
-
-            stmt.setString(1, autor.getNome());
-            stmt.setString(2, autor.getNacionalidade());
-            stmt.setString(3, autor.getSexo());
-
-            stmt.executeUpdate();
-
-            JOptionPane.showMessageDialog(null, "Autor cadastrado com sucesso!");
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro no cadastro do autor: " + ex);
-        } finally {
-            ConnectionFactory.closeConnection(con, stmt);
-        }
-    }
-
-    
-    // INCOMPLETO
-    public void verificaSeAutorJaEscaCadastrado(Autor autor) {
-        Connection con = ConnectionFactory.getConnection();
-        PreparedStatement stmt = null;
-        try {
-
             stmt = con.prepareStatement("SELECT * FROM AUTOR WHERE AUT_NOME_AUTOR = ? AND AUT_NACIONALIDADE = ? AND AUT_SEXO = ?");
-            
+
             stmt.setString(1, autor.getNome());
             stmt.setString(2, autor.getNacionalidade());
             stmt.setString(3, autor.getSexo());
 
-            stmt.executeUpdate();
+            resultado = stmt.executeQuery();
 
-            JOptionPane.showMessageDialog(null, "Autor cadastrado com sucesso!");
-
+            if (resultado.next()) {
+                encontrouResultado = true;
+            }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro no cadastro do autor: " + ex);
+            JOptionPane.showMessageDialog(null, "Erro na verificação do autor: " + ex);
         } finally {
-            ConnectionFactory.closeConnection(con, stmt);
+            ConnectionFactory.closeConnection(con, stmt, resultado);
         }
+        return encontrouResultado;
     }
 }
