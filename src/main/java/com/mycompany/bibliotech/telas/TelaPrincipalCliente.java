@@ -4,6 +4,8 @@
  */
 package com.mycompany.bibliotech.telas;
 
+import com.mycompany.bibliotech.model.bean.Avaliacao;
+
 /**
  *
  * @author Sergio
@@ -32,6 +34,7 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
         CadLivroButton = new javax.swing.JButton();
         btnEncerrarSessao1 = new javax.swing.JButton();
         avaliacaoButton = new javax.swing.JButton();
+        AvaButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,6 +77,13 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
             }
         });
 
+        AvaButton.setText("Teste Avaliações");
+        AvaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AvaButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menuLateralLayout = new javax.swing.GroupLayout(menuLateral);
         menuLateral.setLayout(menuLateralLayout);
         menuLateralLayout.setHorizontalGroup(
@@ -92,7 +102,10 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
                         .addComponent(btnEncerrarSessao1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(menuLateralLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(avaliacaoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(avaliacaoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(menuLateralLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(AvaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         menuLateralLayout.setVerticalGroup(
@@ -104,6 +117,8 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
                 .addComponent(CadLivroButton)
                 .addGap(18, 18, 18)
                 .addComponent(avaliacaoButton)
+                .addGap(18, 18, 18)
+                .addComponent(AvaButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao1)
                 .addGap(15, 15, 15))
@@ -154,6 +169,13 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_avaliacaoButtonActionPerformed
 
+    private void AvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AvaButtonActionPerformed
+        Avaliacao avaliacao = new Avaliacao();
+        new Teste(avaliacao).setVisible(true);
+        this.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AvaButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -193,6 +215,7 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AvaButton;
     private javax.swing.JButton CadLivroButton;
     private javax.swing.JButton avaliacaoButton;
     private javax.swing.JButton btnEncerrarSessao1;
