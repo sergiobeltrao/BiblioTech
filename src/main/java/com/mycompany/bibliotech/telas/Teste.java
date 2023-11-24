@@ -361,7 +361,7 @@ public class Teste extends javax.swing.JFrame {
     }//GEN-LAST:event_cboxAlfabetoActionPerformed
 
     private void cboxNomeLivroeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxNomeLivroeActionPerformed
-        Avaliacao pes = new Avaliacao();
+       /* Avaliacao pes = new Avaliacao();
         TelaAvaliacaoDAO taDAO = new TelaAvaliacaoDAO();
         // Obtém o item selecionado
         String pesquisar = cboxNomeLivro.getSelectedItem().toString();
@@ -374,7 +374,7 @@ public class Teste extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Erro ao selecionar o livro." + ex);
             }
-        }
+        }*/
     }//GEN-LAST:event_cboxNomeLivroeActionPerformed
 
     public void listarCategorias() {
