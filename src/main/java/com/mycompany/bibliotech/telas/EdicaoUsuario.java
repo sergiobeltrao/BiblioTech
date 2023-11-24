@@ -35,7 +35,15 @@ import java.util.logging.Logger;
 
 public class EdicaoUsuario extends javax.swing.JFrame {
 
-    private String userIdEmEdicao;
+  //  private String userIdEmEdicao;
+/*
+    public String getUserIdEmEdicao() {
+        return userIdEmEdicao;
+    }
+
+    public void setUserIdEmEdicao(String userIdEmEdicao) {
+        this.userIdEmEdicao = userIdEmEdicao;
+    }*/
 
     public EdicaoUsuario(Usuario user, Endereco endereco, Telefone telefone, Favoritos favoritos) {
         /*
@@ -83,6 +91,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         setEnderecoValues(user.getEndereco());
         setTelefoneValues(user.getTelefone());
         setFavoritosValues(user.getFavoritos());
+        idLabel.setVisible(false);
         
       /*  if (nickTxt != null && user != null) {
             nickTxt.setText(user.getUserNick());}
@@ -103,6 +112,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             emailTxt.setText(user.getUserEmail());
             sexoBox.setSelectedItem(user.getUserSexo());
             cpfTxt.setText(user.getUserCpf());
+            idLabel.setText(Integer.toString(user.getUserId()));
             // Adicione outros campos conforme necessário
         }
     }
@@ -142,7 +152,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         campoCentral = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        senhaTxt = new javax.swing.JPasswordField();
         sexoBox = new javax.swing.JComboBox<>();
         sobrenomeTxt = new javax.swing.JTextField();
         nickTxt = new javax.swing.JTextField();
@@ -150,11 +159,11 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         nomeTxt = new javax.swing.JTextField();
         cargoBox = new javax.swing.JComboBox<>();
         dataNascChooser = new com.toedter.calendar.JDateChooser();
-        resenhaTxt = new javax.swing.JPasswordField();
         telefoneTipoBox = new javax.swing.JComboBox<>();
         foneTxt = new javax.swing.JFormattedTextField();
         ProxCadEndButton = new javax.swing.JButton();
         cpfTxt = new javax.swing.JFormattedTextField();
+        idLabel = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         endTxt = new javax.swing.JTextField();
         ufTxt = new javax.swing.JTextField();
@@ -186,14 +195,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         campoCentral.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
-
-        senhaTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        senhaTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Senha", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
-        senhaTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                senhaTxtActionPerformed(evt);
-            }
-        });
 
         sexoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MASC", "FEM", "OUTRO" }));
         sexoBox.setBorder(javax.swing.BorderFactory.createTitledBorder("Sexo"));
@@ -247,14 +248,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         dataNascChooser.setToolTipText("2004-08-07");
         dataNascChooser.setDateFormatString("yyyy-MM-dd");
 
-        resenhaTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        resenhaTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Re-Senha", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
-        resenhaTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resenhaTxtActionPerformed(evt);
-            }
-        });
-
         telefoneTipoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RESIDENCIAL", "COMERCIAL", "CELULAR" }));
         telefoneTipoBox.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de número"));
         telefoneTipoBox.addActionListener(new java.awt.event.ActionListener() {
@@ -294,6 +287,9 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             }
         });
 
+        idLabel.setText("ID");
+        idLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -305,16 +301,13 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(senhaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(telefoneTipoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(nickTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(sobrenomeTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cargoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(resenhaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(foneTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cpfTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(sexoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -323,7 +316,10 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(dataNascChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
+                        .addGap(20, 20, 20)
+                        .addComponent(idLabel))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(164, 164, 164)
                         .addComponent(ProxCadEndButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
@@ -349,14 +345,12 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(resenhaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(senhaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cargoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(ProxCadEndButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addGap(71, 71, 71)
+                .addComponent(idLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addGap(19, 19, 19))
         );
 
         jTabbedPane1.addTab("Edição usuario", jPanel1);
@@ -717,10 +711,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void senhaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_senhaTxtActionPerformed
-
     private void sexoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexoBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sexoBoxActionPerformed
@@ -744,10 +734,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     private void cargoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargoBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cargoBoxActionPerformed
-
-    private void resenhaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resenhaTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_resenhaTxtActionPerformed
 
     private void telefoneTipoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefoneTipoBoxActionPerformed
 
@@ -840,6 +826,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         Endereco end = new Endereco();
         Favoritos fav = new Favoritos();
         Telefone tel = new Telefone();
+       // EdicaoUsuario eduser = new EdicaoUsuario(user, end, tel, fav);
         UsuarioCadastroDAO dao = new UsuarioCadastroDAO();
         EnderecoDAO enddao = new EnderecoDAO();
         FavoritosDAO favdao = new FavoritosDAO();
@@ -847,7 +834,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         String cpf = cpfTxt.getText();
         CpfDAO cpfdao = new CpfDAO(cpf);
         
-         Hash hash = new Hash();
+         /*Hash hash = new Hash();
         
         String senhaDigitada = senhaTxt.getText();
         String hashDaSenha = "";
@@ -876,9 +863,9 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "A senha e a re-senha não coincidem. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
             return; // Não prossegue com o cadastro se as senhas não coincidirem
         }
-
+*/
         user.setUserNick(nickTxt.getText());
-        user.setUserSenha(new String(hashDaSenha));
+       // user.setUserSenha(new String(hashDaSenha));
         //String userNome = nickTxt.getText();
         String valorUserCargo = cargoBox.getSelectedItem().toString();
         String valorSelecionado = "CLIENTE";
@@ -909,6 +896,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         user.setUserSexo(valorSelecionad);
         user.setUserType(valorSelecionado);
         // user.setUserCpf(cpfTxt.getText());
+        String userId = idLabel.getText();
 
         String valorTipo = telefoneTipoBox.getSelectedItem().toString();
         String valorSelecionada = "CELULAR";
@@ -968,19 +956,18 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma data de nascimento válida!");
             return; // Não prossegue com o cadastro se a data de nascimento não foi selecionada
         }
-
-        if (cpfdao.isCPF()) {
+        
+         if (cpfdao.isCPF()) {
             user.setUserCpf(cpfTxt.getText());
-            dao.atualizar(user, userIdEmEdicao);
+            dao.atualizar(user, userId);
         } else {
             JOptionPane.showMessageDialog(rootPane, "CPF inválido!!");
             return;
         }
-        enddao.atualizar(end, userIdEmEdicao);
-        fonedao.atualizar(tel, userIdEmEdicao);
-        favdao.atualizar(fav, userIdEmEdicao);
+        enddao.atualizar(end, userId);
+        fonedao.atualizar(tel, userId);
+        favdao.atualizar(fav, userId);
         
-
     }//GEN-LAST:event_enterButtonActionPerformed
 
     private void LimparButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparButtonActionPerformed
@@ -1062,14 +1049,11 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     // Solicita o nome do usuário ao usuário
     String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:");
 
-    // Verifica se o usuário inseriu um nome
+   // Verifica se o usuário inseriu um nome
     if (userNome != null && !userNome.isEmpty()) {
-        // Atribui o valor de userNome a userIdEmEdicao
-        userIdEmEdicao = userNome;
-
         // Obtém o usuário com base no nome fornecido
-        user = userdao.obterUsuarioPorNome(userIdEmEdicao);
-
+        user = userdao.obterUsuarioPorNome(userNome);
+        
         // Verifica se o usuário foi encontrado
         if (user.getUserId() != 0) {
             // Abre a tela de edição com os dados do usuário
@@ -1083,6 +1067,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Digite um nome de usuário válido", "Erro", JOptionPane.ERROR_MESSAGE);
     }
 
+   
 
 }
 
@@ -1263,6 +1248,7 @@ private class Usuario {
     private javax.swing.JTextField endTxt;
     private javax.swing.JButton enterButton;
     private javax.swing.JFormattedTextField foneTxt;
+    private javax.swing.JLabel idLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1272,12 +1258,19 @@ private class Usuario {
     private javax.swing.JTextField nomeTxt;
     private javax.swing.JTextField numTxt;
     private javax.swing.JTextField paisTxt;
-    private javax.swing.JPasswordField resenhaTxt;
-    private javax.swing.JPasswordField senhaTxt;
     private javax.swing.JComboBox<String> sexoBox;
     private javax.swing.JTextField sobrenomeTxt;
     private javax.swing.JComboBox<String> telefoneTipoBox;
     private javax.swing.JTextField txtMenuPrincipal;
     private javax.swing.JTextField ufTxt;
     // End of variables declaration//GEN-END:variables
+  //private String userIdEmEdicao = null;
+
+    /*public String getUserIdEmEdicao() {
+        return userIdEmEdicao;
+    }
+
+    public void setUserIdEmEdicao(String userIdEmEdicao) {
+        this.userIdEmEdicao = userIdEmEdicao;
+    }*/
 }
