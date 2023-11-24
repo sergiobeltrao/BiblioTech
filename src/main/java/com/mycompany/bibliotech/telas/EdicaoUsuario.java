@@ -35,6 +35,7 @@ import java.util.logging.Logger;
 
 public class EdicaoUsuario extends javax.swing.JFrame {
 
+    private String userIdEmEdicao;
 
     public EdicaoUsuario(Usuario user, Endereco endereco, Telefone telefone, Favoritos favoritos) {
         /*
@@ -846,7 +847,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         String cpf = cpfTxt.getText();
         CpfDAO cpfdao = new CpfDAO(cpf);
         
-        /* Hash hash = new Hash();
+         Hash hash = new Hash();
         
         String senhaDigitada = senhaTxt.getText();
         String hashDaSenha = "";
@@ -875,10 +876,10 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "A senha e a re-senha não coincidem. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
             return; // Não prossegue com o cadastro se as senhas não coincidirem
         }
-*/
-        user.setUserNick(nickTxt.getText());
-      //  user.setUserSenha(new String(hashDaSenha));
 
+        user.setUserNick(nickTxt.getText());
+        user.setUserSenha(new String(hashDaSenha));
+        //String userNome = nickTxt.getText();
         String valorUserCargo = cargoBox.getSelectedItem().toString();
         String valorSelecionado = "CLIENTE";
 
@@ -970,14 +971,14 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
         if (cpfdao.isCPF()) {
             user.setUserCpf(cpfTxt.getText());
-            dao.atualizar(user);
+            dao.atualizar(user, userIdEmEdicao);
         } else {
             JOptionPane.showMessageDialog(rootPane, "CPF inválido!!");
             return;
         }
-        enddao.atualizar(end);
-        fonedao.atualizar(tel);
-        favdao.atualizar(fav);
+        enddao.atualizar(end, userIdEmEdicao);
+        fonedao.atualizar(tel, userIdEmEdicao);
+        favdao.atualizar(fav, userIdEmEdicao);
         
 
     }//GEN-LAST:event_enterButtonActionPerformed
@@ -1059,11 +1060,11 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     Telefone telefone = new Telefone();
     
     String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:");
-
-    if (userNome != null && !userNome.isEmpty()) {
+    userNome = userIdEmEdicao;
+    if (userIdEmEdicao != null && !userIdEmEdicao.isEmpty()) {
        // user.setUserNick(userNome);
-        user = userdao.obterUsuarioPorNome(userNome);
-
+        user = userdao.obterUsuarioPorNome(userIdEmEdicao);
+       //userdao.atualizar(user, String.valueOf(userIdEmEdicao));
         // Verifique se os dados foram preenchidos em 'user' após a chamada do método
 
         if (user.getUserId() != 0) {

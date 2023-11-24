@@ -96,14 +96,31 @@ public class UsuarioCadastroDAO {
         }
     }
 
-    public void atualizar(Usuario user) {
+    public void atualizar(Usuario user, String userIdEmEdicao) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
 
-        try {
-            if (con == null) {
-                JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados.");
-                return;
+        
+            try {
+        if (con == null) {
+            JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados.");
+            return;
+        }
+
+        con.setAutoCommit(false);  // Desativa o autocommit
+            // Pega o USE_ID que está sendo cadastrado
+            String consultaSQL = "SELECT USE_ID FROM USUARIO WHERE USE_NICK = ?";
+            stmt = con.prepareStatement(consultaSQL);
+            stmt.setString(1, userIdEmEdicao);
+            ResultSet resultado = stmt.executeQuery();
+            int userId = 0;
+
+            // Verifica se há resultados
+            if (resultado.next()) {
+                userId = resultado.getInt("USE_ID");
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao consultar USE_ID para tabela de usuario");
+                return;  // Encerre o método se não encontrar o usuário
             }
 
             stmt = con.prepareStatement("UPDATE USUARIO SET USE_NICK=?, USE_SENHA=?, USE_TYPE=?, USE_NOME=?, USE_SOBRENOME=?, USE_DATANASC=?, USE_EMAIL=?, USE_SEXO=?, USE_CPF=? WHERE USE_ID=?");
@@ -121,23 +138,34 @@ public class UsuarioCadastroDAO {
             stmt.setString(7, user.getUserEmail());
             stmt.setString(8, user.getUserSexo());
             stmt.setString(9, user.getUserCpf());
-            stmt.setInt(10, user.getUserId());  // Certifique-se de que este método exista em seu objeto Usuario
+            //stmt.setInt(10, user.getUserId());  // Certifique-se de que este método exista em seu objeto Usuario
+            stmt.setInt(10, userId);
 
-            int linhasAfetadas = stmt.executeUpdate();
+             int linhasAfetadas = stmt.executeUpdate();
 
-            if (linhasAfetadas > 0) {
-                con.commit();  // Confirme a transação apenas se a atualização for bem-sucedida
-                JOptionPane.showMessageDialog(null, "Edição realizada com sucesso!");
-            } else {
-                JOptionPane.showMessageDialog(null, "Nenhum usuário atualizado. Verifique o ID do usuário.");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Editar: " + ex.getMessage());
-            ex.printStackTrace();  // Isso ajudará a identificar a origem exata do erro no console
-        } finally {
-            ConnectionFactory.closeConnection(con, stmt);
+        if (linhasAfetadas > 0) {
+            con.commit();  // Confirma a transação apenas se a atualização for bem-sucedida
+            JOptionPane.showMessageDialog(null, "Usuario atualizado com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhum usuário atualizado. Verifique o ID do usuário.");
         }
+    } catch (SQLException ex) {
+        try {
+            con.rollback();  // Desfaz a transação em caso de exceção
+        } catch (SQLException rollbackEx) {
+            rollbackEx.printStackTrace();
+        }
+        JOptionPane.showMessageDialog(null, "Erro ao Editar: " + ex.getMessage());
+        ex.printStackTrace();
+    } finally {
+        try {
+            con.setAutoCommit(true);  // Reativa o autocommit no final, para evitar efeitos colaterais
+        } catch (SQLException autoCommitEx) {
+            autoCommitEx.printStackTrace();
+        }
+        ConnectionFactory.closeConnection(con, stmt);
     }
+}
 
     public Usuario obterUsuarioPorNome(String userNome) {
         Connection con = ConnectionFactory.getConnection();

@@ -74,7 +74,7 @@ public class TelefoneDAO {
         }
     }
        
-       public void atualizar(Telefone tel) {
+       public void atualizar(Telefone tel, String userIdEmEdicao) {
     Connection con = ConnectionFactory.getConnection();
     PreparedStatement stmt = null;
 
@@ -84,13 +84,37 @@ public class TelefoneDAO {
             return;
         }
 
+        con.setAutoCommit(false);  // Desativa o autocommit
+        
+        String consultaTelefoneExistenteSQL = "SELECT TEL_ID FROM USUARIO U\n" +
+"LEFT JOIN ENDERECO_USUARIO EU ON U.USE_ID = EU.ENDERECO_USER\n" +
+"LEFT JOIN ENDERECO E ON EU.ENDERECO_CHAVE = E.END_ID\n" +
+"LEFT JOIN TELEFONE_USUARIO TU ON U.USE_ID = TU.TELEFONE_USER\n" +
+"LEFT JOIN TELEFONE T ON TU.TELEFONE_FONE = T.TEL_ID\n" +
+"LEFT JOIN FAVORITO F ON U.USE_ID = F.FAV_USUARIO WHERE USE_ID = ?";
+            stmt = con.prepareStatement(consultaTelefoneExistenteSQL);
+            stmt.setString(1, tel.getTelefone());
+            stmt.setString(2,tel.getTipo());
+            ResultSet resultadoTelefoneExistente = stmt.executeQuery();
+
+            int telefoneExistenteId = 0;
+
+            // Se um registro existente for encontrado
+            if (resultadoTelefoneExistente.next()) {
+                telefoneExistenteId = resultadoTelefoneExistente.getInt("TEL_ID");
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao consultar TEL_ID para tabela de telefone");
+                return;  // Encerre o método se não encontrar o usuário
+            }
+            
+        
         // Montar instrução SQL
         stmt = con.prepareStatement("UPDATE TELEFONE SET TEL_TIPO=?, TEL_TELEFONE=? WHERE TEL_ID=?");
 
         // Setar valores para a instrução SQL
         stmt.setString(1, tel.getTipo());
         stmt.setString(2, tel.getTelefone());
-        stmt.setInt(3, tel.getId());
+        stmt.setInt(3, telefoneExistenteId);
 
         int linhasAfetadas = stmt.executeUpdate();
 
@@ -101,10 +125,21 @@ public class TelefoneDAO {
             JOptionPane.showMessageDialog(null, "Nenhum telefone atualizado. Verifique os dados informados.");
         }
     } catch (SQLException ex) {
+        try {
+            con.rollback();  // Desfaz a transação em caso de exceção
+        } catch (SQLException rollbackEx) {
+            rollbackEx.printStackTrace();
+        }
         JOptionPane.showMessageDialog(null, "Erro ao atualizar telefone: " + ex.getMessage());
         ex.printStackTrace();
     } finally {
+        try {
+            con.setAutoCommit(true);  // Reativa o autocommit no final, para evitar efeitos colaterais
+        } catch (SQLException autoCommitEx) {
+            autoCommitEx.printStackTrace();
+        }
         ConnectionFactory.closeConnection(con, stmt);
     }
 }
+
 }

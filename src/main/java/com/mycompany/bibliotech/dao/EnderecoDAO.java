@@ -81,7 +81,7 @@ public class EnderecoDAO {
         }
     }
     
-    public void atualizar(Endereco end) {
+    public void atualizar(Endereco end, String userIdEmEdicao) {
     Connection con = ConnectionFactory.getConnection();
     PreparedStatement stmt = null;
 
@@ -90,6 +90,29 @@ public class EnderecoDAO {
             JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados.");
             return;
         }
+
+        con.setAutoCommit(false);  // Desativa o autocommit
+        
+        String consultaEnderecoExistenteSQL = "SELECT END_ID FROM USUARIO U\n" +
+"LEFT JOIN ENDERECO_USUARIO EU ON U.USE_ID = EU.ENDERECO_USER\n" +
+"LEFT JOIN ENDERECO E ON EU.ENDERECO_CHAVE = E.END_ID\n" +
+"LEFT JOIN TELEFONE_USUARIO TU ON U.USE_ID = TU.TELEFONE_USER\n" +
+"LEFT JOIN TELEFONE T ON TU.TELEFONE_FONE = T.TEL_ID\n" +
+"LEFT JOIN FAVORITO F ON U.USE_ID = F.FAV_USUARIO WHERE USE_ID = ?";
+            stmt = con.prepareStatement(consultaEnderecoExistenteSQL);
+            stmt.setString(1, userIdEmEdicao);
+            ResultSet resultadoEnderecoExistente = stmt.executeQuery();
+
+            int enderecoExistenteId = 0;
+
+            // Se um registro existente for encontrado
+            if (resultadoEnderecoExistente.next()) {
+                enderecoExistenteId = resultadoEnderecoExistente.getInt("END_ID");
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao consultar END_ID para tabela de endereço");
+                return;  // Encerre o método se não encontrar o usuário
+            }
+            
 
         // Montar instrução SQL
         stmt = con.prepareStatement("UPDATE ENDERECO SET END_RUA=?, END_NUM=?, END_COMP=?, END_BAIRRO=?, END_CIDADE=?, END_UF=?, END_PAIS=?, END_CEP=? WHERE END_ID=?");
@@ -103,7 +126,7 @@ public class EnderecoDAO {
         stmt.setString(6, end.getUf());
         stmt.setString(7, end.getPais());
         stmt.setString(8, end.getCep());
-        stmt.setInt(9, end.getId());
+        stmt.setInt(9, enderecoExistenteId);
 
         int linhasAfetadas = stmt.executeUpdate();
 
@@ -114,10 +137,21 @@ public class EnderecoDAO {
             JOptionPane.showMessageDialog(null, "Nenhum endereço atualizado. Verifique os dados informados.");
         }
     } catch (SQLException ex) {
+        try {
+            con.rollback();  // Desfaz a transação em caso de exceção
+        } catch (SQLException rollbackEx) {
+            rollbackEx.printStackTrace();
+        }
         JOptionPane.showMessageDialog(null, "Erro ao atualizar endereço: " + ex.getMessage());
         ex.printStackTrace();
     } finally {
+        try {
+            con.setAutoCommit(true);  // Reativa o autocommit no final, para evitar efeitos colaterais
+        } catch (SQLException autoCommitEx) {
+            autoCommitEx.printStackTrace();
+        }
         ConnectionFactory.closeConnection(con, stmt);
     }
 }
+
 }
