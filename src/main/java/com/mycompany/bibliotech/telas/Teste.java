@@ -10,9 +10,9 @@ public class Teste extends javax.swing.JFrame {
     public Teste() {
         initComponents();
 
-        txtAlfabeto.setForeground(new java.awt.Color(0, 0, 0));
-        txtAlfabeto.addItem("");
-        txtAlfabeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "A", "B", "C", "D", "E", "F", "J", "F", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" }));
+        cboxAlfabeto.setForeground(new java.awt.Color(0, 0, 0));
+        cboxAlfabeto.addItem("");
+        cboxAlfabeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "A", "B", "C", "D", "E", "F", "J", "F", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" }));
         // Lembre-se de descomentar isso se quiser usar o método "listaTituloDosLivros"
         // listarBusca();
 
@@ -32,11 +32,11 @@ public class Teste extends javax.swing.JFrame {
     private void initComponents() {
 
         painelBusca = new javax.swing.JPanel();
-        txtNome = new javax.swing.JTextField();
-        txtNomeLivro = new javax.swing.JComboBox<>();
+        txtTituloBusca = new javax.swing.JTextField();
+        cboxNomeLivro = new javax.swing.JComboBox<>();
         btnBuscar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        txtAlfabeto = new javax.swing.JComboBox<>();
+        cboxAlfabeto = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         cboxCategoriaBusca = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
@@ -45,19 +45,15 @@ public class Teste extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtNome.setForeground(new java.awt.Color(0, 0, 0));
-        txtNome.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Digite o título do livro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeActionPerformed(evt);
-            }
-        });
+        txtTituloBusca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtTituloBusca.setForeground(new java.awt.Color(0, 0, 0));
+        txtTituloBusca.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Digite o título do livro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        txtNomeLivro.addActionListener(new java.awt.event.ActionListener() {
+        cboxNomeLivro.setEnabled(false);
+        cboxNomeLivro.setFocusable(false);
+        cboxNomeLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeLivroActionPerformed(evt);
-                txtNomeLivroeActionPerformed(evt);
+                cboxNomeLivroeActionPerformed(evt);
             }
         });
 
@@ -73,10 +69,10 @@ public class Teste extends javax.swing.JFrame {
         jLabel1.setText("Nome do livro:");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        txtAlfabeto.setForeground(new java.awt.Color(0, 0, 0));
-        txtAlfabeto.addActionListener(new java.awt.event.ActionListener() {
+        cboxAlfabeto.setForeground(new java.awt.Color(0, 0, 0));
+        cboxAlfabeto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAlfabetoActionPerformed(evt);
+                cboxAlfabetoActionPerformed(evt);
             }
         });
 
@@ -116,9 +112,9 @@ public class Teste extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addGroup(painelBuscaLayout.createSequentialGroup()
                         .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAlfabeto, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtNomeLivro, javax.swing.GroupLayout.Alignment.LEADING, 0, 350, Short.MAX_VALUE))
+                            .addComponent(txtTituloBusca, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cboxAlfabeto, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboxNomeLivro, javax.swing.GroupLayout.Alignment.LEADING, 0, 350, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(btnBuscar)))
                 .addContainerGap(659, Short.MAX_VALUE))
@@ -127,17 +123,17 @@ public class Teste extends javax.swing.JFrame {
             painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelBuscaLayout.createSequentialGroup()
                 .addGap(77, 77, 77)
-                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTituloBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNomeLivro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboxNomeLivro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
-                .addComponent(txtAlfabeto, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cboxAlfabeto, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -171,64 +167,51 @@ public class Teste extends javax.swing.JFrame {
     
     
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        txtNomeLivro.setMaximumRowCount(5);
-        txtNomeLivro.showPopup();
-        // O que faz a mágica acontecer é isso. O restante é no TelaAvaliacaoDAO.
-        String busca = txtNome.getText();
-        String busca1 = txtAlfabeto.getSelectedItem().toString();
-        String buscaCategorias = cboxCategoriaBusca.getSelectedItem().toString().substring(3);
-        String buscaSubCategorias = cboxSubCategoriaBusca.getSelectedItem().toString(); 
+
+    cboxNomeLivro.setEnabled(true);
         
-                
-        // Aqui eu verifico o tamanho do texto que foi digitado. Se for menor que 1
-        // uma mensagem aparerá pedindo para o usuário digitar algo. Eu poderia ter colocado
-        // igual a zero (já que menos que 1 é 0) mas vou deixar assim. Acredito que seja
-        // bacana limitar o número mínimo de caractéries para fazer uma busca (quem sabe uns
-        // três ou quatro). Fica ao seu critério quando for implementar. A mensagem também
-        // pode ser melhorada.
-        
-        TelaAvaliacaoDAO.buscaCategorias(txtNomeLivro,buscaCategorias);
-        TelaAvaliacaoDAO.buscaSubCategorias(txtNomeLivro, buscaSubCategorias);
-        
-        if (busca.length() < 1 && !busca1.isEmpty()) {
-            //busca se txtNome esta vazio e txtAlfabeto não esta
-            TelaAvaliacaoDAO.listaAlfabeto(txtNomeLivro, busca1);
-            
-        } 
-        else if (!busca.isEmpty() && busca1.isEmpty()) {
-            //busca se txtAlfabeto não esta e txtNome não esta
-            TelaAvaliacaoDAO.listaFiltrada(txtNomeLivro, busca);
-            
-        } 
-        else if (busca.length() < 1 && busca1.length() < 1 ) {
-            txtNomeLivro.removeAllItems();
-        }
-        else {
-            JOptionPane.showMessageDialog(null, "Preencha apenas um dos campos!");
-        txtNomeLivro.removeAllItems();
-        }
-        txtAlfabeto.setSelectedIndex(0);
-        txtNome.setText("");
+    cboxNomeLivro.setMaximumRowCount(5);
+    cboxNomeLivro.showPopup();
+    
+    String busca = txtTituloBusca.getText();
+    String buscaCategorias = cboxCategoriaBusca.getSelectedItem().toString();
+    String buscaSubCategorias = cboxSubCategoriaBusca.getSelectedItem().toString();
+    String buscaAlfabeto = cboxAlfabeto.getSelectedItem().toString();
+    
+    if (!busca.isEmpty() && buscaAlfabeto.isEmpty()) {
+        // Busca simples por uma parte do nome
+        TelaAvaliacaoDAO.listaFiltrada(cboxNomeLivro, busca);
+    } else if (buscaAlfabeto.isEmpty() && !buscaCategorias.isEmpty()) {
+        // Busca por categorias
+        TelaAvaliacaoDAO.buscaCategorias(cboxNomeLivro, buscaCategorias);
+    } else if (buscaAlfabeto.isEmpty() && !buscaSubCategorias.isEmpty()) {
+        // Busca por subcategorias
+        TelaAvaliacaoDAO.buscaSubCategorias(cboxNomeLivro, buscaSubCategorias);
+    } else if (!buscaAlfabeto.isEmpty() && busca.isEmpty()) {
+        // Busca em ordem alfabética
+        TelaAvaliacaoDAO.listaAlfabeto(cboxNomeLivro, buscaAlfabeto);
+    } else {
+        JOptionPane.showMessageDialog(null, "Preencha apenas um dos campos!");
+        cboxNomeLivro.removeAllItems();
+    }
+    
+    cboxAlfabeto.setSelectedIndex(0);
+    txtTituloBusca.setText("");
+    
     }//GEN-LAST:event_btnBuscarActionPerformed
-
-      
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeActionPerformed
-
 
     private void txtNomeLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeLivroActionPerformed
         // TODO add your handling code here:
         
     }//GEN-LAST:event_txtNomeLivroActionPerformed
 
-    private void txtAlfabetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlfabetoActionPerformed
+    private void cboxAlfabetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxAlfabetoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAlfabetoActionPerformed
+    }//GEN-LAST:event_cboxAlfabetoActionPerformed
 
-    private void txtNomeLivroeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeLivroeActionPerformed
+    private void cboxNomeLivroeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxNomeLivroeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeLivroeActionPerformed
+    }//GEN-LAST:event_cboxNomeLivroeActionPerformed
 
       public void listarCategorias() {
         LivroCategoriaDAO.listarCategorias(cboxCategoriaBusca);
@@ -289,15 +272,15 @@ public class Teste extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JComboBox<String> cboxAlfabeto;
     private javax.swing.JComboBox<String> cboxCategoriaBusca;
+    private javax.swing.JComboBox<String> cboxNomeLivro;
     private javax.swing.JComboBox<String> cboxSubCategoriaBusca;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel painelBusca;
-    private javax.swing.JComboBox<String> txtAlfabeto;
-    private javax.swing.JTextField txtNome;
-    private javax.swing.JComboBox<String> txtNomeLivro;
+    private javax.swing.JTextField txtTituloBusca;
     // End of variables declaration//GEN-END:variables
 }
