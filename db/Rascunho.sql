@@ -23,7 +23,6 @@ INSERT INTO AUTOR ( AUT_NOME_AUTOR, AUT_NACIONALIDADE, AUT_SEXO) VALUES
 ('George R. R. Martin', 'Estados Unidos - Americana', 'MASC' ),
 ('Agatha Christie', 'Reino Unido - Britânica', 'FEM');
 
-INSERT INTO AVALIACAO (AVA_USUARIO, AVA_COMENTARIO, AVA_FK_LIVRO) VALUES (10, 'Este comentario é para testar a tela de avaliação de livros', 1);
 
 /*INSERT DOS VINCULOS DE ENDEREÇO E TELEFONE */
 INSERT INTO TELEFONE_USUARIO VALUES (3, 2), (1, 1), (2, 3);
