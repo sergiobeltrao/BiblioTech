@@ -31,7 +31,7 @@ public class TelaAvaliacaoDAO {
     }
 
     // Mostra os livros com base no que foi digitado.
-    public static void listaFiltrada(JComboBox<String> comboBox, String busca) {
+    public static void listaFiltrada(JComboBox<String> comboBox, String buscaTitulo) {
 
         try {
             Connection con = ConnectionFactory.getConnection();
@@ -42,7 +42,7 @@ public class TelaAvaliacaoDAO {
             // Tive que mandar os % do comando SQL pra cá. Se usar direto no prepareStatement vai
             // dar o erro "parameter index out of range (1 number of parameters which is 0)"
             
-            stmt.setString(1, "%" + busca + "%");
+            stmt.setString(1, "%" + buscaTitulo + "%");
 
             //PreparedStatement comando = con.prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery();
@@ -57,7 +57,7 @@ public class TelaAvaliacaoDAO {
             JOptionPane.showMessageDialog(null, "Erro ao ler a tabela de livros: " + ex);
         }
     }
-    public static void listaAlfabeto(JComboBox<String> comboBox, String busca1) {
+    public static void listaAlfabeto(JComboBox<String> comboBox, String buscaAlfabetica) {
 
         try {
             Connection con = ConnectionFactory.getConnection();
@@ -68,7 +68,7 @@ public class TelaAvaliacaoDAO {
             // Tive que mandar os % do comando SQL pra cá. Se usar direto no prepareStatement vai
             // dar o erro "parameter index out of range (1 number of parameters which is 0)"
             
-            stmt.setString(1,   busca1 + "%" );
+            stmt.setString(1,   buscaAlfabetica + "%" );
 
             //PreparedStatement comando = con.prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery();
