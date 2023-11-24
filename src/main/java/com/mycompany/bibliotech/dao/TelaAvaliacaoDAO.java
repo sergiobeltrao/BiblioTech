@@ -1,6 +1,8 @@
 package com.mycompany.bibliotech.dao;
 
 import com.mycompany.bibliotech.connection.ConnectionFactory;
+import com.mycompany.bibliotech.model.bean.Avaliacao;
+import com.mycompany.bibliotech.model.bean.Livro;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,7 +22,7 @@ public class TelaAvaliacaoDAO {
             ResultSet resultado = comando.executeQuery();
 
             comboBox.removeAllItems();
-            comboBox.addItem("Resultados...");
+            comboBox.addItem("");
 
             while (resultado.next()) {
                 comboBox.addItem(resultado.getString("LIV_NOME_LIVRO"));
@@ -41,14 +43,13 @@ public class TelaAvaliacaoDAO {
 
             // Tive que mandar os % do comando SQL pra cá. Se usar direto no prepareStatement vai
             // dar o erro "parameter index out of range (1 number of parameters which is 0)"
-            
             stmt.setString(1, "%" + buscaTitulo + "%");
 
             //PreparedStatement comando = con.prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery();
 
             comboBox.removeAllItems();
-            comboBox.addItem("Resultados...");
+            comboBox.addItem("");
 
             while (resultado.next()) {
                 comboBox.addItem(resultado.getString("LIV_NOME_LIVRO"));
@@ -57,6 +58,7 @@ public class TelaAvaliacaoDAO {
             JOptionPane.showMessageDialog(null, "Erro ao ler a tabela de livros: " + ex);
         }
     }
+
     public static void listaAlfabeto(JComboBox<String> comboBox, String buscaAlfabetica) {
 
         try {
@@ -67,14 +69,13 @@ public class TelaAvaliacaoDAO {
 
             // Tive que mandar os % do comando SQL pra cá. Se usar direto no prepareStatement vai
             // dar o erro "parameter index out of range (1 number of parameters which is 0)"
-            
-            stmt.setString(1,   buscaAlfabetica + "%" );
+            stmt.setString(1, buscaAlfabetica + "%");
 
             //PreparedStatement comando = con.prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery();
 
             comboBox.removeAllItems();
-            comboBox.addItem("Resultados...");
+            comboBox.addItem("");
 
             while (resultado.next()) {
                 comboBox.addItem(resultado.getString("LIV_NOME_LIVRO"));
@@ -83,58 +84,100 @@ public class TelaAvaliacaoDAO {
             JOptionPane.showMessageDialog(null, "Erro ao bucar livro cabaço " + ex);
         }
     }
-    
-    public static void buscaCategorias (JComboBox<String> comboBox, String buscaCategorias) {
-    
+
+    public static void buscaCategorias(JComboBox<String> comboBox, String buscaCategorias) {
+
         try {
-            
+
             Connection con = ConnectionFactory.getConnection();
             PreparedStatement stmt = null;
-            
+
             stmt = con.prepareStatement("SELECT LIV_NOME_LIVRO FROM LIVRO WHERE LIV_CATEGORIA = ?");
-            
+
             stmt.setString(1, buscaCategorias);
-            
+
             ResultSet resultado = stmt.executeQuery();
-            
+
             comboBox.removeAllItems();
-            comboBox.addItem("Resultados");
-            
-            
+            comboBox.addItem("");
+
             while (resultado.next()) {
                 comboBox.addItem(resultado.getString("LIV_NOME_LIVRO"));
-            }             
-                    
-        } catch (SQLException ex){
-            JOptionPane.showMessageDialog(null, " Erro ao buscar livro " + ex);            
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Erro ao buscar livro " + ex);
         }
-        
+
     }
-    
-    public static void buscaSubCategorias (JComboBox<String> comboBox, String buscaSubCategorias) {
-    
+
+    public static void buscaSubCategorias(JComboBox<String> comboBox, String buscaSubCategorias) {
+
         try {
-            
+
             Connection con = ConnectionFactory.getConnection();
             PreparedStatement stmt = null;
-            
+
             stmt = con.prepareStatement("SELECT LIV_NOME_LIVRO FROM LIVRO WHERE LIV_SUBCATEGORIA = ?");
-            
+
             stmt.setString(1, buscaSubCategorias);
-            
+
             ResultSet resultado = stmt.executeQuery();
-            
+
             comboBox.removeAllItems();
-            comboBox.addItem("Resultados");
-            
-            
+            comboBox.addItem("");
+
             while (resultado.next()) {
                 comboBox.addItem(resultado.getString("LIV_NOME_LIVRO"));
-            }               
-                    
-        } catch (SQLException ex){
-            JOptionPane.showMessageDialog(null, " Erro ao buscar livro " + ex);            
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Erro ao buscar livro " + ex);
         }
-        
+
+    }
+
+    public Avaliacao find(String pesquisar) throws SQLException {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            if (con == null) {
+                throw new SQLException("Não foi possível conectar ao banco de dados.");
+            }
+            String sql = "SELECT LIV_PAGINA, LIV_EDITORA, LIV_ISBN, LIV_ANO, LIV_IDIOMA FROM LIVRO WHERE LIV_NOME_LIVRO = ?";
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, pesquisar);
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                Avaliacao pes = new Avaliacao();
+                /*pes.setCboxNomeLivro(rs.getString("LIV_NOME_LIVRO")); */
+                pes.setTxtPaginas(rs.getInt("LIV_PAGINA"));
+                pes.setTxtEditora(rs.getString("LIV_EDITORA"));
+                pes.setTxtIsbn(rs.getString("LIV_ISBN"));
+                pes.setTxtAno(rs.getInt("LIV_ANO"));
+                pes.setTxtIdioma(rs.getString("LIV_IDIOMA"));
+                pes.setTxtPaginas(rs.getInt("LIV_PAGINA"));
+
+                return pes;
+
+            } else {
+            System.out.println(pesquisar + " erro dao find");
+            JOptionPane.showMessageDialog(null, "erro no dao findDAO");
+}
+
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no catch do findDAO: " + ex.getMessage());
+            ex.printStackTrace();
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+        return null;
     }
 }

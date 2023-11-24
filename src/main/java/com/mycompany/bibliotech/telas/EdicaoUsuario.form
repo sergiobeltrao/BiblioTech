@@ -104,10 +104,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Component id="emailTxt" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
-                                                  <Component id="senhaTxt" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
-                                              </Group>
+                                              <Component id="emailTxt" min="-2" pref="300" max="-2" attributes="0"/>
                                               <Component id="telefoneTipoBox" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                                               <Component id="nickTxt" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
                                               <Component id="sobrenomeTxt" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
@@ -115,7 +112,6 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="cargoBox" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                              <Component id="resenhaTxt" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                                               <Component id="foneTxt" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                                               <Component id="cpfTxt" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                                               <Component id="sexoBox" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
@@ -129,7 +125,11 @@
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                  <Component id="idLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
                                   <Component id="ProxCadEndButton" min="-2" pref="300" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -163,38 +163,18 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="emailTxt" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                              <Component id="resenhaTxt" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="senhaTxt" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                               <Component id="cargoBox" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="ProxCadEndButton" min="-2" pref="50" max="-2" attributes="0"/>
-                          <EmptySpace pref="68" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="idLabel" pref="34" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JPasswordField" name="senhaTxt">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="0"/>
-                    </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Senha">
-                          <Font PropertyName="font" name="Segoe UI" size="14" style="0"/>
-                        </TitledBorder>
-                      </Border>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="senhaTxtActionPerformed"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.JComboBox" name="sexoBox">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -288,10 +268,9 @@
                 <Component class="javax.swing.JComboBox" name="cargoBox">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
+                      <StringArray count="2">
                         <StringItem index="0" value="ADMIN"/>
-                        <StringItem index="1" value="BIBLIOTECARIO"/>
-                        <StringItem index="2" value="CLIENTE"/>
+                        <StringItem index="1" value="CLIENTE"/>
                       </StringArray>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -317,23 +296,6 @@
                     <Property name="toolTipText" type="java.lang.String" value="2004-08-07"/>
                     <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JPasswordField" name="resenhaTxt">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="0"/>
-                    </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Re-Senha">
-                          <Font PropertyName="font" name="Segoe UI" size="14" style="0"/>
-                        </TitledBorder>
-                      </Border>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resenhaTxtActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="telefoneTipoBox">
                   <Properties>
@@ -394,6 +356,14 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cpfTxtActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="idLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="ID"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Default Cursor"/>
+                    </Property>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>

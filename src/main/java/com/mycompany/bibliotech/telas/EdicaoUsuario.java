@@ -35,47 +35,8 @@ import java.util.logging.Logger;
 
 public class EdicaoUsuario extends javax.swing.JFrame {
 
-    private String userIdEmEdicao;
-
     public EdicaoUsuario(Usuario user, Endereco endereco, Telefone telefone, Favoritos favoritos) {
-        /*
-        //Usuario user = new Usuario();
-        Endereco end = new Endereco();
-        Favoritos fav = new Favoritos();
-        Telefone tel = new Telefone();
-        UsuarioCadastroDAO dao = new UsuarioCadastroDAO();
-        EnderecoDAO enddao = new EnderecoDAO();
-        FavoritosDAO favdao = new FavoritosDAO();
-        TelefoneDAO fonedao = new TelefoneDAO();
-       */
-     //   nickTxt.setText(user.getUserNick());
-     /*   user.setUserNick(nickTxt.getText());
-        user.setUserSenha(new String(senhaTxt.getPassword()));
-        user.setUserType(cargoBox.getSelectedItem().toString());
-        user.setUserNome(nomeTxt.getText());
-        user.setUserSobrenome(sobrenomeTxt.getText());
-        // user.setUserDataNasc(dataNascChooser.getDate());
-        user.setUserEmail(emailTxt.getText());
-        user.setUserSexo(sexoBox.getSelectedItem().toString());
-       // user.setUserDataNasc(dataNascChooser.getDate());
-        user.setUserCpf(cpfTxt.getText()); */
-        /*
-       tel.setTipo(telefoneTipoBox.getSelectedItem().toString());
-        tel.setTelefone(foneTxt.getText());
        
-        end.setCep(cepTxt.getText());
-        end.setPais(paisTxt.getText());
-        end.setRua(endTxt.getText());
-        end.setUf(ufTxt.getText());
-        end.setComp(compTxt.getText());
-        end.setCidade(cidadeTxt.getText());
-        end.setNum(Integer.parseInt(numTxt.getText()));
-        end.setBairro(bairroTxt.getText());
-        fav.setFavCategoria1(cboxCategoria1.getSelectedItem().toString());
-        fav.setFavSub1(cboxSubCategoria1.getSelectedItem().toString());
-        fav.setFavCategoria2(cboxCategoria2.getSelectedItem().toString());
-        fav.setFavSub2(cboxSubCategoria2.getSelectedItem().toString());
-        */
         initComponents();
         listarCategorias1();
         listarCategorias2();
@@ -83,13 +44,8 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         setEnderecoValues(user.getEndereco());
         setTelefoneValues(user.getTelefone());
         setFavoritosValues(user.getFavoritos());
-        
-      /*  if (nickTxt != null && user != null) {
-            nickTxt.setText(user.getUserNick());}
-            
-        if (nickTxt != null && user != null) {
-            nickTxt.setText(user.getUserNick());}
-*/
+        idLabel.setVisible(false);
+       
     }
     private void setUserValues(Usuario user) {
        if (user != null) {
@@ -103,7 +59,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             emailTxt.setText(user.getUserEmail());
             sexoBox.setSelectedItem(user.getUserSexo());
             cpfTxt.setText(user.getUserCpf());
-            // Adicione outros campos conforme necessário
+            idLabel.setText(Integer.toString(user.getUserId()));
         }
     }
     private void setEnderecoValues(Endereco endereco) {
@@ -116,7 +72,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         cidadeTxt.setText(endereco.getCidade());
         numTxt.setText(String.valueOf(endereco.getNum()));        
         bairroTxt.setText(endereco.getBairro());
-        // Adicione outros campos conforme necessário
         }
     }
     private void setTelefoneValues(Telefone telefone) {
@@ -142,7 +97,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         campoCentral = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        senhaTxt = new javax.swing.JPasswordField();
         sexoBox = new javax.swing.JComboBox<>();
         sobrenomeTxt = new javax.swing.JTextField();
         nickTxt = new javax.swing.JTextField();
@@ -150,11 +104,11 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         nomeTxt = new javax.swing.JTextField();
         cargoBox = new javax.swing.JComboBox<>();
         dataNascChooser = new com.toedter.calendar.JDateChooser();
-        resenhaTxt = new javax.swing.JPasswordField();
         telefoneTipoBox = new javax.swing.JComboBox<>();
         foneTxt = new javax.swing.JFormattedTextField();
         ProxCadEndButton = new javax.swing.JButton();
         cpfTxt = new javax.swing.JFormattedTextField();
+        idLabel = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         endTxt = new javax.swing.JTextField();
         ufTxt = new javax.swing.JTextField();
@@ -186,14 +140,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         campoCentral.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
-
-        senhaTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        senhaTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Senha", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
-        senhaTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                senhaTxtActionPerformed(evt);
-            }
-        });
 
         sexoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MASC", "FEM", "OUTRO" }));
         sexoBox.setBorder(javax.swing.BorderFactory.createTitledBorder("Sexo"));
@@ -235,7 +181,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             }
         });
 
-        cargoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMIN", "BIBLIOTECARIO", "CLIENTE" }));
+        cargoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMIN", "CLIENTE" }));
         cargoBox.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo"));
         cargoBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,14 +192,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         dataNascChooser.setBorder(javax.swing.BorderFactory.createTitledBorder("Data de Nascimento"));
         dataNascChooser.setToolTipText("2004-08-07");
         dataNascChooser.setDateFormatString("yyyy-MM-dd");
-
-        resenhaTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        resenhaTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Re-Senha", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
-        resenhaTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resenhaTxtActionPerformed(evt);
-            }
-        });
 
         telefoneTipoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RESIDENCIAL", "COMERCIAL", "CELULAR" }));
         telefoneTipoBox.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de número"));
@@ -294,6 +232,9 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             }
         });
 
+        idLabel.setText("ID");
+        idLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -305,16 +246,13 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(senhaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(telefoneTipoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(nickTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(sobrenomeTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cargoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(resenhaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(foneTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cpfTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(sexoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -323,7 +261,10 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(dataNascChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
+                        .addGap(20, 20, 20)
+                        .addComponent(idLabel))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(164, 164, 164)
                         .addComponent(ProxCadEndButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
@@ -349,14 +290,12 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(resenhaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(senhaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cargoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(ProxCadEndButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addGap(71, 71, 71)
+                .addComponent(idLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addGap(19, 19, 19))
         );
 
         jTabbedPane1.addTab("Edição usuario", jPanel1);
@@ -717,10 +656,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void senhaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_senhaTxtActionPerformed
-
     private void sexoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexoBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sexoBoxActionPerformed
@@ -744,10 +679,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     private void cargoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargoBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cargoBoxActionPerformed
-
-    private void resenhaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resenhaTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_resenhaTxtActionPerformed
 
     private void telefoneTipoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefoneTipoBoxActionPerformed
 
@@ -847,7 +778,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         String cpf = cpfTxt.getText();
         CpfDAO cpfdao = new CpfDAO(cpf);
         
-         Hash hash = new Hash();
+         /*Hash hash = new Hash();
         
         String senhaDigitada = senhaTxt.getText();
         String hashDaSenha = "";
@@ -876,10 +807,9 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "A senha e a re-senha não coincidem. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
             return; // Não prossegue com o cadastro se as senhas não coincidirem
         }
-
+*/
         user.setUserNick(nickTxt.getText());
-        user.setUserSenha(new String(hashDaSenha));
-        //String userNome = nickTxt.getText();
+       // user.setUserSenha(new String(hashDaSenha));
         String valorUserCargo = cargoBox.getSelectedItem().toString();
         String valorSelecionado = "CLIENTE";
 
@@ -893,7 +823,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
         user.setUserNome(nomeTxt.getText());
         user.setUserSobrenome(sobrenomeTxt.getText());
-        // user.setUserDataNasc(dataNascChooser.getDate());
         user.setUserEmail(emailTxt.getText());
 
         String valorUserSexo = sexoBox.getSelectedItem().toString();
@@ -908,7 +837,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         }
         user.setUserSexo(valorSelecionad);
         user.setUserType(valorSelecionado);
-        // user.setUserCpf(cpfTxt.getText());
+        String userId = idLabel.getText();
 
         String valorTipo = telefoneTipoBox.getSelectedItem().toString();
         String valorSelecionada = "CELULAR";
@@ -968,24 +897,47 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma data de nascimento válida!");
             return; // Não prossegue com o cadastro se a data de nascimento não foi selecionada
         }
-
-        if (cpfdao.isCPF()) {
+        
+         if (cpfdao.isCPF()) {
             user.setUserCpf(cpfTxt.getText());
-            dao.atualizar(user, userIdEmEdicao);
+            dao.atualizar(user, userId);
         } else {
             JOptionPane.showMessageDialog(rootPane, "CPF inválido!!");
             return;
         }
-        enddao.atualizar(end, userIdEmEdicao);
-        fonedao.atualizar(tel, userIdEmEdicao);
-        favdao.atualizar(fav, userIdEmEdicao);
+        enddao.atualizar(end, userId);
+        fonedao.atualizar(tel, userId);
+        favdao.atualizar(fav, userId);
         
-
     }//GEN-LAST:event_enterButtonActionPerformed
 
     private void LimparButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparButtonActionPerformed
-        new CadastroUsuario().setVisible(true);
-        this.setVisible(false);
+        UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
+    Usuario user = new Usuario();
+    Endereco endereco = new Endereco();
+    Favoritos favoritos = new Favoritos();
+    Telefone telefone = new Telefone();
+    
+    // Solicita o nome do usuário ao usuário
+    String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:");
+
+   // Verifica se o usuário inseriu um nome
+    if (userNome != null && !userNome.isEmpty()) {
+        // Obtém o usuário com base no nome fornecido
+        user = userdao.obterUsuarioPorNome(userNome);
+        
+        // Verifica se o usuário foi encontrado
+        if (user.getUserId() != 0) {
+            // Abre a tela de edição com os dados do usuário
+            EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
+            edicaoUsuarioFrame.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+        JOptionPane.showMessageDialog(this, "Digite um nome de usuário válido", "Erro", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_LimparButtonActionPerformed
 
     private void CadUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadUserButtonActionPerformed
@@ -1062,14 +1014,11 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     // Solicita o nome do usuário ao usuário
     String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:");
 
-    // Verifica se o usuário inseriu um nome
+   // Verifica se o usuário inseriu um nome
     if (userNome != null && !userNome.isEmpty()) {
-        // Atribui o valor de userNome a userIdEmEdicao
-        userIdEmEdicao = userNome;
-
         // Obtém o usuário com base no nome fornecido
-        user = userdao.obterUsuarioPorNome(userIdEmEdicao);
-
+        user = userdao.obterUsuarioPorNome(userNome);
+        
         // Verifica se o usuário foi encontrado
         if (user.getUserId() != 0) {
             // Abre a tela de edição com os dados do usuário
@@ -1082,110 +1031,8 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     } else {
         JOptionPane.showMessageDialog(this, "Digite um nome de usuário válido", "Erro", JOptionPane.ERROR_MESSAGE);
     }
-
-
-}
-
-
-        
-        /*    // Exibir um JOptionPane para obter o nick do usuário
-    String nick = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser excluído:");
-
-    // Verificar se o usuário digitou algo
-    if (nick != null && !nick.isEmpty()) {
-        // Aqui você pode adicionar a lógica para buscar as informações do usuário no banco de dados
-        // Substitua a chamada do método 'buscarUsuarioNoBanco' pela sua própria lógica
-        Usuario usuario = buscarUsuarioNoBanco(nick);
-
-        // Verificar se o usuário foi encontrado no banco de dados
-        if (usuario != null) {
-            // Exibir as informações do usuário em uma nova interface gráfica
-            exibirInformacoesDoUsuario(usuario);
-        } else {
-            // Caso o usuário não seja encontrado, exibir uma mensagem informando
-            JOptionPane.showMessageDialog(this, "Usuário não encontrado no banco de dados.");
-        }
-    } else {
-        // Caso o usuário tenha clicado em cancelar ou não digitado nada
-        JOptionPane.showMessageDialog(this, "Operação cancelada ou nenhum nick fornecido.");
-    } */
-    /*String nome = JOptionPane.showInputDialog("Digite o nome da pessoa a ser atualizada");
-                    UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
-                    Usuario use = new Usuario();
-                    if (userdao.buscarPessoa( User, Fone, End)) {
-                        // Exibir os detalhes da pessoa atual
-                        JOptionPane.showMessageDialog(null, "Detalhes da pessoa:\n" + p.toString());
-
-                        // Solicitar as informações atualizadas ao usuário
-                        String novoNome = JOptionPane.showInputDialog("Digite o novo nome (ou deixe em branco para manter o mesmo):");
-                        String novoFone = JOptionPane.showInputDialog("Digite o novo telefone (ou deixe em branco para manter o mesmo):");
-                        String novoEmail = JOptionPane.showInputDialog("Digite o novo email (ou deixe em branco para manter o mesmo):");
-
-                        // Atualizar os campos, se forem fornecidos
-                        if (!novoNome.isEmpty()) {
-                            use.setNome(novoNome);
-                        }
-                        if (!novoFone.isEmpty()) {
-                            use.setFone(novoFone);
-                        }
-                        if (!novoEmail.isEmpty()) {
-                            use.setEmail(novoEmail);
-                        }
-
-                        // Chamar o método de atualização
-                        if (p.atualizar()) {
-                            JOptionPane.showMessageDialog(null, "Pessoa atualizada com sucesso!");
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Falha ao atualizar a pessoa.");
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Usuário não encontrado");
-                    }
-                }
-}  */
-/*
-// Método de exemplo para buscar o usuário no banco de dados (substitua pela sua própria lógica)
-private Usuario buscarUsuarioNoBanco(String nick) {
-    // Adicione sua lógica de busca no banco de dados aqui
-    // Este é apenas um exemplo de um objeto de usuário fictício
-    // Substitua isso pela sua lógica real de consulta ao banco de dados
-    return new Usuario(nick, "Nome do Usuário", "Email do Usuário");
-}
-
-// Método de exemplo para exibir as informações do usuário em uma nova interface gráfica
-private void exibirInformacoesDoUsuario(Usuario usuario) {
-    // Adicione sua lógica para exibir as informações do usuário na nova interface gráfica aqui
-    // Este é apenas um exemplo, substitua pela sua própria lógica
-    JOptionPane.showMessageDialog(this, "Informações do Usuário:\n\nNick: " + usuario.getNick() +
-            "\nNome: " + usuario.getNome() + "\nEmail: " + usuario.getEmail());
-}
-
-  // Classe de exemplo para representar um usuário (substitua pela sua própria classe de usuário)
-private class Usuario {
-    private String nick;
-    private String nome;
-    private String email;
-
-    public Usuario(String nick, String nome, String email) {
-        this.nick = nick;
-        this.nome = nome;
-        this.email = email;
-    }
-
-    public String getNick() {
-        return nick;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-}
     }//GEN-LAST:event_edicaoUserButtonActionPerformed
-*/
+
     public void listarCategorias1() {
         LivroCategoriaDAO.listarCategorias(cboxCategoria1);
     }
@@ -1263,6 +1110,7 @@ private class Usuario {
     private javax.swing.JTextField endTxt;
     private javax.swing.JButton enterButton;
     private javax.swing.JFormattedTextField foneTxt;
+    private javax.swing.JLabel idLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1272,12 +1120,11 @@ private class Usuario {
     private javax.swing.JTextField nomeTxt;
     private javax.swing.JTextField numTxt;
     private javax.swing.JTextField paisTxt;
-    private javax.swing.JPasswordField resenhaTxt;
-    private javax.swing.JPasswordField senhaTxt;
     private javax.swing.JComboBox<String> sexoBox;
     private javax.swing.JTextField sobrenomeTxt;
     private javax.swing.JComboBox<String> telefoneTipoBox;
     private javax.swing.JTextField txtMenuPrincipal;
     private javax.swing.JTextField ufTxt;
     // End of variables declaration//GEN-END:variables
+
 }

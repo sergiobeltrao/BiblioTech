@@ -7,6 +7,7 @@ import com.mycompany.bibliotech.model.bean.Usuario;
 import com.mycompany.bibliotech.model.bean.Telefone;
 import com.mycompany.bibliotech.model.bean.Endereco;
 import com.mycompany.bibliotech.model.bean.Favoritos;
+import com.mycompany.bibliotech.telas.EdicaoUsuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JComboBox;
@@ -96,10 +97,10 @@ public class UsuarioCadastroDAO {
         }
     }
 
-    public void atualizar(Usuario user, String userIdEmEdicao) {
+    public void atualizar(Usuario user, String userId) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
-
+        //EdicaoUsuario eduser = new EdicaoUsuario(user, endereco, telefone, favoritos);
         
             try {
         if (con == null) {
@@ -109,39 +110,39 @@ public class UsuarioCadastroDAO {
 
         con.setAutoCommit(false);  // Desativa o autocommit
             // Pega o USE_ID que está sendo cadastrado
-            String consultaSQL = "SELECT USE_ID FROM USUARIO WHERE USE_NICK = ?";
+           /* String consultaSQL = "SELECT USE_ID FROM USUARIO WHERE USE_NICK = ?";
             stmt = con.prepareStatement(consultaSQL);
-            stmt.setString(1, userIdEmEdicao);
+            stmt.setString(1, userId);
             ResultSet resultado = stmt.executeQuery();
-            int userId = 0;
+            int useId = 0;
 
             // Verifica se há resultados
             if (resultado.next()) {
-                userId = resultado.getInt("USE_ID");
+                useId = resultado.getInt("USE_ID");
             } else {
-                System.out.println("userIdEmEdicao: " + userIdEmEdicao);
+                System.out.println("userIdEmEdicao: " + userId);
 
                 JOptionPane.showMessageDialog(null, "Erro ao consultar USE_ID para tabela de usuario");
                 return;  // Encerre o método se não encontrar o usuário
-            }
+            }*/
 
-            stmt = con.prepareStatement("UPDATE USUARIO SET USE_NICK=?, USE_SENHA=?, USE_TYPE=?, USE_NOME=?, USE_SOBRENOME=?, USE_DATANASC=?, USE_EMAIL=?, USE_SEXO=?, USE_CPF=? WHERE USE_ID=?");
+            stmt = con.prepareStatement("UPDATE USUARIO SET USE_NICK=?, USE_TYPE=?, USE_NOME=?, USE_SOBRENOME=?, USE_DATANASC=?, USE_EMAIL=?, USE_SEXO=?, USE_CPF=? WHERE USE_ID=?");
 
             stmt.setString(1, user.getUserNick());
-            stmt.setString(2, user.getUserSenha());
-            stmt.setString(3, user.getUserType());
-            stmt.setString(4, user.getUserNome());
-            stmt.setString(5, user.getUserSobrenome());
+           // stmt.setString(2, user.getUserSenha());
+            stmt.setString(2, user.getUserType());
+            stmt.setString(3, user.getUserNome());
+            stmt.setString(4, user.getUserSobrenome());
 
             java.util.Date utilDate = user.getUserDataNasc();
             java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 
-            stmt.setDate(6, sqlDate);
-            stmt.setString(7, user.getUserEmail());
-            stmt.setString(8, user.getUserSexo());
-            stmt.setString(9, user.getUserCpf());
+            stmt.setDate(5, sqlDate);
+            stmt.setString(6, user.getUserEmail());
+            stmt.setString(7, user.getUserSexo());
+            stmt.setString(8, user.getUserCpf());
             //stmt.setInt(10, user.getUserId());  // Certifique-se de que este método exista em seu objeto Usuario
-            stmt.setInt(10, userId);
+            stmt.setInt(9, Integer.parseInt(userId));
 
              int linhasAfetadas = stmt.executeUpdate();
 
@@ -169,7 +170,7 @@ public class UsuarioCadastroDAO {
     }
 }
 
-    public Usuario obterUsuarioPorNome(String userIdEmEdicao) {
+    public Usuario obterUsuarioPorNome(String userNome) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
 
@@ -187,7 +188,7 @@ public class UsuarioCadastroDAO {
                     + "WHERE U.USE_NICK = ?";
 
             stmt = con.prepareStatement(sql);
-            stmt.setString(1, userIdEmEdicao);
+            stmt.setString(1, userNome);
 
             ResultSet resultSet = stmt.executeQuery();
 
@@ -236,6 +237,7 @@ public class UsuarioCadastroDAO {
                 
                 return user;
             } else {
+                JOptionPane.showMessageDialog(null, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
                 System.out.println("Usuário não encontrado.");
                 return null;
             }

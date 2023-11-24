@@ -81,7 +81,7 @@ public class EnderecoDAO {
         }
     }
     
-    public void atualizar(Endereco end, String userIdEmEdicao) {
+    public void atualizar(Endereco end, String userId) {
     Connection con = ConnectionFactory.getConnection();
     PreparedStatement stmt = null;
 
@@ -100,7 +100,7 @@ public class EnderecoDAO {
 "LEFT JOIN TELEFONE T ON TU.TELEFONE_FONE = T.TEL_ID\n" +
 "LEFT JOIN FAVORITO F ON U.USE_ID = F.FAV_USUARIO WHERE USE_ID = ?";
             stmt = con.prepareStatement(consultaEnderecoExistenteSQL);
-            stmt.setString(1, userIdEmEdicao);
+            stmt.setString(1, userId);
             ResultSet resultadoEnderecoExistente = stmt.executeQuery();
 
             int enderecoExistenteId = 0;
