@@ -5,6 +5,7 @@ import com.mycompany.bibliotech.dao.ExcluirUserDAO;
 import com.mycompany.bibliotech.dao.FavoritosDAO;
 import com.mycompany.bibliotech.dao.TelefoneDAO;
 import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;
+import com.mycompany.bibliotech.model.bean.Avaliacao;
 import com.mycompany.bibliotech.model.bean.Endereco;
 import com.mycompany.bibliotech.model.bean.Favoritos;
 import com.mycompany.bibliotech.model.bean.Telefone;
@@ -31,6 +32,7 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         avaliacaoButton = new javax.swing.JButton();
         ExcluirUserButton = new javax.swing.JToggleButton();
         edicaoUserButton = new javax.swing.JButton();
+        AvaButton = new javax.swing.JButton();
         campoCentral = new javax.swing.JPanel();
         txtTemporario = new javax.swing.JTextField();
 
@@ -87,6 +89,13 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
             }
         });
 
+        AvaButton.setText("Teste Avaliações");
+        AvaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AvaButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menuLateralLayout = new javax.swing.GroupLayout(menuLateral);
         menuLateral.setLayout(menuLateralLayout);
         menuLateralLayout.setHorizontalGroup(
@@ -113,7 +122,10 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
                         .addComponent(ExcluirUserButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(menuLateralLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(edicaoUserButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(edicaoUserButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(menuLateralLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(AvaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         menuLateralLayout.setVerticalGroup(
@@ -131,6 +143,8 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
                 .addComponent(ExcluirUserButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(edicaoUserButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(AvaButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao)
                 .addGap(15, 15, 15))
@@ -288,6 +302,13 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_edicaoUserButtonActionPerformed
 
+    private void AvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AvaButtonActionPerformed
+        Avaliacao avaliacao = new Avaliacao();
+        new Teste(avaliacao).setVisible(true);
+        this.setVisible(false);
+// TODO add your handling code here:
+    }//GEN-LAST:event_AvaButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -325,6 +346,7 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AvaButton;
     private javax.swing.JButton CadLivroButton;
     private javax.swing.JButton CadUserButton;
     private javax.swing.JToggleButton ExcluirUserButton;
