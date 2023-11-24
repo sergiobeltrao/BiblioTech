@@ -1052,25 +1052,29 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_ExcluirUserButtonActionPerformed
 
     private void edicaoUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edicaoUserButtonActionPerformed
-                                               
+                                            
     UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
     Usuario user = new Usuario();
     Endereco endereco = new Endereco();
     Favoritos favoritos = new Favoritos();
     Telefone telefone = new Telefone();
     
+    // Solicita o nome do usuário ao usuário
     String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:");
-    userNome = userIdEmEdicao;
-    if (userIdEmEdicao != null && !userIdEmEdicao.isEmpty()) {
-       // user.setUserNick(userNome);
-        user = userdao.obterUsuarioPorNome(userIdEmEdicao);
-       //userdao.atualizar(user, String.valueOf(userIdEmEdicao));
-        // Verifique se os dados foram preenchidos em 'user' após a chamada do método
 
+    // Verifica se o usuário inseriu um nome
+    if (userNome != null && !userNome.isEmpty()) {
+        // Atribui o valor de userNome a userIdEmEdicao
+        userIdEmEdicao = userNome;
+
+        // Obtém o usuário com base no nome fornecido
+        user = userdao.obterUsuarioPorNome(userIdEmEdicao);
+
+        // Verifica se o usuário foi encontrado
         if (user.getUserId() != 0) {
             // Abre a tela de edição com os dados do usuário
             EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
-           edicaoUsuarioFrame.setVisible(true);
+            edicaoUsuarioFrame.setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -1078,6 +1082,8 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     } else {
         JOptionPane.showMessageDialog(this, "Digite um nome de usuário válido", "Erro", JOptionPane.ERROR_MESSAGE);
     }
+
+
 }
 
 

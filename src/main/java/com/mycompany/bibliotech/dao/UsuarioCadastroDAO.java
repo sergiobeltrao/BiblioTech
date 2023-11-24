@@ -119,6 +119,8 @@ public class UsuarioCadastroDAO {
             if (resultado.next()) {
                 userId = resultado.getInt("USE_ID");
             } else {
+                System.out.println("userIdEmEdicao: " + userIdEmEdicao);
+
                 JOptionPane.showMessageDialog(null, "Erro ao consultar USE_ID para tabela de usuario");
                 return;  // Encerre o método se não encontrar o usuário
             }
@@ -167,7 +169,7 @@ public class UsuarioCadastroDAO {
     }
 }
 
-    public Usuario obterUsuarioPorNome(String userNome) {
+    public Usuario obterUsuarioPorNome(String userIdEmEdicao) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
 
@@ -185,7 +187,7 @@ public class UsuarioCadastroDAO {
                     + "WHERE U.USE_NICK = ?";
 
             stmt = con.prepareStatement(sql);
-            stmt.setString(1, userNome);
+            stmt.setString(1, userIdEmEdicao);
 
             ResultSet resultSet = stmt.executeQuery();
 
