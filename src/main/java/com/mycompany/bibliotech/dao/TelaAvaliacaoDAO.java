@@ -2,6 +2,7 @@ package com.mycompany.bibliotech.dao;
 
 import com.mycompany.bibliotech.connection.ConnectionFactory;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
+import com.mycompany.bibliotech.model.bean.Livro;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,7 +22,7 @@ public class TelaAvaliacaoDAO {
             ResultSet resultado = comando.executeQuery();
 
             comboBox.removeAllItems();
-            comboBox.addItem("Resultados...");
+            comboBox.addItem("");
 
             while (resultado.next()) {
                 comboBox.addItem(resultado.getString("LIV_NOME_LIVRO"));
@@ -48,7 +49,7 @@ public class TelaAvaliacaoDAO {
             ResultSet resultado = stmt.executeQuery();
 
             comboBox.removeAllItems();
-            comboBox.addItem("Resultados...");
+            comboBox.addItem("");
 
             while (resultado.next()) {
                 comboBox.addItem(resultado.getString("LIV_NOME_LIVRO"));
@@ -74,7 +75,7 @@ public class TelaAvaliacaoDAO {
             ResultSet resultado = stmt.executeQuery();
 
             comboBox.removeAllItems();
-            comboBox.addItem("Resultados...");
+            comboBox.addItem("");
 
             while (resultado.next()) {
                 comboBox.addItem(resultado.getString("LIV_NOME_LIVRO"));
@@ -98,7 +99,7 @@ public class TelaAvaliacaoDAO {
             ResultSet resultado = stmt.executeQuery();
 
             comboBox.removeAllItems();
-            comboBox.addItem("Resultados");
+            comboBox.addItem("");
 
             while (resultado.next()) {
                 comboBox.addItem(resultado.getString("LIV_NOME_LIVRO"));
@@ -124,7 +125,7 @@ public class TelaAvaliacaoDAO {
             ResultSet resultado = stmt.executeQuery();
 
             comboBox.removeAllItems();
-            comboBox.addItem("Resultados");
+            comboBox.addItem("");
 
             while (resultado.next()) {
                 comboBox.addItem(resultado.getString("LIV_NOME_LIVRO"));
@@ -145,8 +146,7 @@ public class TelaAvaliacaoDAO {
             if (con == null) {
                 throw new SQLException("Não foi possível conectar ao banco de dados.");
             }
-            String sql = "SELECT LIV_PAGINA, LIV_EDITORA, LIV_ISBN, "
-                    + "LIV_ANO, LIV_IDIOMA FROM LIVRO WHERE LIV_NOME_LIVRO = ?";
+            String sql = "SELECT LIV_PAGINA, LIV_EDITORA, LIV_ISBN, LIV_ANO, LIV_IDIOMA FROM LIVRO WHERE LIV_NOME_LIVRO = ?";
             stmt = con.prepareStatement(sql);
             stmt.setString(1, pesquisar);
             rs = stmt.executeQuery();
@@ -163,9 +163,10 @@ public class TelaAvaliacaoDAO {
                 return pes;
 
             } else {
-                JOptionPane.showMessageDialog(null, "erro no dao findDAO");
+            System.out.println(pesquisar + " erro dao find");
+            JOptionPane.showMessageDialog(null, "erro no dao findDAO");
+}
 
-            }
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro no catch do findDAO: " + ex.getMessage());

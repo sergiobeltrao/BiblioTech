@@ -4,6 +4,8 @@ import com.mycompany.bibliotech.dao.LivroCategoriaDAO;
 import com.mycompany.bibliotech.dao.TelaAvaliacaoDAO;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
 import java.sql.SQLException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 public class Teste extends javax.swing.JFrame {
@@ -11,6 +13,25 @@ public class Teste extends javax.swing.JFrame {
     public Teste(Avaliacao avaliacao) {
         initComponents();
         setPesquisarValues(avaliacao);
+        
+        // Adicione o novo ActionListener à cboxNomeLivro
+    cboxNomeLivro.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            try {
+                String pesquisar = cboxNomeLivro.getSelectedItem().toString();
+                if (pesquisar != null && !pesquisar.isEmpty()) {
+                    TelaAvaliacaoDAO taDAO = new TelaAvaliacaoDAO();
+                    Avaliacao pes = taDAO.find(pesquisar);
+                    setPesquisarValues(pes);
+                    JOptionPane.showMessageDialog(null, "Item selecionado: " + pesquisar);
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao selecionar o livro." + ex);
+            }
+        }
+    });
+
 
         cboxAlfabeto.setForeground(new java.awt.Color(0, 0, 0));
         cboxAlfabeto.addItem("");
@@ -340,14 +361,16 @@ public class Teste extends javax.swing.JFrame {
     }//GEN-LAST:event_cboxAlfabetoActionPerformed
 
     private void cboxNomeLivroeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxNomeLivroeActionPerformed
+        Avaliacao pes = new Avaliacao();
+        TelaAvaliacaoDAO taDAO = new TelaAvaliacaoDAO();
         // Obtém o item selecionado
         String pesquisar = cboxNomeLivro.getSelectedItem().toString();
 
         // Verifica se o item selecionado não é nulo ou vazio
         if (pesquisar != null && !pesquisar.isEmpty()) {
             try {
-                TelaAvaliacaoDAO taDAO = new TelaAvaliacaoDAO();
-                taDAO.find(pesquisar);
+                pes = taDAO.find(pesquisar);
+             JOptionPane.showMessageDialog(null, "Item selecionado: " + pesquisar);
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Erro ao selecionar o livro." + ex);
             }
