@@ -298,6 +298,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         btnEncerrarSessao = new javax.swing.JButton();
         avaliacaoButton = new javax.swing.JButton();
         ExcluirUserButton = new javax.swing.JToggleButton();
+        edicaoUserButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -785,6 +786,13 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
+        edicaoUserButton.setText("Edição de Usuarios");
+        edicaoUserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edicaoUserButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menuLateralLayout = new javax.swing.GroupLayout(menuLateral);
         menuLateral.setLayout(menuLateralLayout);
         menuLateralLayout.setHorizontalGroup(
@@ -808,7 +816,10 @@ public class CadastroUsuario extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(menuLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ExcluirUserButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(avaliacaoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(avaliacaoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(menuLateralLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(edicaoUserButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         menuLateralLayout.setVerticalGroup(
@@ -824,6 +835,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 .addComponent(avaliacaoButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ExcluirUserButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(edicaoUserButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao)
                 .addGap(15, 15, 15))
@@ -1187,6 +1200,36 @@ public class CadastroUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ExcluirUserButtonActionPerformed
 
+    private void edicaoUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edicaoUserButtonActionPerformed
+
+        UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
+        Usuario user = new Usuario();
+        Endereco endereco = new Endereco();
+        Favoritos favoritos = new Favoritos();
+        Telefone telefone = new Telefone();
+
+        // Solicita o nome do usuário ao usuário
+        String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:");
+
+        // Verifica se o usuário inseriu um nome
+        if (userNome != null && !userNome.isEmpty()) {
+            // Obtém o usuário com base no nome fornecido
+            user = userdao.obterUsuarioPorNome(userNome);
+
+            // Verifica se o usuário foi encontrado
+            if (user.getUserId() != 0) {
+                // Abre a tela de edição com os dados do usuário
+                EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
+                edicaoUsuarioFrame.setVisible(true);
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Digite um nome de usuário válido", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_edicaoUserButtonActionPerformed
+
     public void listarCategorias1() {
         LivroCategoriaDAO.listarCategorias(cboxCategoria1);
     }
@@ -1259,6 +1302,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField compTxt;
     private javax.swing.JFormattedTextField cpfTxt;
     private com.toedter.calendar.JDateChooser dataNascChooser;
+    private javax.swing.JButton edicaoUserButton;
     private javax.swing.JTextField emailTxt;
     private javax.swing.JTextField endTxt;
     private javax.swing.JButton enterButton;
