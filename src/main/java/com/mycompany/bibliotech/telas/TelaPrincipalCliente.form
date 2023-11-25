@@ -26,39 +26,17 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="menuLateral" min="-2" pref="280" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
-              <Component id="txtUsrCliente" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="472" max="32767" attributes="0"/>
+              <EmptySpace pref="998" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="315" max="-2" attributes="0"/>
-              <Component id="txtUsrCliente" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="364" max="32767" attributes="0"/>
-          </Group>
           <Component id="menuLateral" alignment="1" pref="720" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="txtUsrCliente">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="30" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Voc&#xea; &#xe9; um usu&#xe1;rio cliente"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUsrClienteActionPerformed"/>
-      </Events>
-    </Component>
     <Container class="javax.swing.JPanel" name="menuLateral">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -83,15 +61,11 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                           <Component id="txtMenuPrincipal" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="83" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="79" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnEncerrarSessao1" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="avaliacaoButton" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -109,11 +83,9 @@
                   <Component id="txtMenuPrincipal" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="CadLivroButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="avaliacaoButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                   <Component id="AvaButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="528" max="32767" attributes="0"/>
                   <Component id="btnEncerrarSessao1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               </Group>
@@ -147,14 +119,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEncerrarSessao1ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="avaliacaoButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Avalia&#xe7;&#xf5;es"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="avaliacaoButtonActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="AvaButton">

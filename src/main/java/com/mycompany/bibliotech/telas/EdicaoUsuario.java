@@ -133,7 +133,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         CadUserButton = new javax.swing.JButton();
         CadLivroButton = new javax.swing.JButton();
         btnEncerrarSessao = new javax.swing.JButton();
-        avaliacaoButton = new javax.swing.JButton();
         ExcluirUserButton = new javax.swing.JToggleButton();
         edicaoUserButton = new javax.swing.JButton();
         AvaButton = new javax.swing.JButton();
@@ -573,13 +572,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             }
         });
 
-        avaliacaoButton.setText("Avaliações");
-        avaliacaoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                avaliacaoButtonActionPerformed(evt);
-            }
-        });
-
         ExcluirUserButton.setText("Exclusão de Usuarios");
         ExcluirUserButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -613,16 +605,13 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                     .addGroup(menuLateralLayout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addComponent(txtMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 83, Short.MAX_VALUE))
+                        .addGap(0, 79, Short.MAX_VALUE))
                     .addGroup(menuLateralLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(menuLateralLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(CadLivroButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(menuLateralLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(avaliacaoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(menuLateralLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(edicaoUserButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -641,9 +630,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                 .addComponent(CadUserButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(CadLivroButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(avaliacaoButton)
-                .addGap(12, 12, 12)
+                .addGap(47, 47, 47)
                 .addComponent(ExcluirUserButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(edicaoUserButton)
@@ -978,12 +965,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnEncerrarSessaoActionPerformed
 
-    private void avaliacaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avaliacaoButtonActionPerformed
-        new TelaAvaliacao().setVisible(true);
-        this.setVisible(false);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_avaliacaoButtonActionPerformed
-
     private void ExcluirUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirUserButtonActionPerformed
 
         // Implementação Bruno
@@ -1121,7 +1102,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     private javax.swing.JButton LimparButton;
     private javax.swing.JButton ProxCadEndButton;
     private javax.swing.JButton ProxCadLivButton;
-    private javax.swing.JButton avaliacaoButton;
     private javax.swing.JLabel avisoLabel;
     private javax.swing.JTextField bairroTxt;
     private javax.swing.JButton btnEncerrarSessao;
