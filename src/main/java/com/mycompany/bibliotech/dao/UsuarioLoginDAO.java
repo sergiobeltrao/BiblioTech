@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.mycompany.bibliotech.connection.ConnectionFactory;
 
+
 public class UsuarioLoginDAO {
 
     public String checkLogin(String login, String senha) {
@@ -40,6 +41,6 @@ public class UsuarioLoginDAO {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
         return userType;
-
     }
+           
 }

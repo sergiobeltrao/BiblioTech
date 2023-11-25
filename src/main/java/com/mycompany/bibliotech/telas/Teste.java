@@ -1,12 +1,17 @@
 package com.mycompany.bibliotech.telas;
 
+import com.mycompany.bibliotech.dao.AvaliacaoDAO;
 import com.mycompany.bibliotech.dao.LivroCategoriaDAO;
 import com.mycompany.bibliotech.dao.TelaAvaliacaoDAO;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
+import com.mycompany.bibliotech.dao.UsuarioLoginDAO;
+import com.mycompany.bibliotech.model.bean.ApplicationContext;
+import com.mycompany.bibliotech.model.bean.Login;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+
 
 public class Teste extends javax.swing.JFrame {
 
@@ -24,27 +29,27 @@ public class Teste extends javax.swing.JFrame {
                     TelaAvaliacaoDAO taDAO = new TelaAvaliacaoDAO();
                     Avaliacao pes = taDAO.find(pesquisar);
                     setPesquisarValues(pes);
-                    JOptionPane.showMessageDialog(null, "Item selecionado: " + pesquisar);
-                }
+                    }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Erro ao selecionar o livro." + ex);
+                }
             }
         }
-    });
-
-
-        cboxAlfabeto.setForeground(new java.awt.Color(0, 0, 0));
-        cboxAlfabeto.addItem("");
-        cboxAlfabeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"", "A", "B", "C", 
-            "D", "E", "F", "J", "F", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"}));
-         cboxNomeLivro.addActionListener(new java.awt.event.ActionListener() {
+     );
+    
+    
+    
+    cboxAlfabeto.setForeground(new java.awt.Color(0, 0, 0));
+    cboxAlfabeto.addItem("");
+    cboxAlfabeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"", "A", "B", "C", 
+        "D", "E", "F", "J", "F", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"}));
+    cboxNomeLivro.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             cboxNomeLivroeActionPerformed(evt);
-        }
-    });
+           }
+        });
         // Lembre-se de descomentar isso se quiser usar o método "listaTituloDosLivros"
         // listarBusca();
-
         listarCategorias();
 
     }
@@ -95,8 +100,9 @@ public class Teste extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtIdioma = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jSlider2 = new javax.swing.JSlider();
-        txtNumeral1 = new javax.swing.JLabel();
+        SliderNota = new javax.swing.JSlider();
+        txtNota = new javax.swing.JLabel();
+        btnAvaliar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -133,7 +139,7 @@ public class Teste extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("busca por Letra:");
+        jLabel2.setText("Busca Letra:");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         cboxCategoriaBusca.addActionListener(new java.awt.event.ActionListener() {
@@ -206,17 +212,24 @@ public class Teste extends javax.swing.JFrame {
         jLabel10.setText("Idioma:");
         jLabel10.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        jSlider2.setMaximum(10);
-        jSlider2.addChangeListener(new javax.swing.event.ChangeListener() {
+        SliderNota.setMaximum(10);
+        SliderNota.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSlider2StateChanged(evt);
+                SliderNotaStateChanged(evt);
             }
         });
 
-        txtNumeral1.setBackground(new java.awt.Color(0, 0, 0));
-        txtNumeral1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        txtNumeral1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtNumeral1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtNota.setBackground(new java.awt.Color(0, 0, 0));
+        txtNota.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        txtNota.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtNota.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        btnAvaliar.setText("Avaliar");
+        btnAvaliar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvaliarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelBuscaLayout = new javax.swing.GroupLayout(painelBusca);
         painelBusca.setLayout(painelBuscaLayout);
@@ -224,22 +237,6 @@ public class Teste extends javax.swing.JFrame {
             painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelBuscaLayout.createSequentialGroup()
                 .addGap(167, 167, 167)
-                .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTituloBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(cboxCategoriaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(cboxSubCategoriaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(painelBuscaLayout.createSequentialGroup()
-                        .addComponent(cboxAlfabeto, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(146, 146, 146)
-                        .addComponent(btnBuscar))
-                    .addGroup(painelBuscaLayout.createSequentialGroup()
-                        .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNumeral1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(87, 87, 87)
                 .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel1)
@@ -262,36 +259,37 @@ public class Teste extends javax.swing.JFrame {
                             .addComponent(txtPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(29, 29, 29)
                             .addComponent(txtIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(txtIdioma))
+                        .addComponent(txtIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(326, Short.MAX_VALUE))
+                .addGap(78, 78, 78)
+                .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTituloBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(cboxCategoriaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(cboxSubCategoriaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(painelBuscaLayout.createSequentialGroup()
+                        .addComponent(cboxAlfabeto, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBuscar))
+                    .addGroup(painelBuscaLayout.createSequentialGroup()
+                        .addComponent(SliderNota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNota, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAvaliar)))
+                .addGap(333, 333, 333))
         );
         painelBuscaLayout.setVerticalGroup(
             painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelBuscaLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(77, 77, 77)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cboxNomeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTituloBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelBuscaLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboxAlfabeto, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboxCategoriaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboxSubCategoriaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(painelBuscaLayout.createSequentialGroup()
+                        .addComponent(cboxNomeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -311,19 +309,33 @@ public class Teste extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelBuscaLayout.createSequentialGroup()
+                            .addComponent(txtIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(painelBuscaLayout.createSequentialGroup()
+                        .addComponent(txtTituloBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cboxAlfabeto, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboxCategoriaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboxSubCategoriaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
-                        .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtNumeral1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(296, Short.MAX_VALUE))
+                        .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(SliderNota, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAvaliar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNota, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(270, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -349,6 +361,8 @@ public class Teste extends javax.swing.JFrame {
         cboxNomeLivro.setMaximumRowCount(5);
         cboxNomeLivro.showPopup();
 
+        
+        
         String busca = txtTituloBusca.getText();
         String buscaCategorias = cboxCategoriaBusca.getSelectedItem().toString();
         String buscaSubCategorias = cboxSubCategoriaBusca.getSelectedItem().toString();
@@ -422,10 +436,21 @@ public class Teste extends javax.swing.JFrame {
             cboxSubCategoriaBusca.addItem(" ");
     }//GEN-LAST:event_cboxCategoriaBuscaActionPerformed
     }
-    private void jSlider2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider2StateChanged
-        txtNumeral1.setText(String.valueOf(jSlider2.getValue()));
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jSlider2StateChanged
+    
+    private void SliderNotaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SliderNotaStateChanged
+        
+        txtNota.setText(String.valueOf(SliderNota.getValue()));   
+        
+    }//GEN-LAST:event_SliderNotaStateChanged
+
+    private void btnAvaliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvaliarActionPerformed
+        String pesquisar = cboxNomeLivro.getSelectedItem().toString();
+        Login login = ApplicationContext.getLogin();
+        Avaliacao pes = new Avaliacao();
+        AvaliacaoDAO notaDAO = new AvaliacaoDAO();
+        String nota = txtNota.getText();   
+        notaDAO.rank(pes, pesquisar, login.getNick(), nota);
+    }//GEN-LAST:event_btnAvaliarActionPerformed
         
 
     /**
@@ -473,6 +498,8 @@ public class Teste extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSlider SliderNota;
+    private javax.swing.JButton btnAvaliar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JComboBox<String> cboxAlfabeto;
     private javax.swing.JComboBox<String> cboxCategoriaBusca;
@@ -488,14 +515,13 @@ public class Teste extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JSlider jSlider2;
     private javax.swing.JPanel painelBusca;
     private javax.swing.JTextField txtAno;
     private javax.swing.JTextField txtEditora;
     private javax.swing.JTextField txtIdioma;
     private javax.swing.JTextField txtIsbn;
     private javax.swing.JTextField txtNomeAutor;
-    private javax.swing.JLabel txtNumeral1;
+    private javax.swing.JLabel txtNota;
     private javax.swing.JTextField txtPaginas;
     private javax.swing.JTextField txtTituloBusca;
     // End of variables declaration//GEN-END:variables
