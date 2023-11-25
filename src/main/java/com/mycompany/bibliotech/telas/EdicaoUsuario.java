@@ -192,7 +192,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             }
         });
 
-        dataNascChooser.setBorder(javax.swing.BorderFactory.createTitledBorder("Data de Nascimento"));
+        dataNascChooser.setBorder(javax.swing.BorderFactory.createTitledBorder("Data de Nascimento *"));
         dataNascChooser.setToolTipText("2004-08-07");
         dataNascChooser.setDateFormatString("yyyy-MM-dd");
 
