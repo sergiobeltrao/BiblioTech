@@ -146,9 +146,23 @@ public class TelaAvaliacaoDAO {
             if (con == null) {
                 throw new SQLException("Não foi possível conectar ao banco de dados.");
             }
-            String sql = "SELECT LIV_PAGINA, LIV_EDITORA, LIV_ISBN, LIV_ANO, LIV_IDIOMA FROM LIVRO WHERE LIV_NOME_LIVRO = ?";
-            stmt = con.prepareStatement(sql);
+            // Pega o ID_LIVRO que está sendo cadastrado
+            String consultaSQL = "SELECT ID_LIVRO FROM LIVRO WHERE LIV_NOME_LIVRO = ?";
+            stmt = con.prepareStatement(consultaSQL);
             stmt.setString(1, pesquisar);
+            ResultSet resultado = stmt.executeQuery();
+            int livroId = 0;
+
+            // Verifica se há resultados
+            if (resultado.next()) {
+                livroId = resultado.getInt("ID_LIVRO");
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao consultar ID_LIVRO para tabela de livro");
+                
+            }
+            String sql = "SELECT LIV_PAGINA, LIV_EDITORA, LIV_ISBN, LIV_ANO, LIV_IDIOMA FROM LIVRO WHERE ID_LIVRO = ?";
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, livroId);
             rs = stmt.executeQuery();
             if (rs.next()) {
                 Avaliacao pes = new Avaliacao();
