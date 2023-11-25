@@ -51,8 +51,11 @@ VALUES (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9), (
 -- Avaliações dos Livros
 -- O INT usado no AVA_ID_USUARIO é i ID do usuario da tabela usuario, o mesmo se aplica ao AVA_FK_LIVRO
 INSERT INTO AVALIACAO (AVA_ID_USUARIO, AVA_FK_LIVRO, AVA_USUARIO, AVA_TOTAL, AVA_COMENTARIO)
-VALUES (1, 1, 9.0, 8.5, 'Um clássico da literatura brasileira.'), (2, 2, 7.8, 7.5, 'Fascinante jornada pelo cosmos.'),
+VALUES (1, 1, 9.0, 8.5, 'Um clássico da literatura brasileira.'), 
+(2, 2, 7.8, 7.5, 'Fascinante jornada pelo cosmos.'),
 (3, 3, 8, 8.0, 'Uma história encantadora para todas as idades.');
+
+
 
 /* 
 estes so vão funcionar quando tiverem no miniumo 10 usuarios inseridos no banco
@@ -62,6 +65,13 @@ estes so vão funcionar quando tiverem no miniumo 10 usuarios inseridos no banco
 (9, 9, 8, 8.5, 'Ensinamentos atemporais sobre estratégia.'), (10, 10, 9, 9.7, 'Um épico de fantasia que marcou gerações.'); 
 */
 
+-- Comando para listar o rank de livros
+SELECT LIVRO.ID_LIVRO, LIVRO.LIV_NOME_LIVRO, ROUND(AVG(AVALIACAO.AVA_TOTAL), 1)AS MEDIA_NOTA
+FROM LIVRO
+JOIN AVALIACAO ON LIVRO.ID_LIVRO = AVALIACAO.AVA_FK_LIVRO
+GROUP BY LIVRO.ID_LIVRO, LIVRO.LIV_NOME_LIVRO
+ORDER BY MEDIA_NOTA DESC
+LIMIT 5; 
 /*INSERT DOS VINCULOS DE ENDEREÇO E TELEFONE */
 INSERT INTO TELEFONE_USUARIO VALUES (3, 2), (1, 1), (2, 3);
 
@@ -107,11 +117,6 @@ LEFT JOIN FAVORITO F ON U.USE_ID = F.FAV_USUARIO;
 select *from favorito where fav_usuario = '6';
 
 
-
 SELECT L.LIV_NOME_LIVRO, L.LIV_PAGINA, L.LIV_ANO, L.LIV_EDITORA, A.AVA_COMENTARIO 
 FROM LIVRO L LEFT JOIN AVALIACAO A ON L.ID_LIVRO = A.AVA_FK_LIVRO 
 LEFT JOIN CATEGORIA C ON L.LIV_CATEGORIA = C.CAT_ID WHERE LIV_NOME_LIVRO = 'O Segredo das Estrelas' ;
-
-SELECT AVG(AVA_USUARIO) AS AVA_TOTAL FROM AVALIACAO;
-INSERT INTO LIVRO (LIV_NOME_LIVRO, LIV_ISBN, LIV_ANO, LIV_PAGINA, LIV_CATEGORIA, LIV_SUBCATEGORIA, LIV_IDIOMA, LIV_EDITORA, LIV_SINOPSE)
-VALUES ('Nome do Livro Teste', '1234567890', 2023, 300, 'Ficção Científica', 'Aventura', 'Português', 'Editora Teste', 'Sinopse do livro teste.');
