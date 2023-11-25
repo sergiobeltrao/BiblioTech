@@ -412,14 +412,14 @@ public class Teste extends javax.swing.JFrame {
     private void cboxCategoriaBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxCategoriaBuscaActionPerformed
         String dados[] = String.valueOf(cboxCategoriaBusca.getSelectedItem()).split(" - ");
 
-        if (!dados[0].equalsIgnoreCase("Não Informada")) {
+        if (!dados[0].equalsIgnoreCase(" ")) {
             cboxSubCategoriaBusca.removeAllItems();
-            cboxSubCategoriaBusca.addItem("Não Informada");
+            cboxSubCategoriaBusca.addItem(" ");
             listarSubCategoria(dados[0]);
 
         } else {
             cboxSubCategoriaBusca.removeAllItems();
-            cboxSubCategoriaBusca.addItem("Não Informada");
+            cboxSubCategoriaBusca.addItem(" ");
     }//GEN-LAST:event_cboxCategoriaBuscaActionPerformed
     }
     private void jSlider2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider2StateChanged
