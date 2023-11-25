@@ -901,6 +901,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         String cpf = cpfTxt.getText();
         CpfDAO cpfdao = new CpfDAO(cpf);
         
+        //Informações usuario
          Hash hash = new Hash();
         
         String senhaDigitada = senhaTxt.getText();
@@ -923,9 +924,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
             Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-       // String senha = new String(senhaTxt.getPassword());
-       // String reSenha = new String(resenhaTxt.getPassword());
-
         if (!hashDaSenha.equals(rehashDaSenha)) {
             JOptionPane.showMessageDialog(this, "A senha e a re-senha não coincidem. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
             return; // Não prossegue com o cadastro se as senhas não coincidirem
@@ -947,7 +945,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
         user.setUserNome(nomeTxt.getText());
         user.setUserSobrenome(sobrenomeTxt.getText());
-        // user.setUserDataNasc(dataNascChooser.getDate());
         user.setUserEmail(emailTxt.getText());
 
         String valorUserSexo = sexoBox.getSelectedItem().toString();
@@ -961,8 +958,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
             valorSelecionad = "OUTRO";
         }
         user.setUserSexo(valorSelecionad);
-        user.setUserType(valorSelecionado);
-        // user.setUserCpf(cpfTxt.getText());
 
         String valorTipo = telefoneTipoBox.getSelectedItem().toString();
         String valorSelecionada = "CELULAR";
@@ -974,9 +969,12 @@ public class CadastroUsuario extends javax.swing.JFrame {
         } else {
             valorSelecionada = "RESIDENCIAL";
         }
+        
+        // Informações telefone
         tel.setTipo(valorSelecionada);
         tel.setTelefone(foneTxt.getText());
-
+        
+        // Informações endereço
         end.setCep(cepTxt.getText());
         end.setPais(paisTxt.getText());
         end.setRua(endTxt.getText());
@@ -992,6 +990,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
         }
         end.setNum(numb);
         end.setBairro(bairroTxt.getText());
+        
+        // Informações favoritos
         String categoriaSelecionada = cboxCategoria1.getSelectedItem().toString();
         String subCategoriaSelecionada = cboxSubCategoria1.getSelectedItem().toString();
         fav.setFavCategoria1(categoriaSelecionada);
@@ -1004,6 +1004,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
         // Obtém a data de nascimento do JDateChooser
         java.util.Date dataNascimentoUtil = dataNascChooser.getDate();
 
+        //Verificadores de data e CPF:
+        
         // Verifica se a data de nascimento é válida
         if (dataNascimentoUtil != null) {
             // Converte LocalDate para Date
@@ -1022,14 +1024,17 @@ public class CadastroUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma data de nascimento válida!");
             return; // Não prossegue com o cadastro se a data de nascimento não foi selecionada
         }
-
+        
+        //Validador de CPF
         if (cpfdao.isCPF()) {
             user.setUserCpf(cpfTxt.getText());
-            dao.cadastrarUsuario(user);
         } else {
             JOptionPane.showMessageDialog(rootPane, "CPF inválido!!");
             return;
         }
+        
+        //Metodos de cadastro
+        dao.cadastrarUsuario(user);
         enddao.cadastrarEndereco(end, nickTxt.getText(), cepTxt.getText(), numb);
         fonedao.cadastrarTelefone(tel, nickTxt.getText(), foneTxt.getText(), telefoneTipoBox.getSelectedItem().toString());
         favdao.favCreate(fav, nickTxt.getText());
