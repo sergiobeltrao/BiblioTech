@@ -26,9 +26,14 @@ public class ValidadorIsbn {
         int soma = 0;
         String dString;
         for (int i = 0; i < 10; i++) {
-            dString = isbn.substring(i, i + 1);
-            if (i < 9 || !dString.equals("X")) {
-                soma += Integer.parseInt(dString) * (10 - i);
+            char currentChar = isbn.charAt(i);
+            if (Character.isDigit(currentChar) || (i == 9 && currentChar == 'X')) {
+                dString = String.valueOf(currentChar);
+                if (i < 9 || !dString.equals("X")) {
+                    soma += Integer.parseInt(dString) * (10 - i);
+                } else {
+                    soma += 10;
+                }
             } else {
                 soma += 10;
             }
@@ -40,11 +45,15 @@ public class ValidadorIsbn {
         int soma = 0;
         int dVal;
         for (int i = 0; i < 13; i++) {
-            dVal = Integer.parseInt(isbn.substring(i, i + 1));
-            if (i % 2 == 0) {
-                soma += dVal * 1;
-            } else {
-                soma += dVal * 3;
+            char currentChar = isbn.charAt(i);
+
+            if (Character.isDigit(currentChar)) {
+                dVal = Character.getNumericValue(currentChar);
+                if (i % 2 == 0) {
+                    soma += dVal * 1;
+                } else {
+                    soma += dVal * 3;
+                }
             }
         }
         return (soma % 10 == 0);

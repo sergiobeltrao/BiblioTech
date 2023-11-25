@@ -43,17 +43,13 @@ public class AvaliacaoDAO {
                 JOptionPane.showMessageDialog(null, "Erro ao consultar USE_ID para tabela de avaliações");
             }
 
-            // Faz o insert na tabela AVALIACAO
-            stmt = con.prepareStatement("INSERT INTO AVALIACAO (ID_AVALIACAO, AVA_FK_LIVRO, AVA_USUARIO, AVA_TOTAL, AVA_COMENTARIO, AVA_DATA_AVALIACAO, AVA_FK_USUARIO) VALUES(NULL, ?, ?, '9.0', ?, NOW(), ?)");
+            stmt = con.prepareStatement("INSERT INTO AVALIACAO (AVA_ID_USUARIO, AVA_FK_LIVRO, AVA_USUARIO, AVA_COMENTARIO, AVA_DATA_AVALIACAO) VALUES(?, ?, ?, ?, NOW())");
 
-            // O AVA_TOTAL ainda será implementado, deixei um valor qualquer.
-            // Implementar captura do USE_ID com base no usuário logado para preencher o AVA_FK_USUARIO.
-            stmt.setInt(1, idLivro);
-            stmt.setString(2, av.getAvaliacaoDoUsuario());
-            stmt.setString(3, av.getComentarioAvaliacao());
-            stmt.setInt(4, idDoUser);
+            stmt.setInt(1, idDoUser);
+            stmt.setInt(2, idLivro);
+            stmt.setString(3, av.getAvaliacaoDoUsuario());
+            stmt.setString(4, av.getComentarioAvaliacao());
 
-            // Para preparar o SQL e executar
             stmt.executeUpdate();
 
         } catch (SQLException ex) {
@@ -62,7 +58,7 @@ public class AvaliacaoDAO {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
-    
+
     public void rank(Avaliacao nota, String buscaLivro, String verificaUsuario, String rank) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
@@ -116,5 +112,5 @@ public class AvaliacaoDAO {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
-    
+
 }
