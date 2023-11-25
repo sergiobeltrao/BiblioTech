@@ -90,7 +90,7 @@ public class AutorDAO {
         }
     }
 
-    public static void pesquisaAutorPorNomeAutor(JComboBox<String> comboBox, String busca) {
+    public static void mostraNomeDoAutor(JComboBox<String> comboBox, String busca) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
@@ -106,6 +106,35 @@ public class AutorDAO {
             while (resultado.next()) {
                 encontrouResultado = true;
                 comboBox.addItem(resultado.getString("AUT_NOME_AUTOR"));
+            }
+
+            if (!encontrouResultado) {
+                comboBox.addItem("Nada encontrado");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao ler a tabela de autores: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+
+    public static void mostraNomePaisESexoDoAutor(JComboBox<String> comboBox, String busca) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement("SELECT CONCAT(AUT_NOME_AUTOR, ', ', SUBSTRING_INDEX(AUT_NACIONALIDADE, ' - ', 1)) AS PESQUISA_AUTOR FROM AUTOR WHERE AUT_NOME_AUTOR LIKE ?");
+
+            stmt.setString(1, "%" + busca + "%");
+
+            ResultSet resultado = stmt.executeQuery();
+
+            comboBox.removeAllItems();
+            boolean encontrouResultado = false;
+
+            while (resultado.next()) {
+                encontrouResultado = true;
+                String nomePesquisado = resultado.getString("PESQUISA_AUTOR");
+                comboBox.addItem(nomePesquisado);
             }
 
             if (!encontrouResultado) {

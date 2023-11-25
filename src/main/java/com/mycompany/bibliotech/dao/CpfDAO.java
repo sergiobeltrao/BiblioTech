@@ -3,9 +3,6 @@ package com.mycompany.bibliotech.dao;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 
-/**
- * @author Gilberto Toledo
- */
 public class CpfDAO {
     private String cpf;
     private static final String Formato = "###.###.###-##";

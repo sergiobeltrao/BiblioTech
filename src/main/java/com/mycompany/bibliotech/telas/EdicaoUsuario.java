@@ -52,8 +52,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
        if (user != null) {
             // Configuração dos campos com base no objeto Usuario
             nickTxt.setText(user.getUserNick());
-            //senhaTxt.setText(user.getUserSenha());
-            cargoBox.setSelectedItem(user.getUserType());
             nomeTxt.setText(user.getUserNome());
             sobrenomeTxt.setText(user.getUserSobrenome());
             dataNascChooser.setDate(user.getUserDataNasc());
@@ -103,7 +101,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         nickTxt = new javax.swing.JTextField();
         emailTxt = new javax.swing.JTextField();
         nomeTxt = new javax.swing.JTextField();
-        cargoBox = new javax.swing.JComboBox<>();
         dataNascChooser = new com.toedter.calendar.JDateChooser();
         telefoneTipoBox = new javax.swing.JComboBox<>();
         foneTxt = new javax.swing.JFormattedTextField();
@@ -183,14 +180,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             }
         });
 
-        cargoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMIN", "CLIENTE" }));
-        cargoBox.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo *"));
-        cargoBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cargoBoxActionPerformed(evt);
-            }
-        });
-
         dataNascChooser.setBorder(javax.swing.BorderFactory.createTitledBorder("Data de Nascimento *"));
         dataNascChooser.setToolTipText("2004-08-07");
         dataNascChooser.setDateFormatString("yyyy-MM-dd");
@@ -256,10 +245,10 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                                     .addComponent(sobrenomeTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cargoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(foneTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cpfTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sexoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(sexoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ProxCadEndButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(nomeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -267,9 +256,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(idLabel))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(ProxCadEndButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(avisoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -295,15 +281,13 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                     .addComponent(telefoneTipoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(foneTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cargoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ProxCadEndButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(ProxCadEndButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(avisoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                .addGap(19, 19, 19)
-                .addComponent(idLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addComponent(avisoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addGap(87, 87, 87)
+                .addComponent(idLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                 .addGap(19, 19, 19))
         );
 
@@ -685,10 +669,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeTxtActionPerformed
 
-    private void cargoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargoBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cargoBoxActionPerformed
-
     private void telefoneTipoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefoneTipoBoxActionPerformed
 
     }//GEN-LAST:event_telefoneTipoBoxActionPerformed
@@ -775,7 +755,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
     private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonActionPerformed
                                         
-     // Verifica se o usuário está sendo editado
         Usuario user = new Usuario();
         Endereco end = new Endereco();
         Favoritos fav = new Favoritos();
@@ -787,38 +766,9 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         String cpf = cpfTxt.getText();
         CpfDAO cpfdao = new CpfDAO(cpf);
         
-         /*Hash hash = new Hash();
-        
-        String senhaDigitada = senhaTxt.getText();
-        String hashDaSenha = "";
-
-        try {
-            hashDaSenha = hash.geradorDeHash(senhaDigitada);
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        Hash rehash = new Hash();
-        
-        String resenhaDigitada = resenhaTxt.getText();
-        String rehashDaSenha = "";
-
-        try {
-            rehashDaSenha = rehash.geradorDeHash(resenhaDigitada);
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-       // String senha = new String(senhaTxt.getPassword());
-       // String reSenha = new String(resenhaTxt.getPassword());
-
-        if (!hashDaSenha.equals(rehashDaSenha)) {
-            JOptionPane.showMessageDialog(this, "A senha e a re-senha não coincidem. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
-            return; // Não prossegue com o cadastro se as senhas não coincidirem
-        }
-*/
+        //Informações Usuario
         user.setUserNick(nickTxt.getText());
-       // user.setUserSenha(new String(hashDaSenha));
+        /*
         String valorUserCargo = cargoBox.getSelectedItem().toString();
         String valorSelecionado = "CLIENTE";
 
@@ -827,13 +777,12 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         } else {
             valorSelecionado = "CLIENTE";
         }
-
         user.setUserType(valorSelecionado);
-
+        */
         user.setUserNome(nomeTxt.getText());
         user.setUserSobrenome(sobrenomeTxt.getText());
         user.setUserEmail(emailTxt.getText());
-
+        
         String valorUserSexo = sexoBox.getSelectedItem().toString();
         String valorSelecionad = "OUTRO";
 
@@ -845,9 +794,10 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             valorSelecionad = "OUTRO";
         }
         user.setUserSexo(valorSelecionad);
-        user.setUserType(valorSelecionado);
+        
         String userId = idLabel.getText();
-
+        
+        //Informações Telefone
         String valorTipo = telefoneTipoBox.getSelectedItem().toString();
         String valorSelecionada = "CELULAR";
 
@@ -859,8 +809,10 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             valorSelecionada = "RESIDENCIAL";
         }
         tel.setTipo(valorSelecionada);
+        
         tel.setTelefone(foneTxt.getText());
 
+        //Informações Endereço
         end.setCep(cepTxt.getText());
         end.setPais(paisTxt.getText());
         end.setRua(endTxt.getText());
@@ -876,6 +828,8 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         }
         end.setNum(numb);
         end.setBairro(bairroTxt.getText());
+        
+        //Informações favoritos
         String categoriaSelecionada = cboxCategoria1.getSelectedItem().toString();
         String subCategoriaSelecionada = cboxSubCategoria1.getSelectedItem().toString();
         fav.setFavCategoria1(categoriaSelecionada);
@@ -885,6 +839,8 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         fav.setFavCategoria2(categoriaSelecionad);
         fav.setFavSub2(subCategoriaSelecionad);
 
+        //Verificadores de data e CPF:
+        
         // Obtém a data de nascimento do JDateChooser
         java.util.Date dataNascimentoUtil = dataNascChooser.getDate();
 
@@ -907,13 +863,16 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             return; // Não prossegue com o cadastro se a data de nascimento não foi selecionada
         }
         
+        // Validador de CPF
          if (cpfdao.isCPF()) {
             user.setUserCpf(cpfTxt.getText());
-            dao.atualizar(user, userId);
         } else {
             JOptionPane.showMessageDialog(rootPane, "CPF inválido!!");
             return;
         }
+         
+         //Metodos Atualizar
+        dao.atualizar(user, userId);
         enddao.atualizar(end, userId);
         fonedao.atualizar(tel, userId);
         favdao.atualizar(fav, userId);
@@ -921,7 +880,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_enterButtonActionPerformed
 
     private void LimparButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparButtonActionPerformed
-        UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
+    UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
     Usuario user = new Usuario();
     Endereco endereco = new Endereco();
     Favoritos favoritos = new Favoritos();
@@ -1106,7 +1065,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField bairroTxt;
     private javax.swing.JButton btnEncerrarSessao;
     private javax.swing.JPanel campoCentral;
-    private javax.swing.JComboBox<String> cargoBox;
     private javax.swing.JComboBox<String> cboxCategoria1;
     private javax.swing.JComboBox<String> cboxCategoria2;
     private javax.swing.JComboBox<String> cboxSubCategoria1;

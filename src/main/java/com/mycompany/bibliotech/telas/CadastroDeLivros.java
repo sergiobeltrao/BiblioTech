@@ -3,6 +3,7 @@ package com.mycompany.bibliotech.telas;
 import com.mycompany.bibliotech.dao.LivroCategoriaDAO;
 import com.mycompany.bibliotech.dao.AutorDAO;
 import com.mycompany.bibliotech.dao.AvaliacaoDAO;
+import com.mycompany.bibliotech.dao.LivroAutorDAO;
 import com.mycompany.bibliotech.dao.LivroDAO;
 import com.mycompany.bibliotech.model.bean.ApplicationContext;
 import com.mycompany.bibliotech.model.bean.Autor;
@@ -23,7 +24,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
 public class CadastroDeLivros extends javax.swing.JFrame {
-    
+
     public CadastroDeLivros() {
         initComponents();
         DefaultTableModel modelo = (DefaultTableModel) tbSelect.getModel();
@@ -35,21 +36,21 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         // Impede que o ISBN seja setado sem selecionar o tipo quando abre a tela.
         formatedIsbn.setEditable(false);
     }
-    
+
     public class CenterRenderer extends DefaultTableCellRenderer {
 
         // Pra centralizar o conteúdo da JTable
         public CenterRenderer() {
             setHorizontalAlignment(CENTER);
         }
-        
+
         @Override
         public java.awt.Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
             super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
             return this;
         }
     }
-    
+
     public void readJTable() {
         DefaultTableModel modelo = (DefaultTableModel) tbSelect.getModel();
         tbSelect.setDefaultRenderer(Object.class, new CenterRenderer());
@@ -58,11 +59,11 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         // Para evitar que todos os dados sejam duplicados após um insert
         modelo.setNumRows(0);
-        
+
         LivroDAO ldao = new LivroDAO();
-        
+
         for (Livro l : ldao.read()) {
-            
+
             modelo.addRow(new Object[]{
                 l.getId(),
                 l.getTitulo(),
@@ -75,7 +76,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                 l.getEditora()});
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -106,16 +107,17 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         btnProximaAbaAutor = new javax.swing.JButton();
         jpnCadastroAutor = new javax.swing.JPanel();
         txtNomeDoAutor = new javax.swing.JTextField();
-        cboxAutorSexo = new javax.swing.JComboBox<>();
+        cboxSexoDoAutor = new javax.swing.JComboBox<>();
         cboxNacionalidadeDoAutor = new javax.swing.JComboBox<>();
         btnCadastraAutor = new javax.swing.JButton();
         jpnSelecaoAutorCadastrado = new javax.swing.JPanel();
         btnBuscarAutor = new javax.swing.JButton();
-        btnAdicionarResultadoAutor = new javax.swing.JButton();
-        txtAutoresSelecionados = new javax.swing.JTextField();
+        btnSelecionarResultadoAutor = new javax.swing.JButton();
         cboxResultadoBuscaAutor = new javax.swing.JComboBox<>();
         txtAutorPesquisado = new javax.swing.JTextField();
         btnLimparAutoresSelecionados = new javax.swing.JButton();
+        boxAutoresSelecionados = new javax.swing.JScrollPane();
+        txtCampoDeAutoresSelecionados = new javax.swing.JTextArea();
         btnAutorNaoCadastrado = new javax.swing.JButton();
         jpnAvaliacao = new javax.swing.JPanel();
         txtDeBoasVindasAvaliacao = new javax.swing.JTextField();
@@ -161,6 +163,9 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtAnoDePublicacaoKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAnoDePublicacaoKeyTyped(evt);
+            }
         });
 
         txtNumeroDePaginas.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -173,6 +178,9 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         txtNumeroDePaginas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNumeroDePaginasKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeroDePaginasKeyTyped(evt);
             }
         });
 
@@ -396,14 +404,14 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             }
         });
 
-        cboxAutorSexo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxAutorSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informado", "Masculino", "Feminino" }));
-        cboxAutorSexo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sexo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
-        cboxAutorSexo.setEnabled(false);
-        cboxAutorSexo.setFocusable(false);
-        cboxAutorSexo.addActionListener(new java.awt.event.ActionListener() {
+        cboxSexoDoAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        cboxSexoDoAutor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informado", "Masculino", "Feminino" }));
+        cboxSexoDoAutor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sexo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        cboxSexoDoAutor.setEnabled(false);
+        cboxSexoDoAutor.setFocusable(false);
+        cboxSexoDoAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboxAutorSexoActionPerformed(evt);
+                cboxSexoDoAutorActionPerformed(evt);
             }
         });
 
@@ -420,6 +428,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         btnCadastraAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         btnCadastraAutor.setText("Cadastrar");
+        btnCadastraAutor.setEnabled(false);
         btnCadastraAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastraAutorActionPerformed(evt);
@@ -434,7 +443,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jpnCadastroAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtNomeDoAutor)
-                    .addComponent(cboxAutorSexo, 0, 390, Short.MAX_VALUE)
+                    .addComponent(cboxSexoDoAutor, 0, 390, Short.MAX_VALUE)
                     .addComponent(cboxNacionalidadeDoAutor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCadastraAutor)
@@ -443,15 +452,16 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         jpnCadastroAutorLayout.setVerticalGroup(
             jpnCadastroAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnCadastroAutorLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(txtNomeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cboxAutorSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jpnCadastroAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboxNacionalidadeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCadastraAutor))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jpnCadastroAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnCadastraAutor)
+                    .addGroup(jpnCadastroAutorLayout.createSequentialGroup()
+                        .addComponent(txtNomeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cboxSexoDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cboxNacionalidadeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jpnSelecaoAutorCadastrado.setBackground(new java.awt.Color(255, 255, 255));
@@ -466,27 +476,21 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             }
         });
 
-        btnAdicionarResultadoAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnAdicionarResultadoAutor.setText("Adicionar");
-        btnAdicionarResultadoAutor.addActionListener(new java.awt.event.ActionListener() {
+        btnSelecionarResultadoAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        btnSelecionarResultadoAutor.setText("Selecionar");
+        btnSelecionarResultadoAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdicionarResultadoAutorActionPerformed(evt);
-            }
-        });
-
-        txtAutoresSelecionados.setEditable(false);
-        txtAutoresSelecionados.setBackground(new java.awt.Color(255, 255, 255));
-        txtAutoresSelecionados.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtAutoresSelecionados.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Autores Selecionados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
-        txtAutoresSelecionados.setFocusable(false);
-        txtAutoresSelecionados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAutoresSelecionadosActionPerformed(evt);
+                btnSelecionarResultadoAutorActionPerformed(evt);
             }
         });
 
         cboxResultadoBuscaAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         cboxResultadoBuscaAutor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resultado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        cboxResultadoBuscaAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxResultadoBuscaAutorActionPerformed(evt);
+            }
+        });
 
         txtAutorPesquisado.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtAutorPesquisado.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pesquisar Autor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
@@ -499,6 +503,13 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             }
         });
 
+        txtCampoDeAutoresSelecionados.setEditable(false);
+        txtCampoDeAutoresSelecionados.setBackground(new java.awt.Color(255, 255, 255));
+        txtCampoDeAutoresSelecionados.setColumns(20);
+        txtCampoDeAutoresSelecionados.setRows(5);
+        txtCampoDeAutoresSelecionados.setFocusable(false);
+        boxAutoresSelecionados.setViewportView(txtCampoDeAutoresSelecionados);
+
         javax.swing.GroupLayout jpnSelecaoAutorCadastradoLayout = new javax.swing.GroupLayout(jpnSelecaoAutorCadastrado);
         jpnSelecaoAutorCadastrado.setLayout(jpnSelecaoAutorCadastradoLayout);
         jpnSelecaoAutorCadastradoLayout.setHorizontalGroup(
@@ -506,32 +517,32 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             .addGroup(jpnSelecaoAutorCadastradoLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(jpnSelecaoAutorCadastradoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(boxAutoresSelecionados)
                     .addComponent(txtAutorPesquisado, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
-                    .addComponent(cboxResultadoBuscaAutor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtAutoresSelecionados))
+                    .addComponent(cboxResultadoBuscaAutor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jpnSelecaoAutorCadastradoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnBuscarAutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAdicionarResultadoAutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSelecionarResultadoAutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnLimparAutoresSelecionados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         jpnSelecaoAutorCadastradoLayout.setVerticalGroup(
             jpnSelecaoAutorCadastradoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnSelecaoAutorCadastradoLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+            .addGroup(jpnSelecaoAutorCadastradoLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jpnSelecaoAutorCadastradoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAutorPesquisado, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarAutor))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpnSelecaoAutorCadastradoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboxResultadoBuscaAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdicionarResultadoAutor))
+                    .addComponent(btnSelecionarResultadoAutor))
                 .addGap(18, 18, 18)
-                .addGroup(jpnSelecaoAutorCadastradoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAutoresSelecionados, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimparAutoresSelecionados))
-                .addGap(20, 20, 20))
+                .addGroup(jpnSelecaoAutorCadastradoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnLimparAutoresSelecionados)
+                    .addComponent(boxAutoresSelecionados, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         btnAutorNaoCadastrado.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -550,20 +561,23 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(jpnAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtDeBoasVindasAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jpnAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpnAutorLayout.createSequentialGroup()
-                            .addComponent(btnTelaPrinCadAutor)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnLimparAutor)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnProximaAbaAutor))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpnAutorLayout.createSequentialGroup()
-                            .addGroup(jpnAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jpnSelecaoAutorCadastrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpnAutorLayout.createSequentialGroup()
+                        .addGroup(jpnAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jpnAutorLayout.createSequentialGroup()
+                                .addComponent(btnTelaPrinCadAutor)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnLimparAutor)
+                                .addGap(203, 203, 203)
                                 .addComponent(btnAutorNaoCadastrado))
-                            .addGap(42, 42, 42)
-                            .addComponent(jpnCadastroAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(79, Short.MAX_VALUE))
+                            .addComponent(jpnSelecaoAutorCadastrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jpnAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpnAutorLayout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(jpnCadastroAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpnAutorLayout.createSequentialGroup()
+                                .addGap(73, 73, 73)
+                                .addComponent(btnProximaAbaAutor)))))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         jpnAutorLayout.setVerticalGroup(
             jpnAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -572,15 +586,14 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                 .addComponent(txtDeBoasVindasAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpnAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpnCadastroAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpnSelecaoAutorCadastrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jpnSelecaoAutorCadastrado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpnCadastroAutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(btnAutorNaoCadastrado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jpnAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTelaPrinCadAutor)
                     .addComponent(btnLimparAutor)
-                    .addComponent(btnProximaAbaAutor))
+                    .addComponent(btnProximaAbaAutor)
+                    .addComponent(btnAutorNaoCadastrado))
                 .addGap(20, 20, 20))
         );
 
@@ -742,15 +755,15 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFinalizarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarCadastroActionPerformed
-        
+
         Livro livro = new Livro();
         Autor autor = new Autor();
         Avaliacao avaliacao = new Avaliacao();
         Login login = ApplicationContext.getLogin();
         ValidadorIsbn validadorIsbn = new ValidadorIsbn();
-        LivroDAO livrodao = new LivroDAO();
-        AutorDAO autordao = new AutorDAO();
-        AvaliacaoDAO avaliacaodao = new AvaliacaoDAO();
+        LivroDAO livroDao = new LivroDAO();
+        AvaliacaoDAO avaliacaoDao = new AvaliacaoDAO();
+        LivroAutorDAO livroAutorDao = new LivroAutorDAO();
 
         // Captura informações preenchidas na aba Livro.
         String livroTitulo = txtTitulo.getText();
@@ -764,11 +777,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         String livroIdioma = cboxLivroIdioma.getSelectedItem().toString();
         String livroSinopse = txtSinopseDoLivro.getText();
 
-        // Captura informações preenchidas na aba Autor.
-        String autorNome = txtNomeDoAutor.getText();
-        String autorSexo = cboxAutorSexo.getSelectedItem().toString();
-        String autorNacionalidade = cboxNacionalidadeDoAutor.getSelectedItem().toString();
-
         // Captura informações preenchidas na aba Avaliar Livro.
         String avaliarLivroAvaliacao = cboxAvaliacaoDoLivro.getSelectedItem().toString();
         String avaliarLivroComentario = txtComentarioAvaliacao.getText();
@@ -776,51 +784,46 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         // Verifica se os campos obrigatórios da aba Livro foram preenchidos corretamente.
         // Atribui um número de erro se não.
         int codigoDoErro = 0;
-        
+
         if (livroTitulo.isBlank()) {
             codigoDoErro = 1;
         }
-        
+
         if (livroTipoIsbn.equals("Selecione")) {
             codigoDoErro = 2;
         }
-        
+
         if (validadorIsbn.valida(livroNumeroIsbn) == false) {
             codigoDoErro = 3;
         }
-        
-        if (livrodao.verificaDuplicidadeIsbn(livroNumeroIsbn).equals(livroNumeroIsbn)) {
+
+        if (livroDao.verificaDuplicidadeIsbn(livroNumeroIsbn).equals(livroNumeroIsbn)) {
             codigoDoErro = 4;
         }
-        
+
         if (livroAno.isBlank()) {
             codigoDoErro = 5;
         }
-        
+
         if (livroNumeroDePaginas.isBlank()) {
             codigoDoErro = 6;
         }
-        
+
         if (livroCategoria.equals("Não Informada") || livroSubCategoria.equals("Não Informada")) {
             codigoDoErro = 7;
         }
-        
+
         if (livroIdioma.equals("Não Informado")) {
             codigoDoErro = 8;
         }
 
-        // Verifica se os campos obrigatórios da aba Autor foram preenchidos corretamente.
-        if (autorNome.isBlank()) {
+        // Verifica se os campos obrigatórios da aba Avaliação foram preenchidos corretamente.
+        if (avaliarLivroAvaliacao.equals("Não Informada")) {
             codigoDoErro = 9;
         }
 
-        // Verifica se os campos obrigatórios da aba Avaliação foram preenchidos corretamente.
-        if (avaliarLivroAvaliacao.equals("Não Informada")) {
-            codigoDoErro = 10;
-        }
-        
         if (avaliarLivroComentario.isBlank()) {
-            codigoDoErro = 11;
+            codigoDoErro = 10;
         }
 
         // Usa o código de erro atribuído anteriormente e mostra uma mensagem.
@@ -842,10 +845,8 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             case 8 ->
                 JOptionPane.showMessageDialog(null, "Selecione um idioma para o livro.");
             case 9 ->
-                JOptionPane.showMessageDialog(null, "Informe o nome do autor do livro.");
-            case 10 ->
                 JOptionPane.showMessageDialog(null, "Selecione uma nota para o livro");
-            case 11 ->
+            case 10 ->
                 JOptionPane.showMessageDialog(null, "Faça o comentário da avaliação");
             default -> { // Caso nenhum erro seja encontrado.
 
@@ -858,47 +859,68 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                 livro.setIdioma(livroIdioma);
                 livro.setEditora(livroEditora);
                 livro.setSinopse(livroSinopse);
-                
-                autor.setNome(autorNome);
-                autor.setNacionalidade(autorNacionalidade);
-                
-                String valorSelecionado = "OUTRO"; // Valor padrão.
-
-                if (autorSexo.equals("Masculino")) {
-                    valorSelecionado = "MASC";
-                } else if (autorSexo.equals("Feminino")) {
-                    valorSelecionado = "FEM";
-                }
-                
-                autor.setSexo(valorSelecionado);
 
                 // Avaliação
                 avaliacao.setAvaliacaoDoUsuario(avaliarLivroAvaliacao.substring(0, 2));
                 avaliacao.setComentarioAvaliacao(avaliarLivroComentario);
-                
-                livrodao.create(livro);
-                autordao.cadastraAutor(autor);
-                avaliacaodao.create(avaliacao, txtTitulo.getText(), login.getNick());
 
-                // Para que a leitura da tabela seja feita novamente
-                // após salvar novas informações
+                livroDao.create(livro);
+
+                // Usa o nick do usuário logado para informar quem avaliou o livro.
+                avaliacaoDao.create(avaliacao, txtTitulo.getText(), login.getNick());
+
+                // Captura o ID do livro cadastrado.
+                String idDoLivro = livroAutorDao.buscaIdDoLivro(livro);
+
+                // Tabela LivroAutor
+                // Os autores que foram selecionados pelo usuário.
+                String todosOsAutoresSelecionados = txtCampoDeAutoresSelecionados.getText();
+
+                // A quantidade de linhas da string (quantidade de autores).
+                String[] arrayDeAutores = todosOsAutoresSelecionados.split("\n");
+                int quantidadeDeAutores = arrayDeAutores.length;
+
+                for (int i = 0; i < quantidadeDeAutores; i++) {
+
+                    // Exemplo de dado não tratado: 'Laura Bens, Brasil, Mulher'
+                    // Divide a informação em três.
+                    String autorSelecionado = arrayDeAutores[i];
+
+                    String nomeAutor = "";
+                    String nacionalidadeAutor = "";
+
+                    String[] partes = autorSelecionado.split(", ");
+
+                    if (partes.length == 2) {
+                        nomeAutor = partes[0];
+                        nacionalidadeAutor = partes[1];
+                    }
+
+                    autor.setNome(nomeAutor);
+                    autor.setNacionalidade(nacionalidadeAutor);
+
+                    String idDoAutor = livroAutorDao.buscaIdDoAutor(nomeAutor, nacionalidadeAutor);
+                    livroAutorDao.preencheTabelaLivroAutor(idDoLivro, idDoAutor);
+                }
+
+                // Para que a leitura da tabela seja feita novamente após salvar novas informações.
                 readJTable();
             }
         }
     }//GEN-LAST:event_btnFinalizarCadastroActionPerformed
-    
+
     public void listarIdiomasDoLivro() {
         LivroDAO.listaDeIdiomas(cboxLivroIdioma);
     }
-    
+
     public void listarNacionalidades() {
         AutorDAO.listaNacionalidadesParaAutores(cboxNacionalidadeDoAutor);
     }
-    
+
     public void listarCategorias() {
         LivroCategoriaDAO.listarCategorias(cboxCategoria);
     }
-    
+
     public void listarSubCategoria(String idCategoria) {
         LivroCategoriaDAO.listarSubCategoria(cboxSubCategoria, idCategoria);
     }
@@ -908,9 +930,9 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnTelaPrinCadLivroActionPerformed
 
-    private void cboxAutorSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxAutorSexoActionPerformed
+    private void cboxSexoDoAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxSexoDoAutorActionPerformed
 
-    }//GEN-LAST:event_cboxAutorSexoActionPerformed
+    }//GEN-LAST:event_cboxSexoDoAutorActionPerformed
 
     private void btnLimparLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparLivroActionPerformed
 
@@ -937,7 +959,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             cboxSubCategoria.removeAllItems();
             cboxSubCategoria.addItem("Não Informada");
             listarSubCategoria(dados[0]);
-            
+
         } else {
             cboxSubCategoria.removeAllItems();
             cboxSubCategoria.addItem("Não Informada");
@@ -968,7 +990,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         // Limpar os campos já preenchidos e define valor "Selecione" para todas as JComboBox
         txtNomeDoAutor.setText("");
-        cboxAutorSexo.setSelectedItem("Não Informado");
+        cboxSexoDoAutor.setSelectedItem("Não Informado");
         cboxNacionalidadeDoAutor.setSelectedItem("Não Informada");
 
     }//GEN-LAST:event_btnLimparAutorActionPerformed
@@ -1007,58 +1029,62 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNumeroDePaginasActionPerformed
 
     private void txtAnoDePublicacaoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnoDePublicacaoKeyPressed
-        // Captura o que está digitado e verifica o comprimento.
         String anoDePublicacao = txtAnoDePublicacao.getText();
         int tamanho = anoDePublicacao.length();
+        char c = evt.getKeyChar();
+        int keyCode = evt.getExtendedKeyCode();
 
-        // Verifica se o que foi digitado é um número. E se o tamanho é maior que 4.
-        if (evt.getKeyChar() >= '0' && evt.getKeyChar() <= '9') {
-            if (tamanho < 4) {
-                txtAnoDePublicacao.setEditable(true);
-            } else { // Se a quantidade de digitos passar de 4 o campo será desabilitado por 500ms.
-                txtAnoDePublicacao.setEditable(false);
-                Timer timer = new Timer(500, e -> txtAnoDePublicacao.setEditable(true));
+        // Permite usar teclas como "Back Space" e "Delete" para corrigir algum erro.
+        if (keyCode == KeyEvent.VK_BACK_SPACE || keyCode == KeyEvent.VK_DELETE) {
+            txtAnoDePublicacao.setEditable(true);
+        } else if (!Character.isDigit(c)) {
+            evt.consume(); // Se não for um número, impede a entrada.
+        } else {
+            if (tamanho >= 4) {
+                txtAnoDePublicacao.setEditable(false); // Desabilita a edição.
+                Timer timer = new Timer(500, e -> {
+                    txtAnoDePublicacao.setEditable(true); // Habilita novamente após 500ms.
+                    ((Timer) e.getSource()).stop(); // Para o timer após a execução.
+                });
                 timer.setRepeats(false);
                 timer.start();
-            }
-        } else { // Permite usar teclas como "Back Space" e "Delete" para corrigir algum erro.
-            if (evt.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode() == KeyEvent.VK_DELETE) {
-                txtAnoDePublicacao.setEditable(true);
             } else {
-                txtAnoDePublicacao.setEditable(false);
+                txtAnoDePublicacao.setEditable(true); // Permite a edição se ainda não atingiu o limite
             }
         }
     }//GEN-LAST:event_txtAnoDePublicacaoKeyPressed
 
     private void txtNumeroDePaginasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroDePaginasKeyPressed
-        // Captura o que está digitado e verifica o comprimento.
         String anoDePublicacao = txtNumeroDePaginas.getText();
         int tamanho = anoDePublicacao.length();
+        char c = evt.getKeyChar();
+        int keyCode = evt.getExtendedKeyCode();
 
-        // Verifica se o que foi digitado é um número. E se o tamanho é maior que 4.
-        if (evt.getKeyChar() >= '0' && evt.getKeyChar() <= '9') {
-            if (tamanho < 4) {
-                txtNumeroDePaginas.setEditable(true);
-            } else { // Se a quantidade de digitos passar de 4 o campo será desabilitado por 500ms.
-                txtNumeroDePaginas.setEditable(false);
-                Timer timer = new Timer(500, e -> txtNumeroDePaginas.setEditable(true));
+        // Permite usar teclas como "Back Space" e "Delete" para corrigir algum erro.
+        if (keyCode == KeyEvent.VK_BACK_SPACE || keyCode == KeyEvent.VK_DELETE) {
+            txtNumeroDePaginas.setEditable(true);
+        } else if (!Character.isDigit(c)) {
+            evt.consume(); // Se não for um número, impede a entrada.
+        } else {
+            if (tamanho >= 4) {
+                txtNumeroDePaginas.setEditable(false); // Desabilita a edição.
+                Timer timer = new Timer(500, e -> {
+                    txtNumeroDePaginas.setEditable(true); // Habilita novamente após 500ms.
+                    ((Timer) e.getSource()).stop(); // Para o timer após a execução.
+                });
                 timer.setRepeats(false);
                 timer.start();
-            }
-        } else { // Permite usar teclas como "Back Space" e "Delete" para corrigir algum erro.
-            if (evt.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode() == KeyEvent.VK_DELETE) {
-                txtNumeroDePaginas.setEditable(true);
             } else {
-                txtNumeroDePaginas.setEditable(false);
+                txtNumeroDePaginas.setEditable(true); // Permite a edição se ainda não atingiu o limite
             }
         }
     }//GEN-LAST:event_txtNumeroDePaginasKeyPressed
 
     private void cboxIsbnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxIsbnSelectActionPerformed
         String selecionado = cboxIsbnSelect.getSelectedItem().toString();
-        
+
         formatedIsbn.setValue(null);
-        
+
         if (selecionado.equals("ISBN-13")) {
             formatedIsbn.setEditable(true);
             formatedIsbn.setBorder(javax.swing.BorderFactory.createTitledBorder("ISBN-13"));
@@ -1095,52 +1121,50 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         if (pesquisa.length() < 3) {
             JOptionPane.showMessageDialog(null, "Use pelo menos 3 caracteres na busca.");
         } else {
-            AutorDAO.pesquisaAutorPorNomeAutor(cboxResultadoBuscaAutor, pesquisa);
+            AutorDAO.mostraNomePaisESexoDoAutor(cboxResultadoBuscaAutor, pesquisa);
         }
     }//GEN-LAST:event_btnBuscarAutorActionPerformed
 
-    private void btnAdicionarResultadoAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarResultadoAutorActionPerformed
+    private void btnSelecionarResultadoAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarResultadoAutorActionPerformed
         String cboxSelecionarAuto = cboxResultadoBuscaAutor.getSelectedItem().toString();
-        String autoresSelecionados = txtAutoresSelecionados.getText();
-        
-        if (cboxSelecionarAuto.equals("Selecione") || cboxSelecionarAuto.equals("Nada encontrado")) {
+        String caixaDeAutoresSelecionados = txtCampoDeAutoresSelecionados.getText();
+
+        if (cboxSelecionarAuto.equals("Nada encontrado")) {
             JOptionPane.showMessageDialog(null, "Selecione um valor válido.");
         } else {
-            if (autoresSelecionados.isEmpty()) {
-                txtAutoresSelecionados.setText(cboxSelecionarAuto);
+
+            if (caixaDeAutoresSelecionados.isEmpty()) {
+                txtCampoDeAutoresSelecionados.setText(cboxSelecionarAuto);
             } else {
-                txtAutoresSelecionados.setText(autoresSelecionados + ", " + cboxResultadoBuscaAutor.getSelectedItem().toString());
+                txtCampoDeAutoresSelecionados.setText(caixaDeAutoresSelecionados + "\n" + cboxResultadoBuscaAutor.getSelectedItem().toString());
             }
         }
+
         // Limpa os campos depois da adicionar o autor.
         txtAutorPesquisado.setText("");
         cboxResultadoBuscaAutor.removeAllItems();
 
-    }//GEN-LAST:event_btnAdicionarResultadoAutorActionPerformed
+    }//GEN-LAST:event_btnSelecionarResultadoAutorActionPerformed
 
     private void txtNomeDoAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeDoAutorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeDoAutorActionPerformed
 
-    private void txtAutoresSelecionadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAutoresSelecionadosActionPerformed
-
-    }//GEN-LAST:event_txtAutoresSelecionadosActionPerformed
-
     private void btnLimparAutoresSelecionadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparAutoresSelecionadosActionPerformed
-        txtAutoresSelecionados.setText("");
+        txtCampoDeAutoresSelecionados.setText("");
     }//GEN-LAST:event_btnLimparAutoresSelecionadosActionPerformed
 
     private void btnCadastraAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastraAutorActionPerformed
         Autor autor = new Autor();
-        AutorDAO autordao = new AutorDAO();
-        
+        AutorDAO autorDao = new AutorDAO();
+
         String autorNome = txtNomeDoAutor.getText();
-        String autorSexo = cboxAutorSexo.getSelectedItem().toString();
+        String autorSexo = cboxSexoDoAutor.getSelectedItem().toString();
         String autorNacionalidade = cboxNacionalidadeDoAutor.getSelectedItem().toString();
-        
+
         autor.setNome(autorNome);
         autor.setNacionalidade(autorNacionalidade);
-        
+
         String valorSelecionado = "OUTRO"; // Valor padrão.
 
         if (autorSexo.equals("Masculino")) {
@@ -1148,27 +1172,61 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         } else if (autorSexo.equals("Feminino")) {
             valorSelecionado = "FEM";
         }
-        
+
         autor.setSexo(valorSelecionado);
 
         // Verifica se o autor já está cadastrado antes de fazer o insert no banco.
-        if (autordao.verificaSeAutorJaEstaCadastrado(autor) == true) {
+        if (autorDao.verificaSeAutorJaEstaCadastrado(autor) == true) {
             JOptionPane.showMessageDialog(null, "Autor cadastrado. Por favor utilize a busca para selecionar.");
         } else {
-            autordao.cadastraAutor(autor);
+            autorDao.cadastraAutor(autor);
+
+            txtNomeDoAutor.setText("");
+            txtNomeDoAutor.setEditable(false);
+            txtNomeDoAutor.setFocusable(false);
+
+            cboxSexoDoAutor.setSelectedItem("Não Informado");
+            cboxSexoDoAutor.setEnabled(false);
+            cboxSexoDoAutor.setFocusable(false);
+
+            cboxNacionalidadeDoAutor.setSelectedItem("Não Informada");
+            cboxNacionalidadeDoAutor.setEnabled(false);
+            cboxNacionalidadeDoAutor.setFocusable(false);
         }
     }//GEN-LAST:event_btnCadastraAutorActionPerformed
 
     private void btnAutorNaoCadastradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutorNaoCadastradoActionPerformed
         txtNomeDoAutor.setEditable(true);
         txtNomeDoAutor.setFocusable(true);
-        
-        cboxAutorSexo.setEnabled(true);
-        cboxAutorSexo.setFocusable(true);
-        
+
+        cboxSexoDoAutor.setEnabled(true);
+        cboxSexoDoAutor.setFocusable(true);
+
         cboxNacionalidadeDoAutor.setEnabled(true);
         cboxNacionalidadeDoAutor.setFocusable(true);
+
+        btnCadastraAutor.setEnabled(true);
     }//GEN-LAST:event_btnAutorNaoCadastradoActionPerformed
+
+    private void txtAnoDePublicacaoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnoDePublicacaoKeyTyped
+        // Impede que texto seja digitado no campo.
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtAnoDePublicacaoKeyTyped
+
+    private void txtNumeroDePaginasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroDePaginasKeyTyped
+        // Impede que texto seja digitado no campo.
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNumeroDePaginasKeyTyped
+
+    private void cboxResultadoBuscaAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxResultadoBuscaAutorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxResultadoBuscaAutorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1206,9 +1264,9 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane boxAutoresSelecionados;
     private javax.swing.JScrollPane boxComentarioAvaliacao;
     private javax.swing.JScrollPane boxSinopse;
-    private javax.swing.JButton btnAdicionarResultadoAutor;
     private javax.swing.JButton btnAutorNaoCadastrado;
     private javax.swing.JButton btnBuscarAutor;
     private javax.swing.JButton btnCadastraAutor;
@@ -1221,16 +1279,17 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     private javax.swing.JButton btnLimparLivro;
     private javax.swing.JButton btnProximaAbaAutor;
     private javax.swing.JButton btnProximaAbaLivro;
+    private javax.swing.JButton btnSelecionarResultadoAutor;
     private javax.swing.JButton btnTelaPrinCadAutor;
     private javax.swing.JButton btnTelaPrinCadAvaliacao;
     private javax.swing.JButton btnTelaPrinCadLivro;
-    private javax.swing.JComboBox<String> cboxAutorSexo;
     private javax.swing.JComboBox<String> cboxAvaliacaoDoLivro;
     private javax.swing.JComboBox<String> cboxCategoria;
     private javax.swing.JComboBox<String> cboxIsbnSelect;
     private javax.swing.JComboBox<String> cboxLivroIdioma;
     private javax.swing.JComboBox<String> cboxNacionalidadeDoAutor;
     private javax.swing.JComboBox<String> cboxResultadoBuscaAutor;
+    private javax.swing.JComboBox<String> cboxSexoDoAutor;
     private javax.swing.JComboBox<String> cboxSubCategoria;
     private javax.swing.JFormattedTextField formatedIsbn;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1244,7 +1303,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     private javax.swing.JTable tbSelect;
     private javax.swing.JTextField txtAnoDePublicacao;
     private javax.swing.JTextField txtAutorPesquisado;
-    private javax.swing.JTextField txtAutoresSelecionados;
+    private javax.swing.JTextArea txtCampoDeAutoresSelecionados;
     private javax.swing.JTextArea txtComentarioAvaliacao;
     private javax.swing.JTextField txtDeBoasVindasAutor;
     private javax.swing.JTextField txtDeBoasVindasAvaliacao;

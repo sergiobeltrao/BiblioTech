@@ -62,20 +62,6 @@ public class FavoritosDAO {
         }
 
         con.setAutoCommit(false);  // Desativa o autocommit
-
-       /* String consultaSQL = "SELECT USE_ID FROM USUARIO WHERE USE_NICK = ?";
-            stmt = con.prepareStatement(consultaSQL);
-            stmt.setString(1, userId);
-            ResultSet resultado = stmt.executeQuery();
-            int useId = 0;
-
-            // Verifica se há resultados
-            if (resultado.next()) {
-                useId = resultado.getInt("USE_ID");
-            } else {
-                JOptionPane.showMessageDialog(null, "Erro ao consultar USE_ID para tabela de favorito");
-                return;  // Encerre o método se não encontrar o usuário
-            }*/
         
         String consultSQL = "SELECT ID FROM FAVORITO WHERE FAV_USUARIO = ?";
             stmt = con.prepareStatement(consultSQL);
