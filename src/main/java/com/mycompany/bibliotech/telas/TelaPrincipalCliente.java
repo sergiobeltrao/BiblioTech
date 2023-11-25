@@ -5,6 +5,8 @@
 package com.mycompany.bibliotech.telas;
 
 import com.mycompany.bibliotech.model.bean.Avaliacao;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -17,6 +19,13 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
      */
     public TelaPrincipalCliente() {
         initComponents();
+        String[] rank = {"bruno", "Sergio", "Edu", "john"};
+
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+        for (String nome : rank) {
+            listModel.addElement(nome);
+        }
+        jList1.setModel(listModel);
     }
 
     /**
@@ -34,11 +43,9 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
         AvaButton1 = new javax.swing.JButton();
         btnEncerrarSessao = new javax.swing.JButton();
         CadLivroButton = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        MenuPrincipal = new javax.swing.JPanel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtTopList = new javax.swing.JList<>();
-        jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -141,40 +148,36 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
         kGradientPanel1.setkGradientFocus(10);
         kGradientPanel1.setkStartColor(new java.awt.Color(255, 255, 255));
 
-        txtTopList.setBorder(javax.swing.BorderFactory.createTitledBorder("Os "));
-        jScrollPane1.setViewportView(txtTopList);
-
-        jScrollPane2.setViewportView(jList1);
+        jList1.setBackground(new java.awt.Color(204, 204, 204));
+        jList1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jList1.setForeground(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(jList1);
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
         kGradientPanel1Layout.setHorizontalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(109, 109, 109)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(637, Short.MAX_VALUE))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout MenuPrincipalLayout = new javax.swing.GroupLayout(MenuPrincipal);
+        MenuPrincipal.setLayout(MenuPrincipalLayout);
+        MenuPrincipalLayout.setHorizontalGroup(
+            MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        MenuPrincipalLayout.setVerticalGroup(
+            MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -185,13 +188,13 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(MenuLateral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(MenuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(MenuLateral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(MenuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -259,14 +262,12 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
     private javax.swing.JButton AvaButton1;
     private javax.swing.JButton CadLivroButton;
     private javax.swing.JPanel MenuLateral;
+    private javax.swing.JPanel MenuPrincipal;
     private javax.swing.JButton btnEncerrarSessao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private keeptoo.KGradientPanel kGradientPanel1;
     private keeptoo.KGradientPanel kGradientPanel2;
-    private javax.swing.JList<String> txtTopList;
     // End of variables declaration//GEN-END:variables
 }
