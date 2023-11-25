@@ -926,7 +926,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     }
 
     private void btnTelaPrinCadLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTelaPrinCadLivroActionPerformed
-        new TelaPrincipalAdministrador().setVisible(true);
+        new TelaPrincipalCliente().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnTelaPrinCadLivroActionPerformed
 

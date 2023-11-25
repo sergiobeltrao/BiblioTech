@@ -318,7 +318,7 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
     private void AvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AvaButtonActionPerformed
         Avaliacao avaliacao = new Avaliacao();
-        new Teste(avaliacao).setVisible(true);
+        new TelaAvaliacao(avaliacao).setVisible(true);
         this.setVisible(false);
 // TODO add your handling code here:
     }//GEN-LAST:event_AvaButtonActionPerformed

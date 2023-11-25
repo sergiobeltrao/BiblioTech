@@ -301,6 +301,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         ExcluirUserButton = new javax.swing.JToggleButton();
         edicaoUserButton = new javax.swing.JButton();
         AvaButton = new javax.swing.JButton();
+        txtMenu = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -795,10 +796,17 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
-        AvaButton.setText("Teste Avaliações");
+        AvaButton.setText(" Avaliações");
         AvaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AvaButtonActionPerformed(evt);
+            }
+        });
+
+        txtMenu.setText("Menu Principal");
+        txtMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMenuActionPerformed(evt);
             }
         });
 
@@ -829,7 +837,10 @@ public class CadastroUsuario extends javax.swing.JFrame {
                         .addComponent(edicaoUserButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(menuLateralLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(AvaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(AvaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(menuLateralLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         menuLateralLayout.setVerticalGroup(
@@ -847,6 +858,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 .addComponent(edicaoUserButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(AvaButton)
+                .addGap(18, 18, 18)
+                .addComponent(txtMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao)
                 .addGap(15, 15, 15))
@@ -1241,10 +1254,15 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
     private void AvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AvaButtonActionPerformed
         Avaliacao avaliacao = new Avaliacao();
-        new Teste(avaliacao).setVisible(true);
+        new TelaAvaliacao(avaliacao).setVisible(true);
         this.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_AvaButtonActionPerformed
+
+    private void txtMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenuActionPerformed
+        new TelaPrincipalCliente().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_txtMenuActionPerformed
 
     public void listarCategorias1() {
         LivroCategoriaDAO.listarCategorias(cboxCategoria1);
@@ -1343,6 +1361,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> sexoBox;
     private javax.swing.JTextField sobrenomeTxt;
     private javax.swing.JComboBox<String> telefoneTipoBox;
+    private javax.swing.JButton txtMenu;
     private javax.swing.JTextField txtMenuPrincipal;
     private javax.swing.JTextField ufTxt;
     // End of variables declaration//GEN-END:variables

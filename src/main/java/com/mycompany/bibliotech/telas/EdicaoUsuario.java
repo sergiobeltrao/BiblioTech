@@ -570,7 +570,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             }
         });
 
-        AvaButton.setText("Teste Avaliações");
+        AvaButton.setText(" Avaliações");
         AvaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AvaButtonActionPerformed(evt);
@@ -997,7 +997,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
     private void AvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AvaButtonActionPerformed
         Avaliacao avaliacao = new Avaliacao();
-        new Teste(avaliacao).setVisible(true);
+        new TelaAvaliacao(avaliacao).setVisible(true);
         this.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_AvaButtonActionPerformed
