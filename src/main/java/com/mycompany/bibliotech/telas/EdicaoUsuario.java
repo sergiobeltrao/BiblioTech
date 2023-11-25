@@ -788,7 +788,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
     private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonActionPerformed
                                         
-     // Verifica se o usuário está sendo editado
         Usuario user = new Usuario();
         Endereco end = new Endereco();
         Favoritos fav = new Favoritos();
@@ -800,38 +799,8 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         String cpf = cpfTxt.getText();
         CpfDAO cpfdao = new CpfDAO(cpf);
         
-         /*Hash hash = new Hash();
-        
-        String senhaDigitada = senhaTxt.getText();
-        String hashDaSenha = "";
-
-        try {
-            hashDaSenha = hash.geradorDeHash(senhaDigitada);
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        Hash rehash = new Hash();
-        
-        String resenhaDigitada = resenhaTxt.getText();
-        String rehashDaSenha = "";
-
-        try {
-            rehashDaSenha = rehash.geradorDeHash(resenhaDigitada);
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-       // String senha = new String(senhaTxt.getPassword());
-       // String reSenha = new String(resenhaTxt.getPassword());
-
-        if (!hashDaSenha.equals(rehashDaSenha)) {
-            JOptionPane.showMessageDialog(this, "A senha e a re-senha não coincidem. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
-            return; // Não prossegue com o cadastro se as senhas não coincidirem
-        }
-*/
+        //Informações Usuario
         user.setUserNick(nickTxt.getText());
-       // user.setUserSenha(new String(hashDaSenha));
         String valorUserCargo = cargoBox.getSelectedItem().toString();
         String valorSelecionado = "CLIENTE";
 
@@ -840,13 +809,12 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         } else {
             valorSelecionado = "CLIENTE";
         }
-
         user.setUserType(valorSelecionado);
-
+        
         user.setUserNome(nomeTxt.getText());
         user.setUserSobrenome(sobrenomeTxt.getText());
         user.setUserEmail(emailTxt.getText());
-
+        
         String valorUserSexo = sexoBox.getSelectedItem().toString();
         String valorSelecionad = "OUTRO";
 
@@ -858,9 +826,10 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             valorSelecionad = "OUTRO";
         }
         user.setUserSexo(valorSelecionad);
-        user.setUserType(valorSelecionado);
+        
         String userId = idLabel.getText();
-
+        
+        //Informações Telefone
         String valorTipo = telefoneTipoBox.getSelectedItem().toString();
         String valorSelecionada = "CELULAR";
 
@@ -872,8 +841,10 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             valorSelecionada = "RESIDENCIAL";
         }
         tel.setTipo(valorSelecionada);
+        
         tel.setTelefone(foneTxt.getText());
 
+        //Informações Endereço
         end.setCep(cepTxt.getText());
         end.setPais(paisTxt.getText());
         end.setRua(endTxt.getText());
@@ -889,6 +860,8 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         }
         end.setNum(numb);
         end.setBairro(bairroTxt.getText());
+        
+        //Informações favoritos
         String categoriaSelecionada = cboxCategoria1.getSelectedItem().toString();
         String subCategoriaSelecionada = cboxSubCategoria1.getSelectedItem().toString();
         fav.setFavCategoria1(categoriaSelecionada);
@@ -898,6 +871,8 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         fav.setFavCategoria2(categoriaSelecionad);
         fav.setFavSub2(subCategoriaSelecionad);
 
+        //Verificadores de data e CPF:
+        
         // Obtém a data de nascimento do JDateChooser
         java.util.Date dataNascimentoUtil = dataNascChooser.getDate();
 
@@ -920,13 +895,16 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             return; // Não prossegue com o cadastro se a data de nascimento não foi selecionada
         }
         
+        // Validador de CPF
          if (cpfdao.isCPF()) {
             user.setUserCpf(cpfTxt.getText());
-            dao.atualizar(user, userId);
         } else {
             JOptionPane.showMessageDialog(rootPane, "CPF inválido!!");
             return;
         }
+         
+         //Metodos Atualizar
+        dao.atualizar(user, userId);
         enddao.atualizar(end, userId);
         fonedao.atualizar(tel, userId);
         favdao.atualizar(fav, userId);
@@ -934,7 +912,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_enterButtonActionPerformed
 
     private void LimparButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparButtonActionPerformed
-        UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
+    UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
     Usuario user = new Usuario();
     Endereco endereco = new Endereco();
     Favoritos favoritos = new Favoritos();
