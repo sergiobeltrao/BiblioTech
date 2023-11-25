@@ -6,8 +6,11 @@ package com.mycompany.bibliotech.telas;
 
 import com.mycompany.bibliotech.dao.RankDAO;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
+import java.awt.Component;
 import java.util.List;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
+import javax.swing.JList;
 
 /**
  *
@@ -23,15 +26,30 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
 
         List<String> rankList = RankDAO.ranking();
 
-        // Configura o modelo do JList
         DefaultListModel<String> listModel = new DefaultListModel<>();
         if (rankList != null) {
+            int rankNumber = 1;
             for (String item : rankList) {
-                listModel.addElement(item);
+                listModel.addElement(rankNumber + ". " + item);
+                rankNumber++;
             }
         }
+        jList1.setCellRenderer(new CenteredTextRenderer());
         jList1.setModel(listModel);
 
+    }
+
+    public class CenteredTextRenderer extends DefaultListCellRenderer {
+
+        @Override
+        public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+
+            // Configura o alinhamento do texto para o centro
+            setHorizontalAlignment(DefaultListCellRenderer.CENTER);
+
+            return this;
+        }
     }
 
     /**
