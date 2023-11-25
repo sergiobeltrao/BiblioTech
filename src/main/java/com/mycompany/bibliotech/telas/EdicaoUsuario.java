@@ -110,6 +110,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         ProxCadEndButton = new javax.swing.JButton();
         cpfTxt = new javax.swing.JFormattedTextField();
         idLabel = new javax.swing.JLabel();
+        avisoLabel = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         endTxt = new javax.swing.JTextField();
         ufTxt = new javax.swing.JTextField();
@@ -160,7 +161,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         nickTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nickTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nickname", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        nickTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nickname *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
         nickTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nickTxtActionPerformed(evt);
@@ -168,7 +169,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         emailTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        emailTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Email", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        emailTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Email *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
         emailTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailTxtActionPerformed(evt);
@@ -176,7 +177,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         nomeTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nomeTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nome", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        nomeTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nome *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
         nomeTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomeTxtActionPerformed(evt);
@@ -184,7 +185,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         cargoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMIN", "CLIENTE" }));
-        cargoBox.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo"));
+        cargoBox.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo *"));
         cargoBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cargoBoxActionPerformed(evt);
@@ -196,14 +197,14 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         dataNascChooser.setDateFormatString("yyyy-MM-dd");
 
         telefoneTipoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RESIDENCIAL", "COMERCIAL", "CELULAR" }));
-        telefoneTipoBox.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de número"));
+        telefoneTipoBox.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de número *"));
         telefoneTipoBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 telefoneTipoBoxActionPerformed(evt);
             }
         });
 
-        foneTxt.setBorder(javax.swing.BorderFactory.createTitledBorder("Telefone"));
+        foneTxt.setBorder(javax.swing.BorderFactory.createTitledBorder("Telefone *"));
         try {
             foneTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
         } catch (java.text.ParseException ex) {
@@ -222,7 +223,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             }
         });
 
-        cpfTxt.setBorder(javax.swing.BorderFactory.createTitledBorder("CPF"));
+        cpfTxt.setBorder(javax.swing.BorderFactory.createTitledBorder("CPF *"));
         try {
             cpfTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
@@ -236,6 +237,8 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
         idLabel.setText("ID");
         idLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        avisoLabel.setText("Itens preenchidos com * são obrigatórios!!");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -267,7 +270,10 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                         .addComponent(idLabel))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(164, 164, 164)
-                        .addComponent(ProxCadEndButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ProxCadEndButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(avisoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -295,7 +301,9 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                     .addComponent(cargoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(ProxCadEndButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71)
+                .addGap(18, 18, 18)
+                .addComponent(avisoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addGap(19, 19, 19)
                 .addComponent(idLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                 .addGap(19, 19, 19))
         );
@@ -430,7 +438,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
         cboxCategoria2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         cboxCategoria2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada" }));
-        cboxCategoria2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Categoria 2 *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        cboxCategoria2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Categoria 2 ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
         cboxCategoria2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxCategoria2ActionPerformed(evt);
@@ -439,7 +447,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
         cboxSubCategoria2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         cboxSubCategoria2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada" }));
-        cboxSubCategoria2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sub-categoria 2 *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        cboxSubCategoria2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sub-categoria 2 ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
         cboxSubCategoria2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxSubCategoria2ActionPerformed(evt);
@@ -448,7 +456,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
         cboxCategoria1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         cboxCategoria1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada" }));
-        cboxCategoria1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Categoria 1 *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        cboxCategoria1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Categoria 1 ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
         cboxCategoria1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxCategoria1ActionPerformed(evt);
@@ -457,7 +465,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
         cboxSubCategoria1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         cboxSubCategoria1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada" }));
-        cboxSubCategoria1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sub-categoria 1 *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        cboxSubCategoria1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sub-categoria 1 ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
         cboxSubCategoria1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxSubCategoria1ActionPerformed(evt);
@@ -1114,6 +1122,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     private javax.swing.JButton ProxCadEndButton;
     private javax.swing.JButton ProxCadLivButton;
     private javax.swing.JButton avaliacaoButton;
+    private javax.swing.JLabel avisoLabel;
     private javax.swing.JTextField bairroTxt;
     private javax.swing.JButton btnEncerrarSessao;
     private javax.swing.JPanel campoCentral;
