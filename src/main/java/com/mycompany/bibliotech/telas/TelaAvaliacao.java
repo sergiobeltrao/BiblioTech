@@ -12,44 +12,39 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
-
 public class TelaAvaliacao extends javax.swing.JFrame {
 
     public TelaAvaliacao(Avaliacao avaliacao) {
         initComponents();
         setPesquisarValues(avaliacao);
-        
-        // Adicione o novo ActionListener à cboxNomeLivro
-    cboxNomeLivro.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent evt) {
-            try {
-                String pesquisar = cboxNomeLivro.getSelectedItem().toString();
-                if (pesquisar != null && !pesquisar.isEmpty()) {
-                    TelaAvaliacaoDAO taDAO = new TelaAvaliacaoDAO();
-                    Avaliacao pes = taDAO.find(pesquisar);
-                    setPesquisarValues(pes);
+
+        cboxNomeLivro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                try {
+                    String pesquisar = cboxNomeLivro.getSelectedItem().toString();
+                    if (pesquisar != null && !pesquisar.isEmpty()) {
+                        TelaAvaliacaoDAO taDAO = new TelaAvaliacaoDAO();
+                        Avaliacao pes = taDAO.find(pesquisar);
+                        setPesquisarValues(pes);
                     }
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Erro ao selecionar o livro." + ex);
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao selecionar o livro." + ex);
                 }
             }
         }
-     );
-    
-    
-    
-    cboxAlfabeto.setForeground(new java.awt.Color(0, 0, 0));
-    cboxAlfabeto.addItem("");
-    cboxAlfabeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"", "A", "B", "C", 
-        "D", "E", "F", "J", "F", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"}));
-    cboxNomeLivro.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            cboxNomeLivroeActionPerformed(evt);
-           }
+        );
+
+        cboxAlfabeto.setForeground(new java.awt.Color(0, 0, 0));
+        cboxAlfabeto.addItem("");
+        cboxAlfabeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Alfabeto", "A", "B", "C",
+            "D", "E", "F", "J", "F", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"}));
+        cboxNomeLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxNomeLivroeActionPerformed(evt);
+            }
         });
-        // Lembre-se de descomentar isso se quiser usar o método "listaTituloDosLivros"
-        // listarBusca();
+      
         listarCategorias();
 
     }
@@ -64,13 +59,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             txtPaginas.setText(String.valueOf(avaliacao.getTxtPaginas()));
         }
 
-    }
-
-    // Você só precisa disso para listar TODOS os livros (sem usar a busca).
-    // Usa o método "listaTituloDosLivros" dentro do TelaAvaliacaoDAO.
-    public void listarBusca() {
-        //  String busca = txtTeste.getText();
-        // TelaAvaliacaoDAO.listaFiltrada(cboxTeste, busca);
     }
 
     @SuppressWarnings("unchecked")
@@ -126,6 +114,11 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         txtTituloBusca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTituloBusca.setForeground(new java.awt.Color(0, 0, 0));
         txtTituloBusca.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Digite o título do livro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        txtTituloBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTituloBuscaActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -512,8 +505,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         cboxNomeLivro.setMaximumRowCount(5);
         cboxNomeLivro.showPopup();
 
-        
-        
         String busca = txtTituloBusca.getText();
         String buscaCategorias = cboxCategoriaBusca.getSelectedItem().toString();
         String buscaSubCategorias = cboxSubCategoriaBusca.getSelectedItem().toString();
@@ -550,7 +541,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     }//GEN-LAST:event_cboxAlfabetoActionPerformed
 
     private void cboxNomeLivroeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxNomeLivroeActionPerformed
-       /* Avaliacao pes = new Avaliacao();
+        /* Avaliacao pes = new Avaliacao();
         TelaAvaliacaoDAO taDAO = new TelaAvaliacaoDAO();
         // Obtém o item selecionado
         String pesquisar = cboxNomeLivro.getSelectedItem().toString();
@@ -587,11 +578,11 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             cboxSubCategoriaBusca.addItem(" ");
     }//GEN-LAST:event_cboxCategoriaBuscaActionPerformed
     }
-    
+
     private void SliderNotaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SliderNotaStateChanged
-        
-        txtNota.setText(String.valueOf(SliderNota.getValue()));   
-        
+
+        txtNota.setText(String.valueOf(SliderNota.getValue()));
+
     }//GEN-LAST:event_SliderNotaStateChanged
 
     private void btnAvaliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvaliarActionPerformed
@@ -599,7 +590,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         Login login = ApplicationContext.getLogin();
         Avaliacao pes = new Avaliacao();
         AvaliacaoDAO notaDAO = new AvaliacaoDAO();
-        String nota = txtNota.getText();   
+        String nota = txtNota.getText();
         notaDAO.rank(pes, pesquisar, login.getNick(), nota);
     }//GEN-LAST:event_btnAvaliarActionPerformed
 
@@ -625,7 +616,10 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         new CadastroDeLivros().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_CadLivroButtonActionPerformed
-        
+
+    private void txtTituloBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTituloBuscaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTituloBuscaActionPerformed
 
     /**
      * @param args the command line arguments

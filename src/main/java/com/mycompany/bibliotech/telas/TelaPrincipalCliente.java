@@ -4,8 +4,9 @@
  */
 package com.mycompany.bibliotech.telas;
 
+import com.mycompany.bibliotech.dao.RankDAO;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
-import javax.swing.DefaultComboBoxModel;
+import java.util.List;
 import javax.swing.DefaultListModel;
 
 /**
@@ -19,13 +20,18 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
      */
     public TelaPrincipalCliente() {
         initComponents();
-        String[] rank = {"bruno", "Sergio", "Edu", "john"};
 
+        List<String> rankList = RankDAO.ranking();
+
+        // Configura o modelo do JList
         DefaultListModel<String> listModel = new DefaultListModel<>();
-        for (String nome : rank) {
-            listModel.addElement(nome);
+        if (rankList != null) {
+            for (String item : rankList) {
+                listModel.addElement(item);
+            }
         }
         jList1.setModel(listModel);
+
     }
 
     /**
@@ -151,6 +157,7 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
         jList1.setBackground(new java.awt.Color(204, 204, 204));
         jList1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jList1.setForeground(new java.awt.Color(0, 0, 0));
+        jList1.setToolTipText("");
         jScrollPane1.setViewportView(jList1);
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
@@ -159,8 +166,8 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(637, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(700, Short.MAX_VALUE))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,16 +241,24 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
                 if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipalCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipalCliente.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipalCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipalCliente.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipalCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipalCliente.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipalCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipalCliente.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
