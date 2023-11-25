@@ -760,154 +760,144 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         Autor autor = new Autor();
         Avaliacao avaliacao = new Avaliacao();
         Login login = ApplicationContext.getLogin();
-        ValidadorIsbn validadorIsbn = new ValidadorIsbn();
         LivroDAO livroDao = new LivroDAO();
         AvaliacaoDAO avaliacaoDao = new AvaliacaoDAO();
         LivroAutorDAO livroAutorDao = new LivroAutorDAO();
 
-        // Captura informações preenchidas na aba Livro.
-        String livroTitulo = txtTitulo.getText();
-        String livroTipoIsbn = cboxIsbnSelect.getSelectedItem().toString();
-        String livroNumeroIsbn = formatedIsbn.getText();
-        String livroAno = txtAnoDePublicacao.getText();
-        String livroNumeroDePaginas = txtNumeroDePaginas.getText();
-        String livroCategoria = cboxCategoria.getSelectedItem().toString();
-        String livroSubCategoria = cboxSubCategoria.getSelectedItem().toString();
-        String livroEditora = txtNomeDaEditora.getText();
-        String livroIdioma = cboxLivroIdioma.getSelectedItem().toString();
-        String livroSinopse = txtSinopseDoLivro.getText();
+        // Seta os dados caso nenhum erro seja encontrado ou mostra o erro na tela.
+        if (verificaErroCadastro() != null) {
+            JOptionPane.showMessageDialog(null, verificaErroCadastro());
+        } else {
+            livro.setTitulo(txtTitulo.getText());
+            livro.setIsbn(formatedIsbn.getText());
+            livro.setAnoDePublicacao(Integer.parseInt(txtAnoDePublicacao.getText()));
+            livro.setNumeroDePaginas(Integer.parseInt(txtNumeroDePaginas.getText()));
+            livro.setCategoria(cboxCategoria.getSelectedItem().toString());
+            livro.setSubCategoria(cboxSubCategoria.getSelectedItem().toString());
+            livro.setIdioma(cboxLivroIdioma.getSelectedItem().toString());
+            livro.setEditora(txtNomeDaEditora.getText());
+            livro.setSinopse(txtSinopseDoLivro.getText());
+            avaliacao.setAvaliacaoDoUsuario(cboxAvaliacaoDoLivro.getSelectedItem().toString().substring(0, 2));
+            avaliacao.setComentarioAvaliacao(txtComentarioAvaliacao.getText());
 
-        // Captura informações preenchidas na aba Avaliar Livro.
-        String avaliarLivroAvaliacao = cboxAvaliacaoDoLivro.getSelectedItem().toString();
-        String avaliarLivroComentario = txtComentarioAvaliacao.getText();
+            livroDao.create(livro);
 
-        // Verifica se os campos obrigatórios da aba Livro foram preenchidos corretamente.
-        // Atribui um número de erro se não.
-        int codigoDoErro = 0;
+            // Usa o nick do usuário logado para informar quem avaliou o livro.
+            avaliacaoDao.create(avaliacao, txtTitulo.getText(), login.getNick());
 
-        if (livroTitulo.isBlank()) {
-            codigoDoErro = 1;
-        }
+            // Captura o ID do livro cadastrado.
+            String idDoLivro = livroAutorDao.buscaIdDoLivro(livro);
 
-        if (livroTipoIsbn.equals("Selecione")) {
-            codigoDoErro = 2;
-        }
+            // Tabela LivroAutor
+            // A quantidade de linhas da string (quantidade de autores).
+            String[] arrayDeAutores = txtCampoDeAutoresSelecionados.getText().split("\n");
+            int quantidadeDeAutores = arrayDeAutores.length;
 
-        if (validadorIsbn.valida(livroNumeroIsbn) == false) {
-            codigoDoErro = 3;
-        }
+            for (int i = 0; i < quantidadeDeAutores; i++) {
 
-        if (livroDao.verificaDuplicidadeIsbn(livroNumeroIsbn).equals(livroNumeroIsbn)) {
-            codigoDoErro = 4;
-        }
+                // Exemplo de dado não tratado: 'Laura Bens, Brasil, Mulher'
+                // Divide a informação em três.
+                String autorSelecionado = arrayDeAutores[i];
 
-        if (livroAno.isBlank()) {
-            codigoDoErro = 5;
-        }
+                String nomeAutor = "";
+                String nacionalidadeAutor = "";
 
-        if (livroNumeroDePaginas.isBlank()) {
-            codigoDoErro = 6;
-        }
+                String[] partes = autorSelecionado.split(", ");
 
-        if (livroCategoria.equals("Não Informada") || livroSubCategoria.equals("Não Informada")) {
-            codigoDoErro = 7;
-        }
-
-        if (livroIdioma.equals("Não Informado")) {
-            codigoDoErro = 8;
-        }
-
-        // Verifica se os campos obrigatórios da aba Avaliação foram preenchidos corretamente.
-        if (avaliarLivroAvaliacao.equals("Não Informada")) {
-            codigoDoErro = 9;
-        }
-
-        if (avaliarLivroComentario.isBlank()) {
-            codigoDoErro = 10;
-        }
-
-        // Usa o código de erro atribuído anteriormente e mostra uma mensagem.
-        switch (codigoDoErro) {
-            case 1 ->
-                JOptionPane.showMessageDialog(null, "Digite um título válido para o livro.");
-            case 2 ->
-                JOptionPane.showMessageDialog(null, "Selecione o tipo do ISBN.");
-            case 3 ->
-                JOptionPane.showMessageDialog(null, "ISBN inválido.");
-            case 4 ->
-                JOptionPane.showMessageDialog(null, "Esse ISBN já está cadastrado.");
-            case 5 ->
-                JOptionPane.showMessageDialog(null, "Digite o ano de publicação do livro.");
-            case 6 ->
-                JOptionPane.showMessageDialog(null, "Digite o número de páginas do livro.");
-            case 7 ->
-                JOptionPane.showMessageDialog(null, "Você precisa selecionar a categoria e sub-categoria do livro.");
-            case 8 ->
-                JOptionPane.showMessageDialog(null, "Selecione um idioma para o livro.");
-            case 9 ->
-                JOptionPane.showMessageDialog(null, "Selecione uma nota para o livro");
-            case 10 ->
-                JOptionPane.showMessageDialog(null, "Faça o comentário da avaliação");
-            default -> { // Caso nenhum erro seja encontrado.
-
-                livro.setTitulo(livroTitulo);
-                livro.setIsbn(livroNumeroIsbn);
-                livro.setAnoDePublicacao(Integer.parseInt(livroAno));
-                livro.setNumeroDePaginas(Integer.parseInt(livroNumeroDePaginas));
-                livro.setCategoria(livroCategoria);
-                livro.setSubCategoria(livroSubCategoria);
-                livro.setIdioma(livroIdioma);
-                livro.setEditora(livroEditora);
-                livro.setSinopse(livroSinopse);
-
-                // Avaliação
-                avaliacao.setAvaliacaoDoUsuario(avaliarLivroAvaliacao.substring(0, 2));
-                avaliacao.setComentarioAvaliacao(avaliarLivroComentario);
-
-                livroDao.create(livro);
-
-                // Usa o nick do usuário logado para informar quem avaliou o livro.
-                avaliacaoDao.create(avaliacao, txtTitulo.getText(), login.getNick());
-
-                // Captura o ID do livro cadastrado.
-                String idDoLivro = livroAutorDao.buscaIdDoLivro(livro);
-
-                // Tabela LivroAutor
-                // Os autores que foram selecionados pelo usuário.
-                String todosOsAutoresSelecionados = txtCampoDeAutoresSelecionados.getText();
-
-                // A quantidade de linhas da string (quantidade de autores).
-                String[] arrayDeAutores = todosOsAutoresSelecionados.split("\n");
-                int quantidadeDeAutores = arrayDeAutores.length;
-
-                for (int i = 0; i < quantidadeDeAutores; i++) {
-
-                    // Exemplo de dado não tratado: 'Laura Bens, Brasil, Mulher'
-                    // Divide a informação em três.
-                    String autorSelecionado = arrayDeAutores[i];
-
-                    String nomeAutor = "";
-                    String nacionalidadeAutor = "";
-
-                    String[] partes = autorSelecionado.split(", ");
-
-                    if (partes.length == 2) {
-                        nomeAutor = partes[0];
-                        nacionalidadeAutor = partes[1];
-                    }
-
-                    autor.setNome(nomeAutor);
-                    autor.setNacionalidade(nacionalidadeAutor);
-
-                    String idDoAutor = livroAutorDao.buscaIdDoAutor(nomeAutor, nacionalidadeAutor);
-                    livroAutorDao.preencheTabelaLivroAutor(idDoLivro, idDoAutor);
+                if (partes.length == 2) {
+                    nomeAutor = partes[0];
+                    nacionalidadeAutor = partes[1];
                 }
 
-                // Para que a leitura da tabela seja feita novamente após salvar novas informações.
-                readJTable();
+                autor.setNome(nomeAutor);
+                autor.setNacionalidade(nacionalidadeAutor);
+
+                String idDoAutor = livroAutorDao.buscaIdDoAutor(nomeAutor, nacionalidadeAutor);
+                livroAutorDao.preencheTabelaLivroAutor(idDoLivro, idDoAutor);
             }
+
+            // Para que a leitura da tabela seja feita novamente após salvar novas informações.
+            readJTable();
         }
+
     }//GEN-LAST:event_btnFinalizarCadastroActionPerformed
+
+    public String verificaErroCadastro() {
+        // Verifica se algum dos dados obrigatórios não foram preenchidos.
+
+        ValidadorIsbn validadorIsbn = new ValidadorIsbn();
+        LivroDAO livroDao = new LivroDAO();
+
+        String mensagemDeErro = null;
+
+        // Avaliação sem comentário.
+        if (txtComentarioAvaliacao.getText().isBlank()) {
+            mensagemDeErro = "Faça o comentário da avaliação";
+        }
+
+        // Avaliação sem nota.
+        if (cboxAvaliacaoDoLivro.getSelectedItem().toString().equals("Não Informada")) {
+            mensagemDeErro = "Selecione uma nota para o livro";
+        }
+
+        // Livro sem autor.
+        if (txtCampoDeAutoresSelecionados.getText().isBlank()) {
+            mensagemDeErro = "Você precisa selecionar pelo menos um autor.";
+        }
+
+        // Livro sem idioma.
+        if (cboxLivroIdioma.getSelectedItem().toString().equals("Não Informado")) {
+            mensagemDeErro = "Selecione um idioma para o livro.";
+        }
+
+        String categoriaSelecionada = cboxCategoria.getSelectedItem().toString();
+        String subCategoriaSelecionada = cboxSubCategoria.getSelectedItem().toString();
+
+        // Livro sem categoria ou subcategoria.
+        if (categoriaSelecionada.equals("Não Informada") || subCategoriaSelecionada.equals("Não Informada")) {
+            mensagemDeErro = "Você precisa selecionar a categoria e sub-categoria do livro.";
+        }
+
+        // Livro sem número de páginas.
+        if (txtNumeroDePaginas.getText().isBlank()) {
+            mensagemDeErro = "Digite o número de páginas do livro.";
+        }
+
+        // Livro sem ano de publicação.
+        if (txtAnoDePublicacao.getText().isBlank()) {
+            mensagemDeErro = "Digite o ano de publicação do livro.";
+        }
+
+        // ISBN já consta no banco.
+        if (livroDao.verificaDuplicidadeIsbn(formatedIsbn.getText()).equals(formatedIsbn.getText())) {
+            mensagemDeErro = "Esse ISBN já está cadastrado.";
+        }
+
+        // ISBN inválido.
+        if (validadorIsbn.valida(formatedIsbn.getText()) == false) {
+            mensagemDeErro = "ISBN inválido.";
+        }
+
+        String isbnSelecionado = cboxIsbnSelect.getSelectedItem().toString();
+        String isbnParaTexto = formatedIsbn.getText().replaceAll("[\\s-]", ""); // Remove espaços e hífens
+
+        // Tipo do ISBN foi selecionado mas nada foi digitado.
+        if (!isbnSelecionado.equals("Selecione") && (isbnParaTexto.isBlank() || isbnParaTexto.equals(""))) {
+            mensagemDeErro = "Você precisa digitar o ISBN";
+        }
+
+        // Tipo do ISBN não selecionado.
+        if (cboxIsbnSelect.getSelectedItem().toString().equals("Selecione")) {
+            mensagemDeErro = "Selecione o tipo do ISBN.";
+        }
+
+        // Livro sem título.
+        if (txtTitulo.getText().isBlank()) {
+            mensagemDeErro = "Digite um título válido para o livro.";
+        }
+
+        return mensagemDeErro;
+    }
 
     public void listarIdiomasDoLivro() {
         LivroDAO.listaDeIdiomas(cboxLivroIdioma);
@@ -938,18 +928,15 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         // Limpar os campos já preenchidos e define valor "Não Informado" para todas as JComboBox
         txtTitulo.setText("");
+        cboxIsbnSelect.setSelectedItem("Selecione");
         formatedIsbn.setText(null);
         txtAnoDePublicacao.setText("");
         txtNumeroDePaginas.setText("");
         cboxCategoria.setSelectedItem("Não Informada");
         cboxSubCategoria.setSelectedItem("Não Informada");
-        cboxLivroIdioma.setSelectedItem("Não Informado");
         txtNomeDaEditora.setText("");
-        cboxAvaliacaoDoLivro.setSelectedItem("Não Informada");
-        txtComentarioAvaliacao.setText("");
+        cboxLivroIdioma.setSelectedItem("Não Informado");
         txtSinopseDoLivro.setText("");
-        cboxIsbnSelect.setSelectedItem("Selecione");
-
     }//GEN-LAST:event_btnLimparLivroActionPerformed
 
     private void cboxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxCategoriaActionPerformed
@@ -992,6 +979,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         txtNomeDoAutor.setText("");
         cboxSexoDoAutor.setSelectedItem("Não Informado");
         cboxNacionalidadeDoAutor.setSelectedItem("Não Informada");
+        txtCampoDeAutoresSelecionados.setText("");
 
     }//GEN-LAST:event_btnLimparAutorActionPerformed
 
@@ -1010,7 +998,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTelaPrinCadAvaliacaoActionPerformed
 
     private void btnLimparAvaliacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparAvaliacaoActionPerformed
-
         // Limpar os campos já preenchidos e define valor "Não Informado" para todas as JComboBox
         cboxAvaliacaoDoLivro.setSelectedItem("Não Informada");
         txtComentarioAvaliacao.setText("");
@@ -1087,7 +1074,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         if (selecionado.equals("ISBN-13")) {
             formatedIsbn.setEditable(true);
-            formatedIsbn.setBorder(javax.swing.BorderFactory.createTitledBorder("ISBN-13"));
+            formatedIsbn.setBorder(javax.swing.BorderFactory.createTitledBorder("ISBN-13 *"));
             try {
                 formatedIsbn.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-##-###-####-#")));
             } catch (ParseException ex) {
@@ -1095,7 +1082,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             }
         } else if (selecionado.equals("ISBN-10")) {
             formatedIsbn.setEditable(true);
-            formatedIsbn.setBorder(javax.swing.BorderFactory.createTitledBorder("ISBN-10"));
+            formatedIsbn.setBorder(javax.swing.BorderFactory.createTitledBorder("ISBN-10 *"));
             try {
                 formatedIsbn.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#-###-#####-#")));
             } catch (ParseException ex) {
@@ -1103,7 +1090,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             }
         } else {
             formatedIsbn.setEditable(false);
-            formatedIsbn.setBorder(javax.swing.BorderFactory.createTitledBorder("ISBN"));
+            formatedIsbn.setBorder(javax.swing.BorderFactory.createTitledBorder("ISBN *"));
             try {
                 formatedIsbn.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#############")));
             } catch (ParseException ex) {
