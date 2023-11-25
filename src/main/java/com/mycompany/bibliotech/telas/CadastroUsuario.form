@@ -142,18 +142,6 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="emailTxt" min="-2" pref="300" max="-2" attributes="0"/>
-                                      <Component id="senhaTxt" min="-2" pref="300" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cargoBox" min="-2" pref="300" max="-2" attributes="0"/>
-                                      <Component id="resenhaTxt" min="-2" pref="300" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="nomeTxt" min="-2" pref="300" max="-2" attributes="0"/>
@@ -181,6 +169,23 @@
                                       </Group>
                                   </Group>
                                   <EmptySpace pref="32" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="emailTxt" min="-2" pref="300" max="-2" attributes="0"/>
+                                              <Component id="senhaTxt" min="-2" pref="300" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="cargoBox" min="-2" pref="300" max="-2" attributes="0"/>
+                                              <Component id="resenhaTxt" min="-2" pref="300" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="avisoLabel" alignment="0" min="-2" pref="232" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -221,7 +226,9 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="ProxCadEndButton" min="-2" pref="50" max="-2" attributes="0"/>
-                          <EmptySpace pref="210" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="avisoLabel" pref="34" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -234,7 +241,7 @@
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Senha">
+                        <TitledBorder title="Senha *">
                           <Font PropertyName="font" name="Segoe UI" size="14" style="0"/>
                         </TitledBorder>
                       </Border>
@@ -290,7 +297,7 @@
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Nickname">
+                        <TitledBorder title="Nickname *">
                           <Font PropertyName="font" name="Segoe UI" size="14" style="0"/>
                         </TitledBorder>
                       </Border>
@@ -307,7 +314,7 @@
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Email">
+                        <TitledBorder title="Email *">
                           <Font PropertyName="font" name="Segoe UI" size="14" style="0"/>
                         </TitledBorder>
                       </Border>
@@ -324,7 +331,7 @@
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Nome">
+                        <TitledBorder title="Nome *">
                           <Font PropertyName="font" name="Segoe UI" size="14" style="0"/>
                         </TitledBorder>
                       </Border>
@@ -344,7 +351,7 @@
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Tipo"/>
+                        <TitledBorder title="Tipo *"/>
                       </Border>
                     </Property>
                   </Properties>
@@ -359,7 +366,7 @@
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Data de Nascimento"/>
+                        <TitledBorder title="Data de Nascimento *"/>
                       </Border>
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value="2004-08-07"/>
@@ -373,7 +380,7 @@
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Re-Senha">
+                        <TitledBorder title="Re-Senha *">
                           <Font PropertyName="font" name="Segoe UI" size="14" style="0"/>
                         </TitledBorder>
                       </Border>
@@ -394,7 +401,7 @@
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Tipo de n&#xfa;mero"/>
+                        <TitledBorder title="Tipo de n&#xfa;mero *"/>
                       </Border>
                     </Property>
                   </Properties>
@@ -409,7 +416,7 @@
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Telefone"/>
+                        <TitledBorder title="Telefone *"/>
                       </Border>
                     </Property>
                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
@@ -432,7 +439,7 @@
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="CPF"/>
+                        <TitledBorder title="CPF *"/>
                       </Border>
                     </Property>
                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
@@ -442,6 +449,11 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cpfTxtActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="avisoLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Itens preenchidos com * s&#xe3;o obrigat&#xf3;rios!!"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -737,7 +749,7 @@
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Categoria 2 *">
+                        <TitledBorder title="Categoria 2 ">
                           <Font PropertyName="font" name="Segoe UI" size="13" style="0"/>
                         </TitledBorder>
                       </Border>
@@ -762,7 +774,7 @@
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Sub-categoria 2 *">
+                        <TitledBorder title="Sub-categoria 2 ">
                           <Font PropertyName="font" name="Segoe UI" size="13" style="0"/>
                         </TitledBorder>
                       </Border>
@@ -787,7 +799,7 @@
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Categoria 1 *">
+                        <TitledBorder title="Categoria 1 ">
                           <Font PropertyName="font" name="Segoe UI" size="13" style="0"/>
                         </TitledBorder>
                       </Border>
@@ -812,7 +824,7 @@
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Sub-categoria 1 *">
+                        <TitledBorder title="Sub-categoria 1 ">
                           <Font PropertyName="font" name="Segoe UI" size="13" style="0"/>
                         </TitledBorder>
                       </Border>
