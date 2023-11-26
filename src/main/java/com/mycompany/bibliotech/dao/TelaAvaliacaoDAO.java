@@ -155,9 +155,10 @@ public class TelaAvaliacaoDAO {
                 JOptionPane.showMessageDialog(null, "Erro ao consultar ID_LIVRO para tabela de livro");
 
             }
-            String sql = "SELECT L.LIV_PAGINA, L.LIV_EDITORA, L.LIV_ISBN, L.LIV_ANO, L.LIV_IDIOMA, A.AUT_NOME_AUTOR \n"
-                    + "FROM LIVRO L JOIN LIVRO_AUTOR LA ON L.ID_LIVRO = LA.LIVRO_CHAVE JOIN AUTOR A ON LA.LIVRO_AUTOR = A.ID_AUTOR\n"
-                    + "WHERE L.ID_LIVRO = ?";
+            String sql = "SELECT L.LIV_PAGINA, L.LIV_EDITORA, L.LIV_ISBN, L.LIV_ANO, L.LIV_IDIOMA, A.AUT_NOME_AUTOR,\n"
+                    + "ROUND(AVG(AV.AVA_USUARIO), 1) AS MEDIA_NOTA FROM LIVRO L JOIN LIVRO_AUTOR LA ON L.ID_LIVRO = LA.LIVRO_CHAVE\n"
+                    + "JOIN AUTOR A ON LA.LIVRO_AUTOR = A.ID_AUTOR LEFT JOIN AVALIACAO AV ON L.ID_LIVRO = AV.AVA_FK_LIVRO\n"
+                    + "WHERE L.ID_LIVRO = ? GROUP BY L.ID_LIVRO, A.AUT_NOME_AUTOR";
             stmt = con.prepareStatement(sql);
             stmt.setInt(1, livroId);
             rs = stmt.executeQuery();
@@ -169,6 +170,7 @@ public class TelaAvaliacaoDAO {
                 pes.setTxtAno(rs.getInt("LIV_ANO"));
                 pes.setTxtIdioma(rs.getString("LIV_IDIOMA"));
                 pes.setTxtNomeAutor(rs.getString("AUT_NOME_AUTOR"));
+                pes.setTxtNotaMax("Nota: " + rs.getString("MEDIA_NOTA"));
 
                 return pes;
 

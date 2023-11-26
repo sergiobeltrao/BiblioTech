@@ -57,6 +57,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             txtIsbn.setText(avaliacao.getTxtIsbn());
             txtNomeAutor.setText(avaliacao.getTxtNomeAutor());
             txtPaginas.setText(String.valueOf(avaliacao.getTxtPaginas()));
+            txtNotaMax.setText(avaliacao.getTxtNotaMax());
         }
 
     }
@@ -466,7 +467,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
 
         kGradientPanel2.setkEndColor(new java.awt.Color(255, 255, 255));
         kGradientPanel2.setkGradientFocus(350);
-        kGradientPanel2.setkStartColor(new java.awt.Color(51, 51, 255));
+        kGradientPanel2.setkStartColor(new java.awt.Color(114, 114, 133));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));

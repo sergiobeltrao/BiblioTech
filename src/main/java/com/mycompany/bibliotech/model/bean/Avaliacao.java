@@ -20,6 +20,7 @@ public class Avaliacao {
     private String txtIdioma;
     private String txtIsbn;
     private String txtNomeLivro;
+    private String  txtNotaMax;
 
     public String getTxtNomeLivro() {
         return txtNomeLivro;
@@ -27,6 +28,14 @@ public class Avaliacao {
 
     public void setTxtNomeLivro(String txtNomeLivro) {
         this.txtNomeLivro = txtNomeLivro;
+    }
+
+    public String getTxtNotaMax() {
+        return txtNotaMax;
+    }
+
+    public void setTxtNotaMax(String txtNotaMax) {
+        this.txtNotaMax = txtNotaMax;
     }
 
     public Avaliacao(String txtNomeLivro) {

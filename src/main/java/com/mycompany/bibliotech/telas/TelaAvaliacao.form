@@ -777,7 +777,7 @@
             </Property>
             <Property name="kGradientFocus" type="int" value="350"/>
             <Property name="kStartColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="33" red="33" type="rgb"/>
+              <Color blue="85" green="72" red="72" type="rgb"/>
             </Property>
           </Properties>
 
