@@ -17,10 +17,8 @@ INSERT INTO LIVRO VALUES
 (NULL, 'O Alquimista', '978-85-843-9067-0', 1988, 208, '1 - Ficção', '4 - Fantasia', 'Português - Brasil', 'Osires', NULL);
 
 INSERT INTO AUTOR ( AUT_NOME_AUTOR, AUT_NACIONALIDADE, AUT_SEXO) VALUES
-('Laura Bens', 'Brasil - Brasileira', 'FEM' ),
-('Gabriel Torres', 'Brasil - Brasileira', 'MASC' ),
-('Paulo Coelho', 'Brasil - Brasileira', 'MASC' ),
-('George R. R. Martin', 'Estados Unidos - Americana', 'MASC' ),
+('Laura Bens', 'Brasil - Brasileira', 'FEM' ), ('Gabriel Torres', 'Brasil - Brasileira', 'MASC' ),
+('Paulo Coelho', 'Brasil - Brasileira', 'MASC' ), ('George R. R. Martin', 'Estados Unidos - Americana', 'MASC' ),
 ('Agatha Christie', 'Reino Unido - Britânica', 'FEM');
 
 -- livros
@@ -50,20 +48,24 @@ VALUES (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9), (
 
 -- Avaliações dos Livros
 -- O INT usado no AVA_ID_USUARIO é i ID do usuario da tabela usuario, o mesmo se aplica ao AVA_FK_LIVRO
-INSERT INTO AVALIACAO (AVA_ID_USUARIO, AVA_FK_LIVRO, AVA_USUARIO, AVA_TOTAL, AVA_COMENTARIO)
-VALUES (1, 1, 9.0, 8.5, 'Um clássico da literatura brasileira.'), 
-(2, 2, 7.8, 7.5, 'Fascinante jornada pelo cosmos.'),
-(3, 3, 8, 8.0, 'Uma história encantadora para todas as idades.');
+INSERT INTO AVALIACAO (AVA_ID_USUARIO, AVA_FK_LIVRO, AVA_USUARIO, AVA_COMENTARIO)
+VALUES (1, 1, 9.0,  'Um clássico da literatura brasileira.'), (2, 2, 7.8, 'Fascinante jornada pelo cosmos.'), (3, 3, 8, 'Uma história encantadora para todas as idades.'),
+(2, 1, 7.0, 'Um clássico da literatura brasileira.'), (2, 2, 2.8, 'Fascinante jornada pelo cosmos.'), (2, 3, 6.3, 'Uma história encantadora para todas as idades.'),
+(3, 1, 8.0, 'Um clássico da literatura brasileira.'), (3, 2, 1.8, 'Fascinante jornada pelo cosmos.'),(3, 3, 7.7, 'Uma história encantadora para todas as idades.');
 
 
 
 /* 
 estes so vão funcionar quando tiverem no miniumo 10 usuarios inseridos no banco
-(4, 4, 9, 9.0, 'Obra fundamental para entender a evolução.'),
-(5, 5, 7, 7.0, 'Interessante abordagem sobre o poder dos hábitos.'), (6, 6, 9, 9.5, 'Uma obra-prima da literatura latino-americana.'),
-(7, 7, 8, 8.0, 'Uma distopia que permanece relevante.'), (8, 8, 7, 7.5, 'Thriller intrigante com códigos e simbologias.'),
-(9, 9, 8, 8.5, 'Ensinamentos atemporais sobre estratégia.'), (10, 10, 9, 9.7, 'Um épico de fantasia que marcou gerações.'); 
-*/
+INSERT INTO AVALIACAO (AVA_ID_USUARIO, AVA_FK_LIVRO, AVA_USUARIO, AVA_COMENTARIO) VALUES 
+(4, 4, 9.5, 'Exploração profunda da teoria da evolução.'), (4, 5, 7.2, 'Investigação fascinante sobre hábitos.'), (4, 6, 8.5, 'Realismo mágico em uma narrativa única.'),
+(5, 1, 6.0, 'Alegoria política envolvente.'), (5, 2, 8.8, 'Mistérios e conspirações intrigantes.'), (5, 3, 9.2, 'Aventuras na Terra-média.'),
+(6, 4, 9.0, 'Exploração profunda da teoria da evolução.'), (6, 5, 7.5, 'Investigação fascinante sobre hábitos.'), (6, 6, 8.0, 'Realismo mágico em uma narrativa única.'),
+(7, 1, 7.5, 'Alegoria política envolvente.'), (7, 2, 6.8, 'Mistérios e conspirações intrigantes.'), (7, 3, 7.0, 'Aventuras na Terra-média.'),
+(8, 4, 8.2, 'Exploração profunda da teoria da evolução.'), (8, 5, 6.5, 'Investigação fascinante sobre hábitos.'), (8, 6, 7.8, 'Realismo mágico em uma narrativa única.'),
+(9, 7, 8.7, 'Alegoria política envolvente.'), (9, 8, 6.3, 'Mistérios e conspirações intrigantes.'), (9, 9, 7.5, 'Aventuras na Terra-média.'),
+(10, 10, 9.0, 'História intrigante e cheia de reviravoltas.'), (10, 1, 7.8, 'Um clássico da literatura brasileira.'), (10, 2, 8.5, 'Fascinante jornada pelo cosmos.');
+ */
 
 -- Comando para listar o rank de livros
 SELECT LIVRO.ID_LIVRO, LIVRO.LIV_NOME_LIVRO, ROUND(AVG(AVALIACAO.AVA_TOTAL), 1)AS MEDIA_NOTA
@@ -72,6 +74,10 @@ JOIN AVALIACAO ON LIVRO.ID_LIVRO = AVALIACAO.AVA_FK_LIVRO
 GROUP BY LIVRO.ID_LIVRO, LIVRO.LIV_NOME_LIVRO
 ORDER BY MEDIA_NOTA DESC
 LIMIT 5; 
+-- comando pra imprimir os ultimos livros cadastrado
+SELECT ID_LIVRO, LIV_NOME_LIVRO FROM LIVRO
+ORDER BY ID_LIVRO DESC LIMIT 10;
+
 /*INSERT DOS VINCULOS DE ENDEREÇO E TELEFONE */
 INSERT INTO TELEFONE_USUARIO VALUES (3, 2), (1, 1), (2, 3);
 
