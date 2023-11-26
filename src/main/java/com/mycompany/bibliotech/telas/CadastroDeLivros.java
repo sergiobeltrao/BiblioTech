@@ -27,12 +27,14 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
     public CadastroDeLivros() {
         initComponents();
-        DefaultTableModel modelo = (DefaultTableModel) tbSelect.getModel();
-        tbSelect.setRowSorter(new TableRowSorter(modelo));
+        DefaultTableModel modelo = (DefaultTableModel) tbLivro.getModel();
+        tbLivro.setRowSorter(new TableRowSorter(modelo));
         listarCategorias();
         listarNacionalidades();
         listarIdiomasDoLivro();
-        readJTable();
+        selectTabelaLivro();
+        selectTabelaAutor();
+        selectTabelaAvaliacao();
         // Impede que o ISBN seja setado sem selecionar o tipo quando abre a tela.
         formatedIsbn.setEditable(false);
     }
@@ -51,10 +53,10 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         }
     }
 
-    public void readJTable() {
-        DefaultTableModel modelo = (DefaultTableModel) tbSelect.getModel();
-        tbSelect.setDefaultRenderer(Object.class, new CenterRenderer());
-        JTableHeader header = tbSelect.getTableHeader();
+    public void selectTabelaLivro() {
+        DefaultTableModel modelo = (DefaultTableModel) tbLivro.getModel();
+        tbLivro.setDefaultRenderer(Object.class, new CenterRenderer());
+        JTableHeader header = tbLivro.getTableHeader();
         header.setDefaultRenderer(new CenterRenderer());
 
         // Para evitar que todos os dados sejam duplicados após um insert
@@ -65,7 +67,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         for (Livro l : ldao.read()) {
 
             modelo.addRow(new Object[]{
-                l.getId(),
                 l.getTitulo(),
                 l.getIsbn(),
                 l.getAnoDePublicacao(),
@@ -74,6 +75,45 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                 l.getSubCategoria(),
                 l.getIdioma(),
                 l.getEditora()});
+        }
+    }
+
+    public void selectTabelaAutor() {
+        DefaultTableModel modelo = (DefaultTableModel) tbAutor.getModel();
+        tbAutor.setDefaultRenderer(Object.class, new CenterRenderer());
+        JTableHeader header = tbAutor.getTableHeader();
+        header.setDefaultRenderer(new CenterRenderer());
+
+        // Para evitar que todos os dados sejam duplicados após um insert
+        modelo.setNumRows(0);
+
+        AutorDAO autorDao = new AutorDAO();
+
+        for (Autor a : autorDao.read()) {
+            modelo.addRow(new Object[]{
+                a.getNome(),
+                a.getNacionalidade(),
+                a.getSexo()
+            });
+        }
+    }
+
+    public void selectTabelaAvaliacao() {
+        DefaultTableModel modelo = (DefaultTableModel) tbAvaliacao.getModel();
+        tbAvaliacao.setDefaultRenderer(Object.class, new CenterRenderer());
+        JTableHeader header = tbAvaliacao.getTableHeader();
+        header.setDefaultRenderer(new CenterRenderer());
+
+        // Para evitar que todos os dados sejam duplicados após um insert
+        modelo.setNumRows(0);
+
+        AvaliacaoDAO avaliacaoDao = new AvaliacaoDAO();
+
+        for (Avaliacao av : avaliacaoDao.read()) {
+            modelo.addRow(new Object[]{
+                av.getAvaliacaoDoUsuario(),
+                av.getComentarioAvaliacao()
+            });
         }
     }
 
@@ -100,6 +140,8 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         btnDeletarLivro = new javax.swing.JButton();
         formatedIsbn = new javax.swing.JFormattedTextField();
         cboxIsbnSelect = new javax.swing.JComboBox<>();
+        boxTabelaLivro = new javax.swing.JScrollPane();
+        tbLivro = new javax.swing.JTable();
         jpnAutor = new javax.swing.JPanel();
         txtDeBoasVindasAutor = new javax.swing.JTextField();
         btnTelaPrinCadAutor = new javax.swing.JButton();
@@ -119,6 +161,8 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         boxAutoresSelecionados = new javax.swing.JScrollPane();
         txtCampoDeAutoresSelecionados = new javax.swing.JTextArea();
         btnAutorNaoCadastrado = new javax.swing.JButton();
+        boxTabelaAutor = new javax.swing.JScrollPane();
+        tbAutor = new javax.swing.JTable();
         jpnAvaliacao = new javax.swing.JPanel();
         txtDeBoasVindasAvaliacao = new javax.swing.JTextField();
         cboxAvaliacaoDoLivro = new javax.swing.JComboBox<>();
@@ -127,20 +171,20 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         btnTelaPrinCadAvaliacao = new javax.swing.JButton();
         btnLimparAvaliacao = new javax.swing.JButton();
         btnFinalizarCadastro = new javax.swing.JButton();
-        jpnSelect = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbSelect = new javax.swing.JTable();
+        boxTabelaAvaliacao = new javax.swing.JScrollPane();
+        tbAvaliacao = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         janelaDeAbas.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
 
         jpnLivro.setBackground(new java.awt.Color(255, 255, 255));
+        jpnLivro.setPreferredSize(new java.awt.Dimension(1280, 720));
 
         txtDeBoasVindasLivro.setEditable(false);
         txtDeBoasVindasLivro.setBackground(new java.awt.Color(255, 255, 255));
         txtDeBoasVindasLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtDeBoasVindasLivro.setText("Bem-vindo ao formulário de cadastro de livro. Os campo com asterisco são de preenchimento obrigatório.");
+        txtDeBoasVindasLivro.setText("Os campo com asterisco são de preenchimento obrigatório.");
         txtDeBoasVindasLivro.setBorder(null);
         txtDeBoasVindasLivro.setFocusable(false);
         txtDeBoasVindasLivro.addActionListener(new java.awt.event.ActionListener() {
@@ -270,88 +314,109 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             }
         });
 
+        tbLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        tbLivro.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Título", "ISBN", "Ano", "Nº de Páginas", "Categoria", "Sub-categoria", "Idioma", "Editora"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        boxTabelaLivro.setViewportView(tbLivro);
+        if (tbLivro.getColumnModel().getColumnCount() > 0) {
+            tbLivro.getColumnModel().getColumn(3).setHeaderValue("Nº de Páginas");
+            tbLivro.getColumnModel().getColumn(4).setHeaderValue("Categoria");
+            tbLivro.getColumnModel().getColumn(5).setHeaderValue("Sub-categoria");
+            tbLivro.getColumnModel().getColumn(6).setHeaderValue("Idioma");
+            tbLivro.getColumnModel().getColumn(7).setHeaderValue("Editora");
+        }
+
         javax.swing.GroupLayout jpnLivroLayout = new javax.swing.GroupLayout(jpnLivro);
         jpnLivro.setLayout(jpnLivroLayout);
         jpnLivroLayout.setHorizontalGroup(
             jpnLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(boxTabelaLivro)
             .addGroup(jpnLivroLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(36, 36, 36)
                 .addGroup(jpnLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtDeBoasVindasLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jpnLivroLayout.createSequentialGroup()
-                        .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtNomeDaEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jpnLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jpnLivroLayout.createSequentialGroup()
-                                .addComponent(btnProximaAbaLivro)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnEditarLivro)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnDeletarLivro))
-                            .addComponent(cboxLivroIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jpnLivroLayout.createSequentialGroup()
                         .addGroup(jpnLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jpnLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jpnLivroLayout.createSequentialGroup()
-                                    .addComponent(txtAnoDePublicacao, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtNumeroDePaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnLivroLayout.createSequentialGroup()
-                                    .addComponent(cboxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(cboxSubCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jpnLivroLayout.createSequentialGroup()
-                                    .addComponent(btnTelaPrinCadLivro)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnLimparLivro)))
-                            .addGroup(jpnLivroLayout.createSequentialGroup()
-                                .addComponent(cboxIsbnSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnLivroLayout.createSequentialGroup()
+                                .addComponent(cboxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(formatedIsbn)))
+                                .addComponent(cboxSubCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpnLivroLayout.createSequentialGroup()
+                                .addComponent(cboxIsbnSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(formatedIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpnLivroLayout.createSequentialGroup()
+                                .addComponent(txtAnoDePublicacao, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtNumeroDePaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpnLivroLayout.createSequentialGroup()
+                                .addComponent(btnTelaPrinCadLivro)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnLimparLivro)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnProximaAbaLivro)
                         .addGap(18, 18, 18)
-                        .addComponent(boxSinopse)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                        .addComponent(btnEditarLivro)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDeletarLivro))
+                    .addGroup(jpnLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(boxSinopse, javax.swing.GroupLayout.PREFERRED_SIZE, 798, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jpnLivroLayout.createSequentialGroup()
+                            .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtNomeDaEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(cboxLivroIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtDeBoasVindasLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jpnLivroLayout.setVerticalGroup(
             jpnLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnLivroLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(txtDeBoasVindasLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpnLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboxLivroIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNomeDaEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(txtNomeDaEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboxLivroIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jpnLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpnLivroLayout.createSequentialGroup()
-                        .addGroup(jpnLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(formatedIsbn, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                            .addComponent(cboxIsbnSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 45, Short.MAX_VALUE))
-                        .addGap(20, 20, 20)
                         .addGroup(jpnLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNumeroDePaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAnoDePublicacao, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(cboxIsbnSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(formatedIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jpnLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtAnoDePublicacao, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNumeroDePaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(jpnLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cboxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cboxSubCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(boxSinopse, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
-                .addGroup(jpnLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnLivroLayout.createSequentialGroup()
-                        .addGroup(jpnLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnLimparLivro)
-                            .addComponent(btnTelaPrinCadLivro))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnLivroLayout.createSequentialGroup()
-                        .addGroup(jpnLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnDeletarLivro)
-                            .addComponent(btnEditarLivro)
-                            .addComponent(btnProximaAbaLivro))
-                        .addGap(16, 16, 16))))
+                    .addComponent(boxSinopse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jpnLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTelaPrinCadLivro)
+                    .addComponent(btnLimparLivro)
+                    .addComponent(btnDeletarLivro)
+                    .addComponent(btnEditarLivro)
+                    .addComponent(btnProximaAbaLivro))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(boxTabelaLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         janelaDeAbas.addTab("Livro", jpnLivro);
@@ -362,7 +427,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         txtDeBoasVindasAutor.setEditable(false);
         txtDeBoasVindasAutor.setBackground(new java.awt.Color(255, 255, 255));
         txtDeBoasVindasAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtDeBoasVindasAutor.setText("Bem-vindo ao formulário de cadastro do autor. Os campo com asterisco são de preenchimento obrigatório.");
+        txtDeBoasVindasAutor.setText("Os campo com asterisco são de preenchimento obrigatório.");
         txtDeBoasVindasAutor.setBorder(null);
         txtDeBoasVindasAutor.setFocusable(false);
 
@@ -393,6 +458,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         jpnCadastroAutor.setBackground(new java.awt.Color(255, 255, 255));
         jpnCadastroAutor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de Autor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
         jpnCadastroAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jpnCadastroAutor.setPreferredSize(new java.awt.Dimension(520, 212));
 
         txtNomeDoAutor.setEditable(false);
         txtNomeDoAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -440,24 +506,24 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         jpnCadastroAutorLayout.setHorizontalGroup(
             jpnCadastroAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnCadastroAutorLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(41, 41, 41)
                 .addGroup(jpnCadastroAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtNomeDoAutor)
-                    .addComponent(cboxSexoDoAutor, 0, 390, Short.MAX_VALUE)
-                    .addComponent(cboxNacionalidadeDoAutor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cboxSexoDoAutor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cboxNacionalidadeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCadastraAutor)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jpnCadastroAutorLayout.setVerticalGroup(
             jpnCadastroAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnCadastroAutorLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(txtNomeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jpnCadastroAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnCadastraAutor)
                     .addGroup(jpnCadastroAutorLayout.createSequentialGroup()
-                        .addComponent(txtNomeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(cboxSexoDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(cboxNacionalidadeDoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -467,6 +533,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         jpnSelecaoAutorCadastrado.setBackground(new java.awt.Color(255, 255, 255));
         jpnSelecaoAutorCadastrado.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Seleção de Autor Cadastrado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
         jpnSelecaoAutorCadastrado.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jpnSelecaoAutorCadastrado.setPreferredSize(new java.awt.Dimension(520, 212));
 
         btnBuscarAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         btnBuscarAutor.setText("Buscar");
@@ -515,22 +582,21 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         jpnSelecaoAutorCadastradoLayout.setHorizontalGroup(
             jpnSelecaoAutorCadastradoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnSelecaoAutorCadastradoLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(41, 41, 41)
                 .addGroup(jpnSelecaoAutorCadastradoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(boxAutoresSelecionados)
-                    .addComponent(txtAutorPesquisado, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
-                    .addComponent(cboxResultadoBuscaAutor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtAutorPesquisado)
+                    .addComponent(cboxResultadoBuscaAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpnSelecaoAutorCadastradoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnBuscarAutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSelecionarResultadoAutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLimparAutoresSelecionados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                    .addComponent(btnLimparAutoresSelecionados, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jpnSelecaoAutorCadastradoLayout.setVerticalGroup(
             jpnSelecaoAutorCadastradoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnSelecaoAutorCadastradoLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jpnSelecaoAutorCadastradoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAutorPesquisado, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarAutor))
@@ -540,9 +606,9 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                     .addComponent(btnSelecionarResultadoAutor))
                 .addGap(18, 18, 18)
                 .addGroup(jpnSelecaoAutorCadastradoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnLimparAutoresSelecionados)
-                    .addComponent(boxAutoresSelecionados, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addComponent(boxAutoresSelecionados, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimparAutoresSelecionados))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         btnAutorNaoCadastrado.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -553,48 +619,68 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             }
         });
 
+        tbAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        tbAutor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "Nacionalidade", "Sexo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        boxTabelaAutor.setViewportView(tbAutor);
+
         javax.swing.GroupLayout jpnAutorLayout = new javax.swing.GroupLayout(jpnAutor);
         jpnAutor.setLayout(jpnAutorLayout);
         jpnAutorLayout.setHorizontalGroup(
             jpnAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnAutorLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(36, 36, 36)
                 .addGroup(jpnAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDeBoasVindasAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jpnAutorLayout.createSequentialGroup()
-                        .addGroup(jpnAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtDeBoasVindasAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jpnAutorLayout.createSequentialGroup()
+                        .addGroup(jpnAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jpnAutorLayout.createSequentialGroup()
                                 .addComponent(btnTelaPrinCadAutor)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnLimparAutor)
-                                .addGap(203, 203, 203)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnAutorNaoCadastrado))
-                            .addComponent(jpnSelecaoAutorCadastrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jpnAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpnAutorLayout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(jpnCadastroAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jpnAutorLayout.createSequentialGroup()
-                                .addGap(73, 73, 73)
-                                .addComponent(btnProximaAbaAutor)))))
-                .addContainerGap(74, Short.MAX_VALUE))
+                            .addComponent(jpnSelecaoAutorCadastrado, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addGroup(jpnAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jpnCadastroAutor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnProximaAbaAutor, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(43, 43, 43))))
+            .addComponent(boxTabelaAutor)
         );
         jpnAutorLayout.setVerticalGroup(
             jpnAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnAutorLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(10, 10, 10)
                 .addComponent(txtDeBoasVindasAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpnAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpnSelecaoAutorCadastrado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpnCadastroAutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jpnCadastroAutor, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                    .addComponent(jpnSelecaoAutorCadastrado, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jpnAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTelaPrinCadAutor)
                     .addComponent(btnLimparAutor)
-                    .addComponent(btnProximaAbaAutor)
-                    .addComponent(btnAutorNaoCadastrado))
-                .addGap(20, 20, 20))
+                    .addComponent(btnAutorNaoCadastrado)
+                    .addComponent(btnProximaAbaAutor))
+                .addGap(18, 18, 18)
+                .addComponent(boxTabelaAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jpnCadastroAutor.getAccessibleContext().setAccessibleName("Cadastrar Autor");
@@ -606,7 +692,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         txtDeBoasVindasAvaliacao.setEditable(false);
         txtDeBoasVindasAvaliacao.setBackground(new java.awt.Color(255, 255, 255));
         txtDeBoasVindasAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtDeBoasVindasAvaliacao.setText("Bem-vindo ao formulário de avaliação. Os campo com asterisco são de preenchimento obrigatório.");
+        txtDeBoasVindasAvaliacao.setText("Os campo com asterisco são de preenchimento obrigatório.");
         txtDeBoasVindasAvaliacao.setBorder(null);
         txtDeBoasVindasAvaliacao.setFocusable(false);
         txtDeBoasVindasAvaliacao.addActionListener(new java.awt.event.ActionListener() {
@@ -657,96 +743,79 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jpnAvaliacaoLayout = new javax.swing.GroupLayout(jpnAvaliacao);
-        jpnAvaliacao.setLayout(jpnAvaliacaoLayout);
-        jpnAvaliacaoLayout.setHorizontalGroup(
-            jpnAvaliacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnAvaliacaoLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(jpnAvaliacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jpnAvaliacaoLayout.createSequentialGroup()
-                        .addComponent(btnTelaPrinCadAvaliacao)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLimparAvaliacao)
-                        .addGap(875, 875, 875)
-                        .addComponent(btnFinalizarCadastro))
-                    .addGroup(jpnAvaliacaoLayout.createSequentialGroup()
-                        .addComponent(txtDeBoasVindasAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(621, 621, 621))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpnAvaliacaoLayout.createSequentialGroup()
-                        .addComponent(cboxAvaliacaoDoLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(boxComentarioAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 798, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
-        jpnAvaliacaoLayout.setVerticalGroup(
-            jpnAvaliacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnAvaliacaoLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(txtDeBoasVindasAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jpnAvaliacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cboxAvaliacaoDoLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boxComentarioAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
-                .addGroup(jpnAvaliacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTelaPrinCadAvaliacao)
-                    .addComponent(btnLimparAvaliacao)
-                    .addComponent(btnFinalizarCadastro))
-                .addGap(16, 16, 16))
-        );
-
-        janelaDeAbas.addTab("Avaliação", jpnAvaliacao);
-
-        jpnSelect.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        tbSelect.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        tbSelect.setModel(new javax.swing.table.DefaultTableModel(
+        tbAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        tbAvaliacao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Título", "ISBN", "Ano", "Nº de Páginas", "Categoria", "Sub-categoria", "Idioma", "Editora"
+                "Nota", "Comentário"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tbSelect);
+        boxTabelaAvaliacao.setViewportView(tbAvaliacao);
 
-        javax.swing.GroupLayout jpnSelectLayout = new javax.swing.GroupLayout(jpnSelect);
-        jpnSelect.setLayout(jpnSelectLayout);
-        jpnSelectLayout.setHorizontalGroup(
-            jpnSelectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+        javax.swing.GroupLayout jpnAvaliacaoLayout = new javax.swing.GroupLayout(jpnAvaliacao);
+        jpnAvaliacao.setLayout(jpnAvaliacaoLayout);
+        jpnAvaliacaoLayout.setHorizontalGroup(
+            jpnAvaliacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnAvaliacaoLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(jpnAvaliacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDeBoasVindasAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpnAvaliacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnFinalizarCadastro)
+                        .addGroup(jpnAvaliacaoLayout.createSequentialGroup()
+                            .addComponent(cboxAvaliacaoDoLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(boxComentarioAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 798, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnAvaliacaoLayout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(btnTelaPrinCadAvaliacao)
+                .addGap(18, 18, 18)
+                .addComponent(btnLimparAvaliacao)
+                .addGap(1052, 1052, 1052))
+            .addComponent(boxTabelaAvaliacao)
         );
-        jpnSelectLayout.setVerticalGroup(
-            jpnSelectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+        jpnAvaliacaoLayout.setVerticalGroup(
+            jpnAvaliacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnAvaliacaoLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(txtDeBoasVindasAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jpnAvaliacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cboxAvaliacaoDoLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boxComentarioAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(jpnAvaliacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTelaPrinCadAvaliacao)
+                    .addComponent(btnLimparAvaliacao)
+                    .addComponent(btnFinalizarCadastro))
+                .addGap(18, 18, 18)
+                .addComponent(boxTabelaAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        janelaDeAbas.addTab("Avaliação", jpnAvaliacao);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jpnSelect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .addComponent(janelaDeAbas)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(janelaDeAbas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpnSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(janelaDeAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -817,7 +886,9 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             }
 
             // Para que a leitura da tabela seja feita novamente após salvar novas informações.
-            readJTable();
+            selectTabelaLivro();
+            selectTabelaAutor();
+            selectTabelaAvaliacao();
         }
 
     }//GEN-LAST:event_btnFinalizarCadastroActionPerformed
@@ -1254,6 +1325,9 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     private javax.swing.JScrollPane boxAutoresSelecionados;
     private javax.swing.JScrollPane boxComentarioAvaliacao;
     private javax.swing.JScrollPane boxSinopse;
+    private javax.swing.JScrollPane boxTabelaAutor;
+    private javax.swing.JScrollPane boxTabelaAvaliacao;
+    private javax.swing.JScrollPane boxTabelaLivro;
     private javax.swing.JButton btnAutorNaoCadastrado;
     private javax.swing.JButton btnBuscarAutor;
     private javax.swing.JButton btnCadastraAutor;
@@ -1279,15 +1353,15 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboxSexoDoAutor;
     private javax.swing.JComboBox<String> cboxSubCategoria;
     private javax.swing.JFormattedTextField formatedIsbn;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane janelaDeAbas;
     private javax.swing.JPanel jpnAutor;
     private javax.swing.JPanel jpnAvaliacao;
     private javax.swing.JPanel jpnCadastroAutor;
     private javax.swing.JPanel jpnLivro;
     private javax.swing.JPanel jpnSelecaoAutorCadastrado;
-    private javax.swing.JPanel jpnSelect;
-    private javax.swing.JTable tbSelect;
+    private javax.swing.JTable tbAutor;
+    private javax.swing.JTable tbAvaliacao;
+    private javax.swing.JTable tbLivro;
     private javax.swing.JTextField txtAnoDePublicacao;
     private javax.swing.JTextField txtAutorPesquisado;
     private javax.swing.JTextArea txtCampoDeAutoresSelecionados;

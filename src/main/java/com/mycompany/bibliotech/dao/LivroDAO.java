@@ -59,7 +59,7 @@ public class LivroDAO {
         }
     }
 
-    // Para o retorno dos dados do banco na gtable
+    // Para o retorno dos dados do banco na jTable
     public List<Livro> read() {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
@@ -68,13 +68,12 @@ public class LivroDAO {
         List<Livro> livros = new ArrayList<>();
 
         try {
-            stmt = con.prepareCall("SELECT ID_LIVRO, LIV_NOME_LIVRO, LIV_ISBN, LIV_ANO, LIV_PAGINA, LIV_CATEGORIA, LIV_SUBCATEGORIA, LIV_IDIOMA, LIV_EDITORA FROM LIVRO");
+            stmt = con.prepareCall("SELECT LIV_NOME_LIVRO, LIV_ISBN, LIV_ANO, LIV_PAGINA, LIV_CATEGORIA, LIV_SUBCATEGORIA, LIV_IDIOMA, LIV_EDITORA FROM LIVRO");
             rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Livro livro = new Livro();
 
-                livro.setId(rs.getInt("ID_LIVRO"));
                 livro.setTitulo(rs.getString("LIV_NOME_LIVRO"));
                 livro.setIsbn(rs.getString("LIV_ISBN"));
                 livro.setAnoDePublicacao(rs.getInt("LIV_ANO"));

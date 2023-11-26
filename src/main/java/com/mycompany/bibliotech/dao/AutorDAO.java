@@ -172,4 +172,36 @@ public class AutorDAO {
         }
         return encontrouResultado;
     }
+
+    // Para o retorno dos dados do banco na jTable
+    public List<Autor> read() {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Autor> autores = new ArrayList<>();
+
+        try {
+            stmt = con.prepareCall("SELECT AUT_NOME_AUTOR, AUT_NACIONALIDADE, AUT_SEXO FROM AUTOR");
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Autor autor = new Autor();
+
+                autor.setNome(rs.getString("AUT_NOME_AUTOR"));
+                autor.setNacionalidade(rs.getString("AUT_NACIONALIDADE"));
+                autor.setSexo(rs.getString("AUT_SEXO"));
+
+                autores.add(autor);
+
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao ler a tabela: " + ex);
+
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return autores;
+    }
 }

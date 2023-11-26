@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class AvaliacaoDAO {
@@ -57,6 +59,37 @@ public class AvaliacaoDAO {
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }
+    }
+
+    // Para o retorno dos dados do banco na jTable
+    public List<Avaliacao> read() {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Avaliacao> avaliacoes = new ArrayList<>();
+
+        try {
+            stmt = con.prepareCall("SELECT AVA_USUARIO, AVA_COMENTARIO FROM AVALIACAO;");
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Avaliacao avaliacao = new Avaliacao();
+
+                avaliacao.setAvaliacaoDoUsuario(rs.getString("AVA_USUARIO"));
+                avaliacao.setComentarioAvaliacao(rs.getString("AVA_COMENTARIO"));
+
+                avaliacoes.add(avaliacao);
+
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao ler a tabela: " + ex);
+
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return avaliacoes;
     }
 
     public void rank(Avaliacao nota, String buscaLivro, String verificaUsuario, String rank) {
