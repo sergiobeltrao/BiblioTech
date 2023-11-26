@@ -49,7 +49,7 @@ public class LivroDAO {
             ResultSet resultado = comando.executeQuery();
 
             comboBox.removeAllItems();
-            comboBox.addItem("Não Informado");
+            comboBox.addItem("Selecione");
 
             while (resultado.next()) {
                 comboBox.addItem(resultado.getString("IDI_NOME"));

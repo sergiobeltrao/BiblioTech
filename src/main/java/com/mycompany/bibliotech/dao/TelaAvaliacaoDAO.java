@@ -2,8 +2,6 @@ package com.mycompany.bibliotech.dao;
 
 import com.mycompany.bibliotech.connection.ConnectionFactory;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
-import com.mycompany.bibliotech.model.bean.Livro;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -67,11 +65,8 @@ public class TelaAvaliacaoDAO {
 
             stmt = con.prepareStatement("SELECT LIV_NOME_LIVRO FROM LIVRO WHERE LIV_NOME_LIVRO LIKE ?");
 
-            // Tive que mandar os % do comando SQL pra cá. Se usar direto no prepareStatement vai
-            // dar o erro "parameter index out of range (1 number of parameters which is 0)"
             stmt.setString(1, buscaAlfabetica + "%");
 
-            //PreparedStatement comando = con.prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery();
 
             comboBox.removeAllItems();
@@ -158,7 +153,7 @@ public class TelaAvaliacaoDAO {
                 livroId = resultado.getInt("ID_LIVRO");
             } else {
                 JOptionPane.showMessageDialog(null, "Erro ao consultar ID_LIVRO para tabela de livro");
-                
+
             }
             String sql = "SELECT LIV_PAGINA, LIV_EDITORA, LIV_ISBN, LIV_ANO, LIV_IDIOMA FROM LIVRO WHERE ID_LIVRO = ?";
             stmt = con.prepareStatement(sql);
@@ -166,7 +161,6 @@ public class TelaAvaliacaoDAO {
             rs = stmt.executeQuery();
             if (rs.next()) {
                 Avaliacao pes = new Avaliacao();
-                /*pes.setCboxNomeLivro(rs.getString("LIV_NOME_LIVRO")); */
                 pes.setTxtPaginas(rs.getInt("LIV_PAGINA"));
                 pes.setTxtEditora(rs.getString("LIV_EDITORA"));
                 pes.setTxtIsbn(rs.getString("LIV_ISBN"));
@@ -177,10 +171,9 @@ public class TelaAvaliacaoDAO {
                 return pes;
 
             } else {
-            System.out.println(pesquisar + " erro dao find");
-            JOptionPane.showMessageDialog(null, "erro no dao findDAO");
-}
-
+                System.out.println(pesquisar + " erro dao find");
+                JOptionPane.showMessageDialog(null, "erro no dao findDAO");
+            }
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro no catch do findDAO: " + ex.getMessage());
