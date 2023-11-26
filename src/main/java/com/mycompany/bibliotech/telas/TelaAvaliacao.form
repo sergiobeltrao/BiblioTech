@@ -116,7 +116,7 @@
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="SliderNota" min="-2" pref="259" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
@@ -124,8 +124,11 @@
                                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                                   <Component id="btnAvaliar" min="-2" pref="117" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="imagemLivro" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtNotaMax" alignment="0" pref="585" max="32767" attributes="0"/>
+                              <Component id="imagemLivro" alignment="0" min="-2" pref="585" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="202" max="-2" attributes="0"/>
+                                  <Component id="txtNotaMax" min="-2" pref="171" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
