@@ -155,7 +155,9 @@ public class TelaAvaliacaoDAO {
                 JOptionPane.showMessageDialog(null, "Erro ao consultar ID_LIVRO para tabela de livro");
 
             }
-            String sql = "SELECT LIV_PAGINA, LIV_EDITORA, LIV_ISBN, LIV_ANO, LIV_IDIOMA FROM LIVRO WHERE ID_LIVRO = ?";
+            String sql = "SELECT L.LIV_PAGINA, L.LIV_EDITORA, L.LIV_ISBN, L.LIV_ANO, L.LIV_IDIOMA, A.AUT_NOME_AUTOR \n"
+                    + "FROM LIVRO L JOIN LIVRO_AUTOR LA ON L.ID_LIVRO = LA.LIVRO_CHAVE JOIN AUTOR A ON LA.LIVRO_AUTOR = A.ID_AUTOR\n"
+                    + "WHERE L.ID_LIVRO = ?";
             stmt = con.prepareStatement(sql);
             stmt.setInt(1, livroId);
             rs = stmt.executeQuery();
@@ -166,7 +168,7 @@ public class TelaAvaliacaoDAO {
                 pes.setTxtIsbn(rs.getString("LIV_ISBN"));
                 pes.setTxtAno(rs.getInt("LIV_ANO"));
                 pes.setTxtIdioma(rs.getString("LIV_IDIOMA"));
-                pes.setTxtPaginas(rs.getInt("LIV_PAGINA"));
+                pes.setTxtNomeAutor(rs.getString("AUT_NOME_AUTOR"));
 
                 return pes;
 
