@@ -10,6 +10,7 @@ import com.mycompany.bibliotech.model.bean.Telefone;
 import com.mycompany.bibliotech.dao.FavoritosDAO;
 import com.mycompany.bibliotech.model.bean.Favoritos;
 import com.mycompany.bibliotech.dao.CpfDAO;
+import com.mycompany.bibliotech.dao.ExcluirUserDAO;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
 import com.mycompany.bibliotech.model.bean.Hash;
 import com.toedter.calendar.JCalendar;
@@ -1183,43 +1184,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
     private void ExcluirUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirUserButtonActionPerformed
 
-        // Implementação Bruno
-        // ExcluirUserDAO ex = new ExcluirUserDAO();
-        // ex.mostrarEExcluirUsuario();
-        // Cria a instância o UsuarioDAO
-        UsuarioCadastroDAO usercadastrodao = new UsuarioCadastroDAO();
-        // Cria a combobox
-        JComboBox<String> userList = new JComboBox<>();
-        // Preenche a lista de usuários cadastrados no banco
-        usercadastrodao.preencherListaUsuarios(userList);
-        // Exibição da caixa de diálogo para o usuário fazer uma escolha
-        int option = JOptionPane.showConfirmDialog(
-                null,
-                userList,
-                "Selecione um usuário para excluir:",
-                JOptionPane.OK_CANCEL_OPTION,
-                JOptionPane.QUESTION_MESSAGE
-        );
-
-        // Verifica se o usuário clicou em "OK" na caixa de diálogo
-        if (option == JOptionPane.OK_OPTION) {
-            String selectedUser = userList.getSelectedItem().toString();
-            // Confirmação para excluir o usuário
-            int confirmOption = JOptionPane.showConfirmDialog(
-                    null,
-                    "Tem certeza que deseja excluir o usuário " + selectedUser + "?",
-                    "Confirmação de exclusão",
-                    JOptionPane.YES_NO_OPTION,
-                    JOptionPane.WARNING_MESSAGE
-            );
-
-            // Verifica se o usuário confirmou a exclusão
-            if (confirmOption == JOptionPane.YES_OPTION) {
-                // Realiza a exclusão do usuário
-                usercadastrodao.excluirUsuario(selectedUser);
-                JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso!");
-            }
-        }
+       ExcluirUserDAO ex = new ExcluirUserDAO();
+         ex.mostrarEExcluirUsuario();
     }//GEN-LAST:event_ExcluirUserButtonActionPerformed
 
     private void edicaoUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edicaoUserButtonActionPerformed
@@ -1260,7 +1226,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_AvaButtonActionPerformed
 
     private void txtMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenuActionPerformed
-        new TelaPrincipalCliente().setVisible(true);
+        new TelaPrincipalAdministrador().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_txtMenuActionPerformed
 
