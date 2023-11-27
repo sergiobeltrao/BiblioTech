@@ -150,7 +150,7 @@ public class AvaliacaoDAO {
     }
 
     // Para o retorno dos dados do banco na jTable
-    public List<ContagemAvaliacoesLivro> numeroDeNotasPorLivro() {
+    public static List<ContagemAvaliacoesLivro> numeroDeNotasPorLivro() {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;

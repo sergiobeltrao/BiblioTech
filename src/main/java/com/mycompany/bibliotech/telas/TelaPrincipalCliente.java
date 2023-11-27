@@ -4,10 +4,12 @@
  */
 package com.mycompany.bibliotech.telas;
 
+import com.mycompany.bibliotech.dao.AvaliacaoDAO;
 import com.mycompany.bibliotech.dao.RankDAO;
 import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;
 import com.mycompany.bibliotech.model.bean.Usuario;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
+import com.mycompany.bibliotech.model.bean.ContagemAvaliacoesLivro;
 import com.mycompany.bibliotech.model.bean.Endereco;
 import com.mycompany.bibliotech.model.bean.Favoritos;
 import com.mycompany.bibliotech.model.bean.Telefone;
@@ -31,8 +33,11 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
         initComponents();
 
         List<String> rankList = RankDAO.ranking();
-
         DefaultListModel<String> listModel = new DefaultListModel<>();
+
+        List<ContagemAvaliacoesLivro> contagensList = AvaliacaoDAO.numeroDeNotasPorLivro();
+        DefaultListModel<String> listContagens = new DefaultListModel<>();
+
         if (rankList != null) {
             int rankNumber = 1;
             for (String item : rankList) {
@@ -40,12 +45,13 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
                 rankNumber++;
             }
         }
+
         jList1.setCellRenderer(new CenteredTextRenderer());
         jList1.setModel(listModel);
-        
-        List<String> recordList = RankDAO.record();
 
+        List<String> recordList = RankDAO.record();
         DefaultListModel<String> listRecord = new DefaultListModel<>();
+
         if (recordList != null) {
             int recordNumber = 1;
             for (String item : recordList) {
@@ -53,6 +59,18 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
                 recordNumber++;
             }
         }
+
+        if (contagensList != null) {
+            int rankNumber = 1;
+            for (ContagemAvaliacoesLivro item : contagensList) {
+                listContagens.addElement(rankNumber + ". " + item.getNomeLivro() + ": " + item.getQuantidadeAvaliacoes() + " avaliações");
+                rankNumber++;
+            }
+        }
+
+        listaComMaisAvaliacao.setCellRenderer(new CenteredTextRenderer());
+        listaComMaisAvaliacao.setModel(listContagens);
+
         jList2.setCellRenderer(new CenteredTextRenderer());
         jList2.setModel(listRecord);
 
@@ -95,6 +113,9 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        listaComMaisAvaliacao = new javax.swing.JList<>();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -221,8 +242,18 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel2.setText("ULtimo Lancamento");
+        jLabel2.setText("Últimos Lancamentos");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        listaComMaisAvaliacao.setBackground(new java.awt.Color(204, 204, 204));
+        listaComMaisAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        listaComMaisAvaliacao.setToolTipText("");
+        jScrollPane3.setViewportView(listaComMaisAvaliacao);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel4.setText("Por Número de Avaliações");
+        jLabel4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
@@ -233,13 +264,17 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 420, Short.MAX_VALUE)
+                        .addGap(60, 60, 60)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26))
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addGap(180, 180, 180)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(91, 91, 91))))
         );
@@ -249,12 +284,14 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane3))
+                .addContainerGap(201, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout MenuPrincipalLayout = new javax.swing.GroupLayout(MenuPrincipal);
@@ -393,11 +430,14 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private keeptoo.KGradientPanel kGradientPanel1;
     private keeptoo.KGradientPanel kGradientPanel2;
+    private javax.swing.JList<String> listaComMaisAvaliacao;
     // End of variables declaration//GEN-END:variables
 }
