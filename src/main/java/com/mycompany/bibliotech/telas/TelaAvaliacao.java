@@ -46,7 +46,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         });
 
         listarCategorias();
-        String caminhoImagem = "C:\\Users\\jonat\\OneDrive\\Área de Trabalho\\Trabalho Extra\\A3\\BiblioTech\\src\\main\\resources\\imagem\\DomCasmurro.jpeg"; 
+        String caminhoImagem = "BiblioTech\\src\\main\\resources\\imagem"; 
         ImageIcon imagemIcon = new ImageIcon(caminhoImagem);
         imagemLivro.setIcon(imagemIcon);
 
@@ -61,6 +61,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             txtNomeAutor.setText(avaliacao.getTxtNomeAutor());
             txtPaginas.setText(String.valueOf(avaliacao.getTxtPaginas()));
             txtNotaMax.setText(avaliacao.getTxtNotaMax());
+            imagemLivro.setIcon(avaliacao.getImagemLivro());
         }
 
     }
