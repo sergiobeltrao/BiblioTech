@@ -1,11 +1,18 @@
 package com.mycompany.bibliotech.telas;
 
 import com.mycompany.bibliotech.dao.AvaliacaoDAO;
+import com.mycompany.bibliotech.dao.ExcluirUserDAO;
 import com.mycompany.bibliotech.dao.LivroCategoriaDAO;
 import com.mycompany.bibliotech.dao.TelaAvaliacaoDAO;
+import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;
+import com.mycompany.bibliotech.dao.UsuarioLoginDAO;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
 import com.mycompany.bibliotech.model.bean.ApplicationContext;
+import com.mycompany.bibliotech.model.bean.Endereco;
+import com.mycompany.bibliotech.model.bean.Favoritos;
 import com.mycompany.bibliotech.model.bean.Login;
+import com.mycompany.bibliotech.model.bean.Telefone;
+import com.mycompany.bibliotech.model.bean.Usuario;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +24,16 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     public TelaAvaliacao(Avaliacao avaliacao) {
         initComponents();
         setPesquisarValues(avaliacao);
+        UsuarioLoginDAO usuarioLoginDao = new UsuarioLoginDAO();
+
+        if (usuarioLoginDao.tipoDoUsuarioLogado()) {
+            CadUserButton.setVisible(true);
+            ExcluirUserButton.setVisible(true);
+        } else {
+            CadUserButton.setVisible(false);
+            ExcluirUserButton.setVisible(false);
+            
+        }
 
         cboxNomeLivro.addActionListener(new ActionListener() {
             @Override
@@ -61,7 +78,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             txtNomeAutor.setText(avaliacao.getTxtNomeAutor());
             txtPaginas.setText(String.valueOf(avaliacao.getTxtPaginas()));
             txtNotaMax.setText(avaliacao.getTxtNotaMax());
-            imagemLivro.setIcon(foto);
+           // imagemLivro.setIcon(foto);
         }
 
     }
@@ -108,6 +125,9 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         btnEncerrarSessao = new javax.swing.JButton();
         CadLivroButton = new javax.swing.JButton();
         txtVoltar = new javax.swing.JButton();
+        edicaoUserButton = new javax.swing.JButton();
+        ExcluirUserButton = new javax.swing.JToggleButton();
+        CadUserButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Avaliacao");
@@ -117,7 +137,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         kGradientPanel1.setkStartColor(new java.awt.Color(204, 204, 204));
 
         cboxNomeLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxNomeLivro.setForeground(new java.awt.Color(0, 0, 0));
         cboxNomeLivro.setToolTipText("Lista de livro escolhido");
         cboxNomeLivro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         cboxNomeLivro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -130,7 +149,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         });
 
         cboxAlfabeto.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxAlfabeto.setForeground(new java.awt.Color(0, 0, 0));
         cboxAlfabeto.setToolTipText("Escolha uma letra");
         cboxAlfabeto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         cboxAlfabeto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -141,7 +159,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         });
 
         cboxCategoriaBusca.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxCategoriaBusca.setForeground(new java.awt.Color(0, 0, 0));
         cboxCategoriaBusca.setToolTipText("Selecione a Categoria do Livro");
         cboxCategoriaBusca.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         cboxCategoriaBusca.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -152,17 +169,14 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         });
 
         cboxSubCategoriaBusca.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxSubCategoriaBusca.setForeground(new java.awt.Color(0, 0, 0));
         cboxSubCategoriaBusca.setToolTipText("Escolha uma Subcategoria");
         cboxSubCategoriaBusca.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         cboxSubCategoriaBusca.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         txtTituloBusca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtTituloBusca.setForeground(new java.awt.Color(0, 0, 0));
         txtTituloBusca.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTituloBusca.setToolTipText("Escreva o nome do Livro");
         txtTituloBusca.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        txtTituloBusca.setCaretColor(new java.awt.Color(0, 0, 0));
         txtTituloBusca.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txtTituloBusca.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtTituloBusca.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +187,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
 
         txtNomeAutor.setEditable(false);
         txtNomeAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtNomeAutor.setForeground(new java.awt.Color(0, 0, 0));
         txtNomeAutor.setToolTipText("Nome do autor ");
         txtNomeAutor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         txtNomeAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -185,14 +198,12 @@ public class TelaAvaliacao extends javax.swing.JFrame {
 
         txtEditora.setEditable(false);
         txtEditora.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtEditora.setForeground(new java.awt.Color(0, 0, 0));
         txtEditora.setToolTipText("Nome da editora do livro");
         txtEditora.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         txtEditora.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         txtPaginas.setEditable(false);
         txtPaginas.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtPaginas.setForeground(new java.awt.Color(0, 0, 0));
         txtPaginas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPaginas.setToolTipText("Numero de paginas do livro");
         txtPaginas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -204,31 +215,26 @@ public class TelaAvaliacao extends javax.swing.JFrame {
 
         txtAno.setEditable(false);
         txtAno.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtAno.setForeground(new java.awt.Color(0, 0, 0));
         txtAno.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtAno.setToolTipText("Ano de publicação do livro");
         txtAno.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         txtIsbn.setEditable(false);
         txtIsbn.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtIsbn.setForeground(new java.awt.Color(0, 0, 0));
         txtIsbn.setToolTipText("Numero de indentificação do livro");
         txtIsbn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         txtIdioma.setEditable(false);
         txtIdioma.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtIdioma.setForeground(new java.awt.Color(0, 0, 0));
         txtIdioma.setToolTipText("Idioma do livro");
         txtIdioma.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         txtNotaMax.setEditable(false);
         txtNotaMax.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtNotaMax.setForeground(new java.awt.Color(0, 0, 0));
         txtNotaMax.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtNotaMax.setToolTipText("Esta é a nota maxima do livro escolhido");
 
         btnBuscar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnBuscar.setForeground(new java.awt.Color(0, 0, 0));
         btnBuscar.setText("Buscar");
         btnBuscar.setToolTipText("Buscar livro escolhido");
         btnBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -240,7 +246,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         });
 
         btnAvaliar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnAvaliar.setForeground(new java.awt.Color(0, 0, 0));
         btnAvaliar.setText("Avaliar");
         btnAvaliar.setToolTipText("inserir nota do livro escolhido");
         btnAvaliar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -252,7 +257,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         });
 
         SliderNota.setBackground(new java.awt.Color(27, 25, 25));
-        SliderNota.setForeground(new java.awt.Color(0, 0, 0));
         SliderNota.setMaximum(10);
         SliderNota.setPaintLabels(true);
         SliderNota.setPaintTicks(true);
@@ -267,7 +271,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Comentario:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13), new java.awt.Color(0, 0, 0))); // NOI18N
+        jTextArea1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Comentario:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
         jScrollPane1.setViewportView(jTextArea1);
 
         imagemLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -282,57 +286,46 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         txtNota.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nome do livro:");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Busca Letra:");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Categoria: ");
         jLabel3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Sub-Categoria: ");
         jLabel4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Autor:");
         jLabel5.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Editora:");
         jLabel6.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Paginas:");
         jLabel7.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Ano:");
         jLabel8.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("ISBN:");
         jLabel9.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Idioma:");
         jLabel10.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Buscar Nome do Livro:");
         jLabel12.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
@@ -464,7 +457,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
                             .addComponent(txtEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 30, Short.MAX_VALUE))
+                .addGap(0, 29, Short.MAX_VALUE))
         );
 
         txtTituloBusca.getAccessibleContext().setAccessibleName("");
@@ -476,14 +469,12 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         kGradientPanel2.setkStartColor(new java.awt.Color(114, 114, 133));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Menu");
         jLabel11.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel11.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 0, 0)));
 
         AvaButton1.setBackground(new java.awt.Color(102, 102, 102));
         AvaButton1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        AvaButton1.setForeground(new java.awt.Color(0, 0, 0));
         AvaButton1.setText("Avaliação");
         AvaButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         AvaButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -494,7 +485,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
 
         btnEncerrarSessao.setBackground(new java.awt.Color(102, 102, 102));
         btnEncerrarSessao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnEncerrarSessao.setForeground(new java.awt.Color(0, 0, 0));
         btnEncerrarSessao.setText("Encerrar Sessão");
         btnEncerrarSessao.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnEncerrarSessao.addActionListener(new java.awt.event.ActionListener() {
@@ -505,7 +495,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
 
         CadLivroButton.setBackground(new java.awt.Color(102, 102, 102));
         CadLivroButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        CadLivroButton.setForeground(new java.awt.Color(0, 0, 0));
         CadLivroButton.setText("Cadastro de Livros");
         CadLivroButton.setToolTipText("Cadastrar livros não escontrado");
         CadLivroButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -518,7 +507,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
 
         txtVoltar.setBackground(new java.awt.Color(102, 102, 102));
         txtVoltar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtVoltar.setForeground(new java.awt.Color(0, 0, 0));
         txtVoltar.setText("Inicio");
         txtVoltar.setToolTipText("Ir para o Menui inicial");
         txtVoltar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -529,6 +517,39 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             }
         });
 
+        edicaoUserButton.setBackground(new java.awt.Color(102, 102, 102));
+        edicaoUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        edicaoUserButton.setForeground(new java.awt.Color(0, 0, 0));
+        edicaoUserButton.setText("Edição de Usuario");
+        edicaoUserButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        edicaoUserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edicaoUserButtonActionPerformed(evt);
+            }
+        });
+
+        ExcluirUserButton.setBackground(new java.awt.Color(102, 102, 102));
+        ExcluirUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        ExcluirUserButton.setForeground(new java.awt.Color(0, 0, 0));
+        ExcluirUserButton.setText("Excluir Usuarios");
+        ExcluirUserButton.setBorder(new javax.swing.border.MatteBorder(null));
+        ExcluirUserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExcluirUserButtonActionPerformed(evt);
+            }
+        });
+
+        CadUserButton.setBackground(new java.awt.Color(102, 102, 102));
+        CadUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        CadUserButton.setForeground(new java.awt.Color(0, 0, 0));
+        CadUserButton.setText("Cadastro de Usuario");
+        CadUserButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        CadUserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadUserButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout kGradientPanel2Layout = new javax.swing.GroupLayout(kGradientPanel2);
         kGradientPanel2.setLayout(kGradientPanel2Layout);
         kGradientPanel2Layout.setHorizontalGroup(
@@ -536,15 +557,19 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             .addGroup(kGradientPanel2Layout.createSequentialGroup()
                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(AvaButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                            .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                            .addComponent(CadLivroButton, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                            .addComponent(txtVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)))
-                    .addGroup(kGradientPanel2Layout.createSequentialGroup()
                         .addGap(67, 67, 67)
-                        .addComponent(jLabel11)))
+                        .addComponent(jLabel11))
+                    .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(edicaoUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(AvaButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                                .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                                .addComponent(CadLivroButton, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                                .addComponent(txtVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
+                            .addComponent(ExcluirUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CadUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         kGradientPanel2Layout.setVerticalGroup(
@@ -554,10 +579,16 @@ public class TelaAvaliacao extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(18, 18, 18)
                 .addComponent(CadLivroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(18, 18, 18)
                 .addComponent(AvaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(edicaoUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ExcluirUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(CadUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
@@ -679,8 +710,15 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAvaliarActionPerformed
 
     private void txtVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVoltarActionPerformed
-        new TelaPrincipalCliente().setVisible(true);
-        this.dispose();
+        UsuarioLoginDAO usuarioLoginDao = new UsuarioLoginDAO();
+
+        if (usuarioLoginDao.tipoDoUsuarioLogado()) {
+            new TelaPrincipalAdministrador().setVisible(true);
+            this.dispose();
+        } else {
+            new TelaPrincipalCliente().setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_txtVoltarActionPerformed
 
     private void AvaButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AvaButton1ActionPerformed
@@ -712,6 +750,47 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     private void txtNomeAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeAutorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeAutorActionPerformed
+
+    private void edicaoUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edicaoUserButtonActionPerformed
+
+        UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
+        Usuario user = new Usuario();
+        Endereco endereco = new Endereco();
+        Favoritos favoritos = new Favoritos();
+        Telefone telefone = new Telefone();
+
+        // Solicita o nome do usuário ao usuário
+        String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:");
+
+        // Verifica se o usuário inseriu um nome
+        if (userNome != null && !userNome.isEmpty()) {
+            // Obtém o usuário com base no nome fornecido
+            user = userdao.obterUsuarioPorNome(userNome);
+
+            // Verifica se o usuário foi encontrado
+            if (user.getUserId() != 0) {
+                // Abre a tela de edição com os dados do usuário
+                EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
+                edicaoUsuarioFrame.setVisible(true);
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Digite um nome de usuário válido", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_edicaoUserButtonActionPerformed
+
+    private void ExcluirUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirUserButtonActionPerformed
+
+        ExcluirUserDAO ex = new ExcluirUserDAO();
+        ex.mostrarEExcluirUsuario();
+    }//GEN-LAST:event_ExcluirUserButtonActionPerformed
+
+    private void CadUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadUserButtonActionPerformed
+        new CadastroUsuario().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_CadUserButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -761,6 +840,8 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AvaButton1;
     private javax.swing.JButton CadLivroButton;
+    private javax.swing.JButton CadUserButton;
+    private javax.swing.JToggleButton ExcluirUserButton;
     private javax.swing.JPanel MenuLateral;
     private javax.swing.JSlider SliderNota;
     private javax.swing.JButton btnAvaliar;
@@ -770,6 +851,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboxCategoriaBusca;
     private javax.swing.JComboBox<String> cboxNomeLivro;
     private javax.swing.JComboBox<String> cboxSubCategoriaBusca;
+    private javax.swing.JButton edicaoUserButton;
     private javax.swing.JLabel imagemLivro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
