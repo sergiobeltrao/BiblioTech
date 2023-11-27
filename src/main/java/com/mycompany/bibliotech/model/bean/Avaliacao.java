@@ -20,7 +20,18 @@ public class Avaliacao {
     private String txtIdioma;
     private String txtIsbn;
     private String txtNomeLivro;
-    private String  txtNotaMax;
+    private String txtNotaMax;
+
+    // Para usar na JTable 'tbAvaliacao' do CadastroDeLivro
+    private Livro livro;
+
+    public Livro getLivro() {
+        return livro;
+    }
+
+    public void setLivro(Livro livro) {
+        this.livro = livro;
+    }
 
     public String getTxtNomeLivro() {
         return txtNomeLivro;
@@ -83,8 +94,6 @@ public class Avaliacao {
         this.txtComentario = txtComentario;
     }
 
-     
-    
     public String getTxtBuscaCad() {
         return txtBuscaCad;
     }
@@ -148,7 +157,7 @@ public class Avaliacao {
     public void setTxtComentario(String txtComentario) {
         this.txtComentario = txtComentario;
     }
-          
+
     public int getLivroAvaliado() {
         return livroAvaliado;
     }

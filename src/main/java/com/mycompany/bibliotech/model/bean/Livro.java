@@ -13,6 +13,17 @@ public class Livro {
     private String editora;
     private String sinopse;
 
+    // Para usar na JTable 'tbLivro' do CadastroDeLivro
+    private Autor autor;
+
+    public Autor getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Autor autor) {
+        this.autor = autor;
+    }
+
     public String getSinopse() {
         return sinopse;
     }

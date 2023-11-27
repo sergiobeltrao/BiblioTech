@@ -2,6 +2,7 @@ package com.mycompany.bibliotech.dao;
 
 import com.mycompany.bibliotech.connection.ConnectionFactory;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
+import com.mycompany.bibliotech.model.bean.Livro;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -70,22 +71,23 @@ public class AvaliacaoDAO {
         List<Avaliacao> avaliacoes = new ArrayList<>();
 
         try {
-            stmt = con.prepareCall("SELECT AVA_USUARIO, AVA_COMENTARIO FROM AVALIACAO;");
+            stmt = con.prepareCall("SELECT L.LIV_NOME_LIVRO, A.AVA_USUARIO, A.AVA_COMENTARIO FROM AVALIACAO A JOIN LIVRO L ON A.AVA_FK_LIVRO = L.ID_LIVRO");
             rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Avaliacao avaliacao = new Avaliacao();
+                Livro livro = new Livro();
 
                 avaliacao.setAvaliacaoDoUsuario(rs.getString("AVA_USUARIO"));
                 avaliacao.setComentarioAvaliacao(rs.getString("AVA_COMENTARIO"));
+                livro.setTitulo(rs.getString("LIV_NOME_LIVRO"));
 
+                avaliacao.setLivro(livro);
                 avaliacoes.add(avaliacao);
-
             }
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao ler a tabela: " + ex);
-
         } finally {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }

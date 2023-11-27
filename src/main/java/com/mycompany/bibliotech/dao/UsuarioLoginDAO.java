@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.mycompany.bibliotech.connection.ConnectionFactory;
-
+import com.mycompany.bibliotech.model.bean.ApplicationContext;
+import com.mycompany.bibliotech.model.bean.Login;
+import javax.swing.JOptionPane;
 
 public class UsuarioLoginDAO {
 
@@ -42,5 +44,36 @@ public class UsuarioLoginDAO {
         }
         return userType;
     }
-           
+
+    public boolean tipoDoUsuarioLogado() {
+
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet resultado = null;
+        boolean usuarioAdministrador = false;
+
+        Login login = ApplicationContext.getLogin();
+
+        try {
+            stmt = con.prepareStatement("SELECT USE_TYPE FROM USUARIO WHERE USE_NICK = ?");
+            stmt.setString(1, login.getNick());
+
+            resultado = stmt.executeQuery();
+
+            if (resultado.next()) {
+                String userType = resultado.getString("USE_TYPE");
+
+                if (userType.equals("ADMIN")) {
+                    usuarioAdministrador = true;
+                }
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na verificação do autor: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, resultado);
+        }
+        return usuarioAdministrador;
+    }
+
 }
