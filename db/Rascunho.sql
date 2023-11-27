@@ -53,8 +53,6 @@ VALUES (1, 1, 9.0,  'Um clássico da literatura brasileira.'), (2, 2, 7.8, 'Fasc
 (2, 1, 7.0, 'Um clássico da literatura brasileira.'), (2, 2, 2.8, 'Fascinante jornada pelo cosmos.'), (2, 3, 6.3, 'Uma história encantadora para todas as idades.'),
 (3, 1, 8.0, 'Um clássico da literatura brasileira.'), (3, 2, 1.8, 'Fascinante jornada pelo cosmos.'),(3, 3, 7.7, 'Uma história encantadora para todas as idades.');
 
-
-
 /* 
 estes so vão funcionar quando tiverem no miniumo 10 usuarios inseridos no banco
 INSERT INTO AVALIACAO (AVA_ID_USUARIO, AVA_FK_LIVRO, AVA_USUARIO, AVA_COMENTARIO) VALUES 
@@ -66,14 +64,36 @@ INSERT INTO AVALIACAO (AVA_ID_USUARIO, AVA_FK_LIVRO, AVA_USUARIO, AVA_COMENTARIO
 (9, 7, 8.7, 'Alegoria política envolvente.'), (9, 8, 6.3, 'Mistérios e conspirações intrigantes.'), (9, 9, 7.5, 'Aventuras na Terra-média.'),
 (10, 10, 9.0, 'História intrigante e cheia de reviravoltas.'), (10, 1, 7.8, 'Um clássico da literatura brasileira.'), (10, 2, 8.5, 'Fascinante jornada pelo cosmos.');
  */
+ 
+SELECT * FROM LIVRO;
+UPDATE LIVRO SET LIV_IMAGEM = ('.\src\main\resources\imagem\OSegredodasEstrelas.jpeg')  WHERE ID_LIVRO = 1;
+UPDATE LIVRO SET LIV_IMAGEM = ('.\src\main\resources\imagem\OAlquimista.jpeg')  WHERE ID_LIVRO = 2;
+UPDATE LIVRO SET LIV_IMAGEM = ('.\src\main\resources\imagem\DomCasmurro.jpeg')  WHERE ID_LIVRO = 3;
+UPDATE LIVRO SET LIV_IMAGEM = ('.\src\main\resources\imagem\Cosmos.jpeg')  WHERE ID_LIVRO = 4;
+UPDATE LIVRO SET LIV_IMAGEM = ('.\src\main\resources\imagem\OPequenoPríncipe.jpeg')  WHERE ID_LIVRO = 5;
+UPDATE LIVRO SET LIV_IMAGEM = ('.\src\main\resources\imagem\AOrigemdasEspécies.jpeg')  WHERE ID_LIVRO = 6;
 
 -- Comando para listar o rank de livros
-SELECT LIVRO.ID_LIVRO, LIVRO.LIV_NOME_LIVRO, ROUND(AVG(AVALIACAO.AVA_TOTAL), 1)AS MEDIA_NOTA
+SELECT LIVRO.ID_LIVRO, LIVRO.LIV_NOME_LIVRO, ROUND(AVG(AVALIACAO.AVA_USUARIO), 1)AS MEDIA_NOTA
 FROM LIVRO
 JOIN AVALIACAO ON LIVRO.ID_LIVRO = AVALIACAO.AVA_FK_LIVRO
 GROUP BY LIVRO.ID_LIVRO, LIVRO.LIV_NOME_LIVRO
 ORDER BY MEDIA_NOTA DESC
 LIMIT 5; 
+-- comando para imprimir as informações do livro
+SELECT L.LIV_PAGINA, L.LIV_EDITORA, L.LIV_ISBN, L.LIV_ANO, L.LIV_IDIOMA, A.AUT_NOME_AUTOR,
+ROUND(AVG(AV.AVA_USUARIO), 1) AS MEDIA_NOTA FROM LIVRO L JOIN LIVRO_AUTOR LA ON L.ID_LIVRO = LA.LIVRO_CHAVE
+JOIN AUTOR A ON LA.LIVRO_AUTOR = A.ID_AUTOR LEFT JOIN AVALIACAO AV ON L.ID_LIVRO = AV.AVA_FK_LIVRO
+WHERE L.ID_LIVRO = 1 GROUP BY L.ID_LIVRO, A.AUT_NOME_AUTOR; 
+
+-- comando que exibe os dados acima e tambem a imagem do livro
+SELECT L.LIV_PAGINA, L.LIV_EDITORA, L.LIV_ISBN, L.LIV_ANO, L.LIV_IDIOMA, L.LIV_IMAGEM, A.AUT_NOME_AUTOR,
+ROUND(AVG(AV.AVA_USUARIO), 1) AS MEDIA_NOTA FROM LIVRO L JOIN LIVRO_AUTOR LA ON L.ID_LIVRO = LA.LIVRO_CHAVE
+JOIN AUTOR A ON LA.LIVRO_AUTOR = A.ID_AUTOR LEFT JOIN AVALIACAO AV ON L.ID_LIVRO = AV.AVA_FK_LIVRO
+WHERE L.ID_LIVRO = 1 GROUP BY L.ID_LIVRO, A.AUT_NOME_AUTOR;
+
+ SELECT * FROM livro;
+   
 -- comando pra imprimir os ultimos livros cadastrado
 SELECT ID_LIVRO, LIV_NOME_LIVRO FROM LIVRO
 ORDER BY ID_LIVRO DESC LIMIT 10;
@@ -113,16 +133,10 @@ LEFT JOIN TELEFONE T ON TU.TELEFONE_FONE = T.TEL_ID
 WHERE U.USE_ID = 1;
 */
 
-SELECT * FROM USUARIO U
-LEFT JOIN ENDERECO_USUARIO EU ON U.USE_ID = EU.ENDERECO_USER
-LEFT JOIN ENDERECO E ON EU.ENDERECO_CHAVE = E.END_ID
-LEFT JOIN TELEFONE_USUARIO TU ON U.USE_ID = TU.TELEFONE_USER
-LEFT JOIN TELEFONE T ON TU.TELEFONE_FONE = T.TEL_ID
-LEFT JOIN FAVORITO F ON U.USE_ID = F.FAV_USUARIO;
-
-select *from favorito where fav_usuario = '6';
-
-
 SELECT L.LIV_NOME_LIVRO, L.LIV_PAGINA, L.LIV_ANO, L.LIV_EDITORA, A.AVA_COMENTARIO 
 FROM LIVRO L LEFT JOIN AVALIACAO A ON L.ID_LIVRO = A.AVA_FK_LIVRO 
 LEFT JOIN CATEGORIA C ON L.LIV_CATEGORIA = C.CAT_ID WHERE LIV_NOME_LIVRO = 'O Segredo das Estrelas' ;
+
+SELECT L.LIV_PAGINA, L.LIV_EDITORA, L.LIV_ISBN, L.LIV_ANO, L.LIV_IDIOMA, A.AUT_NOME_AUTOR 
+FROM LIVRO L JOIN LIVRO_AUTOR LA ON L.ID_LIVRO = LA.LIVRO_CHAVE JOIN AUTOR A ON LA.LIVRO_AUTOR = A.ID_AUTOR
+WHERE L.ID_LIVRO = 1;

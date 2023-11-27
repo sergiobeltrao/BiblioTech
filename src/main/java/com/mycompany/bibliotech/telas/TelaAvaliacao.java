@@ -4,12 +4,12 @@ import com.mycompany.bibliotech.dao.AvaliacaoDAO;
 import com.mycompany.bibliotech.dao.LivroCategoriaDAO;
 import com.mycompany.bibliotech.dao.TelaAvaliacaoDAO;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
-import com.mycompany.bibliotech.dao.UsuarioLoginDAO;
 import com.mycompany.bibliotech.model.bean.ApplicationContext;
 import com.mycompany.bibliotech.model.bean.Login;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class TelaAvaliacao extends javax.swing.JFrame {
@@ -44,8 +44,11 @@ public class TelaAvaliacao extends javax.swing.JFrame {
                 cboxNomeLivroeActionPerformed(evt);
             }
         });
-      
+
         listarCategorias();
+        String caminhoImagem = "BiblioTech\\src\\main\\resources\\imagem"; 
+        ImageIcon imagemIcon = new ImageIcon(caminhoImagem);
+        imagemLivro.setIcon(imagemIcon);
 
     }
 
@@ -58,6 +61,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             txtNomeAutor.setText(avaliacao.getTxtNomeAutor());
             txtPaginas.setText(String.valueOf(avaliacao.getTxtPaginas()));
             txtNotaMax.setText(avaliacao.getTxtNotaMax());
+            imagemLivro.setIcon(avaliacao.getImagemLivro());
         }
 
     }
@@ -383,15 +387,17 @@ public class TelaAvaliacao extends javax.swing.JFrame {
                                         .addComponent(jLabel8)
                                         .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(36, 36, 36)
-                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(kGradientPanel1Layout.createSequentialGroup()
                                 .addComponent(SliderNota, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(32, 32, 32)
                                 .addComponent(txtNota, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(48, 48, 48)
                                 .addComponent(btnAvaliar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(imagemLivro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtNotaMax, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)))
+                            .addComponent(imagemLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                                .addGap(202, 202, 202)
+                                .addComponent(txtNotaMax, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabel12))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
@@ -631,8 +637,8 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     }//GEN-LAST:event_cboxAlfabetoActionPerformed
 
     private void cboxNomeLivroeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxNomeLivroeActionPerformed
-      
-        
+
+
     }//GEN-LAST:event_cboxNomeLivroeActionPerformed
 
     public void listarCategorias() {

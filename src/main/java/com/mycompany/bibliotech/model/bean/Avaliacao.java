@@ -21,6 +21,7 @@ public class Avaliacao {
     private String txtIsbn;
     private String txtNomeLivro;
     private String txtNotaMax;
+    private String imagemLivro;
 
     // Para usar na JTable 'tbAvaliacao' do CadastroDeLivro
     private Livro livro;
@@ -47,6 +48,14 @@ public class Avaliacao {
 
     public void setTxtNotaMax(String txtNotaMax) {
         this.txtNotaMax = txtNotaMax;
+    }
+
+    public String getImagemLivro() {
+        return imagemLivro;
+    }
+
+    public void setImagemLivro(String imagemLivro) {
+        this.imagemLivro = imagemLivro;
     }
 
     public Avaliacao(String txtNomeLivro) {
