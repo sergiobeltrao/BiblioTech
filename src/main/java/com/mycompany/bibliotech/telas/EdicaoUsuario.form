@@ -796,6 +796,10 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="AvaButton" max="32767" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txtMenu" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -816,7 +820,9 @@
                   <Component id="edicaoUserButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="AvaButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="280" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="txtMenu" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="245" max="32767" attributes="0"/>
                   <Component id="btnEncerrarSessao" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               </Group>
@@ -882,6 +888,17 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AvaButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="txtMenu">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Menu Principal"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[89, 23]"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMenuActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

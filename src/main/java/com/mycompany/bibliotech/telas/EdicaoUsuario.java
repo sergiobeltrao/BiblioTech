@@ -60,7 +60,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             ExcluirUserButton.setVisible(false);
             
         }
-        //configurarBotoesComBaseNoUsuario();
        
     }
     private void setUserValues(Usuario user) {
@@ -148,6 +147,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         ExcluirUserButton = new javax.swing.JToggleButton();
         edicaoUserButton = new javax.swing.JButton();
         AvaButton = new javax.swing.JButton();
+        txtMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -592,6 +592,14 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             }
         });
 
+        txtMenu.setText("Menu Principal");
+        txtMenu.setPreferredSize(new java.awt.Dimension(89, 23));
+        txtMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMenuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menuLateralLayout = new javax.swing.GroupLayout(menuLateral);
         menuLateral.setLayout(menuLateralLayout);
         menuLateralLayout.setHorizontalGroup(
@@ -617,7 +625,10 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                     .addComponent(ExcluirUserButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(menuLateralLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(AvaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(AvaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(menuLateralLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         menuLateralLayout.setVerticalGroup(
@@ -635,7 +646,9 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                 .addComponent(edicaoUserButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(AvaButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 280, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 245, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao)
                 .addGap(15, 15, 15))
         );
@@ -950,44 +963,9 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEncerrarSessaoActionPerformed
 
     private void ExcluirUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirUserButtonActionPerformed
-        
-        // Implementação Bruno
+
          ExcluirUserDAO ex = new ExcluirUserDAO();
          ex.mostrarEExcluirUsuario();
-     /*   // Cria a instância o UsuarioDAO
-        UsuarioCadastroDAO usercadastrodao = new UsuarioCadastroDAO();
-        // Cria a combobox
-        JComboBox<String> userList = new JComboBox<>();
-        // Preenche a lista de usuários cadastrados no banco
-        usercadastrodao.preencherListaUsuarios(userList);
-        // Exibição da caixa de diálogo para o usuário fazer uma escolha
-        int option = JOptionPane.showConfirmDialog(
-            null,
-            userList,
-            "Selecione um usuário para excluir:",
-            JOptionPane.OK_CANCEL_OPTION,
-            JOptionPane.QUESTION_MESSAGE
-        );
-
-        // Verifica se o usuário clicou em "OK" na caixa de diálogo
-        if (option == JOptionPane.OK_OPTION) {
-            String selectedUser = userList.getSelectedItem().toString();
-            // Confirmação para excluir o usuário
-            int confirmOption = JOptionPane.showConfirmDialog(
-                null,
-                "Tem certeza que deseja excluir o usuário " + selectedUser + "?",
-                "Confirmação de exclusão",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.WARNING_MESSAGE
-            );
-
-            // Verifica se o usuário confirmou a exclusão
-            if (confirmOption == JOptionPane.YES_OPTION) {
-                // Realiza a exclusão do usuário
-                usercadastrodao.excluirUsuario(selectedUser);
-                JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso!");
-            }
-        }*/
     }//GEN-LAST:event_ExcluirUserButtonActionPerformed
 
     private void edicaoUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edicaoUserButtonActionPerformed
@@ -1026,6 +1004,18 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         this.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_AvaButtonActionPerformed
+
+    private void txtMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenuActionPerformed
+        UsuarioLoginDAO usuarioLoginDao = new UsuarioLoginDAO();
+
+        if (usuarioLoginDao.tipoDoUsuarioLogado()) {
+            new TelaPrincipalAdministrador().setVisible(true);
+            this.dispose();
+        } else {
+            new TelaPrincipalCliente().setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_txtMenuActionPerformed
 
     public void listarCategorias1() {
         LivroCategoriaDAO.listarCategorias(cboxCategoria1);
@@ -1117,6 +1107,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> sexoBox;
     private javax.swing.JTextField sobrenomeTxt;
     private javax.swing.JComboBox<String> telefoneTipoBox;
+    private javax.swing.JButton txtMenu;
     private javax.swing.JTextField txtMenuPrincipal;
     private javax.swing.JTextField ufTxt;
     // End of variables declaration//GEN-END:variables
