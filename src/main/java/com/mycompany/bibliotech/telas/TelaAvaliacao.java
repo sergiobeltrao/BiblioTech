@@ -61,7 +61,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             txtNomeAutor.setText(avaliacao.getTxtNomeAutor());
             txtPaginas.setText(String.valueOf(avaliacao.getTxtPaginas()));
             txtNotaMax.setText(avaliacao.getTxtNotaMax());
-            //imagemLivro.setIcon(avaliacao.getImagemLivro());
+            imagemLivro.setIcon(foto);
         }
 
     }

@@ -1,5 +1,7 @@
 package com.mycompany.bibliotech.model.bean;
 
+import java.io.FileInputStream;
+
 public class Avaliacao {
 
     private int id;
@@ -21,7 +23,30 @@ public class Avaliacao {
     private String txtIsbn;
     private String txtNomeLivro;
     private String txtNotaMax;
-    private String imagemLivro;
+    /* private jLabel imagemLivro; */
+    private FileInputStream fis;
+    private int tamanho;
+
+    public FileInputStream getFis() {
+        return fis;
+    }
+
+    public void setFis(FileInputStream fis) {
+        this.fis = fis;
+    }
+
+    public int getTamanho() {
+        return tamanho;
+    }
+
+    public void setTamanho(int tamanho) {
+        this.tamanho = tamanho;
+    }
+
+    public Avaliacao(FileInputStream fis, int tamanho) {
+        this.fis = fis;
+        this.tamanho = tamanho;
+    }
 
     // Para usar na JTable 'tbAvaliacao' do CadastroDeLivro
     private Livro livro;
@@ -50,14 +75,7 @@ public class Avaliacao {
         this.txtNotaMax = txtNotaMax;
     }
 
-    public String getImagemLivro() {
-        return imagemLivro;
-    }
-
-    public void setImagemLivro(String imagemLivro) {
-        this.imagemLivro = imagemLivro;
-    }
-
+    
     public Avaliacao(String txtNomeLivro) {
         this.txtNomeLivro = txtNomeLivro;
     }
