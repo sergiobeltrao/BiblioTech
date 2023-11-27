@@ -13,8 +13,8 @@ INSERT INTO ENDERECO VALUES (NULL, 'Dolores', 13, 'APTO', 'Mooca', 'Sao Paulo', 
 (NULL, 'Rua22', '122', NULL, 'St. Oeste', 'Goiânia', 'GO', 'BRASIL', '74120140');
 
 INSERT INTO LIVRO VALUES
-(NULL, 'O Segredo das Estrelas', '978-12-345-6789-0', 1980, 320, '1 - Ficção', '40 - Programação', 'Portugues - Brasil', 'Atlas', NULL),
-(NULL, 'O Alquimista', '978-85-843-9067-0', 1988, 208, '1 - Ficção', '4 - Fantasia', 'Português - Brasil', 'Osires', NULL);
+(NULL, 'O Segredo das Estrelas', '978-12-345-6789-0', 1980, 320, '1 - Ficção', '40 - Programação', 'Portugues - Brasil', 'Atlas', NULL, NULL),
+(NULL, 'O Alquimista', '978-85-843-9067-0', 1988, 208, '1 - Ficção', '4 - Fantasia', 'Português - Brasil', 'Osires', NULL, NULL);
 
 INSERT INTO AUTOR ( AUT_NOME_AUTOR, AUT_NACIONALIDADE, AUT_SEXO) VALUES
 ('Laura Bens', 'Brasil - Brasileira', 'FEM' ), ('Gabriel Torres', 'Brasil - Brasileira', 'MASC' ),
