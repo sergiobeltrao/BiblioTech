@@ -1062,8 +1062,15 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDeBoasVindasAvaliacaoActionPerformed
 
     private void btnTelaPrinCadAvaliacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTelaPrinCadAvaliacaoActionPerformed
-        new TelaPrincipalAdministrador().setVisible(true);
-        this.dispose();
+        UsuarioLoginDAO usuarioLoginDao = new UsuarioLoginDAO();
+
+        if (usuarioLoginDao.tipoDoUsuarioLogado()) {
+            new TelaPrincipalAdministrador().setVisible(true);
+            this.dispose();
+        } else {
+            new TelaPrincipalCliente().setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnTelaPrinCadAvaliacaoActionPerformed
 
     private void btnLimparAvaliacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparAvaliacaoActionPerformed
