@@ -5,12 +5,18 @@
 package com.mycompany.bibliotech.telas;
 
 import com.mycompany.bibliotech.dao.RankDAO;
+import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;
+import com.mycompany.bibliotech.model.bean.Usuario;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
+import com.mycompany.bibliotech.model.bean.Endereco;
+import com.mycompany.bibliotech.model.bean.Favoritos;
+import com.mycompany.bibliotech.model.bean.Telefone;
 import java.awt.Component;
 import java.util.List;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -80,6 +86,7 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
         AvaButton1 = new javax.swing.JButton();
         btnEncerrarSessao = new javax.swing.JButton();
         CadLivroButton = new javax.swing.JButton();
+        edicaoUserButton = new javax.swing.JButton();
         MenuPrincipal = new javax.swing.JPanel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -137,6 +144,17 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
             }
         });
 
+        edicaoUserButton.setBackground(new java.awt.Color(102, 102, 102));
+        edicaoUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        edicaoUserButton.setForeground(new java.awt.Color(0, 0, 0));
+        edicaoUserButton.setText("Edição de Usuario");
+        edicaoUserButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        edicaoUserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edicaoUserButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout kGradientPanel2Layout = new javax.swing.GroupLayout(kGradientPanel2);
         kGradientPanel2.setLayout(kGradientPanel2Layout);
         kGradientPanel2Layout.setHorizontalGroup(
@@ -151,7 +169,8 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(AvaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CadLivroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(CadLivroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(edicaoUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         kGradientPanel2Layout.setVerticalGroup(
@@ -163,7 +182,9 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
                 .addComponent(CadLivroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(AvaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 559, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(edicaoUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 533, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
@@ -293,6 +314,36 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnEncerrarSessaoActionPerformed
 
+    private void edicaoUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edicaoUserButtonActionPerformed
+
+        UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
+        Usuario user = new Usuario();
+        Endereco endereco = new Endereco();
+        Favoritos favoritos = new Favoritos();
+        Telefone telefone = new Telefone();
+
+        // Solicita o nome do usuário ao usuário
+        String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:");
+
+        // Verifica se o usuário inseriu um nome
+        if (userNome != null && !userNome.isEmpty()) {
+            // Obtém o usuário com base no nome fornecido
+            user = userdao.obterUsuarioPorNome(userNome);
+
+            // Verifica se o usuário foi encontrado
+            if (user.getUserId() != 0) {
+                // Abre a tela de edição com os dados do usuário
+                EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
+                edicaoUsuarioFrame.setVisible(true);
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Digite um nome de usuário válido", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_edicaoUserButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -345,6 +396,7 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
     private javax.swing.JPanel MenuLateral;
     private javax.swing.JPanel MenuPrincipal;
     private javax.swing.JButton btnEncerrarSessao;
+    private javax.swing.JButton edicaoUserButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
