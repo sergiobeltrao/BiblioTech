@@ -69,7 +69,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
             modelo.addRow(new Object[]{
                 l.getTitulo(),
-                l.getAutor().getNome(),
                 l.getIsbn(),
                 l.getAnoDePublicacao(),
                 l.getNumeroDePaginas(),
@@ -316,11 +315,11 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Título", "Autor", "ISBN", "Ano", "Nº de Páginas", "Categoria", "Sub-categoria", "Idioma", "Editora"
+                "Título", "ISBN", "Ano", "Nº de Páginas", "Categoria", "Sub-categoria", "Idioma", "Editora"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
