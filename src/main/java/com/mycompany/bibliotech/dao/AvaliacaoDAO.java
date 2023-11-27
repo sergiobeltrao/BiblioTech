@@ -2,6 +2,7 @@ package com.mycompany.bibliotech.dao;
 
 import com.mycompany.bibliotech.connection.ConnectionFactory;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
+import com.mycompany.bibliotech.model.bean.ContagemAvaliacoesLivro;
 import com.mycompany.bibliotech.model.bean.Livro;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -146,6 +147,32 @@ public class AvaliacaoDAO {
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }
+    }
+
+    // Para o retorno dos dados do banco na jTable
+    public List<ContagemAvaliacoesLivro> numeroDeNotasPorLivro() {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        List<ContagemAvaliacoesLivro> contagens = new ArrayList<>();
+
+        try {
+            stmt = con.prepareStatement("SELECT L.LIV_NOME_LIVRO, COUNT(*) AS QUANTIDADE_DE_AVALIACOES FROM AVALIACAO A JOIN LIVRO L ON A.AVA_FK_LIVRO = L.ID_LIVRO GROUP BY L.LIV_NOME_LIVRO ORDER BY QUANTIDADE_DE_AVALIACOES DESC");
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                ContagemAvaliacoesLivro contagem = new ContagemAvaliacoesLivro();
+                contagem.setNomeLivro(rs.getString("LIV_NOME_LIVRO"));
+                contagem.setQuantidadeAvaliacoes(rs.getInt("QUANTIDADE_DE_AVALIACOES"));
+                contagens.add(contagem);
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return contagens;
     }
 
 }

@@ -106,14 +106,12 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
         kGradientPanel2.setkStartColor(new java.awt.Color(102, 102, 102));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Menu");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 0, 0)));
 
         AvaButton1.setBackground(new java.awt.Color(102, 102, 102));
         AvaButton1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        AvaButton1.setForeground(new java.awt.Color(0, 0, 0));
         AvaButton1.setText("Avaliação");
         AvaButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         AvaButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +122,6 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
 
         btnEncerrarSessao.setBackground(new java.awt.Color(102, 102, 102));
         btnEncerrarSessao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnEncerrarSessao.setForeground(new java.awt.Color(0, 0, 0));
         btnEncerrarSessao.setText("Encerrar Sessão");
         btnEncerrarSessao.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnEncerrarSessao.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +132,6 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
 
         CadLivroButton.setBackground(new java.awt.Color(102, 102, 102));
         CadLivroButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        CadLivroButton.setForeground(new java.awt.Color(0, 0, 0));
         CadLivroButton.setText("Cadastro de Livros");
         CadLivroButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         CadLivroButton.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +142,6 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
 
         edicaoUserButton.setBackground(new java.awt.Color(102, 102, 102));
         edicaoUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        edicaoUserButton.setForeground(new java.awt.Color(0, 0, 0));
         edicaoUserButton.setText("Edição de Usuario");
         edicaoUserButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         edicaoUserButton.addActionListener(new java.awt.event.ActionListener() {
@@ -212,7 +207,6 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
 
         jList1.setBackground(new java.awt.Color(204, 204, 204));
         jList1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jList1.setForeground(new java.awt.Color(0, 0, 0));
         jList1.setToolTipText("");
         jScrollPane1.setViewportView(jList1);
 
@@ -223,7 +217,6 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
 
         jList2.setBackground(new java.awt.Color(204, 204, 204));
         jList2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jList2.setForeground(new java.awt.Color(0, 0, 0));
         jScrollPane2.setViewportView(jList2);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
