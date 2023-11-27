@@ -122,21 +122,49 @@ public class ExcluirUserDAO {
 }
 
 private void excluirRegistrosRelacionados(Connection conexao, int userId) throws SQLException {
-    // Log para verificar o valor de USE_ID
-    System.out.println("Excluindo registros relacionados para USE_ID: " + userId);
+    try {
+        conexao.setAutoCommit(false);
 
-    // Consulta SQL para excluir registros relacionados
-    String sqlDeleteRelacionados = "DELETE EU, E, TU, T, F "
-                                 + "FROM ENDERECO_USUARIO EU "
-                                 + "LEFT JOIN ENDERECO E ON EU.ENDERECO_CHAVE = E.END_ID "
-                                 + "LEFT JOIN TELEFONE_USUARIO TU ON EU.ENDERECO_USER = TU.TELEFONE_USER "
-                                 + "LEFT JOIN TELEFONE T ON TU.TELEFONE_FONE = T.TEL_ID "
-                                 + "LEFT JOIN FAVORITO F ON EU.ENDERECO_USER = F.FAV_USUARIO "
-                                 + "WHERE EU.ENDERECO_USER = ?";
-    PreparedStatement statement = conexao.prepareStatement(sqlDeleteRelacionados);
-    statement.setInt(1, userId);
-    statement.executeUpdate();
+
+
+        String sqlDeleteEndereçoUser = "DELETE FROM ENDERECO_USUARIO WHERE ENDERECO_USER = ?";
+        PreparedStatement statementEndUser = conexao.prepareStatement(sqlDeleteEndereçoUser);
+        statementEndUser.setInt(1, userId);
+        statementEndUser.executeUpdate();
+        String sqlDeleteTelefoneUser = "DELETE FROM TELEFONE_USUARIO WHERE TELEFONE_USER = ?";
+        PreparedStatement statementTelUser = conexao.prepareStatement(sqlDeleteTelefoneUser);
+        statementTelUser.setInt(1, userId);
+        statementTelUser.executeUpdate();
+         String sqlDeleteFavorito = "DELETE FROM FAVORITO WHERE FAV_ID_USUARIO = ?";
+        PreparedStatement statementfavorito = conexao.prepareStatement(sqlDeleteFavorito);
+        statementfavorito.setInt(1, userId);
+        statementfavorito.executeUpdate();
+        String sqlDeleteAvaliacao = "DELETE FROM AVALIACAO WHERE AVA_ID_USUARIO = ?";
+        PreparedStatement statementAvaliacao = conexao.prepareStatement(sqlDeleteAvaliacao);
+        statementAvaliacao.setInt(1, userId);
+        statementAvaliacao.executeUpdate();
+
+      /*  // Excluir registros de outras tabelas relacionadas (END, TEL, FAV, etc.)
+        String sqlDeleteRelacionados = "DELETE EU, E, TU, T, F "
+                + "FROM ENDERECO_USUARIO EU "
+                + "LEFT JOIN ENDERECO E ON EU.ENDERECO_CHAVE = E.END_ID "
+                + "LEFT JOIN TELEFONE_USUARIO TU ON EU.ENDERECO_USER = TU.TELEFONE_USER "
+                + "LEFT JOIN TELEFONE T ON TU.TELEFONE_FONE = T.TEL_ID "
+                + "LEFT JOIN FAVORITO F ON EU.ENDERECO_USER = F.FAV_ID_USUARIO "
+                + "WHERE EU.ENDERECO_USER = ?";
+        PreparedStatement statementRelacionados = conexao.prepareStatement(sqlDeleteRelacionados);
+        statementRelacionados.setInt(1, userId);
+        statementRelacionados.executeUpdate();*/
+
+        conexao.commit();
+    } catch (SQLException e) {
+        conexao.rollback();
+        throw e;
+    } finally {
+        conexao.setAutoCommit(true);
+    }
 }
+
 
 
 

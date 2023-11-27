@@ -10,6 +10,7 @@ import com.mycompany.bibliotech.model.bean.Telefone;
 import com.mycompany.bibliotech.dao.FavoritosDAO;
 import com.mycompany.bibliotech.model.bean.Favoritos;
 import com.mycompany.bibliotech.dao.CpfDAO;
+import com.mycompany.bibliotech.dao.ExcluirUserDAO;
 import com.mycompany.bibliotech.dao.UsuarioLoginDAO;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
 import com.mycompany.bibliotech.model.bean.Hash;
@@ -911,7 +912,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     Telefone telefone = new Telefone();
     
     // Solicita o nome do usuário ao usuário
-    String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:");
+    String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:","Edição de Usuario", JOptionPane.QUESTION_MESSAGE);
 
    // Verifica se o usuário inseriu um nome
     if (userNome != null && !userNome.isEmpty()) {
@@ -951,9 +952,9 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     private void ExcluirUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirUserButtonActionPerformed
         
         // Implementação Bruno
-        // ExcluirUserDAO ex = new ExcluirUserDAO();
-        // ex.mostrarEExcluirUsuario();
-        // Cria a instância o UsuarioDAO
+         ExcluirUserDAO ex = new ExcluirUserDAO();
+         ex.mostrarEExcluirUsuario();
+     /*   // Cria a instância o UsuarioDAO
         UsuarioCadastroDAO usercadastrodao = new UsuarioCadastroDAO();
         // Cria a combobox
         JComboBox<String> userList = new JComboBox<>();
@@ -986,7 +987,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                 usercadastrodao.excluirUsuario(selectedUser);
                 JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso!");
             }
-        }
+        }*/
     }//GEN-LAST:event_ExcluirUserButtonActionPerformed
 
     private void edicaoUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edicaoUserButtonActionPerformed
@@ -998,7 +999,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     Telefone telefone = new Telefone();
     
     // Solicita o nome do usuário ao usuário
-    String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:");
+    String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:","Edição de Usuario", JOptionPane.QUESTION_MESSAGE);
 
    // Verifica se o usuário inseriu um nome
     if (userNome != null && !userNome.isEmpty()) {
