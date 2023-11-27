@@ -777,7 +777,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                           <Component id="txtMenuPrincipal" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="79" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="83" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -810,13 +810,13 @@
                   <Component id="CadUserButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="CadLivroButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="ExcluirUserButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="edicaoUserButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="AvaButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="245" max="32767" attributes="0"/>
+                  <EmptySpace pref="280" max="32767" attributes="0"/>
                   <Component id="btnEncerrarSessao" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               </Group>

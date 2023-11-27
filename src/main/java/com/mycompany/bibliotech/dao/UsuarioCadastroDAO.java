@@ -165,7 +165,7 @@ public class UsuarioCadastroDAO {
                     + "LEFT JOIN ENDERECO E ON EU.ENDERECO_CHAVE = E.END_ID "
                     + "LEFT JOIN TELEFONE_USUARIO TU ON U.USE_ID = TU.TELEFONE_USER "
                     + "LEFT JOIN TELEFONE T ON TU.TELEFONE_FONE = T.TEL_ID "
-                    + "LEFT JOIN FAVORITO F ON U.USE_ID = F.FAV_USUARIO "
+                    + "LEFT JOIN FAVORITO F ON U.USE_ID = F.FAV_ID_USUARIO "
                     + "WHERE U.USE_NICK = ?";
 
             stmt = con.prepareStatement(sql);
@@ -205,12 +205,12 @@ public class UsuarioCadastroDAO {
                 // Configure os outros campos de telefone
 
                 Favoritos favoritos = new Favoritos();
-                favoritos.setId(resultSet.getInt("ID"));
+                //favoritos.setId(resultSet.getInt("ID"));
                 favoritos.setFavCategoria1(resultSet.getString("FAV_CATEGORIA1"));
                 favoritos.setFavSub1(resultSet.getString("FAV_SUB1"));
                 favoritos.setFavCategoria2(resultSet.getString("FAV_CATEGORIA2"));
                 favoritos.setFavSub2(resultSet.getString("FAV_SUB2"));
-                favoritos.setFavUsuario(resultSet.getInt("FAV_USUARIO"));
+                favoritos.setFavUsuario(resultSet.getInt("FAV_ID_USUARIO"));
 
                 user.setEndereco(endereco);
                 user.setTelefone(telefone);

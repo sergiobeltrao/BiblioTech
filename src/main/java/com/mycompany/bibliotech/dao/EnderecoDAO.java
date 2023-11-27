@@ -98,7 +98,7 @@ public class EnderecoDAO {
 "LEFT JOIN ENDERECO E ON EU.ENDERECO_CHAVE = E.END_ID\n" +
 "LEFT JOIN TELEFONE_USUARIO TU ON U.USE_ID = TU.TELEFONE_USER\n" +
 "LEFT JOIN TELEFONE T ON TU.TELEFONE_FONE = T.TEL_ID\n" +
-"LEFT JOIN FAVORITO F ON U.USE_ID = F.FAV_USUARIO WHERE USE_ID = ?";
+"LEFT JOIN FAVORITO F ON U.USE_ID = F.FAV_ID_USUARIO WHERE USE_ID = ?";
             stmt = con.prepareStatement(consultaEnderecoExistenteSQL);
             stmt.setString(1, userId);
             ResultSet resultadoEnderecoExistente = stmt.executeQuery();

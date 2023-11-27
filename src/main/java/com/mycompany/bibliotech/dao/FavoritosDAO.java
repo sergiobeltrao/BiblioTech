@@ -33,7 +33,7 @@ public class FavoritosDAO {
             }
            
             // Faz o insert na tabela FAVORITO
-            stmt = con.prepareStatement("INSERT INTO FAVORITO (ID, FAV_CATEGORIA1, FAV_SUB1, FAV_CATEGORIA2, FAV_SUB2, FAV_USUARIO) VALUES(NULL, ?, ?, ?, ?, ?)");
+            stmt = con.prepareStatement("INSERT INTO FAVORITO (FAV_CATEGORIA1, FAV_SUB1, FAV_CATEGORIA2, FAV_SUB2, FAV_ID_USUARIO) VALUES(?, ?, ?, ?, ?)");
 
             stmt.setString(1, fav.getFavCategoria1());
             stmt.setString(2, fav.getFavSub1());
@@ -63,7 +63,7 @@ public class FavoritosDAO {
 
         con.setAutoCommit(false);  // Desativa o autocommit
         
-        String consultSQL = "SELECT ID FROM FAVORITO WHERE FAV_USUARIO = ?";
+        /*String consultSQL = "SELECT ID FROM FAVORITO WHERE FAV_USUARIO = ?";
             stmt = con.prepareStatement(consultSQL);
             stmt.setInt(1, Integer.parseInt(userId));
             ResultSet resultad = stmt.executeQuery();
@@ -75,10 +75,10 @@ public class FavoritosDAO {
             } else {
                 JOptionPane.showMessageDialog(null, "Erro ao consultar ID para tabela de favorito");
                 return;  // Encerre o método se não encontrar o usuário
-            }
+            }*/
         
         // Prepare SQL statement
-        stmt = con.prepareStatement("UPDATE FAVORITO SET FAV_CATEGORIA1=?, FAV_SUB1=?, FAV_CATEGORIA2=?, FAV_SUB2=?, FAV_USUARIO=? WHERE ID=?");
+        stmt = con.prepareStatement("UPDATE FAVORITO SET FAV_CATEGORIA1=?, FAV_SUB1=?, FAV_CATEGORIA2=?, FAV_SUB2=? WHERE FAV_ID_USUARIO=?");
 
         // Set values for SQL statement
         stmt.setString(1, fav.getFavCategoria1());
@@ -86,7 +86,7 @@ public class FavoritosDAO {
         stmt.setString(3, fav.getFavCategoria2());
         stmt.setString(4, fav.getFavSub2());
         stmt.setInt(5, Integer.parseInt(userId));
-        stmt.setInt(6, favId);
+        //stmt.setInt(6, favId);
 
         int affectedRows = stmt.executeUpdate();
 

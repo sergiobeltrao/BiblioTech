@@ -4,20 +4,20 @@ package com.mycompany.bibliotech.model.bean;
 public class Favoritos {
     
 
-    private int id;
+   // private int id;
     private String favCategoria1;
     private String favSub1;
     private String favCategoria2;
     private String favSub2;
     private int favUsuario;
 
-    public int getId() {
+    /*public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
+    }*/
 
     public String getFavCategoria1() {
         return favCategoria1;
