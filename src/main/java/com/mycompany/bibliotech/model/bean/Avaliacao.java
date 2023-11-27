@@ -1,6 +1,12 @@
 package com.mycompany.bibliotech.model.bean;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 public class Avaliacao {
 
@@ -23,7 +29,35 @@ public class Avaliacao {
     private String txtIsbn;
     private String txtNomeLivro;
     private String txtNotaMax;
-    /* private jLabel imagemLivro; */
+
+    public Avaliacao(byte[] imagemLivro) {
+        this.imagemLivro = imagemLivro;
+    }
+
+    
+    public ImageIcon getImagemLivroAsIcon(int width, int height) {
+    if (imagemLivro != null) {
+        try {
+            BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(imagemLivro));
+            Image scaledImage = bufferedImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+            return new ImageIcon(scaledImage);
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Lide com a exceção de leitura da imagem, se necessário
+        }
+    }
+    return null;
+}
+    
+    public byte[] getImagemLivro() {
+        return imagemLivro;
+    }
+
+    public void setImagemLivro(byte[] imagemLivro) {
+        this.imagemLivro = imagemLivro;
+    }
+    
+    private byte[] imagemLivro;
     private FileInputStream fis;
     private int tamanho;
 

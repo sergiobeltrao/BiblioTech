@@ -42,7 +42,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
                     String pesquisar = cboxNomeLivro.getSelectedItem().toString();
                     if (pesquisar != null && !pesquisar.isEmpty()) {
                         TelaAvaliacaoDAO taDAO = new TelaAvaliacaoDAO();
-                        Avaliacao pes = taDAO.find(pesquisar);
+                        Avaliacao pes = taDAO.find(pesquisar, imagemLivro);
                         setPesquisarValues(pes);
                     }
                 } catch (SQLException ex) {
@@ -54,7 +54,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
 
         cboxAlfabeto.setForeground(new java.awt.Color(0, 0, 0));
         cboxAlfabeto.addItem("");
-        cboxAlfabeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Alfabeto", "A", "B", "C",
+        cboxAlfabeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Selecione", "A", "B", "C",
             "D", "E", "F", "J", "F", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"}));
         cboxNomeLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,9 +63,9 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         });
 
         listarCategorias();
-        String caminhoImagem = "BiblioTech\\src\\main\\resources\\imagem"; 
-        ImageIcon imagemIcon = new ImageIcon(caminhoImagem);
-        imagemLivro.setIcon(imagemIcon);
+        
+        
+    
 
     }
 
@@ -78,7 +78,13 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             txtNomeAutor.setText(avaliacao.getTxtNomeAutor());
             txtPaginas.setText(String.valueOf(avaliacao.getTxtPaginas()));
             txtNotaMax.setText(avaliacao.getTxtNotaMax());
+<<<<<<< Updated upstream
            // imagemLivro.setIcon(foto);
+=======
+            ImageIcon foto = new ImageIcon(getClass().getResource("BiblioTech\\src\\main\\resources\\imagem"));
+            imagemLivro.setIcon(foto);
+            
+>>>>>>> Stashed changes
         }
 
     }
@@ -275,6 +281,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         imagemLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        imagemLivro.setIcon(imagemLivro.getIcon());
         imagemLivro.setToolTipText("Imagem do livro escolhido");
         imagemLivro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 

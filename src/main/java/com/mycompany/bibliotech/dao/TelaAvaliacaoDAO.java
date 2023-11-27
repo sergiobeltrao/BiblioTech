@@ -5,6 +5,7 @@ import com.mycompany.bibliotech.model.bean.Avaliacao;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,6 +15,7 @@ import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class TelaAvaliacaoDAO {
@@ -139,7 +141,7 @@ public class TelaAvaliacaoDAO {
 
     }
 
-    public Avaliacao find(String pesquisar) throws SQLException {
+    public Avaliacao find(String pesquisar, JLabel imagemLivro) throws SQLException {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -179,18 +181,17 @@ public class TelaAvaliacaoDAO {
                 pes.setTxtNomeAutor(rs.getString("AUT_NOME_AUTOR"));
                 pes.setTxtNotaMax("Nota: " + rs.getString("MEDIA_NOTA"));
 
-                Blob blob = (Blob) rs.getBlob("LIV_IMAGEM");
+                 Blob blob = (Blob) rs.getBlob("LIV_IMAGEM");
                 byte[] img = blob.getBytes(1, (int) blob.length());
-                BufferedImage imagem = null;
                 try {
-                    imagem = ImageIO.read(new ByteArrayInputStream(img));
+                    BufferedImage imagem = ImageIO.read(new ByteArrayInputStream(img));
+                    ImageIcon icone = new ImageIcon(imagem);
+                    Icon foto = new ImageIcon(icone.getImage().getScaledInstance(imagemLivro.getWidth(), imagemLivro.getHeight(), Image.SCALE_SMOOTH));
+                    imagemLivro.setIcon(foto);
 
-                } catch (Exception e) {
+                } catch (IOException e) {
                     JOptionPane.showMessageDialog(null, "Erro ao buscar imagem. " + e.getMessage());
                 }
-                ImageIcon icone = new ImageIcon(imagem);
-               /* Icon foto = new ImageIcon(icone.getImage().getScaledInstance(imagemLivro.getWidth(), imagemLivro.getHeigth(), Image.SCALE_SMOOTH)); */
-
                 return pes;
 
             } else {
