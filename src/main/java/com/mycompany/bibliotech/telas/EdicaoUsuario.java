@@ -15,6 +15,7 @@ import com.mycompany.bibliotech.model.bean.Avaliacao;
 import com.mycompany.bibliotech.model.bean.Hash;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
+import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -36,6 +37,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class EdicaoUsuario extends javax.swing.JFrame {
+ 
 
     public EdicaoUsuario(Usuario user, Endereco endereco, Telefone telefone, Favoritos favoritos) {
        
@@ -47,6 +49,17 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         setTelefoneValues(user.getTelefone());
         setFavoritosValues(user.getFavoritos());
         idLabel.setVisible(false);
+        UsuarioLoginDAO usuarioLoginDao = new UsuarioLoginDAO();
+
+        if (usuarioLoginDao.tipoDoUsuarioLogado()) {
+            CadUserButton.setVisible(true);
+            ExcluirUserButton.setVisible(true);
+        } else {
+            CadUserButton.setVisible(false);
+            ExcluirUserButton.setVisible(false);
+            
+        }
+        //configurarBotoesComBaseNoUsuario();
        
     }
     private void setUserValues(Usuario user) {
@@ -86,8 +99,8 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         cboxSubCategoria1.setSelectedItem(favoritos.getFavSub1());
         cboxCategoria2.setSelectedItem(favoritos.getFavCategoria2());
         cboxSubCategoria2.setSelectedItem(favoritos.getFavSub2());
+         }
     }
-}
     
 
     @SuppressWarnings("unchecked")
@@ -936,7 +949,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEncerrarSessaoActionPerformed
 
     private void ExcluirUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirUserButtonActionPerformed
-
+        
         // Implementação Bruno
         // ExcluirUserDAO ex = new ExcluirUserDAO();
         // ex.mostrarEExcluirUsuario();
