@@ -141,7 +141,7 @@ public class TelaAvaliacaoDAO {
 
     }
 
-    public Avaliacao find(String pesquisar, JLabel imagemLivro) throws SQLException {
+    public Avaliacao find(String pesquisar) throws SQLException {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -164,7 +164,7 @@ public class TelaAvaliacaoDAO {
                 JOptionPane.showMessageDialog(null, "Erro ao consultar ID_LIVRO para tabela de livro");
             }
 
-            String sql = "SELECT L.LIV_PAGINA, L.LIV_EDITORA, L.LIV_ISBN, L.LIV_ANO, L.LIV_IMAGEM, L.LIV_IDIOMA, A.AUT_NOME_AUTOR,\n"
+            String sql = "SELECT L.LIV_PAGINA, L.LIV_EDITORA, L.LIV_ISBN, L.LIV_ANO, L.LIV_IDIOMA, A.AUT_NOME_AUTOR,\n"
                     + "ROUND(AVG(AV.AVA_USUARIO), 1) AS MEDIA_NOTA FROM LIVRO L JOIN LIVRO_AUTOR LA ON L.ID_LIVRO = LA.LIVRO_CHAVE\n"
                     + "JOIN AUTOR A ON LA.LIVRO_AUTOR = A.ID_AUTOR LEFT JOIN AVALIACAO AV ON L.ID_LIVRO = AV.AVA_FK_LIVRO\n"
                     + "WHERE L.ID_LIVRO = ? GROUP BY L.ID_LIVRO, A.AUT_NOME_AUTOR";
@@ -181,7 +181,7 @@ public class TelaAvaliacaoDAO {
                 pes.setTxtNomeAutor(rs.getString("AUT_NOME_AUTOR"));
                 pes.setTxtNotaMax("Nota: " + rs.getString("MEDIA_NOTA"));
 
-                 Blob blob = (Blob) rs.getBlob("LIV_IMAGEM");
+                 /*Blob blob = (Blob) rs.getBlob("LIV_IMAGEM");
                 byte[] img = blob.getBytes(1, (int) blob.length());
                 try {
                     BufferedImage imagem = ImageIO.read(new ByteArrayInputStream(img));
@@ -192,7 +192,7 @@ public class TelaAvaliacaoDAO {
                 } catch (IOException e) {
                     JOptionPane.showMessageDialog(null, "Erro ao buscar imagem. " + e.getMessage());
                 }
-                return pes;
+                return pes;*/
 
             } else {
                 System.out.println(pesquisar + " erro dao find");

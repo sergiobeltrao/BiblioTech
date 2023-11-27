@@ -2,6 +2,7 @@ package com.mycompany.bibliotech.telas;
 
 import com.mycompany.bibliotech.dao.AvaliacaoDAO;
 import com.mycompany.bibliotech.dao.ExcluirUserDAO;
+import com.mycompany.bibliotech.dao.ImagemDAO;
 import com.mycompany.bibliotech.dao.LivroCategoriaDAO;
 import com.mycompany.bibliotech.dao.TelaAvaliacaoDAO;
 import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;
@@ -24,8 +25,10 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     public TelaAvaliacao(Avaliacao avaliacao) {
         initComponents();
         setPesquisarValues(avaliacao);
-        UsuarioLoginDAO usuarioLoginDao = new UsuarioLoginDAO();
+         UsuarioLoginDAO usuarioLoginDao = new UsuarioLoginDAO();
 
+              
+        
         if (usuarioLoginDao.tipoDoUsuarioLogado()) {
             CadUserButton.setVisible(true);
             ExcluirUserButton.setVisible(true);
@@ -42,7 +45,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
                     String pesquisar = cboxNomeLivro.getSelectedItem().toString();
                     if (pesquisar != null && !pesquisar.isEmpty()) {
                         TelaAvaliacaoDAO taDAO = new TelaAvaliacaoDAO();
-                        Avaliacao pes = taDAO.find(pesquisar, imagemLivro);
+                        Avaliacao pes = taDAO.find(pesquisar);
                         setPesquisarValues(pes);
                     }
                 } catch (SQLException ex) {
@@ -54,7 +57,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
 
         cboxAlfabeto.setForeground(new java.awt.Color(0, 0, 0));
         cboxAlfabeto.addItem("");
-        cboxAlfabeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Selecione", "A", "B", "C",
+        cboxAlfabeto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"", "A", "B", "C",
             "D", "E", "F", "J", "F", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"}));
         cboxNomeLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,13 +81,13 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             txtNomeAutor.setText(avaliacao.getTxtNomeAutor());
             txtPaginas.setText(String.valueOf(avaliacao.getTxtPaginas()));
             txtNotaMax.setText(avaliacao.getTxtNotaMax());
-<<<<<<< Updated upstream
+/*new<<<<<<< Updated upstream
            // imagemLivro.setIcon(foto);
 =======
             ImageIcon foto = new ImageIcon(getClass().getResource("BiblioTech\\src\\main\\resources\\imagem"));
             imagemLivro.setIcon(foto);
             
->>>>>>> Stashed changes
+>>>>>>> Stashed changes*/
         }
 
     }
@@ -281,7 +284,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         imagemLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        imagemLivro.setIcon(imagemLivro.getIcon());
+        imagemLivro.setIcon(btnBuscar.getSelectedIcon());
         imagemLivro.setToolTipText("Imagem do livro escolhido");
         imagemLivro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
@@ -643,7 +646,17 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         String buscaCategorias = cboxCategoriaBusca.getSelectedItem().toString();
         String buscaSubCategorias = cboxSubCategoriaBusca.getSelectedItem().toString();
         String buscaAlfabeto = cboxAlfabeto.getSelectedItem().toString();
-
+        
+        ImagemDAO imagemDAO = new ImagemDAO();
+        int imagemId = 1; // Substitua pelo ID da imagem desejada
+        byte[] imagem = imagemDAO.selecionarImagem(imagemId);
+        
+        if (imagem != null) {
+        // Faça o processamento ou exibição da imagem conforme necessário
+             System.out.println("Imagem selecionada com sucesso.");
+        } else {
+           System.out.println("Imagem não encontrada.");
+        }
         if (!busca.isEmpty() && buscaAlfabeto.isEmpty()) {
             // Busca simples por uma parte do nome
             TelaAvaliacaoDAO.listaFiltrada(cboxNomeLivro, busca);

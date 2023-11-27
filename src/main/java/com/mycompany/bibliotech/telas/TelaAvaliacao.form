@@ -543,7 +543,7 @@
               <Font name="Segoe UI" size="13" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection component="imagemLivro" name="getIcon" type="method"/>
+              <Connection component="btnBuscar" name="getSelectedIcon" type="method"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Imagem do livro escolhido"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
