@@ -20,6 +20,8 @@ import javax.swing.JOptionPane;
 
 public class TelaAvaliacaoDAO {
 
+    private static final String DIRETORIO_IMAGENS = ".\\src\\main\\resources\\imagem\\OSegredodasEstrelas.jpeg";
+
     // Mostrar todos os livros. Sem filtrar.
     public static void listaTituloDosLivros(JComboBox<String> comboBox) {
         try {
@@ -141,74 +143,68 @@ public class TelaAvaliacaoDAO {
 
     }
 
-    public Avaliacao find(String pesquisar) throws SQLException {
-        Connection con = ConnectionFactory.getConnection();
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
+    public Avaliacao find(String pesquisar, JLabel imagemLivro) throws SQLException {
+        try (Connection con = ConnectionFactory.getConnection(); PreparedStatement stmtConsultaId = con.prepareStatement("SELECT ID_LIVRO FROM LIVRO WHERE LIV_NOME_LIVRO = ?"); PreparedStatement stmtLivro = con.prepareStatement("SELECT L.LIV_PAGINA, L.LIV_EDITORA, L.LIV_ISBN, L.LIV_ANO, L.LIV_IDIOMA, A.AUT_NOME_AUTOR, ROUND(AVG(AV.AVA_USUARIO), 1) AS MEDIA_NOTA, L.LIV_IMAGEM FROM LIVRO L JOIN LIVRO_AUTOR LA ON L.ID_LIVRO = LA.LIVRO_CHAVE JOIN AUTOR A ON LA.LIVRO_AUTOR = A.ID_AUTOR LEFT JOIN AVALIACAO AV ON L.ID_LIVRO = AV.AVA_FK_LIVRO WHERE L.ID_LIVRO = ? GROUP BY L.ID_LIVRO, A.AUT_NOME_AUTOR");) {
+            stmtConsultaId.setString(1, pesquisar);
+            try (ResultSet resultado = stmtConsultaId.executeQuery()) {
+                int livroId = 0;
 
-        try {
-            if (con == null) {
-                throw new SQLException("Não foi possível conectar ao banco de dados.");
-            }
-            // Pega o ID_LIVRO que está sendo cadastrado
-            String consultaSQL = "SELECT ID_LIVRO FROM LIVRO WHERE LIV_NOME_LIVRO = ?";
-            stmt = con.prepareStatement(consultaSQL);
-            stmt.setString(1, pesquisar);
-            ResultSet resultado = stmt.executeQuery();
-            int livroId = 0;
-
-            // Verifica se há resultados
-            if (resultado.next()) {
-                livroId = resultado.getInt("ID_LIVRO");
-            } else {
-                JOptionPane.showMessageDialog(null, "Erro ao consultar ID_LIVRO para tabela de livro");
-            }
-
-            String sql = "SELECT L.LIV_PAGINA, L.LIV_EDITORA, L.LIV_ISBN, L.LIV_ANO, L.LIV_IDIOMA, A.AUT_NOME_AUTOR,\n"
-                    + "ROUND(AVG(AV.AVA_USUARIO), 1) AS MEDIA_NOTA FROM LIVRO L JOIN LIVRO_AUTOR LA ON L.ID_LIVRO = LA.LIVRO_CHAVE\n"
-                    + "JOIN AUTOR A ON LA.LIVRO_AUTOR = A.ID_AUTOR LEFT JOIN AVALIACAO AV ON L.ID_LIVRO = AV.AVA_FK_LIVRO\n"
-                    + "WHERE L.ID_LIVRO = ? GROUP BY L.ID_LIVRO, A.AUT_NOME_AUTOR";
-            stmt = con.prepareStatement(sql);
-            stmt.setInt(1, livroId);
-            rs = stmt.executeQuery();
-            if (rs.next()) {
-                Avaliacao pes = new Avaliacao();
-                pes.setTxtPaginas(rs.getInt("LIV_PAGINA"));
-                pes.setTxtEditora(rs.getString("LIV_EDITORA"));
-                pes.setTxtIsbn(rs.getString("LIV_ISBN"));
-                pes.setTxtAno(rs.getInt("LIV_ANO"));
-                pes.setTxtIdioma(rs.getString("LIV_IDIOMA"));
-                pes.setTxtNomeAutor(rs.getString("AUT_NOME_AUTOR"));
-                pes.setTxtNotaMax("Nota: " + rs.getString("MEDIA_NOTA"));
-
-                 /*Blob blob = (Blob) rs.getBlob("LIV_IMAGEM");
-                byte[] img = blob.getBytes(1, (int) blob.length());
-                try {
-                    BufferedImage imagem = ImageIO.read(new ByteArrayInputStream(img));
-                    ImageIcon icone = new ImageIcon(imagem);
-                    Icon foto = new ImageIcon(icone.getImage().getScaledInstance(imagemLivro.getWidth(), imagemLivro.getHeight(), Image.SCALE_SMOOTH));
-                    imagemLivro.setIcon(foto);
-
-                } catch (IOException e) {
-                    JOptionPane.showMessageDialog(null, "Erro ao buscar imagem. " + e.getMessage());
+                if (resultado.next()) {
+                    livroId = resultado.getInt("ID_LIVRO");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Erro ao consultar ID_LIVRO para tabela de livro");
                 }
-                return pes;*/
 
-            } else {
-                System.out.println(pesquisar + " erro dao find");
-                JOptionPane.showMessageDialog(null, "erro no dao findDAO");
+                stmtLivro.setInt(1, livroId);
+                try (ResultSet rs = stmtLivro.executeQuery()) {
+                    if (rs.next()) {
+                        Avaliacao pes = new Avaliacao();
+                        pes.setTxtPaginas(rs.getInt("LIV_PAGINA"));
+                        pes.setTxtEditora(rs.getString("LIV_EDITORA"));
+                        pes.setTxtIsbn(rs.getString("LIV_ISBN"));
+                        pes.setTxtAno(rs.getInt("LIV_ANO"));
+                        pes.setTxtIdioma(rs.getString("LIV_IDIOMA"));
+                        pes.setTxtNomeAutor(rs.getString("AUT_NOME_AUTOR"));
+                        pes.setTxtNotaMax("Nota: " + rs.getString("MEDIA_NOTA"));
+                        byte[] imagemBytes = rs.getBytes("LIV_IMAGEM");
+                        pes.setImagemLivro(new ImageIcon(imagemBytes));
+
+                        try {
+                            // Obtém o ImageIcon da avaliação
+                            ImageIcon imagemIcon = pes.getImagemLivro();
+
+                            if (imagemIcon != null) {
+                                // Obtém a imagem do ImageIcon
+                                Image imagem = imagemIcon.getImage();
+
+                                // Redimensiona a imagem conforme necessário (ajuste os valores de largura e altura)
+                                Image imagemRedimensionada = imagem.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+
+                                // Cria um novo ImageIcon com a imagem redimensionada
+                                ImageIcon imagemIconRedimensionada = new ImageIcon(imagemRedimensionada);
+
+                                // Define o ícone na JLabel (ou onde quer que você esteja usando isso)
+                                imagemLivro.setIcon(imagemIconRedimensionada);
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Imagem não encontrada. ImageIcon é nulo.");
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace(); // Isso imprimirá a pilha de exceção completa no console
+                            JOptionPane.showMessageDialog(null, "Erro ao buscar/imagem. " + e.getMessage());
+                        }
+
+                        return pes;
+                    } else {
+                        System.out.println(pesquisar + " erro dao find");
+                        JOptionPane.showMessageDialog(null, "erro no dao findDAO");
+                    }
+                }
             }
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro no catch do findDAO: " + ex.getMessage());
-            ex.printStackTrace();
-
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            ConnectionFactory.closeConnection(con, stmt);
+            throw ex; // Lança a exceção para ser tratada em um nível superior, se necessário
         }
         return null;
     }
+
 }

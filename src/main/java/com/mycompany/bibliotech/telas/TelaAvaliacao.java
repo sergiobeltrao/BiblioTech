@@ -45,7 +45,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
                     String pesquisar = cboxNomeLivro.getSelectedItem().toString();
                     if (pesquisar != null && !pesquisar.isEmpty()) {
                         TelaAvaliacaoDAO taDAO = new TelaAvaliacaoDAO();
-                        Avaliacao pes = taDAO.find(pesquisar);
+                        Avaliacao pes = taDAO.find(pesquisar, imagemLivro);
                         setPesquisarValues(pes);
                     }
                 } catch (SQLException ex) {
@@ -81,6 +81,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             txtNomeAutor.setText(avaliacao.getTxtNomeAutor());
             txtPaginas.setText(String.valueOf(avaliacao.getTxtPaginas()));
             txtNotaMax.setText(avaliacao.getTxtNotaMax());
+            imagemLivro.setIcon(avaliacao.getImagemLivro());
 /*new<<<<<<< Updated upstream
            // imagemLivro.setIcon(foto);
 =======

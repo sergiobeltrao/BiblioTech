@@ -29,8 +29,17 @@ public class Avaliacao {
     private String txtIsbn;
     private String txtNomeLivro;
     private String txtNotaMax;
+    private ImageIcon imagemLivro;
+    
+    public ImageIcon getImagemLivro() {
+        return imagemLivro;
+    }
 
-    public Avaliacao(byte[] imagemLivro) {
+    public void setImagemLivro(ImageIcon imagemLivro) {
+        this.imagemLivro = imagemLivro;
+    }
+
+    /*public Avaliacao(byte[] imagemLivro) {
         this.imagemLivro = imagemLivro;
     }
 
@@ -81,9 +90,9 @@ public class Avaliacao {
         this.fis = fis;
         this.tamanho = tamanho;
     }
-
+*/
     // Para usar na JTable 'tbAvaliacao' do CadastroDeLivro
-    private Livro livro;
+    private Livro livro; 
 
     public Livro getLivro() {
         return livro;
