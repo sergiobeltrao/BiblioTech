@@ -64,14 +64,6 @@ INSERT INTO AVALIACAO (AVA_ID_USUARIO, AVA_FK_LIVRO, AVA_USUARIO, AVA_COMENTARIO
 (9, 7, 8.7, 'Alegoria política envolvente.'), (9, 8, 6.3, 'Mistérios e conspirações intrigantes.'), (9, 9, 7.5, 'Aventuras na Terra-média.'),
 (10, 10, 9.0, 'História intrigante e cheia de reviravoltas.'), (10, 1, 7.8, 'Um clássico da literatura brasileira.'), (10, 2, 8.5, 'Fascinante jornada pelo cosmos.');
  */
- 
-SELECT * FROM LIVRO;
-UPDATE LIVRO SET LIV_IMAGEM = ('.\src\main\resources\imagem\OSegredodasEstrelas.jpeg')  WHERE ID_LIVRO = 1;
-UPDATE LIVRO SET LIV_IMAGEM = ('.\src\main\resources\imagem\OAlquimista.jpeg')  WHERE ID_LIVRO = 2;
-UPDATE LIVRO SET LIV_IMAGEM = ('.\src\main\resources\imagem\DomCasmurro.jpeg')  WHERE ID_LIVRO = 3;
-UPDATE LIVRO SET LIV_IMAGEM = ('.\src\main\resources\imagem\Cosmos.jpeg')  WHERE ID_LIVRO = 4;
-UPDATE LIVRO SET LIV_IMAGEM = ('.\src\main\resources\imagem\OPequenoPríncipe.jpeg')  WHERE ID_LIVRO = 5;
-UPDATE LIVRO SET LIV_IMAGEM = ('.\src\main\resources\imagem\AOrigemdasEspécies.jpeg')  WHERE ID_LIVRO = 6;
 
 -- Comando para listar o rank de livros
 SELECT LIVRO.ID_LIVRO, LIVRO.LIV_NOME_LIVRO, ROUND(AVG(AVALIACAO.AVA_USUARIO), 1)AS MEDIA_NOTA

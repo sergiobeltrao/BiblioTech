@@ -1,39 +1,69 @@
 package com.mycompany.bibliotech.dao;
 
 import com.mycompany.bibliotech.connection.ConnectionFactory;
+import com.mycompany.bibliotech.model.bean.Livro;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class ImagemDAO {
 
-    public byte[] selecionarImagem(int id) {
-        Connection connection = ConnectionFactory.getConnection();
+    public void alterarImagem(Livro imagem) throws SQLException {
+        Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
-        ResultSet rs = null;
-        byte[] imagem = null;
 
         try {
-            // Consulta SQL para selecionar a imagem com base no ID
-            String sql = "SELECT LIV_IMAGEM FROM LIVRO WHERE id = ?";
-            stmt = connection.prepareStatement(sql);
-            stmt.setInt(1, id);
+            String sql = "UPDATE LIVRO SET LIV_IMAGEM = ? WHERE ID_LIVRO = ?";
+            stmt = con.prepareStatement(sql);
+            stmt.setBytes(1, imagem.getImagem());
+            stmt.setInt(2, imagem.getId());
+            stmt.execute();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no update: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
 
+    public byte[] buscarImagemPorId(int livroId) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        byte[] imagemBytes = null;
+
+        try {
+            String sql = "SELECT LIV_IMAGEM FROM LIVRO WHERE ID_LIVRO = ?";
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, livroId);
             rs = stmt.executeQuery();
 
-            // Verificar se há resultados
             if (rs.next()) {
-                // Obter a imagem como array de bytes
-                imagem = rs.getBytes("LIV_IMAGEM");
+                imagemBytes = rs.getBytes("LIV_IMAGEM");
             }
-
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro na busca: " + ex);
         } finally {
-            ConnectionFactory.closeConnection(connection, stmt, rs);
+            ConnectionFactory.closeConnection(con, stmt, rs);
         }
 
-        return imagem;
+        return imagemBytes;
+    }
+
+    public void excluirImagem(int livroId) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+
+        try {
+            String sql = "UPDATE LIVRO SET LIV_IMAGEM = NULL WHERE ID_LIVRO = ?";
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, livroId);
+            stmt.execute();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
     }
 }

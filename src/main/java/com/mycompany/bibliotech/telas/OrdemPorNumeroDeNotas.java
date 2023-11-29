@@ -1,9 +1,9 @@
 package com.mycompany.bibliotech.telas;
 
 import com.mycompany.bibliotech.dao.AvaliacaoDAO;
-import com.mycompany.bibliotech.dao.MinhaImagemDAO;
+import com.mycompany.bibliotech.dao.ImagemDAO;
 import com.mycompany.bibliotech.model.bean.ContagemAvaliacoesLivro;
-import com.mycompany.bibliotech.model.bean.MinhaImagem;
+
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -65,7 +65,7 @@ public class OrdemPorNumeroDeNotas extends javax.swing.JFrame {
             // Define a imagem na JLabel
             JImagem.setIcon(icon);
         } catch (IOException e) {
-            Logger.getLogger(TelaComImagens.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(EdicaoDeLivro.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -166,9 +166,11 @@ public class OrdemPorNumeroDeNotas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarImagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarImagemActionPerformed
-        MinhaImagem minhaImagem = new MinhaImagem();
-        MinhaImagemDAO imagemDAO = new MinhaImagemDAO();
+        //MinhaImagem minhaImagem = new MinhaImagem();
+        ImagemDAO imagemDAO = new ImagemDAO();
 
+        /*
+        
         // Capturar o ID da imagem usando JOptionPane.showInputDialog
         String exibir = JOptionPane.showInputDialog("Escolha o ID da imagem:");
         byte[] bytesImagem = imagemDAO.exibirDisplay(exibir);
@@ -201,6 +203,7 @@ public class OrdemPorNumeroDeNotas extends javax.swing.JFrame {
             }
 
         }
+        */
 
     }//GEN-LAST:event_buscarImagemActionPerformed
 

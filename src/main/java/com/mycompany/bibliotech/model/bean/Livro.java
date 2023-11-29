@@ -12,6 +12,15 @@ public class Livro {
     private String idioma;
     private String editora;
     private String sinopse;
+    private byte[] imagem;
+
+    public byte[] getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(byte[] imagem) {
+        this.imagem = imagem;
+    }
 
     // Para usar na JTable 'tbLivro' do CadastroDeLivro
     private Autor autor;

@@ -2,7 +2,6 @@ package com.mycompany.bibliotech.telas;
 
 import com.mycompany.bibliotech.dao.AvaliacaoDAO;
 import com.mycompany.bibliotech.dao.ExcluirUserDAO;
-import com.mycompany.bibliotech.dao.ImagemDAO;
 import com.mycompany.bibliotech.dao.LivroCategoriaDAO;
 import com.mycompany.bibliotech.dao.TelaAvaliacaoDAO;
 import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;
@@ -647,7 +646,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         String buscaCategorias = cboxCategoriaBusca.getSelectedItem().toString();
         String buscaSubCategorias = cboxSubCategoriaBusca.getSelectedItem().toString();
         String buscaAlfabeto = cboxAlfabeto.getSelectedItem().toString();
-        
+        /* Tive que comentar porque método já não existe mais. - Sérgio
         ImagemDAO imagemDAO = new ImagemDAO();
         int imagemId = 1; // Substitua pelo ID da imagem desejada
         byte[] imagem = imagemDAO.selecionarImagem(imagemId);
@@ -658,6 +657,8 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         } else {
            System.out.println("Imagem não encontrada.");
         }
+        */
+        
         if (!busca.isEmpty() && buscaAlfabeto.isEmpty()) {
             // Busca simples por uma parte do nome
             TelaAvaliacaoDAO.listaFiltrada(cboxNomeLivro, busca);

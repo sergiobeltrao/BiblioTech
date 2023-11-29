@@ -125,4 +125,89 @@ public class LivroDAO {
 
         return resultado;
     }
+
+    public static void selectPesquisaLivroTitulo(JComboBox<String> comboBox, String busca) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement("SELECT CONCAT('ID ', ID_LIVRO, ' - ', LIV_NOME_LIVRO) AS ID_E_NOME_LIVRO FROM LIVRO WHERE LIV_NOME_LIVRO LIKE ?");
+
+            stmt.setString(1, "%" + busca + "%");
+
+            ResultSet resultado = stmt.executeQuery();
+
+            comboBox.removeAllItems();
+            boolean encontrouResultado = false;
+
+            while (resultado.next()) {
+                encontrouResultado = true;
+                String nomePesquisado = resultado.getString("ID_E_NOME_LIVRO");
+                comboBox.addItem(nomePesquisado);
+            }
+
+            if (!encontrouResultado) {
+                comboBox.addItem("Nada encontrado");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao ler a tabela de livros: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+
+    public static void selectGeralLivroTitulo(JComboBox<String> comboBox) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement("SELECT CONCAT('ID ', ID_LIVRO, ' - ', LIV_NOME_LIVRO) AS ID_E_NOME_LIVRO FROM LIVRO");
+
+            ResultSet resultado = stmt.executeQuery();
+
+            comboBox.removeAllItems();
+            boolean encontrouResultado = false;
+
+            while (resultado.next()) {
+                encontrouResultado = true;
+                String nomePesquisado = resultado.getString("ID_E_NOME_LIVRO");
+                comboBox.addItem(nomePesquisado);
+            }
+
+            if (!encontrouResultado) {
+                comboBox.addItem("Nada encontrado");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao ler a tabela de livros: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+
+    public String selectIdDoLivro(String busca) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String resultado = null;
+
+        try {
+            stmt = con.prepareStatement("SELECT ID_LIVRO FROM LIVRO WHERE LIV_NOME_LIVRO LIKE ?");
+            stmt.setString(1, "%" + busca + "%");
+
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                resultado = rs.getString("ID_LIVRO");
+            } else {
+                // Para evitar um NullPointerException caso o select não retorne nada.
+                resultado = "";
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na consulta: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return resultado;
+    }
+
 }
