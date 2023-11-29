@@ -12,13 +12,18 @@ import com.mycompany.bibliotech.model.bean.Avaliacao;
 import com.mycompany.bibliotech.model.bean.ContagemAvaliacoesLivro;
 import com.mycompany.bibliotech.model.bean.Endereco;
 import com.mycompany.bibliotech.model.bean.Favoritos;
+import com.mycompany.bibliotech.model.bean.Hash;
 import com.mycompany.bibliotech.model.bean.Telefone;
 import java.awt.Component;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 
 /**
  *
@@ -353,7 +358,7 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
         Telefone telefone = new Telefone();
 
         // Solicita o nome do usuário ao usuário
-        String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:");
+        String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:", "Edição de Usuario", JOptionPane.QUESTION_MESSAGE);
 
         // Verifica se o usuário inseriu um nome
         if (userNome != null && !userNome.isEmpty()) {
@@ -362,10 +367,40 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
 
             // Verifica se o usuário foi encontrado
             if (user.getUserId() != 0) {
-                // Abre a tela de edição com os dados do usuário
-                EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
-                edicaoUsuarioFrame.setVisible(true);
-                this.setVisible(false);
+                // Criar um JPanel personalizado com um JPasswordField
+                JPanel panel = new JPanel();
+                JLabel label = new JLabel("Senha:");
+                JPasswordField passwordField = new JPasswordField(10);
+                panel.add(label);
+                panel.add(passwordField);
+
+                // Exibir o JOptionPane com o JPanel personalizado
+                int result = JOptionPane.showOptionDialog(null, panel, "Digite a senha",
+                        JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+
+                // Verificar a resposta do JOptionPane
+                if (result == JOptionPane.OK_OPTION) {
+                    // Obtém a senha do usuário
+                    char[] senhaDigitada = passwordField.getPassword();
+
+                    // Verifica se a senha digitada coincide com a senha do banco
+                    String senhaDoBanco = userdao.obterSenhaPorNome(userNome);
+                    Hash rehash = new Hash();
+
+                    try {
+                        String senhaDigitadaHash = rehash.geradorDeHash(new String(senhaDigitada));
+                        if (senhaDoBanco != null && senhaDoBanco.equals(senhaDigitadaHash)) {
+                            // Abre a tela de edição com os dados do usuário
+                            EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
+                            edicaoUsuarioFrame.setVisible(true);
+                            this.setVisible(false);
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Senha incorreta", "Erro", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } catch (NoSuchAlgorithmException ex) {
+                        ex.printStackTrace();
+                    }
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
             }

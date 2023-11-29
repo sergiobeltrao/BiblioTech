@@ -101,14 +101,14 @@ public class UsuarioCadastroDAO {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         //EdicaoUsuario eduser = new EdicaoUsuario(user, endereco, telefone, favoritos);
-        
-            try {
-        if (con == null) {
-            JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados.");
-            return;
-        }
 
-        con.setAutoCommit(false);  // Desativa o autocommit
+        try {
+            if (con == null) {
+                JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados.");
+                return;
+            }
+
+            con.setAutoCommit(false);  // Desativa o autocommit
 
             stmt = con.prepareStatement("UPDATE USUARIO SET USE_NICK=?, USE_NOME=?, USE_SOBRENOME=?, USE_DATANASC=?, USE_EMAIL=?, USE_SEXO=?, USE_CPF=? WHERE USE_ID=?");
 
@@ -125,31 +125,31 @@ public class UsuarioCadastroDAO {
             stmt.setString(7, user.getUserCpf());
             stmt.setInt(8, Integer.parseInt(userId));
 
-             int linhasAfetadas = stmt.executeUpdate();
+            int linhasAfetadas = stmt.executeUpdate();
 
-        if (linhasAfetadas > 0) {
-            con.commit();  // Confirma a transação apenas se a atualização for bem-sucedida
-            JOptionPane.showMessageDialog(null, "Usuario atualizado com sucesso!");
-        } else {
-            JOptionPane.showMessageDialog(null, "Nenhum usuário atualizado. Verifique o ID do usuário.");
+            if (linhasAfetadas > 0) {
+                con.commit();  // Confirma a transação apenas se a atualização for bem-sucedida
+                JOptionPane.showMessageDialog(null, "Usuario atualizado com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Nenhum usuário atualizado. Verifique o ID do usuário.");
+            }
+        } catch (SQLException ex) {
+            try {
+                con.rollback();  // Desfaz a transação em caso de exceção
+            } catch (SQLException rollbackEx) {
+                rollbackEx.printStackTrace();
+            }
+            JOptionPane.showMessageDialog(null, "Erro ao Editar: " + ex.getMessage());
+            ex.printStackTrace();
+        } finally {
+            try {
+                con.setAutoCommit(true);  // Reativa o autocommit no final, para evitar efeitos colaterais
+            } catch (SQLException autoCommitEx) {
+                autoCommitEx.printStackTrace();
+            }
+            ConnectionFactory.closeConnection(con, stmt);
         }
-    } catch (SQLException ex) {
-        try {
-            con.rollback();  // Desfaz a transação em caso de exceção
-        } catch (SQLException rollbackEx) {
-            rollbackEx.printStackTrace();
-        }
-        JOptionPane.showMessageDialog(null, "Erro ao Editar: " + ex.getMessage());
-        ex.printStackTrace();
-    } finally {
-        try {
-            con.setAutoCommit(true);  // Reativa o autocommit no final, para evitar efeitos colaterais
-        } catch (SQLException autoCommitEx) {
-            autoCommitEx.printStackTrace();
-        }
-        ConnectionFactory.closeConnection(con, stmt);
     }
-}
 
     public Usuario obterUsuarioPorNome(String userNome) {
         Connection con = ConnectionFactory.getConnection();
@@ -215,7 +215,7 @@ public class UsuarioCadastroDAO {
                 user.setEndereco(endereco);
                 user.setTelefone(telefone);
                 user.setFavoritos(favoritos);
-                
+
                 return user;
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -224,6 +224,37 @@ public class UsuarioCadastroDAO {
             }
         } catch (SQLException ex) {
             System.out.println("Erro ao buscar usuário: " + ex.getMessage());
+            ex.printStackTrace();
+            return null;
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+
+    public String obterSenhaPorNome(String userNome) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+
+        try {
+            if (con == null) {
+                throw new SQLException("Não foi possível conectar ao banco de dados.");
+            }
+
+            String sql = "SELECT USE_SENHA FROM USUARIO WHERE USE_NICK = ?";
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, userNome);
+
+            ResultSet resultSet = stmt.executeQuery();
+
+            if (resultSet.next()) {
+                return resultSet.getString("USE_SENHA");
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
+                System.out.println("Usuário não encontrado.");
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro ao obter senha do usuário: " + ex.getMessage());
             ex.printStackTrace();
             return null;
         } finally {

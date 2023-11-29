@@ -8,11 +8,16 @@ import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
 import com.mycompany.bibliotech.model.bean.Endereco;
 import com.mycompany.bibliotech.model.bean.Favoritos;
+import com.mycompany.bibliotech.model.bean.Hash;
 import com.mycompany.bibliotech.model.bean.Telefone;
 import com.mycompany.bibliotech.model.bean.Usuario;
+import java.security.NoSuchAlgorithmException;
 
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 
 public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
@@ -246,38 +251,68 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
     private void ExcluirUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirUserButtonActionPerformed
 
-       ExcluirUserDAO ex = new ExcluirUserDAO();
-         ex.mostrarEExcluirUsuario();
+        ExcluirUserDAO ex = new ExcluirUserDAO();
+        ex.mostrarEExcluirUsuario();
     }//GEN-LAST:event_ExcluirUserButtonActionPerformed
 
     private void edicaoUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edicaoUserButtonActionPerformed
 
-    UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
-    Usuario user = new Usuario();
-    Endereco endereco = new Endereco();
-    Favoritos favoritos = new Favoritos();
-    Telefone telefone = new Telefone();
-    
-    // Solicita o nome do usuário ao usuário
-    String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:");
+        UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
+        Usuario user = new Usuario();
+        Endereco endereco = new Endereco();
+        Favoritos favoritos = new Favoritos();
+        Telefone telefone = new Telefone();
 
-   // Verifica se o usuário inseriu um nome
-    if (userNome != null && !userNome.isEmpty()) {
-        // Obtém o usuário com base no nome fornecido
-        user = userdao.obterUsuarioPorNome(userNome);
-        
-        // Verifica se o usuário foi encontrado
-        if (user.getUserId() != 0) {
-            // Abre a tela de edição com os dados do usuário
-            EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
-            edicaoUsuarioFrame.setVisible(true);
-            this.setVisible(false);
+        // Solicita o nome do usuário ao usuário
+        String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:", "Edição de Usuario", JOptionPane.QUESTION_MESSAGE);
+
+        // Verifica se o usuário inseriu um nome
+        if (userNome != null && !userNome.isEmpty()) {
+            // Obtém o usuário com base no nome fornecido
+            user = userdao.obterUsuarioPorNome(userNome);
+
+            // Verifica se o usuário foi encontrado
+            if (user.getUserId() != 0) {
+                // Criar um JPanel personalizado com um JPasswordField
+                JPanel panel = new JPanel();
+                JLabel label = new JLabel("Senha:");
+                JPasswordField passwordField = new JPasswordField(10);
+                panel.add(label);
+                panel.add(passwordField);
+
+                // Exibir o JOptionPane com o JPanel personalizado
+                int result = JOptionPane.showOptionDialog(null, panel, "Digite a senha",
+                        JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+
+                // Verificar a resposta do JOptionPane
+                if (result == JOptionPane.OK_OPTION) {
+                    // Obtém a senha do usuário
+                    char[] senhaDigitada = passwordField.getPassword();
+
+                    // Verifica se a senha digitada coincide com a senha do banco
+                    String senhaDoBanco = userdao.obterSenhaPorNome(userNome);
+                    Hash rehash = new Hash();
+
+                    try {
+                        String senhaDigitadaHash = rehash.geradorDeHash(new String(senhaDigitada));
+                        if (senhaDoBanco != null && senhaDoBanco.equals(senhaDigitadaHash)) {
+                            // Abre a tela de edição com os dados do usuário
+                            EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
+                            edicaoUsuarioFrame.setVisible(true);
+                            this.setVisible(false);
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Senha incorreta", "Erro", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } catch (NoSuchAlgorithmException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Digite um nome de usuário válido", "Erro", JOptionPane.ERROR_MESSAGE);
         }
-    } else {
-        JOptionPane.showMessageDialog(this, "Digite um nome de usuário válido", "Erro", JOptionPane.ERROR_MESSAGE);
-    }
     }//GEN-LAST:event_edicaoUserButtonActionPerformed
 
     private void AvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AvaButtonActionPerformed
