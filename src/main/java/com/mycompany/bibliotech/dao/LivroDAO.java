@@ -210,4 +210,35 @@ public class LivroDAO {
         return resultado;
     }
 
+    public Livro selectGeralComId(int idLivro) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Livro livro = new Livro();
+
+        try {
+            stmt = con.prepareStatement("SELECT LIV_NOME_LIVRO, LIV_ISBN, LIV_ANO, LIV_PAGINA, LIV_CATEGORIA, LIV_SUBCATEGORIA, LIV_IDIOMA, LIV_EDITORA, LIV_SINOPSE FROM LIVRO WHERE ID_LIVRO = ?");
+            stmt.setInt(1, idLivro);
+
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                livro.setTitulo(rs.getString("LIV_NOME_LIVRO"));
+                livro.setIsbn(rs.getString("LIV_ISBN"));
+                livro.setAnoDePublicacao(rs.getInt("LIV_ANO"));
+                livro.setNumeroDePaginas(rs.getInt("LIV_PAGINA"));
+                livro.setCategoria(rs.getString("LIV_CATEGORIA"));
+                livro.setSubCategoria(rs.getString("LIV_SUBCATEGORIA"));
+                livro.setIdioma(rs.getString("LIV_IDIOMA"));
+                livro.setEditora(rs.getString("LIV_EDITORA"));
+                livro.setSinopse(rs.getString("LIV_SINOPSE"));
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na consulta: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return livro;
+    }
+
 }
