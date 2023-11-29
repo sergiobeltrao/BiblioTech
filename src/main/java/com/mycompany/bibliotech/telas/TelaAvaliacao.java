@@ -10,31 +10,34 @@ import com.mycompany.bibliotech.model.bean.Avaliacao;
 import com.mycompany.bibliotech.model.bean.ApplicationContext;
 import com.mycompany.bibliotech.model.bean.Endereco;
 import com.mycompany.bibliotech.model.bean.Favoritos;
+import com.mycompany.bibliotech.model.bean.Hash;
 import com.mycompany.bibliotech.model.bean.Login;
 import com.mycompany.bibliotech.model.bean.Telefone;
 import com.mycompany.bibliotech.model.bean.Usuario;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.NoSuchAlgorithmException;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 
 public class TelaAvaliacao extends javax.swing.JFrame {
 
     public TelaAvaliacao(Avaliacao avaliacao) {
         initComponents();
         setPesquisarValues(avaliacao);
-         UsuarioLoginDAO usuarioLoginDao = new UsuarioLoginDAO();
+        UsuarioLoginDAO usuarioLoginDao = new UsuarioLoginDAO();
 
-              
-        
         if (usuarioLoginDao.tipoDoUsuarioLogado()) {
             CadUserButton.setVisible(true);
             ExcluirUserButton.setVisible(true);
         } else {
             CadUserButton.setVisible(false);
             ExcluirUserButton.setVisible(false);
-            
+
         }
 
         cboxNomeLivro.addActionListener(new ActionListener() {
@@ -65,9 +68,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         });
 
         listarCategorias();
-        
-        
-    
 
     }
 
@@ -81,7 +81,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             txtPaginas.setText(String.valueOf(avaliacao.getTxtPaginas()));
             txtNotaMax.setText(avaliacao.getTxtNotaMax());
             imagemLivro.setIcon(avaliacao.getImagemLivro());
-/*new<<<<<<< Updated upstream
+            /*new<<<<<<< Updated upstream
            // imagemLivro.setIcon(foto);
 =======
             ImageIcon foto = new ImageIcon(getClass().getResource("BiblioTech\\src\\main\\resources\\imagem"));
@@ -646,16 +646,16 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         String buscaCategorias = cboxCategoriaBusca.getSelectedItem().toString();
         String buscaSubCategorias = cboxSubCategoriaBusca.getSelectedItem().toString();
         String buscaAlfabeto = cboxAlfabeto.getSelectedItem().toString();
-        /* Tive que comentar porque método já não existe mais. - Sérgio
+
         ImagemDAO imagemDAO = new ImagemDAO();
         int imagemId = 1; // Substitua pelo ID da imagem desejada
         byte[] imagem = imagemDAO.selecionarImagem(imagemId);
-        
+
         if (imagem != null) {
-        // Faça o processamento ou exibição da imagem conforme necessário
-             System.out.println("Imagem selecionada com sucesso.");
+            // Faça o processamento ou exibição da imagem conforme necessário
+            System.out.println("Imagem selecionada com sucesso.");
         } else {
-           System.out.println("Imagem não encontrada.");
+            System.out.println("Imagem não encontrada.");
         }
         */
         
@@ -782,7 +782,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         Telefone telefone = new Telefone();
 
         // Solicita o nome do usuário ao usuário
-        String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:");
+        String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:", "Edição de Usuario", JOptionPane.QUESTION_MESSAGE);
 
         // Verifica se o usuário inseriu um nome
         if (userNome != null && !userNome.isEmpty()) {
@@ -791,10 +791,40 @@ public class TelaAvaliacao extends javax.swing.JFrame {
 
             // Verifica se o usuário foi encontrado
             if (user.getUserId() != 0) {
-                // Abre a tela de edição com os dados do usuário
-                EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
-                edicaoUsuarioFrame.setVisible(true);
-                this.setVisible(false);
+                // Criar um JPanel personalizado com um JPasswordField
+                JPanel panel = new JPanel();
+                JLabel label = new JLabel("Senha:");
+                JPasswordField passwordField = new JPasswordField(10);
+                panel.add(label);
+                panel.add(passwordField);
+
+                // Exibir o JOptionPane com o JPanel personalizado
+                int result = JOptionPane.showOptionDialog(null, panel, "Digite a senha",
+                        JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+
+                // Verificar a resposta do JOptionPane
+                if (result == JOptionPane.OK_OPTION) {
+                    // Obtém a senha do usuário
+                    char[] senhaDigitada = passwordField.getPassword();
+
+                    // Verifica se a senha digitada coincide com a senha do banco
+                    String senhaDoBanco = userdao.obterSenhaPorNome(userNome);
+                    Hash rehash = new Hash();
+
+                    try {
+                        String senhaDigitadaHash = rehash.geradorDeHash(new String(senhaDigitada));
+                        if (senhaDoBanco != null && senhaDoBanco.equals(senhaDigitadaHash)) {
+                            // Abre a tela de edição com os dados do usuário
+                            EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
+                            edicaoUsuarioFrame.setVisible(true);
+                            this.setVisible(false);
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Senha incorreta", "Erro", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } catch (NoSuchAlgorithmException ex) {
+                        ex.printStackTrace();
+                    }
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
             }

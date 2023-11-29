@@ -902,10 +902,10 @@ public class CadastroUsuario extends javax.swing.JFrame {
         TelefoneDAO fonedao = new TelefoneDAO();
         String cpf = cpfTxt.getText();
         CpfDAO cpfdao = new CpfDAO(cpf);
-        
+
         //Informações usuario
-         Hash hash = new Hash();
-        
+        Hash hash = new Hash();
+
         String senhaDigitada = senhaTxt.getText();
         String hashDaSenha = "";
 
@@ -914,9 +914,9 @@ public class CadastroUsuario extends javax.swing.JFrame {
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         Hash rehash = new Hash();
-        
+
         String resenhaDigitada = resenhaTxt.getText();
         String rehashDaSenha = "";
 
@@ -971,11 +971,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
         } else {
             valorSelecionada = "RESIDENCIAL";
         }
-        
+
         // Informações telefone
         tel.setTipo(valorSelecionada);
         tel.setTelefone(foneTxt.getText());
-        
+
         // Informações endereço
         end.setCep(cepTxt.getText());
         end.setPais(paisTxt.getText());
@@ -992,7 +992,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         }
         end.setNum(numb);
         end.setBairro(bairroTxt.getText());
-        
+
         // Informações favoritos
         String categoriaSelecionada = cboxCategoria1.getSelectedItem().toString();
         String subCategoriaSelecionada = cboxSubCategoria1.getSelectedItem().toString();
@@ -1007,7 +1007,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         java.util.Date dataNascimentoUtil = dataNascChooser.getDate();
 
         //Verificadores de data e CPF:
-        
         // Verifica se a data de nascimento é válida
         if (dataNascimentoUtil != null) {
             // Converte LocalDate para Date
@@ -1026,7 +1025,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma data de nascimento válida!");
             return; // Não prossegue com o cadastro se a data de nascimento não foi selecionada
         }
-        
+
         //Validador de CPF
         if (cpfdao.isCPF()) {
             user.setUserCpf(cpfTxt.getText());
@@ -1034,7 +1033,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "CPF inválido!!");
             return;
         }
-        
+
         //Metodos de cadastro
         dao.cadastrarUsuario(user);
         enddao.cadastrarEndereco(end, nickTxt.getText(), cepTxt.getText(), numb);
@@ -1184,8 +1183,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
     private void ExcluirUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirUserButtonActionPerformed
 
-       ExcluirUserDAO ex = new ExcluirUserDAO();
-         ex.mostrarEExcluirUsuario();
+        ExcluirUserDAO ex = new ExcluirUserDAO();
+        ex.mostrarEExcluirUsuario();
     }//GEN-LAST:event_ExcluirUserButtonActionPerformed
 
     private void edicaoUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edicaoUserButtonActionPerformed
@@ -1197,7 +1196,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         Telefone telefone = new Telefone();
 
         // Solicita o nome do usuário ao usuário
-        String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:");
+        String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:", "Edição de Usuario", JOptionPane.QUESTION_MESSAGE);
 
         // Verifica se o usuário inseriu um nome
         if (userNome != null && !userNome.isEmpty()) {
@@ -1206,10 +1205,40 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
             // Verifica se o usuário foi encontrado
             if (user.getUserId() != 0) {
-                // Abre a tela de edição com os dados do usuário
-                EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
-                edicaoUsuarioFrame.setVisible(true);
-                this.setVisible(false);
+                // Criar um JPanel personalizado com um JPasswordField
+                JPanel panel = new JPanel();
+                JLabel label = new JLabel("Senha:");
+                JPasswordField passwordField = new JPasswordField(10);
+                panel.add(label);
+                panel.add(passwordField);
+
+                // Exibir o JOptionPane com o JPanel personalizado
+                int result = JOptionPane.showOptionDialog(null, panel, "Digite a senha",
+                        JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+
+                // Verificar a resposta do JOptionPane
+                if (result == JOptionPane.OK_OPTION) {
+                    // Obtém a senha do usuário
+                    char[] senhaDigitada = passwordField.getPassword();
+
+                    // Verifica se a senha digitada coincide com a senha do banco
+                    String senhaDoBanco = userdao.obterSenhaPorNome(userNome);
+                    Hash rehash = new Hash();
+
+                    try {
+                        String senhaDigitadaHash = rehash.geradorDeHash(new String(senhaDigitada));
+                        if (senhaDoBanco != null && senhaDoBanco.equals(senhaDigitadaHash)) {
+                            // Abre a tela de edição com os dados do usuário
+                            EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
+                            edicaoUsuarioFrame.setVisible(true);
+                            this.setVisible(false);
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Senha incorreta", "Erro", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } catch (NoSuchAlgorithmException ex) {
+                        ex.printStackTrace();
+                    }
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
             }
