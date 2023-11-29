@@ -646,7 +646,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         String buscaCategorias = cboxCategoriaBusca.getSelectedItem().toString();
         String buscaSubCategorias = cboxSubCategoriaBusca.getSelectedItem().toString();
         String buscaAlfabeto = cboxAlfabeto.getSelectedItem().toString();
-
+        /* Referência a método que não existe mais - Sérgio
         ImagemDAO imagemDAO = new ImagemDAO();
         int imagemId = 1; // Substitua pelo ID da imagem desejada
         byte[] imagem = imagemDAO.selecionarImagem(imagemId);
