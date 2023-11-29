@@ -103,5 +103,29 @@ public class MinhaImagemDAO {
 
         return imagemBytes;
     }
+    public byte[] exibirDisplay(String id) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT LIV_IMAGEM FROM LIVRO WHERE ID_LIVRO = ?";
+        byte[] exibirImagem = null;
+
+        try {
+            int idInt = Integer.parseInt(id);
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, idInt);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                exibirImagem = rs.getBytes("LIV_IMAGEM");
+            }
+        } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, "Erro ao exibir a imagem:DAO " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return exibirImagem;
+    }
 
 }

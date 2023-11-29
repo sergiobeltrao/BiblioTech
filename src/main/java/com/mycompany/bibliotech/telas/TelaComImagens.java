@@ -92,6 +92,11 @@ private void configurarComboBox() {
 
         txtNomeDaImagem.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtNomeDaImagem.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nome do Livro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        txtNomeDaImagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeDaImagemActionPerformed(evt);
+            }
+        });
 
         jlbImagem.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
@@ -103,6 +108,11 @@ private void configurarComboBox() {
         });
 
         btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setText("Excluir");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -126,6 +136,11 @@ private void configurarComboBox() {
         });
 
         cboxLivro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Livros", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        cboxLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxLivroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panTelaComImagemLayout = new javax.swing.GroupLayout(panTelaComImagem);
         panTelaComImagem.setLayout(panTelaComImagemLayout);
@@ -135,9 +150,8 @@ private void configurarComboBox() {
                 .addGap(30, 30, 30)
                 .addGroup(panTelaComImagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cboxLivro, 0, 250, Short.MAX_VALUE)
-                    .addGroup(panTelaComImagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtNomeDaImagem, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                        .addComponent(jlbImagem, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)))
+                    .addComponent(txtNomeDaImagem, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                    .addComponent(jlbImagem, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(panTelaComImagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -269,6 +283,18 @@ private void configurarComboBox() {
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void cboxLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxLivroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxLivroActionPerformed
+
+    private void txtNomeDaImagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeDaImagemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeDaImagemActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
     /**
      * @param args the command line arguments

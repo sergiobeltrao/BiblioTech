@@ -5,6 +5,7 @@ public class MinhaImagem {
     int id;
     String nome;
     byte[] imagem;
+    
 
     public int getId() {
         return id;
