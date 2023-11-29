@@ -38,6 +38,7 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         AvaButton = new javax.swing.JButton();
         ExcluirUserButton = new javax.swing.JToggleButton();
         btnEncerrarSessao = new javax.swing.JButton();
+        btnEdicaoDeLivro = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
 
@@ -51,14 +52,12 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         kGradientPanel2.setkStartColor(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Menu");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 0, 0)));
 
         CadUserButton.setBackground(new java.awt.Color(102, 102, 102));
         CadUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        CadUserButton.setForeground(new java.awt.Color(0, 0, 0));
         CadUserButton.setText("Cadastro de Usuario");
         CadUserButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         CadUserButton.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +68,6 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
         edicaoUserButton.setBackground(new java.awt.Color(102, 102, 102));
         edicaoUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        edicaoUserButton.setForeground(new java.awt.Color(0, 0, 0));
         edicaoUserButton.setText("Edição de Usuario");
         edicaoUserButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         edicaoUserButton.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +78,6 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
         CadLivroButton.setBackground(new java.awt.Color(102, 102, 102));
         CadLivroButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        CadLivroButton.setForeground(new java.awt.Color(0, 0, 0));
         CadLivroButton.setText("Cadastro de Livro");
         CadLivroButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         CadLivroButton.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +88,6 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
         AvaButton.setBackground(new java.awt.Color(102, 102, 102));
         AvaButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        AvaButton.setForeground(new java.awt.Color(0, 0, 0));
         AvaButton.setText("Avaliação");
         AvaButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         AvaButton.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +98,6 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
         ExcluirUserButton.setBackground(new java.awt.Color(102, 102, 102));
         ExcluirUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        ExcluirUserButton.setForeground(new java.awt.Color(0, 0, 0));
         ExcluirUserButton.setText("Excluir Usuarios");
         ExcluirUserButton.setBorder(new javax.swing.border.MatteBorder(null));
         ExcluirUserButton.addActionListener(new java.awt.event.ActionListener() {
@@ -113,12 +108,21 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
         btnEncerrarSessao.setBackground(new java.awt.Color(102, 102, 102));
         btnEncerrarSessao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnEncerrarSessao.setForeground(new java.awt.Color(0, 0, 0));
         btnEncerrarSessao.setText("Encerrar Sessão");
         btnEncerrarSessao.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnEncerrarSessao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEncerrarSessaoActionPerformed(evt);
+            }
+        });
+
+        btnEdicaoDeLivro.setBackground(new java.awt.Color(102, 102, 102));
+        btnEdicaoDeLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        btnEdicaoDeLivro.setText("Edição de Livro");
+        btnEdicaoDeLivro.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnEdicaoDeLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEdicaoDeLivroActionPerformed(evt);
             }
         });
 
@@ -139,7 +143,8 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
                             .addComponent(CadLivroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(AvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ExcluirUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEdicaoDeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         kGradientPanel2Layout.setVerticalGroup(
@@ -153,6 +158,8 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
                 .addComponent(edicaoUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(CadLivroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(btnEdicaoDeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(AvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
@@ -322,6 +329,11 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_AvaButtonActionPerformed
 
+    private void btnEdicaoDeLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdicaoDeLivroActionPerformed
+        new EdicaoDeLivro().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEdicaoDeLivroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -364,6 +376,7 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton CadUserButton;
     private javax.swing.JToggleButton ExcluirUserButton;
     private javax.swing.JPanel MenuPainel;
+    private javax.swing.JButton btnEdicaoDeLivro;
     private javax.swing.JButton btnEncerrarSessao;
     private javax.swing.JButton edicaoUserButton;
     private javax.swing.JLabel jLabel1;
