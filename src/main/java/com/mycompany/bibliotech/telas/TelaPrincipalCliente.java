@@ -40,6 +40,7 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
         List<String> rankList = RankDAO.ranking();
         DefaultListModel<String> listModel = new DefaultListModel<>();
 
+        
         List<ContagemAvaliacoesLivro> contagensList = AvaliacaoDAO.numeroDeNotasPorLivro();
         DefaultListModel<String> listContagens = new DefaultListModel<>();
 

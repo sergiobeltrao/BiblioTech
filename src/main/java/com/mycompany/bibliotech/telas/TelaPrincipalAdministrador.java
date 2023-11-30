@@ -1,20 +1,28 @@
 package com.mycompany.bibliotech.telas;
 
+import com.mycompany.bibliotech.dao.AvaliacaoDAO;
 import com.mycompany.bibliotech.dao.EnderecoDAO;
 import com.mycompany.bibliotech.dao.ExcluirUserDAO;
 import com.mycompany.bibliotech.dao.FavoritosDAO;
+import com.mycompany.bibliotech.dao.RankDAO;
 import com.mycompany.bibliotech.dao.TelefoneDAO;
 import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
+import com.mycompany.bibliotech.model.bean.ContagemAvaliacoesLivro;
 import com.mycompany.bibliotech.model.bean.Endereco;
 import com.mycompany.bibliotech.model.bean.Favoritos;
 import com.mycompany.bibliotech.model.bean.Hash;
 import com.mycompany.bibliotech.model.bean.Telefone;
 import com.mycompany.bibliotech.model.bean.Usuario;
+import java.awt.Component;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.DefaultListModel;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -23,6 +31,60 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
     public TelaPrincipalAdministrador() {
         initComponents();
+        List<String> rankList = RankDAO.ranking();
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+
+        
+        List<ContagemAvaliacoesLivro> contagensList = AvaliacaoDAO.numeroDeNotasPorLivro();
+        DefaultListModel<String> listContagens = new DefaultListModel<>();
+
+        if (rankList != null) {
+            int rankNumber = 1;
+            for (String item : rankList) {
+                listModel.addElement(rankNumber + ". " + item);
+                rankNumber++;
+            }
+        }
+
+        jList1.setCellRenderer(new TelaPrincipalAdministrador.CenteredTextRenderer());
+        jList1.setModel(listModel);
+
+        List<String> recordList = RankDAO.record();
+        DefaultListModel<String> listRecord = new DefaultListModel<>();
+
+        if (recordList != null) {
+            int recordNumber = 1;
+            for (String item : recordList) {
+                listRecord.addElement(recordNumber + ". " + item);
+                recordNumber++;
+            }
+        }
+
+        if (contagensList != null) {
+            int rankNumber = 1;
+            for (ContagemAvaliacoesLivro item : contagensList) {
+                listContagens.addElement(rankNumber + ". " + item.getNomeLivro() + ": " + item.getQuantidadeAvaliacoes() + " avaliações");
+                rankNumber++;
+            }
+        }
+
+        listaComMaisAvaliacao.setCellRenderer(new TelaPrincipalAdministrador.CenteredTextRenderer());
+        listaComMaisAvaliacao.setModel(listContagens);
+
+        jList2.setCellRenderer(new TelaPrincipalAdministrador.CenteredTextRenderer());
+        jList2.setModel(listRecord);
+    }
+    public class CenteredTextRenderer extends DefaultListCellRenderer {
+
+        @Override
+        public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+
+            // Configura o alinhamento do texto para o centro
+            setHorizontalAlignment(DefaultListCellRenderer.CENTER);
+
+            return this;
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -41,6 +103,15 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         btnEdicaoDeLivro = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
+        rank = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        jLabel3 = new javax.swing.JLabel();
+        avaliado = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
+        jLabel2 = new javax.swing.JLabel();
+        numeroAvaliado = new javax.swing.JScrollPane();
+        listaComMaisAvaliacao = new javax.swing.JList<>();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -192,15 +263,76 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         kGradientPanel1.setkGradientFocus(800);
         kGradientPanel1.setkStartColor(new java.awt.Color(204, 204, 204));
 
+        jList1.setBackground(new java.awt.Color(204, 204, 204));
+        jList1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jList1.setToolTipText("");
+        rank.setViewportView(jList1);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel3.setText("Ranking TOP 10");
+        jLabel3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jList2.setBackground(new java.awt.Color(204, 204, 204));
+        jList2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        avaliado.setViewportView(jList2);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel2.setText("Últimos Lancamentos");
+        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        listaComMaisAvaliacao.setBackground(new java.awt.Color(204, 204, 204));
+        listaComMaisAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        listaComMaisAvaliacao.setToolTipText("");
+        numeroAvaliado.setViewportView(listaComMaisAvaliacao);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel4.setText("Por Número de Avaliações");
+        jLabel4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
         kGradientPanel1Layout.setHorizontalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1091, Short.MAX_VALUE)
+            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                        .addContainerGap(56, Short.MAX_VALUE)
+                        .addComponent(rank, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(avaliado, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))
+                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                        .addContainerGap(126, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(199, 199, 199)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(109, 109, 109)))
+                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                        .addComponent(numeroAvaliado, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(57, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel4)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 714, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(avaliado)
+                    .addComponent(rank, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
+                    .addComponent(numeroAvaliado))
+                .addGap(179, 179, 179))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -376,12 +508,21 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton CadUserButton;
     private javax.swing.JToggleButton ExcluirUserButton;
     private javax.swing.JPanel MenuPainel;
+    private javax.swing.JScrollPane avaliado;
     private javax.swing.JButton btnEdicaoDeLivro;
     private javax.swing.JButton btnEncerrarSessao;
     private javax.swing.JButton edicaoUserButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel2;
     private keeptoo.KGradientPanel kGradientPanel1;
     private keeptoo.KGradientPanel kGradientPanel2;
+    private javax.swing.JList<String> listaComMaisAvaliacao;
+    private javax.swing.JScrollPane numeroAvaliado;
+    private javax.swing.JScrollPane rank;
     // End of variables declaration//GEN-END:variables
 }
