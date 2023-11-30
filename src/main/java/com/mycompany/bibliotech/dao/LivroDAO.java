@@ -241,4 +241,36 @@ public class LivroDAO {
         return livro;
     }
 
+    public boolean atualizaInfoLivro(int idLivro, Livro livro) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            String sql = "UPDATE LIVRO SET LIV_NOME_LIVRO = ?, LIV_ISBN = ?, LIV_ANO = ?, LIV_PAGINA = ?, LIV_CATEGORIA = ?, LIV_SUBCATEGORIA = ?, LIV_IDIOMA = ?, LIV_EDITORA = ?, LIV_SINOPSE = ? WHERE ID_LIVRO = ?";
+
+            stmt = con.prepareStatement(sql);
+
+            stmt.setString(1, livro.getTitulo());
+            stmt.setString(2, livro.getIsbn());
+            stmt.setInt(3, livro.getAnoDePublicacao());
+            stmt.setInt(4, livro.getNumeroDePaginas());
+            stmt.setString(5, livro.getCategoria());
+            stmt.setString(6, livro.getSubCategoria());
+            stmt.setString(7, livro.getIdioma());
+            stmt.setString(8, livro.getEditora());
+            stmt.setString(9, livro.getSinopse());
+            stmt.setInt(10, idLivro);
+
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0; // Retorna true se a atualização for bem-sucedida
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no update: " + ex);
+            return false;
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+    }
+
 }

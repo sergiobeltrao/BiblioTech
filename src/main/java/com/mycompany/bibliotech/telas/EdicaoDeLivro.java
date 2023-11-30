@@ -4,6 +4,7 @@ import com.mycompany.bibliotech.dao.LivroCategoriaDAO;
 import com.mycompany.bibliotech.dao.LivroDAO;
 import com.mycompany.bibliotech.dao.ImagemDAO;
 import com.mycompany.bibliotech.model.bean.Livro;
+import com.mycompany.bibliotech.model.bean.ValidadorIsbn;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -94,7 +95,6 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
         cboxLivroIdioma = new javax.swing.JComboBox<>();
         jlbImagemCapaLivro = new javax.swing.JLabel();
         btnBuscarImagem = new javax.swing.JButton();
-        btnAlterar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         txtBuscaLivro = new javax.swing.JTextField();
         cboxResultadoPesquisaLivro = new javax.swing.JComboBox<>();
@@ -102,7 +102,7 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
         btnSelecionaLivro = new javax.swing.JButton();
         btnMostraTodosLivro = new javax.swing.JButton();
         txtIdLivro = new javax.swing.JTextField();
-        btnAtualizarCadastro = new javax.swing.JButton();
+        btnSalvarAlteracoes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -111,7 +111,6 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
 
         btnLimpar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         btnLimpar.setText("Limpar");
-        btnLimpar.setEnabled(false);
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparActionPerformed(evt);
@@ -220,9 +219,9 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
             }
         });
 
-        txtTitulo.setEditable(false);
         txtTitulo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtTitulo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Título *", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        txtTitulo.setEnabled(false);
         txtTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTituloActionPerformed(evt);
@@ -245,25 +244,20 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
         cboxLivroIdioma.setEnabled(false);
 
         jlbImagemCapaLivro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        jlbImagemCapaLivro.setEnabled(false);
 
         btnBuscarImagem.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         btnBuscarImagem.setText("Buscar");
+        btnBuscarImagem.setEnabled(false);
         btnBuscarImagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarImagemActionPerformed(evt);
             }
         });
 
-        btnAlterar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnAlterar.setText("Alterar");
-        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlterarActionPerformed(evt);
-            }
-        });
-
         btnExcluir.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         btnExcluir.setText("Excluir");
+        btnExcluir.setEnabled(false);
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
@@ -303,9 +297,14 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
         txtIdLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtIdLivro.setBorder(javax.swing.BorderFactory.createTitledBorder("ID"));
 
-        btnAtualizarCadastro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnAtualizarCadastro.setText("Atualizar");
-        btnAtualizarCadastro.setEnabled(false);
+        btnSalvarAlteracoes.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        btnSalvarAlteracoes.setText("Salvar Alterações");
+        btnSalvarAlteracoes.setEnabled(false);
+        btnSalvarAlteracoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarAlteracoesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panModificarLivroLayout = new javax.swing.GroupLayout(panModificarLivro);
         panModificarLivro.setLayout(panModificarLivroLayout);
@@ -331,10 +330,10 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                         .addGroup(panModificarLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(panModificarLivroLayout.createSequentialGroup()
-                                .addComponent(btnLimpar)
-                                .addGap(32, 32, 32)
-                                .addComponent(btnAtualizarCadastro)
+                                .addComponent(btnSalvarAlteracoes)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnLimpar)
+                                .addGap(18, 18, 18)
                                 .addComponent(btnTelaPrinCadLivro))
                             .addComponent(boxSinopse, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panModificarLivroLayout.createSequentialGroup()
@@ -361,7 +360,6 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(panModificarLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnBuscarImagem)
-                            .addComponent(btnAlterar)
                             .addComponent(btnExcluir))
                         .addGap(62, 62, 62))))
         );
@@ -374,10 +372,10 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
                 .addGroup(panModificarLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panModificarLivroLayout.createSequentialGroup()
                         .addComponent(txtBuscaLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
+                        .addGap(18, 18, 18)
                         .addGroup(panModificarLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnMostraTodosLivro)
-                            .addComponent(btnPesquisaLivro))
+                            .addComponent(btnPesquisaLivro)
+                            .addComponent(btnMostraTodosLivro))
                         .addGap(18, 18, 18)
                         .addComponent(cboxResultadoPesquisaLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -391,8 +389,6 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
                         .addGroup(panModificarLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panModificarLivroLayout.createSequentialGroup()
                                 .addComponent(btnBuscarImagem)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnAlterar)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnExcluir))
                             .addGroup(panModificarLivroLayout.createSequentialGroup()
@@ -420,7 +416,7 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
                                 .addGroup(panModificarLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnTelaPrinCadLivro)
                                     .addComponent(btnLimpar)
-                                    .addComponent(btnAtualizarCadastro))))))
+                                    .addComponent(btnSalvarAlteracoes))))))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
@@ -473,82 +469,6 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
             System.out.println("Nenhuma imagem foi selecionada.");
         }
     }//GEN-LAST:event_btnBuscarImagemActionPerformed
-
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        ImagemDAO minhaImagemDao = new ImagemDAO();
-
-        ImageIcon icon = (ImageIcon) jlbImagemCapaLivro.getIcon();
-
-        int idLivro = 0;
-
-        if (!txtIdLivro.getText().isEmpty()) {
-            idLivro = Integer.parseInt(txtIdLivro.getText());
-        }
-
-        if (idLivro == 0) {
-            JOptionPane.showMessageDialog(null, "Selecione um livro");
-        } else if (icon == null || icon.getImage() == null) {
-            JOptionPane.showMessageDialog(null, "Não existe imagem de capa nesse livro");
-        } else {
-            int confirmacao = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir a imagem?", "Confirmação", JOptionPane.YES_NO_OPTION);
-
-            if (confirmacao == JOptionPane.YES_OPTION) {
-
-                minhaImagemDao.excluirImagem(idLivro);
-                JOptionPane.showMessageDialog(null, "Imagem removida.");
-                jlbImagemCapaLivro.setIcon(null);
-            }
-
-        }
-    }//GEN-LAST:event_btnExcluirActionPerformed
-
-    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        Livro livro = new Livro();
-        ImagemDAO imagemDAO = new ImagemDAO();
-
-        // Pegando a imagem da JLabel.
-        ImageIcon icon = (ImageIcon) jlbImagemCapaLivro.getIcon();
-
-        int idLivro = 0;
-
-        if (!txtIdLivro.getText().isEmpty()) {
-            idLivro = Integer.parseInt(txtIdLivro.getText());
-        }
-
-        if (idLivro == 0) {
-            JOptionPane.showMessageDialog(null, "ID não encontrado. Verifique se o livro foi selecionado.");
-        } else if (icon == null || icon.getImage() == null) {
-            JOptionPane.showMessageDialog(null, "Você precisa selecionar uma imagem!");
-        } else {
-            Image imagem = icon.getImage();
-            // Redimensionando.
-            Image novaImagem = imagem.getScaledInstance(250, 350, Image.SCALE_SMOOTH);
-
-            // Convertendo a imagem para um array de bytes.
-            BufferedImage bufferedImage = new BufferedImage(novaImagem.getWidth(null), novaImagem.getHeight(null), BufferedImage.TYPE_INT_RGB);
-            bufferedImage.getGraphics().drawImage(novaImagem, 0, 0, null);
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-
-            try {
-                ImageIO.write(bufferedImage, "jpg", stream);
-            } catch (IOException ex) {
-                Logger.getLogger(EdicaoDeLivro.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            byte[] bytesImagem = stream.toByteArray();
-
-            livro.setImagem(bytesImagem);
-            livro.setId(idLivro);
-
-            try {
-                imagemDAO.alterarImagem(livro);
-                JOptionPane.showMessageDialog(null, "Imagem salva com sucesso!");
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Erro ao salvar imagem: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-
-    }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void txtDeBoasVindasLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDeBoasVindasLivroActionPerformed
         // TODO add your handling code here:
@@ -755,11 +675,34 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
             cboxLivroIdioma.setSelectedItem(livroDao.selectGeralComId(idDoLivro).getIdioma());
             txtSinopseDoLivro.setText(livroDao.selectGeralComId(idDoLivro).getSinopse());
 
+            // Habilita os campos para edição
+            txtIdLivro.setEnabled(true);
+            txtTitulo.setEnabled(true);
+            cboxIsbnSelect.setEnabled(true);
+            formatedIsbn.setEnabled(true);
+            txtAnoDePublicacao.setEnabled(true);
+            txtNumeroDePaginas.setEnabled(true);
+            txtNomeDaEditora.setEnabled(true);
+            txtSinopseDoLivro.setEnabled(true);
+            jlbImagemCapaLivro.setEnabled(true);
+            cboxCategoria.setEnabled(true);
+            cboxSubCategoria.setEnabled(true);
+            cboxLivroIdioma.setEnabled(true);
+            btnBuscarImagem.setEnabled(true);
+            btnExcluir.setEnabled(true);
+            btnSalvarAlteracoes.setEnabled(true);
+
             visualizadorDeImagem();
         }
     }//GEN-LAST:event_btnSelecionaLivroActionPerformed
 
-    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+    public void limparTela() {
+        // Limpa os campos de pesquisa.
+        txtBuscaLivro.setText("");
+        cboxResultadoPesquisaLivro.removeAllItems();
+
+        // Limpa os campos de texto.
+        txtIdLivro.setText("");
         txtTitulo.setText("");
         cboxIsbnSelect.setSelectedItem("Selecione");
         formatedIsbn.setText(null);
@@ -767,21 +710,264 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
         txtNumeroDePaginas.setText("");
         txtNomeDaEditora.setText("");
         txtSinopseDoLivro.setText("");
+        jlbImagemCapaLivro.setIcon(null);
 
-        // Limpar as comboboxs e definir os valores padrão
+        // Limpa as comboboxs e definir os valores padrão.
         cboxCategoria.removeAllItems();
         cboxSubCategoria.removeAllItems();
         cboxLivroIdioma.removeAllItems();
 
-        // Definir os valores padrão novamente
+        // Define os valores padrão novamente.
         listarCategorias();
         listarIdiomasDoLivro();
 
-        // Definir o item "Não Informada" como selecionado
+        // Define o item "Não Informado" como selecionado.
         cboxCategoria.setSelectedItem("Não Informada");
         cboxSubCategoria.setSelectedItem("Não Informada");
         cboxLivroIdioma.setSelectedItem("Não Informado");
+
+        // Desabilita os campos para edição
+        txtIdLivro.setEnabled(false);
+        txtTitulo.setEnabled(false);
+        cboxIsbnSelect.setEnabled(false);
+        formatedIsbn.setEnabled(false);
+        txtAnoDePublicacao.setEnabled(false);
+        txtNumeroDePaginas.setEnabled(false);
+        txtNomeDaEditora.setEnabled(false);
+        txtSinopseDoLivro.setEnabled(false);
+        jlbImagemCapaLivro.setEnabled(false);
+        cboxCategoria.setEnabled(false);
+        cboxSubCategoria.setEnabled(false);
+        cboxLivroIdioma.setEnabled(false);
+        btnBuscarImagem.setEnabled(false);
+        btnExcluir.setEnabled(false);
+        btnSalvarAlteracoes.setEnabled(false);
+    }
+
+    public void insereCapaDoLivro() {
+        // Função do antigo botão "Inserir".
+        // Movido e adaptado para o botão "Salvar Alterações"
+        // Remover assim que mudança for constatada como estável.
+
+        Livro livro = new Livro();
+        ImagemDAO imagemDAO = new ImagemDAO();
+
+        // Pegando a imagem da JLabel.
+        ImageIcon icon = (ImageIcon) jlbImagemCapaLivro.getIcon();
+
+        int idLivro = 0;
+
+        if (!txtIdLivro.getText().isEmpty()) {
+            idLivro = Integer.parseInt(txtIdLivro.getText());
+        }
+
+        if (idLivro == 0) {
+            JOptionPane.showMessageDialog(null, "ID não encontrado. Verifique se o livro foi selecionado.");
+        } else if (icon == null || icon.getImage() == null) {
+            JOptionPane.showMessageDialog(null, "Você precisa selecionar uma imagem!");
+        } else {
+            Image imagem = icon.getImage();
+            // Redimensionando.
+            Image novaImagem = imagem.getScaledInstance(250, 350, Image.SCALE_SMOOTH);
+
+            // Convertendo a imagem para um array de bytes.
+            BufferedImage bufferedImage = new BufferedImage(novaImagem.getWidth(null), novaImagem.getHeight(null), BufferedImage.TYPE_INT_RGB);
+            bufferedImage.getGraphics().drawImage(novaImagem, 0, 0, null);
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+
+            try {
+                ImageIO.write(bufferedImage, "jpg", stream);
+            } catch (IOException ex) {
+                Logger.getLogger(EdicaoDeLivro.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            byte[] bytesImagem = stream.toByteArray();
+
+            livro.setImagem(bytesImagem);
+            livro.setId(idLivro);
+
+            try {
+                imagemDAO.alterarImagem(livro);
+                JOptionPane.showMessageDialog(null, "Imagem salva com sucesso!");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao salvar imagem: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    public void removeCapaDoLivro() {
+        // Função completa do botão "Excluir".
+        // Movido e adaptado para o botão "Salvar Alterações"
+        // Remover assim que mudança for constatada como estável.
+
+        ImagemDAO minhaImagemDao = new ImagemDAO();
+
+        ImageIcon icon = (ImageIcon) jlbImagemCapaLivro.getIcon();
+
+        int idLivro = 0;
+
+        if (!txtIdLivro.getText().isEmpty()) {
+            idLivro = Integer.parseInt(txtIdLivro.getText());
+        }
+
+        if (idLivro == 0) {
+            JOptionPane.showMessageDialog(null, "Selecione um livro");
+        } else if (icon == null || icon.getImage() == null) {
+            JOptionPane.showMessageDialog(null, "Não existe imagem de capa nesse livro");
+        } else {
+            int confirmacao = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir a imagem?", "Confirmação", JOptionPane.YES_NO_OPTION);
+
+            if (confirmacao == JOptionPane.YES_OPTION) {
+
+                minhaImagemDao.excluirImagem(idLivro);
+                JOptionPane.showMessageDialog(null, "Imagem removida.");
+                jlbImagemCapaLivro.setIcon(null);
+            }
+        }
+    }
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        limparTela();
     }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void btnSalvarAlteracoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarAlteracoesActionPerformed
+        Livro livro = new Livro();
+        LivroDAO livroDao = new LivroDAO();
+        ImagemDAO imagemDAO = new ImagemDAO();
+
+        int idLivro = Integer.parseInt(txtIdLivro.getText());
+
+        // Seta os dados caso nenhum erro seja encontrado ou mostra o erro na tela.
+        if (verificaErroCadastro() != null) {
+            JOptionPane.showMessageDialog(null, verificaErroCadastro());
+        } else {
+            livro.setTitulo(txtTitulo.getText());
+            livro.setIsbn(formatedIsbn.getText());
+            livro.setAnoDePublicacao(Integer.parseInt(txtAnoDePublicacao.getText()));
+            livro.setNumeroDePaginas(Integer.parseInt(txtNumeroDePaginas.getText()));
+            livro.setCategoria(cboxCategoria.getSelectedItem().toString());
+            livro.setSubCategoria(cboxSubCategoria.getSelectedItem().toString());
+            livro.setEditora(txtNomeDaEditora.getText());
+            livro.setIdioma(cboxLivroIdioma.getSelectedItem().toString());
+            livro.setSinopse(txtSinopseDoLivro.getText());
+
+            livroDao.atualizaInfoLivro(idLivro, livro);
+
+            if (livroDao.atualizaInfoLivro(idLivro, livro)) {
+                JOptionPane.showMessageDialog(null, "Dados salvos com sucesso");
+
+                // Pegando a imagem da JLabel.
+                ImageIcon icon = (ImageIcon) jlbImagemCapaLivro.getIcon();
+
+                // Relacionado ao insert da capa do livro.            
+                if (icon != null && icon.getImage() != null) {
+                    Image imagem = icon.getImage();
+                    // Redimensionando.
+                    Image novaImagem = imagem.getScaledInstance(250, 350, Image.SCALE_SMOOTH);
+
+                    // Convertendo a imagem para um array de bytes.
+                    BufferedImage bufferedImage = new BufferedImage(novaImagem.getWidth(null), novaImagem.getHeight(null), BufferedImage.TYPE_INT_RGB);
+                    bufferedImage.getGraphics().drawImage(novaImagem, 0, 0, null);
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+
+                    try {
+                        ImageIO.write(bufferedImage, "jpg", stream);
+                    } catch (IOException ex) {
+                        Logger.getLogger(EdicaoDeLivro.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    byte[] bytesImagem = stream.toByteArray();
+
+                    livro.setImagem(bytesImagem);
+                    livro.setId(idLivro);
+
+                    try {
+                        imagemDAO.alterarImagem(livro);
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Erro ao salvar imagem: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+
+                // Relacionado ao delete da capa do livro.
+                if ((icon == null || icon.getImage() == null)) {
+                    imagemDAO.excluirImagem(idLivro);
+                }
+                limparTela();
+            }
+
+        }
+    }//GEN-LAST:event_btnSalvarAlteracoesActionPerformed
+
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+
+        ImageIcon icon = (ImageIcon) jlbImagemCapaLivro.getIcon();
+
+        if (icon == null || icon.getImage() == null) {
+            JOptionPane.showMessageDialog(null, "Não existe imagem de capa nesse livro");
+        } else {
+            int confirmacao = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir a imagem?", "Confirmação", JOptionPane.YES_NO_OPTION);
+            if (confirmacao == JOptionPane.YES_OPTION) {
+                jlbImagemCapaLivro.setIcon(null);
+            }
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    public String verificaErroCadastro() {
+        // Verifica se algum dos dados obrigatórios não foram preenchidos.
+
+        ValidadorIsbn validadorIsbn = new ValidadorIsbn();
+
+        String mensagemDeErro = null;
+
+        // Livro sem idioma.
+        if (cboxLivroIdioma.getSelectedItem().toString().equals("Não Informado")) {
+            mensagemDeErro = "Selecione um idioma para o livro.";
+        }
+
+        String categoriaSelecionada = cboxCategoria.getSelectedItem().toString();
+        String subCategoriaSelecionada = cboxSubCategoria.getSelectedItem().toString();
+
+        // Livro sem categoria ou subcategoria.
+        if (categoriaSelecionada.equals("Não Informada") || subCategoriaSelecionada.equals("Não Informada")) {
+            mensagemDeErro = "Você precisa selecionar a categoria e sub-categoria do livro.";
+        }
+
+        // Livro sem número de páginas.
+        if (txtNumeroDePaginas.getText().isBlank()) {
+            mensagemDeErro = "Digite o número de páginas do livro.";
+        }
+
+        // Livro sem ano de publicação.
+        if (txtAnoDePublicacao.getText().isBlank()) {
+            mensagemDeErro = "Digite o ano de publicação do livro.";
+        }
+
+        // ISBN inválido.
+        if (validadorIsbn.valida(formatedIsbn.getText()) == false) {
+            mensagemDeErro = "ISBN inválido.";
+        }
+
+        String isbnSelecionado = cboxIsbnSelect.getSelectedItem().toString();
+        String isbnParaTexto = formatedIsbn.getText().replaceAll("[\\s-]", ""); // Remove espaços e hífens
+
+        // Tipo do ISBN foi selecionado mas nada foi digitado.
+        if (!isbnSelecionado.equals("Selecione") && (isbnParaTexto.isBlank() || isbnParaTexto.equals(""))) {
+            mensagemDeErro = "Você precisa digitar o ISBN";
+        }
+
+        // Tipo do ISBN não selecionado.
+        if (cboxIsbnSelect.getSelectedItem().toString().equals("Selecione")) {
+            mensagemDeErro = "Selecione o tipo do ISBN.";
+        }
+
+        // Livro sem título.
+        if (txtTitulo.getText().isBlank()) {
+            mensagemDeErro = "Digite um título válido para o livro.";
+        }
+
+        return mensagemDeErro;
+    }
 
     /**
      * @param args the command line arguments
@@ -829,13 +1015,12 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane boxSinopse;
-    private javax.swing.JButton btnAlterar;
-    private javax.swing.JButton btnAtualizarCadastro;
     private javax.swing.JButton btnBuscarImagem;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnMostraTodosLivro;
     private javax.swing.JButton btnPesquisaLivro;
+    private javax.swing.JButton btnSalvarAlteracoes;
     private javax.swing.JButton btnSelecionaLivro;
     private javax.swing.JButton btnTelaPrinCadLivro;
     private javax.swing.ButtonGroup buttonGroup1;
