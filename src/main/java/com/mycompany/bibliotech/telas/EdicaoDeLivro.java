@@ -111,6 +111,7 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
 
         btnLimpar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         btnLimpar.setText("Limpar");
+        btnLimpar.setEnabled(false);
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparActionPerformed(evt);
@@ -304,6 +305,7 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
 
         btnAtualizarCadastro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         btnAtualizarCadastro.setText("Atualizar");
+        btnAtualizarCadastro.setEnabled(false);
 
         javax.swing.GroupLayout panModificarLivroLayout = new javax.swing.GroupLayout(panModificarLivro);
         panModificarLivro.setLayout(panModificarLivroLayout);
@@ -718,7 +720,6 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
             LivroDAO livroDao = new LivroDAO();
 
             String itemSelecionado = cboxResultadoPesquisaLivro.getSelectedItem().toString();
-            //txtNomeDoLivroSelecionado.setText(itemSelecionado);
 
             Pattern pattern = Pattern.compile("-\\s(.*)");
             Matcher matcher = pattern.matcher(itemSelecionado);
@@ -728,8 +729,31 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
                 livroDao.selectIdDoLivro(textoCapturado);
                 txtTitulo.setText(textoCapturado);
                 txtIdLivro.setText(livroDao.selectIdDoLivro(textoCapturado));
-
             }
+
+            int idDoLivro = Integer.parseInt(txtIdLivro.getText());
+            livroDao.selectGeralComId(idDoLivro);
+
+            // Tratamento do ISBN
+            String numeroIsbn = livroDao.selectGeralComId(idDoLivro).getIsbn();
+
+            if (numeroIsbn.replace("-", "").length() == 10) {
+                cboxIsbnSelect.setSelectedItem("ISBN-10");
+                formatedIsbn.setText(numeroIsbn);
+            } else {
+                cboxIsbnSelect.setSelectedItem("ISBN-13");
+                formatedIsbn.setText(numeroIsbn);
+            }
+
+            int anoDePublicacao = livroDao.selectGeralComId(idDoLivro).getAnoDePublicacao();
+            txtAnoDePublicacao.setText(Integer.toString(anoDePublicacao));
+            int numeroDePaginas = livroDao.selectGeralComId(idDoLivro).getNumeroDePaginas();
+            txtNumeroDePaginas.setText(Integer.toString(numeroDePaginas));
+            cboxCategoria.setSelectedItem(livroDao.selectGeralComId(idDoLivro).getCategoria());
+            cboxSubCategoria.setSelectedItem(livroDao.selectGeralComId(idDoLivro).getSubCategoria());
+            txtNomeDaEditora.setText(livroDao.selectGeralComId(idDoLivro).getEditora());
+            cboxLivroIdioma.setSelectedItem(livroDao.selectGeralComId(idDoLivro).getIdioma());
+            txtSinopseDoLivro.setText(livroDao.selectGeralComId(idDoLivro).getSinopse());
 
             visualizadorDeImagem();
         }
@@ -741,11 +765,22 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
         formatedIsbn.setText(null);
         txtAnoDePublicacao.setText("");
         txtNumeroDePaginas.setText("");
+        txtNomeDaEditora.setText("");
+        txtSinopseDoLivro.setText("");
+
+        // Limpar as comboboxs e definir os valores padrão
+        cboxCategoria.removeAllItems();
+        cboxSubCategoria.removeAllItems();
+        cboxLivroIdioma.removeAllItems();
+
+        // Definir os valores padrão novamente
+        listarCategorias();
+        listarIdiomasDoLivro();
+
+        // Definir o item "Não Informada" como selecionado
         cboxCategoria.setSelectedItem("Não Informada");
         cboxSubCategoria.setSelectedItem("Não Informada");
-        txtNomeDaEditora.setText("");
         cboxLivroIdioma.setSelectedItem("Não Informado");
-        txtSinopseDoLivro.setText("");
     }//GEN-LAST:event_btnLimparActionPerformed
 
     /**

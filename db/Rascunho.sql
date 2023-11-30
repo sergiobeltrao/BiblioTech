@@ -12,27 +12,25 @@ INSERT INTO ENDERECO VALUES (NULL, 'Dolores', 13, 'APTO', 'Mooca', 'Sao Paulo', 
 (NULL, 'Avenida Atlântica', '1702', NULL, 'Copacabana', ' Rio de Janeiro', 'RJ', 'BRASIL', '22021001'),
 (NULL, 'Rua22', '122', NULL, 'St. Oeste', 'Goiânia', 'GO', 'BRASIL', '74120140');
 
-INSERT INTO LIVRO VALUES
-(NULL, 'O Segredo das Estrelas', '978-12-345-6789-0', 1980, 320, '1 - Ficção', '40 - Programação', 'Portugues - Brasil', 'Atlas', NULL, NULL),
-(NULL, 'O Alquimista', '978-85-843-9067-0', 1988, 208, '1 - Ficção', '4 - Fantasia', 'Português - Brasil', 'Osires', NULL, NULL);
-
 INSERT INTO AUTOR ( AUT_NOME_AUTOR, AUT_NACIONALIDADE, AUT_SEXO) VALUES
 ('Laura Bens', 'Brasil - Brasileira', 'FEM' ), ('Gabriel Torres', 'Brasil - Brasileira', 'MASC' ),
 ('Paulo Coelho', 'Brasil - Brasileira', 'MASC' ), ('George R. R. Martin', 'Estados Unidos - Americana', 'MASC' ),
 ('Agatha Christie', 'Reino Unido - Britânica', 'FEM');
 
 -- livros
-INSERT INTO LIVRO (LIV_NOME_LIVRO, LIV_ISBN, LIV_ANO, LIV_PAGINA, LIV_CATEGORIA, LIV_SUBCATEGORIA, LIV_IDIOMA, LIV_EDITORA, LIV_SINOPSE)
-VALUES ('Dom Casmurro', '9788532820480', 1899, 256, 'Ficção', 'Romance', 'Português', 'Editora Nova Fronteira', 'A obra retrata a vida de Bento Santiago, um homem enigmático e melancólico.'),
-('Cosmos', '9780345539434', 1980, 384, 'Não Ficção', 'Ciências', 'Inglês', 'Ballantine Books', 'Uma jornada pelo universo, explorando ciência, filosofia e a história da vida na Terra.'),
-('O Pequeno Príncipe', '9788576573195', 1943, 96, 'Literatura Infantil e Juvenil', 'Contos de Fadas', 'Francês', 'Gallimard', 'Uma história encantadora sobre amizade e valores essenciais da vida.'),
-('A Origem das Espécies', '9788533616655', 1859, 480, 'Não Ficção', 'Ciências', 'Português', 'L&PM Editores', 'Charles Darwin explora a teoria da evolução e a seleção natural.'),
-('O Poder do Hábito', '9788539004115', 2012, 408, 'Não Ficção', 'Autoajuda', 'Português', 'Objetiva', 'Investiga como os hábitos funcionam e como podem ser transformados.'),
-('Cem Anos de Solidão', '9788535908064', 1967, 448, 'Ficção', 'Romance', 'Espanhol', 'Editora Record', 'A história da família Buendía ao longo de várias gerações em Macondo.'),
-('A Revolução dos Bichos', '9788535907708', 1945, 128, 'Ficção', 'Sátira', 'Português', 'Companhia das Letras', 'Uma alegoria sobre os eventos que levaram à Revolução Russa.'),
-('O Código Da Vinci', '9788575428769', 2003, 448, 'Ficção', 'Mistério', 'Português', 'Editora Arqueiro', 'Uma trama envolvente de conspirações e mistérios ligados à Igreja Católica.'),
-('A Arte da Guerra', '9788533618819', 0001, 112, 'Não Ficção', 'Filosofia', 'Português', 'L&PM Pocket', 'Um tratado militar atribuído a Sun Tzu sobre estratégias de guerra.'),
-('O Senhor dos Anéis: A Sociedade do Anel', '9788578271223', 1954, 576, 'Ficção', 'Fantasia', 'Inglês', 'Martins Fontes', 'A primeira parte da trilogia épica de J.R.R. Tolkien.');
+INSERT INTO LIVRO (LIV_NOME_LIVRO, LIV_ISBN, LIV_ANO, LIV_PAGINA, LIV_CATEGORIA, LIV_SUBCATEGORIA, LIV_IDIOMA, LIV_EDITORA, LIV_SINOPSE) VALUES
+('O Segredo das Estrelas', '978-12-345-6789-0', 1980, 320, '1 - Ficção', '4 - Fantasia', 'Português - Brasil', 'Atlas', 'Jovem herdeiro, poder ancestral, jornada épica.'),
+('O Alquimista', '978-85-843-9067-0', 1988, 208, '1 - Ficção', '4 - Fantasia', 'Português - Brasil', 'Osires', 'Pastor, deserto, busca do tesouro, lições.'),
+('Dom Casmurro', '978-85-328-2048-0', 1899, 256, '1 - Ficção', '1 - Romance', 'Português - Brasil', 'Editora Nova Fronteira', 'A obra retrata a vida de Bento Santiago, um homem enigmático e melancólico.'),
+('Cosmos', '978-03-455-3943-4', 1980, 384, '6 - Ciências', '26 - Astronomia', 'Inglês - Estados Unidos', 'Ballantine Books', 'Uma jornada pelo universo, explorando ciência, filosofia e a história da vida na Terra.'),
+('O Pequeno Príncipe', '978-65-598-0046-9', 1943, 96, '4 - Literatura Infantil e Juvenil', '18 - Contos de Fadas', 'Francês - França', 'Gallimard', 'Uma história encantadora sobre amizade e valores essenciais da vida.'),
+('A Origem das Espécies', '978-85-336-1665-5', 1859, 480, '6 - Ciências', '23 - Biologia', 'Inglês - Estados Unidos', 'L&PM Editores', 'Charles Darwin explora a teoria da evolução e a seleção natural.'),
+('O Poder do Hábito', '978-85-390-0411-5', 2012, 408, '2 - Não Ficção', '10 - Autoajuda', 'Português - Brasil', 'Objetiva', 'Investiga como os hábitos funcionam e como podem ser transformados.'),
+('Cem Anos de Solidão', '978-85-359-0806-4', 1967, 448, '1 - Ficção', '1 - Romance', 'Espanhol - Espanha', 'Editora Record', 'A história da família Buendía ao longo de várias gerações em Macondo.'),
+('A Revolução dos Bichos', '978-85-359-0770-8', 1945, 128, '1 - Ficção', '4 - Fantasia', 'Português - Brasil', 'Companhia das Letras', 'Uma alegoria sobre os eventos que levaram à Revolução Russa.'),
+('O Código Da Vinci', '978-85-754-2158-1', 2003, 448, '1 - Ficção', '2 - Mistério', 'Português - Brasil', 'Editora Arqueiro', 'Uma trama envolvente de conspirações e mistérios ligados à Igreja Católica.'),
+('A Arte da Guerra', '978-65-566-0049-9', 0001, 112, '2 - Não Ficção', '9 - História', 'Português - Brasil', 'L&PM Pocket', 'Um tratado militar atribuído a Sun Tzu sobre estratégias de guerra.'),
+('O Senhor dos Anéis: A Sociedade do Anel', '978-65-551-1363-1', 1954, 576, '1 - Ficção', '4 - Fantasia', 'Inglês - Reino Unido', 'Martins Fontes', 'A primeira parte da trilogia épica de J.R.R. Tolkien.');
 
 -- Autores
 INSERT INTO AUTOR (AUT_NOME_AUTOR, AUT_NACIONALIDADE, AUT_SEXO)
