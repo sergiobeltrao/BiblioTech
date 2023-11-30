@@ -260,23 +260,23 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jCalendar1 = new com.toedter.calendar.JCalendar();
         jCalendar2 = new com.toedter.calendar.JCalendar();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        cadastroUsuario = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        cadastro = new javax.swing.JTabbedPane();
+        cadastroUsuario = new javax.swing.JPanel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
-        ProxCadEndButton = new javax.swing.JButton();
-        avisoLabel = new javax.swing.JLabel();
-        nomeTxt = new javax.swing.JTextField();
-        sobrenomeTxt = new javax.swing.JTextField();
-        nickTxt = new javax.swing.JTextField();
-        dataNascChooser = new com.toedter.calendar.JDateChooser();
-        cpfTxt = new javax.swing.JFormattedTextField();
-        foneTxt = new javax.swing.JFormattedTextField();
+        cargoBox = new javax.swing.JComboBox<>();
         telefoneTipoBox = new javax.swing.JComboBox<>();
         sexoBox = new javax.swing.JComboBox<>();
+        nomeTxt = new javax.swing.JTextField();
         emailTxt = new javax.swing.JTextField();
-        cargoBox = new javax.swing.JComboBox<>();
+        nickTxt = new javax.swing.JTextField();
+        sobrenomeTxt = new javax.swing.JTextField();
+        cpfTxt = new javax.swing.JFormattedTextField();
+        foneTxt = new javax.swing.JFormattedTextField();
         senhaTxt = new javax.swing.JPasswordField();
         resenhaTxt = new javax.swing.JPasswordField();
+        dataNascChooser = new com.toedter.calendar.JDateChooser();
+        ProxCadEndButton = new javax.swing.JButton();
+        avisoLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -289,16 +289,25 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        endTxt = new javax.swing.JTextField();
-        ufTxt = new javax.swing.JTextField();
+        cadastroEndereco = new javax.swing.JPanel();
+        kGradientPanel3 = new keeptoo.KGradientPanel();
         bairroTxt = new javax.swing.JTextField();
         cidadeTxt = new javax.swing.JTextField();
-        paisTxt = new javax.swing.JTextField();
+        ufTxt = new javax.swing.JTextField();
         numTxt = new javax.swing.JTextField();
         compTxt = new javax.swing.JTextField();
-        ProxCadLivButton = new javax.swing.JButton();
+        endTxt = new javax.swing.JTextField();
+        paisTxt = new javax.swing.JTextField();
         cepTxt = new javax.swing.JFormattedTextField();
+        ProxCadLivButton = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         cboxCategoria2 = new javax.swing.JComboBox<>();
         cboxSubCategoria2 = new javax.swing.JComboBox<>();
@@ -306,6 +315,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         cboxSubCategoria1 = new javax.swing.JComboBox<>();
         enterButton = new javax.swing.JButton();
         LimparButton = new javax.swing.JButton();
+        kGradientPanel4 = new keeptoo.KGradientPanel();
         MenuPainel = new javax.swing.JPanel();
         kGradientPanel2 = new keeptoo.KGradientPanel();
         menu = new javax.swing.JLabel();
@@ -342,27 +352,46 @@ public class CadastroUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastrar Usuarios");
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
+        cadastroUsuario.setPreferredSize(new java.awt.Dimension(1280, 720));
 
         kGradientPanel1.setkEndColor(new java.awt.Color(51, 51, 51));
         kGradientPanel1.setkGradientFocus(350);
         kGradientPanel1.setkStartColor(new java.awt.Color(255, 255, 255));
 
-        ProxCadEndButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        ProxCadEndButton.setForeground(new java.awt.Color(0, 0, 0));
-        ProxCadEndButton.setText("Próxima ");
-        ProxCadEndButton.setToolTipText("ir para proxima aba");
-        ProxCadEndButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ProxCadEndButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ProxCadEndButton.addActionListener(new java.awt.event.ActionListener() {
+        cargoBox.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        cargoBox.setForeground(new java.awt.Color(0, 0, 0));
+        cargoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMIN", "CLIENTE" }));
+        cargoBox.setToolTipText("escolha o tipo de usuario");
+        cargoBox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        cargoBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cargoBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ProxCadEndButtonActionPerformed(evt);
+                cargoBoxActionPerformed(evt);
             }
         });
 
-        avisoLabel.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        avisoLabel.setForeground(new java.awt.Color(0, 0, 0));
-        avisoLabel.setText("Itens preenchidos com * são obrigatórios!!");
+        telefoneTipoBox.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        telefoneTipoBox.setForeground(new java.awt.Color(0, 0, 0));
+        telefoneTipoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RESIDENCIAL", "COMERCIAL", "CELULAR" }));
+        telefoneTipoBox.setToolTipText("Escolhao tipo de telefone.");
+        telefoneTipoBox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        telefoneTipoBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        telefoneTipoBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                telefoneTipoBoxActionPerformed(evt);
+            }
+        });
+
+        sexoBox.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        sexoBox.setForeground(new java.awt.Color(0, 0, 0));
+        sexoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MASC", "FEM", "OUTRO" }));
+        sexoBox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        sexoBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sexoBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sexoBoxActionPerformed(evt);
+            }
+        });
 
         nomeTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         nomeTxt.setForeground(new java.awt.Color(0, 0, 0));
@@ -377,14 +406,13 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
-        sobrenomeTxt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        sobrenomeTxt.setForeground(new java.awt.Color(0, 0, 0));
-        sobrenomeTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        sobrenomeTxt.setToolTipText("insira sobrenome completo");
-        sobrenomeTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        sobrenomeTxt.addActionListener(new java.awt.event.ActionListener() {
+        emailTxt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        emailTxt.setForeground(new java.awt.Color(0, 0, 0));
+        emailTxt.setToolTipText("Insira o email");
+        emailTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        emailTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sobrenomeTxtActionPerformed(evt);
+                emailTxtActionPerformed(evt);
             }
         });
 
@@ -399,10 +427,16 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
-        dataNascChooser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        dataNascChooser.setForeground(new java.awt.Color(0, 0, 0));
-        dataNascChooser.setToolTipText("2004-08-07");
-        dataNascChooser.setDateFormatString("yyyy-MM-dd");
+        sobrenomeTxt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        sobrenomeTxt.setForeground(new java.awt.Color(0, 0, 0));
+        sobrenomeTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sobrenomeTxt.setToolTipText("insira sobrenome completo");
+        sobrenomeTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        sobrenomeTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sobrenomeTxtActionPerformed(evt);
+            }
+        });
 
         cpfTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         cpfTxt.setForeground(new java.awt.Color(0, 0, 0));
@@ -434,51 +468,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
-        telefoneTipoBox.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        telefoneTipoBox.setForeground(new java.awt.Color(0, 0, 0));
-        telefoneTipoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RESIDENCIAL", "COMERCIAL", "CELULAR" }));
-        telefoneTipoBox.setToolTipText("Escolhao tipo de telefone.");
-        telefoneTipoBox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        telefoneTipoBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        telefoneTipoBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                telefoneTipoBoxActionPerformed(evt);
-            }
-        });
-
-        sexoBox.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        sexoBox.setForeground(new java.awt.Color(0, 0, 0));
-        sexoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MASC", "FEM", "OUTRO" }));
-        sexoBox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        sexoBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        sexoBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sexoBoxActionPerformed(evt);
-            }
-        });
-
-        emailTxt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        emailTxt.setForeground(new java.awt.Color(0, 0, 0));
-        emailTxt.setToolTipText("Insira o email");
-        emailTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        emailTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailTxtActionPerformed(evt);
-            }
-        });
-
-        cargoBox.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cargoBox.setForeground(new java.awt.Color(0, 0, 0));
-        cargoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMIN", "CLIENTE" }));
-        cargoBox.setToolTipText("escolha o tipo de usuario");
-        cargoBox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        cargoBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cargoBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cargoBoxActionPerformed(evt);
-            }
-        });
-
         senhaTxt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         senhaTxt.setForeground(new java.awt.Color(0, 0, 0));
         senhaTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -500,6 +489,27 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 resenhaTxtActionPerformed(evt);
             }
         });
+
+        dataNascChooser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        dataNascChooser.setForeground(new java.awt.Color(0, 0, 0));
+        dataNascChooser.setToolTipText("2004-08-07");
+        dataNascChooser.setDateFormatString("yyyy-MM-dd");
+
+        ProxCadEndButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        ProxCadEndButton.setForeground(new java.awt.Color(0, 0, 0));
+        ProxCadEndButton.setText("Próxima ");
+        ProxCadEndButton.setToolTipText("ir para proxima aba");
+        ProxCadEndButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ProxCadEndButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ProxCadEndButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProxCadEndButtonActionPerformed(evt);
+            }
+        });
+
+        avisoLabel.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        avisoLabel.setForeground(new java.awt.Color(0, 0, 0));
+        avisoLabel.setText("Itens preenchidos com * são obrigatórios!!");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -570,7 +580,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 .addComponent(avisoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addContainerGap(165, Short.MAX_VALUE)
+                .addContainerGap(163, Short.MAX_VALUE)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(cpfTxt)
@@ -686,148 +696,276 @@ public class CadastroUsuario extends javax.swing.JFrame {
                     .addComponent(senhaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(resenhaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ProxCadEndButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout cadastroUsuarioLayout = new javax.swing.GroupLayout(cadastroUsuario);
+        cadastroUsuario.setLayout(cadastroUsuarioLayout);
+        cadastroUsuarioLayout.setHorizontalGroup(
+            cadastroUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(kGradientPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        cadastroUsuarioLayout.setVerticalGroup(
+            cadastroUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        cadastroUsuario.addTab("Cadastro usuario", jPanel1);
-        jPanel1.getAccessibleContext().setAccessibleDescription("");
+        cadastro.addTab("Cadastro usuario", cadastroUsuario);
+        cadastroUsuario.getAccessibleContext().setAccessibleDescription("");
 
-        endTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        endTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
-        endTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                endTxtActionPerformed(evt);
-            }
-        });
+        kGradientPanel3.setkEndColor(new java.awt.Color(51, 51, 51));
+        kGradientPanel3.setkGradientFocus(350);
+        kGradientPanel3.setkStartColor(new java.awt.Color(255, 255, 255));
 
-        ufTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        ufTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "UF", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
-        ufTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ufTxtActionPerformed(evt);
-            }
-        });
-
-        bairroTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bairroTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bairro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        bairroTxt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        bairroTxt.setForeground(new java.awt.Color(0, 0, 0));
+        bairroTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        bairroTxt.setToolTipText("nome do bairro");
+        bairroTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         bairroTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bairroTxtActionPerformed(evt);
             }
         });
 
-        cidadeTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cidadeTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cidade", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        cidadeTxt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        cidadeTxt.setForeground(new java.awt.Color(0, 0, 0));
+        cidadeTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cidadeTxt.setToolTipText("Nome da cidade");
+        cidadeTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         cidadeTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cidadeTxtActionPerformed(evt);
             }
         });
 
-        paisTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        paisTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "País", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
-        paisTxt.addActionListener(new java.awt.event.ActionListener() {
+        ufTxt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        ufTxt.setForeground(new java.awt.Color(0, 0, 0));
+        ufTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        ufTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        ufTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                paisTxtActionPerformed(evt);
+                ufTxtActionPerformed(evt);
             }
         });
 
-        numTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        numTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Número", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        numTxt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        numTxt.setForeground(new java.awt.Color(0, 0, 0));
+        numTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        numTxt.setToolTipText("numero da residencia");
+        numTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         numTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numTxtActionPerformed(evt);
             }
         });
 
-        compTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        compTxt.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Complemento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        compTxt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        compTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        compTxt.setToolTipText("APTO, CASA, EMPRESA...");
+        compTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         compTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 compTxtActionPerformed(evt);
             }
         });
 
+        endTxt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        endTxt.setForeground(new java.awt.Color(0, 0, 0));
+        endTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        endTxt.setToolTipText("Nome da rua");
+        endTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        endTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                endTxtActionPerformed(evt);
+            }
+        });
+
+        paisTxt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        paisTxt.setForeground(new java.awt.Color(0, 0, 0));
+        paisTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        paisTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        paisTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                paisTxtActionPerformed(evt);
+            }
+        });
+
+        cepTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        cepTxt.setForeground(new java.awt.Color(0, 0, 0));
+        try {
+            cepTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        cepTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cepTxt.setToolTipText("CEP da residencia");
+
+        ProxCadLivButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        ProxCadLivButton.setForeground(new java.awt.Color(0, 0, 0));
         ProxCadLivButton.setText("Próxima Aba");
+        ProxCadLivButton.setToolTipText("ir para proxima aba");
+        ProxCadLivButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ProxCadLivButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ProxCadLivButtonActionPerformed(evt);
             }
         });
 
-        cepTxt.setBorder(javax.swing.BorderFactory.createTitledBorder("CEP"));
-        try {
-            cepTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("Nome da rua:");
+        jLabel13.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(cepTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(paisTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(endTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(compTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cidadeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ufTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(numTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bairroTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addComponent(ProxCadLivButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(497, Short.MAX_VALUE))
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setText("Numero:");
+        jLabel14.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setText("Bairro:");
+        jLabel15.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel16.setText("UF:");
+        jLabel16.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel17.setText("Complemento:");
+        jLabel17.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setText("Cidade:");
+        jLabel18.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel19.setText("Pais:");
+        jLabel19.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel20.setText("CEP:");
+        jLabel20.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        javax.swing.GroupLayout kGradientPanel3Layout = new javax.swing.GroupLayout(kGradientPanel3);
+        kGradientPanel3.setLayout(kGradientPanel3Layout);
+        kGradientPanel3Layout.setHorizontalGroup(
+            kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kGradientPanel3Layout.createSequentialGroup()
+                .addContainerGap(243, Short.MAX_VALUE)
+                .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(kGradientPanel3Layout.createSequentialGroup()
+                            .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(paisTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(kGradientPanel3Layout.createSequentialGroup()
+                                    .addGap(8, 8, 8)
+                                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ProxCadLivButton, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(endTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, kGradientPanel3Layout.createSequentialGroup()
+                            .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(numTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(kGradientPanel3Layout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addComponent(jLabel14)))
+                            .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(kGradientPanel3Layout.createSequentialGroup()
+                                    .addGap(33, 33, 33)
+                                    .addComponent(bairroTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(27, 27, 27)
+                                    .addComponent(compTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(kGradientPanel3Layout.createSequentialGroup()
+                                    .addGap(43, 43, 43)
+                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(82, 82, 82))))
+                        .addGroup(kGradientPanel3Layout.createSequentialGroup()
+                            .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(kGradientPanel3Layout.createSequentialGroup()
+                                    .addComponent(cidadeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel3Layout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addComponent(jLabel18)
+                                    .addGap(288, 288, 288)))
+                            .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cepTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(ufTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(kGradientPanel3Layout.createSequentialGroup()
+                                    .addGap(9, 9, 9)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(paisTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cepTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+        kGradientPanel3Layout.setVerticalGroup(
+            kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kGradientPanel3Layout.createSequentialGroup()
+                .addContainerGap(118, Short.MAX_VALUE)
+                .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(endTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ufTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(endTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(kGradientPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(numTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(kGradientPanel3Layout.createSequentialGroup()
+                        .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel17))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(compTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bairroTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(kGradientPanel3Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel18))
+                    .addGroup(kGradientPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel16))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cidadeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(compTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cidadeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ufTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cepTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(numTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bairroTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(ProxCadLivButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(399, Short.MAX_VALUE))
+                .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(paisTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ProxCadLivButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(295, Short.MAX_VALUE))
         );
 
-        cadastroUsuario.addTab("Cadastro endereço", jPanel3);
+        javax.swing.GroupLayout cadastroEnderecoLayout = new javax.swing.GroupLayout(cadastroEndereco);
+        cadastroEndereco.setLayout(cadastroEnderecoLayout);
+        cadastroEnderecoLayout.setHorizontalGroup(
+            cadastroEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(kGradientPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        cadastroEnderecoLayout.setVerticalGroup(
+            cadastroEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cadastroEnderecoLayout.createSequentialGroup()
+                .addComponent(kGradientPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        cadastro.addTab("Cadastro endereço", cadastroEndereco);
 
         cboxCategoria2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         cboxCategoria2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada" }));
@@ -879,6 +1017,17 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout kGradientPanel4Layout = new javax.swing.GroupLayout(kGradientPanel4);
+        kGradientPanel4.setLayout(kGradientPanel4Layout);
+        kGradientPanel4Layout.setHorizontalGroup(
+            kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 424, Short.MAX_VALUE)
+        );
+        kGradientPanel4Layout.setVerticalGroup(
+            kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -898,7 +1047,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
                         .addComponent(LimparButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(enterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(485, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addComponent(kGradientPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -915,10 +1065,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(enterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LimparButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(524, Short.MAX_VALUE))
+                .addContainerGap(515, Short.MAX_VALUE))
+            .addComponent(kGradientPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        cadastroUsuario.addTab("Tipos de livro favorito", jPanel2);
+        cadastro.addTab("Tipos de livro favorito", jPanel2);
 
         MenuPainel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1080,11 +1231,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(MenuPainel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cadastroUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 1109, Short.MAX_VALUE))
+                .addComponent(cadastro, javax.swing.GroupLayout.DEFAULT_SIZE, 1109, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(cadastroUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
+            .addComponent(cadastro, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
             .addComponent(MenuPainel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -1351,11 +1502,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_foneTxtActionPerformed
 
     private void ProxCadEndButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProxCadEndButtonActionPerformed
-        this.cadastroUsuario.setSelectedIndex(1);
+        this.cadastro.setSelectedIndex(1);
     }//GEN-LAST:event_ProxCadEndButtonActionPerformed
 
     private void ProxCadLivButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProxCadLivButtonActionPerformed
-        this.cadastroUsuario.setSelectedIndex(2);
+        this.cadastro.setSelectedIndex(2);
     }//GEN-LAST:event_ProxCadLivButtonActionPerformed
 
     private void LimparButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparButtonActionPerformed
@@ -1524,7 +1675,9 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField bairroTxt;
     private javax.swing.JButton btnEdicaoDeLivro;
     private javax.swing.JButton btnEncerrarSessao1;
-    private javax.swing.JTabbedPane cadastroUsuario;
+    private javax.swing.JTabbedPane cadastro;
+    private javax.swing.JPanel cadastroEndereco;
+    private javax.swing.JPanel cadastroUsuario;
     private javax.swing.JComboBox<String> cargoBox;
     private javax.swing.JComboBox<String> cboxCategoria1;
     private javax.swing.JComboBox<String> cboxCategoria2;
@@ -1549,7 +1702,15 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1557,11 +1718,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private keeptoo.KGradientPanel kGradientPanel1;
     private keeptoo.KGradientPanel kGradientPanel2;
+    private keeptoo.KGradientPanel kGradientPanel3;
+    private keeptoo.KGradientPanel kGradientPanel4;
     private javax.swing.JLabel menu;
     private javax.swing.JTextField nickTxt;
     private javax.swing.JTextField nomeTxt;
