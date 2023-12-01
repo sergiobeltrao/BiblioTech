@@ -15,6 +15,7 @@ public class TelaDeLogin extends javax.swing.JFrame {
 
     public TelaDeLogin() {
         initComponents();
+        campoUsuario.requestFocus();
 
         // BUG: ACABA ABRINDO DUAS JANELAS. RESOLVER DEPOIS.
         /*
@@ -133,7 +134,7 @@ public class TelaDeLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-
+       
         UsuarioLoginDAO dao = new UsuarioLoginDAO();
 
         // Implementação da senha usando hash.
