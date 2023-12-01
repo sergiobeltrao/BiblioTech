@@ -37,10 +37,28 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
     public TelaPrincipalCliente() {
         initComponents();
 
+        List<String> topList = RankDAO.topList();
+
+        // Configure o texto dos botões
+        if (topList.size() > 0) {
+            bntTop1.setText(topList.get(0));
+        }
+        if (topList.size() > 1) {
+            bntTop2.setText(topList.get(1));
+        }
+        if (topList.size() > 2) {
+            bntTop3.setText(topList.get(2));
+        }
+        if (topList.size() > 3) {
+            bntTop4.setText(topList.get(3));
+        }
+        if (topList.size() > 4) {
+            bntTop5.setText(topList.get(4));
+        }
+
         List<String> rankList = RankDAO.ranking();
         DefaultListModel<String> listModel = new DefaultListModel<>();
 
-        
         List<ContagemAvaliacoesLivro> contagensList = AvaliacaoDAO.numeroDeNotasPorLivro();
         DefaultListModel<String> listContagens = new DefaultListModel<>();
 
@@ -273,13 +291,13 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
 
         top1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "TOP 1", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        top4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "TOP 1", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        top4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "TOP 4", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        top2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "TOP 1", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        top2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "TOP 2", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        top5.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "TOP 1", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        top5.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "TOP 5", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        top3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "TOP 1", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        top3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "TOP 3", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
         bntTop1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         bntTop1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -383,10 +401,11 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
                     .addComponent(bntTop4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bntTop5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(painelAvaliacao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
@@ -506,23 +525,38 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_edicaoUserButtonActionPerformed
 
     private void bntTop1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntTop1ActionPerformed
-        // TODO add your handling code here:
+        List<String> topList = RankDAO.topList();
+        if (topList.size() > 0) {
+            bntTop1.setText(topList.get(0));
+        }
     }//GEN-LAST:event_bntTop1ActionPerformed
 
     private void bntTop2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntTop2ActionPerformed
-        // TODO add your handling code here:
+        List<String> topList = RankDAO.topList();
+        if (topList.size() > 1) {
+            bntTop2.setText(topList.get(1));
+        }
     }//GEN-LAST:event_bntTop2ActionPerformed
 
     private void bntTop3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntTop3ActionPerformed
-        // TODO add your handling code here:
+        List<String> topList = RankDAO.topList();
+        if (topList.size() > 2) {
+            bntTop3.setText(topList.get(2));
+        }
     }//GEN-LAST:event_bntTop3ActionPerformed
 
     private void bntTop4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntTop4ActionPerformed
-        // TODO add your handling code here:
+        List<String> topList = RankDAO.topList();
+        if (topList.size() > 3) {
+            bntTop4.setText(topList.get(3));
+        }
     }//GEN-LAST:event_bntTop4ActionPerformed
 
     private void bntTop5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntTop5ActionPerformed
-        // TODO add your handling code here:
+        List<String> topList = RankDAO.topList();
+        if (topList.size() > 4) {
+            bntTop5.setText(topList.get(4));
+        }
     }//GEN-LAST:event_bntTop5ActionPerformed
 
     /**
