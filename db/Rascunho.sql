@@ -12,10 +12,13 @@ INSERT INTO ENDERECO VALUES (NULL, 'Dolores', 13, 'APTO', 'Mooca', 'Sao Paulo', 
 (NULL, 'Avenida Atlântica', '1702', NULL, 'Copacabana', ' Rio de Janeiro', 'RJ', 'BRASIL', '22021001'),
 (NULL, 'Rua22', '122', NULL, 'St. Oeste', 'Goiânia', 'GO', 'BRASIL', '74120140');
 
-INSERT INTO AUTOR ( AUT_NOME_AUTOR, AUT_NACIONALIDADE, AUT_SEXO) VALUES
-('Laura Bens', 'Brasil - Brasileira', 'FEM' ), ('Gabriel Torres', 'Brasil - Brasileira', 'MASC' ),
-('Paulo Coelho', 'Brasil - Brasileira', 'MASC' ), ('George R. R. Martin', 'Estados Unidos - Americana', 'MASC' ),
-('Agatha Christie', 'Reino Unido - Britânica', 'FEM');
+-- Autores
+INSERT INTO AUTOR (AUT_NOME_AUTOR, AUT_NACIONALIDADE, AUT_SEXO) VALUES
+('Laura Bens', 'Brasil - Brasileira', 'FEM' ), ('Gabriel Torres', 'Brasil - Brasileira', 'MASC' ), ('Paulo Coelho', 'Brasil - Brasileira', 'MASC' ),
+('George R. R. Martin', 'Estados Unidos - Americana', 'MASC' ), ('Agatha Christie', 'Reino Unido - Britânica', 'FEM'), ('Machado de Assis', 'Brasil - Brasileira', 'MASC'),
+('Carl Sagan', 'Estados Unidos - Americana', 'MASC'), ('Antoine de Saint-Exupéry', 'França - Francesa', 'MASC'), ('Charles Darwin', 'Reino Unido - Britânica', 'MASC'),
+('Charles Duhigg', 'Estados Unidos - Americana', 'MASC'), ('Gabriel García Márquez', 'Colômbia - Colombiana', 'MASC'), ('George Orwell', 'Reino Unido - Britânica', 'MASC'),
+('Dan Brown', 'Estados Unidos - Americana', 'MASC'), ('Sun Tzu', 'China - Chinesa', 'MASC'), ('J.R.R. Tolkien', 'Reino Unido - Britânica', 'MASC');
 
 -- livros
 INSERT INTO LIVRO (LIV_NOME_LIVRO, LIV_ISBN, LIV_ANO, LIV_PAGINA, LIV_CATEGORIA, LIV_SUBCATEGORIA, LIV_IDIOMA, LIV_EDITORA, LIV_SINOPSE) VALUES
@@ -31,14 +34,6 @@ INSERT INTO LIVRO (LIV_NOME_LIVRO, LIV_ISBN, LIV_ANO, LIV_PAGINA, LIV_CATEGORIA,
 ('O Código Da Vinci', '978-85-754-2158-1', 2003, 448, '1 - Ficção', '2 - Mistério', 'Português - Brasil', 'Editora Arqueiro', 'Uma trama envolvente de conspirações e mistérios ligados à Igreja Católica.'),
 ('A Arte da Guerra', '978-65-566-0049-9', 0001, 112, '2 - Não Ficção', '9 - História', 'Português - Brasil', 'L&PM Pocket', 'Um tratado militar atribuído a Sun Tzu sobre estratégias de guerra.'),
 ('O Senhor dos Anéis: A Sociedade do Anel', '978-65-551-1363-1', 1954, 576, '1 - Ficção', '4 - Fantasia', 'Inglês - Reino Unido', 'Martins Fontes', 'A primeira parte da trilogia épica de J.R.R. Tolkien.');
-
--- Autores
-INSERT INTO AUTOR (AUT_NOME_AUTOR, AUT_NACIONALIDADE, AUT_SEXO)
-VALUES ('Machado de Assis', 'Brasileira', 'MASC'), ('Carl Sagan', 'Estadunidense', 'MASC'),
-('Antoine de Saint-Exupéry', 'Francês', 'MASC'), ('Charles Darwin', 'Britânica', 'MASC'),
-('Charles Duhigg', 'Estadunidense', 'MASC'), ('Gabriel García Márquez', 'Colombiana', 'MASC'),
-('George Orwell', 'Britânica', 'MASC'), ('Dan Brown', 'Estadunidense', 'MASC'),
-('Sun Tzu', 'Chinesa', 'MASC'), ('J.R.R. Tolkien', 'Britânica', 'MASC');
 
 -- chave estrangeira Livros e Autores
 INSERT INTO LIVRO_AUTOR (LIVRO_CHAVE, LIVRO_AUTOR)
