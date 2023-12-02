@@ -95,7 +95,7 @@ public class AvaliacaoDAO {
         return avaliacoes;
     }
 
-    public void rank(Avaliacao nota, String buscaLivro, String verificaUsuario, String rank) {
+    public void rank(Avaliacao nota, String buscaLivro, String verificaUsuario, String rank, String comentario) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
 
@@ -129,15 +129,16 @@ public class AvaliacaoDAO {
             }
 
             // Faz o insert na tabela AVALIACAO
-            stmt = con.prepareStatement("INSERT INTO AVALIACAO (AVA_ID_USUARIO, AVA_FK_LIVRO, AVA_USUARIO, AVA_TOTAL, AVA_COMENTARIO, AVA_DATA_AVALIACAO) VALUES(?, ?, ?, '10.0', 'kjgvhadfoi', NOW())");
+            stmt = con.prepareStatement("INSERT INTO AVALIACAO (AVA_ID_USUARIO, AVA_FK_LIVRO, AVA_USUARIO, AVA_COMENTARIO, AVA_DATA_AVALIACAO) VALUES(?, ?, ?, ?, NOW())");
 
-            // O AVA_TOTAL ainda será implementado, deixei um valor qualquer.
             // Implementar captura do USE_ID com base no usuário logado para preencher o AVA_FK_USUARIO.
+            stmt.setInt(1, idDoUser);
             stmt.setInt(2, idLivro);
             stmt.setString(3, rank);
-            //stmt.setInt(3, nota.get);
-            //stmt.setString(4, nota.getComentarioAvaliacao());
-            stmt.setInt(1, idDoUser);
+            stmt.setString(4, comentario);
+            
+            JOptionPane.showMessageDialog(null, "Avaliação cadastrada com sucesso");
+            
 
             // Para preparar o SQL e executar
             stmt.executeUpdate();

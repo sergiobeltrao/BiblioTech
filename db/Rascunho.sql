@@ -42,7 +42,7 @@ VALUES ('Machado de Assis', 'Brasileira', 'MASC'), ('Carl Sagan', 'Estadunidense
 
 -- chave estrangeira Livros e Autores
 INSERT INTO LIVRO_AUTOR (LIVRO_CHAVE, LIVRO_AUTOR)
-VALUES (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9), (10, 10);  
+VALUES (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9), (10, 10) ;  
 
 -- Avaliações dos Livros
 -- O INT usado no AVA_ID_USUARIO é i ID do usuario da tabela usuario, o mesmo se aplica ao AVA_FK_LIVRO

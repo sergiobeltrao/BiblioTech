@@ -34,7 +34,6 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         List<String> rankList = RankDAO.ranking();
         DefaultListModel<String> listModel = new DefaultListModel<>();
 
-        
         List<ContagemAvaliacoesLivro> contagensList = AvaliacaoDAO.numeroDeNotasPorLivro();
         DefaultListModel<String> listContagens = new DefaultListModel<>();
 
@@ -74,6 +73,7 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         jList2.setCellRenderer(new TelaPrincipalAdministrador.CenteredTextRenderer());
         jList2.setModel(listRecord);
     }
+
     public class CenteredTextRenderer extends DefaultListCellRenderer {
 
         @Override
@@ -406,51 +406,57 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:", "Edição de Usuario", JOptionPane.QUESTION_MESSAGE);
 
         // Verifica se o usuário inseriu um nome
-        if (userNome != null && !userNome.isEmpty()) {
-            // Obtém o usuário com base no nome fornecido
-            user = userdao.obterUsuarioPorNome(userNome);
+        if (userNome != null) {
+            // Verifica se o nome fornecido não está vazio
+            if (!userNome.isEmpty()) {
+                // Obtém o usuário com base no nome fornecido
+                user = userdao.obterUsuarioPorNome(userNome);
 
-            // Verifica se o usuário foi encontrado
-            if (user.getUserId() != 0) {
-                // Criar um JPanel personalizado com um JPasswordField
-                JPanel panel = new JPanel();
-                JLabel label = new JLabel("Senha:");
-                JPasswordField passwordField = new JPasswordField(10);
-                panel.add(label);
-                panel.add(passwordField);
+                // Verifica se o usuário foi encontrado
+                if (user.getUserId() != 0) {
+                    // Criar um JPanel personalizado com um JPasswordField
+                    JPanel panel = new JPanel();
+                    JLabel label = new JLabel("Senha:");
+                    JPasswordField passwordField = new JPasswordField(10);
+                    panel.add(label);
+                    panel.add(passwordField);
 
-                // Exibir o JOptionPane com o JPanel personalizado
-                int result = JOptionPane.showOptionDialog(null, panel, "Digite a senha",
-                        JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+                    // Exibir o JOptionPane com o JPanel personalizado
+                    int result = JOptionPane.showOptionDialog(null, panel, "Digite a senha",
+                            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
 
-                // Verificar a resposta do JOptionPane
-                if (result == JOptionPane.OK_OPTION) {
-                    // Obtém a senha do usuário
-                    char[] senhaDigitada = passwordField.getPassword();
+                    // Verificar a resposta do JOptionPane
+                    if (result == JOptionPane.OK_OPTION) {
+                        // Obtém a senha do usuário
+                        char[] senhaDigitada = passwordField.getPassword();
 
-                    // Verifica se a senha digitada coincide com a senha do banco
-                    String senhaDoBanco = userdao.obterSenhaPorNome(userNome);
-                    Hash rehash = new Hash();
+                        // Verifica se a senha digitada coincide com a senha do banco
+                        String senhaDoBanco = userdao.obterSenhaPorNome(userNome);
+                        Hash rehash = new Hash();
 
-                    try {
-                        String senhaDigitadaHash = rehash.geradorDeHash(new String(senhaDigitada));
-                        if (senhaDoBanco != null && senhaDoBanco.equals(senhaDigitadaHash)) {
-                            // Abre a tela de edição com os dados do usuário
-                            EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
-                            edicaoUsuarioFrame.setVisible(true);
-                            this.setVisible(false);
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Senha incorreta", "Erro", JOptionPane.ERROR_MESSAGE);
+                        try {
+                            String senhaDigitadaHash = rehash.geradorDeHash(new String(senhaDigitada));
+                            if (senhaDoBanco != null && senhaDoBanco.equals(senhaDigitadaHash)) {
+                                // Abre a tela de edição com os dados do usuário
+                                EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
+                                edicaoUsuarioFrame.setVisible(true);
+                                this.setVisible(false);
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Senha incorreta", "Erro", JOptionPane.ERROR_MESSAGE);
+                            }
+                        } catch (NoSuchAlgorithmException ex) {
+                            ex.printStackTrace();
                         }
-                    } catch (NoSuchAlgorithmException ex) {
-                        ex.printStackTrace();
                     }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Digite um nome de usuário válido", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Digite um nome de usuário válido", "Erro", JOptionPane.ERROR_MESSAGE);
+            // Usuário pressionou Cancelar
+            JOptionPane.showMessageDialog(this, "Operação cancelada pelo usuário", "Aviso", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_edicaoUserButtonActionPerformed
 

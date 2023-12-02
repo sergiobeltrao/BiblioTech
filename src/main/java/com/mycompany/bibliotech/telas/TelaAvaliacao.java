@@ -239,6 +239,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         txtIdioma.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         txtNotaMax.setEditable(false);
+        txtNotaMax.setBackground(new java.awt.Color(102, 102, 102));
         txtNotaMax.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtNotaMax.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtNotaMax.setToolTipText("Esta é a nota maxima do livro escolhido");
@@ -265,7 +266,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             }
         });
 
-        SliderNota.setBackground(new java.awt.Color(27, 25, 25));
+        SliderNota.setBackground(new java.awt.Color(51, 51, 51));
         SliderNota.setMaximum(10);
         SliderNota.setPaintLabels(true);
         SliderNota.setPaintTicks(true);
@@ -289,7 +290,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         imagemLivro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         txtNota.setBackground(new java.awt.Color(0, 0, 0));
-        txtNota.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        txtNota.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtNota.setForeground(new java.awt.Color(255, 255, 255));
         txtNota.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtNota.setToolTipText("");
@@ -658,8 +659,8 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         } else {
             System.out.println("Imagem não encontrada.");
         }
-        */
-        
+         */
+
         if (!busca.isEmpty() && buscaAlfabeto.isEmpty()) {
             // Busca simples por uma parte do nome
             TelaAvaliacaoDAO.listaFiltrada(cboxNomeLivro, busca);
@@ -729,7 +730,11 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         Avaliacao pes = new Avaliacao();
         AvaliacaoDAO notaDAO = new AvaliacaoDAO();
         String nota = txtNota.getText();
-        notaDAO.rank(pes, pesquisar, login.getNick(), nota);
+        String comentario = jTextArea1.getText();
+        notaDAO.rank(pes, pesquisar, login.getNick(), nota, comentario);
+        Avaliacao avaliacao = new Avaliacao();
+        new TelaAvaliacao(avaliacao).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnAvaliarActionPerformed
 
     private void txtVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVoltarActionPerformed
@@ -786,51 +791,57 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:", "Edição de Usuario", JOptionPane.QUESTION_MESSAGE);
 
         // Verifica se o usuário inseriu um nome
-        if (userNome != null && !userNome.isEmpty()) {
-            // Obtém o usuário com base no nome fornecido
-            user = userdao.obterUsuarioPorNome(userNome);
+        if (userNome != null) {
+            // Verifica se o nome fornecido não está vazio
+            if (!userNome.isEmpty()) {
+                // Obtém o usuário com base no nome fornecido
+                user = userdao.obterUsuarioPorNome(userNome);
 
-            // Verifica se o usuário foi encontrado
-            if (user.getUserId() != 0) {
-                // Criar um JPanel personalizado com um JPasswordField
-                JPanel panel = new JPanel();
-                JLabel label = new JLabel("Senha:");
-                JPasswordField passwordField = new JPasswordField(10);
-                panel.add(label);
-                panel.add(passwordField);
+                // Verifica se o usuário foi encontrado
+                if (user.getUserId() != 0) {
+                    // Criar um JPanel personalizado com um JPasswordField
+                    JPanel panel = new JPanel();
+                    JLabel label = new JLabel("Senha:");
+                    JPasswordField passwordField = new JPasswordField(10);
+                    panel.add(label);
+                    panel.add(passwordField);
 
-                // Exibir o JOptionPane com o JPanel personalizado
-                int result = JOptionPane.showOptionDialog(null, panel, "Digite a senha",
-                        JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+                    // Exibir o JOptionPane com o JPanel personalizado
+                    int result = JOptionPane.showOptionDialog(null, panel, "Digite a senha",
+                            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
 
-                // Verificar a resposta do JOptionPane
-                if (result == JOptionPane.OK_OPTION) {
-                    // Obtém a senha do usuário
-                    char[] senhaDigitada = passwordField.getPassword();
+                    // Verificar a resposta do JOptionPane
+                    if (result == JOptionPane.OK_OPTION) {
+                        // Obtém a senha do usuário
+                        char[] senhaDigitada = passwordField.getPassword();
 
-                    // Verifica se a senha digitada coincide com a senha do banco
-                    String senhaDoBanco = userdao.obterSenhaPorNome(userNome);
-                    Hash rehash = new Hash();
+                        // Verifica se a senha digitada coincide com a senha do banco
+                        String senhaDoBanco = userdao.obterSenhaPorNome(userNome);
+                        Hash rehash = new Hash();
 
-                    try {
-                        String senhaDigitadaHash = rehash.geradorDeHash(new String(senhaDigitada));
-                        if (senhaDoBanco != null && senhaDoBanco.equals(senhaDigitadaHash)) {
-                            // Abre a tela de edição com os dados do usuário
-                            EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
-                            edicaoUsuarioFrame.setVisible(true);
-                            this.setVisible(false);
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Senha incorreta", "Erro", JOptionPane.ERROR_MESSAGE);
+                        try {
+                            String senhaDigitadaHash = rehash.geradorDeHash(new String(senhaDigitada));
+                            if (senhaDoBanco != null && senhaDoBanco.equals(senhaDigitadaHash)) {
+                                // Abre a tela de edição com os dados do usuário
+                                EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
+                                edicaoUsuarioFrame.setVisible(true);
+                                this.setVisible(false);
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Senha incorreta", "Erro", JOptionPane.ERROR_MESSAGE);
+                            }
+                        } catch (NoSuchAlgorithmException ex) {
+                            ex.printStackTrace();
                         }
-                    } catch (NoSuchAlgorithmException ex) {
-                        ex.printStackTrace();
                     }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Digite um nome de usuário válido", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Digite um nome de usuário válido", "Erro", JOptionPane.ERROR_MESSAGE);
+            // Usuário pressionou Cancelar
+            JOptionPane.showMessageDialog(this, "Operação cancelada pelo usuário", "Aviso", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_edicaoUserButtonActionPerformed
 

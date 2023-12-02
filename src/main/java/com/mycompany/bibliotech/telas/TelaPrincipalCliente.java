@@ -5,6 +5,7 @@
 package com.mycompany.bibliotech.telas;
 
 import com.mycompany.bibliotech.dao.AvaliacaoDAO;
+import com.mycompany.bibliotech.dao.ImagemDAO;
 import com.mycompany.bibliotech.dao.RankDAO;
 import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;
 import com.mycompany.bibliotech.model.bean.Usuario;
@@ -15,10 +16,18 @@ import com.mycompany.bibliotech.model.bean.Favoritos;
 import com.mycompany.bibliotech.model.bean.Hash;
 import com.mycompany.bibliotech.model.bean.Telefone;
 import java.awt.Component;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -97,6 +106,7 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
 
         jList2.setCellRenderer(new CenteredTextRenderer());
         jList2.setModel(listRecord);
+        visualizadorDeImagem();
 
     }
 
@@ -110,6 +120,101 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
             setHorizontalAlignment(DefaultListCellRenderer.CENTER);
 
             return this;
+        }
+    }
+
+    private void visualizadorDeImagem() {
+        ImagemDAO minhaImagemDao = new ImagemDAO();
+
+        // Itera pelos cinco primeiros itens
+        for (int indexToSelect = 0; indexToSelect < 5; indexToSelect++) {
+            jList1.setSelectedIndex(indexToSelect);
+
+            // Obtém o índice selecionado
+            int selectedIndex = jList1.getSelectedIndex();
+
+            // Verifica se há um item selecionado
+            if (selectedIndex != -1) {
+                // Obtém o valor associado ao índice selecionado
+                Object selectedValue = jList1.getModel().getElementAt(selectedIndex);
+
+                // Extrai apenas o nome do livro (parte antes do "   Nota:")
+                String nomeLivro = extrairNomeLivro(selectedValue.toString());
+
+                if (nomeLivro != null) {
+                    byte[] bytesImagem = minhaImagemDao.buscarImagemPorNome(nomeLivro);
+                    // Exibe a imagem no JLabel correspondente (top1, top2, ..., top5)
+                    exibirImagem(bytesImagem, indexToSelect + 1);
+                }
+            }
+        }
+    }
+
+    private String extrairNomeLivro(String textoCompleto) {
+        // Divide o texto usando "   Nota:" como delimitador
+        String[] partes = textoCompleto.split("   Nota:");
+
+        // Verifica se há pelo menos duas partes
+        if (partes.length > 1) {
+            // Pega a primeira parte e remove números e pontos
+            String nomeLivro = partes[0].replaceAll("[0-9.]", "").trim();
+
+            // Remove espaços extras e retorna o nome do livro
+            return nomeLivro;
+        }
+
+        return ""; // Retorna uma string vazia se não encontrar o nome do livro
+    }
+
+    private void exibirImagem(byte[] bytesImagem, int topIndex) {
+        try {
+            // Determine o JLabel correspondente com base no índice (top1, top2, ..., top5)
+            JLabel topLabel = switch (topIndex) {
+                case 1 ->
+                    top1;
+                case 2 ->
+                    top2;
+                case 3 ->
+                    top3;
+                case 4 ->
+                    top4;
+                case 5 ->
+                    top5;
+                default ->
+                    null;
+            };
+
+            if (topLabel != null && bytesImagem != null && bytesImagem.length > 0) {
+                // Converte o array de bytes para uma imagem
+                ByteArrayInputStream bis = new ByteArrayInputStream(bytesImagem);
+                BufferedImage bImage = ImageIO.read(bis);
+
+                if (bImage != null) {
+                    // Obtém as dimensões da JLabel
+                    int labelWidth = topLabel.getWidth();
+                    int labelHeight = topLabel.getHeight();
+
+                    // Redimensiona a imagem para se ajustar ao tamanho da JLabel
+                    Image scaledImage = bImage.getScaledInstance(120, 150, Image.SCALE_SMOOTH);
+
+                    // Converte a imagem redimensionada para um ImageIcon
+                    ImageIcon scaledIcon = new ImageIcon(scaledImage);
+
+                    // Define a imagem redimensionada na JLabel correspondente
+                    topLabel.setIcon(scaledIcon);
+                } else {
+                    // Se a imagem não puder ser lida, limpa a JLabel ou define uma imagem padrão
+                    topLabel.setIcon(null);
+                }
+            } else {
+                // Se o índice não for válido ou os bytes da imagem forem nulos, limpa a JLabel ou define uma imagem padrão
+                if (topLabel != null) {
+                    topLabel.setIcon(null);
+                }
+            }
+        } catch (IOException e) {
+            // Lida com exceções durante a leitura da imagem
+            e.printStackTrace();
         }
     }
 
@@ -476,51 +581,57 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
         String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:", "Edição de Usuario", JOptionPane.QUESTION_MESSAGE);
 
         // Verifica se o usuário inseriu um nome
-        if (userNome != null && !userNome.isEmpty()) {
-            // Obtém o usuário com base no nome fornecido
-            user = userdao.obterUsuarioPorNome(userNome);
+        if (userNome != null) {
+            // Verifica se o nome fornecido não está vazio
+            if (!userNome.isEmpty()) {
+                // Obtém o usuário com base no nome fornecido
+                user = userdao.obterUsuarioPorNome(userNome);
 
-            // Verifica se o usuário foi encontrado
-            if (user.getUserId() != 0) {
-                // Criar um JPanel personalizado com um JPasswordField
-                JPanel panel = new JPanel();
-                JLabel label = new JLabel("Senha:");
-                JPasswordField passwordField = new JPasswordField(10);
-                panel.add(label);
-                panel.add(passwordField);
+                // Verifica se o usuário foi encontrado
+                if (user.getUserId() != 0) {
+                    // Criar um JPanel personalizado com um JPasswordField
+                    JPanel panel = new JPanel();
+                    JLabel label = new JLabel("Senha:");
+                    JPasswordField passwordField = new JPasswordField(10);
+                    panel.add(label);
+                    panel.add(passwordField);
 
-                // Exibir o JOptionPane com o JPanel personalizado
-                int result = JOptionPane.showOptionDialog(null, panel, "Digite a senha",
-                        JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+                    // Exibir o JOptionPane com o JPanel personalizado
+                    int result = JOptionPane.showOptionDialog(null, panel, "Digite a senha",
+                            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
 
-                // Verificar a resposta do JOptionPane
-                if (result == JOptionPane.OK_OPTION) {
-                    // Obtém a senha do usuário
-                    char[] senhaDigitada = passwordField.getPassword();
+                    // Verificar a resposta do JOptionPane
+                    if (result == JOptionPane.OK_OPTION) {
+                        // Obtém a senha do usuário
+                        char[] senhaDigitada = passwordField.getPassword();
 
-                    // Verifica se a senha digitada coincide com a senha do banco
-                    String senhaDoBanco = userdao.obterSenhaPorNome(userNome);
-                    Hash rehash = new Hash();
+                        // Verifica se a senha digitada coincide com a senha do banco
+                        String senhaDoBanco = userdao.obterSenhaPorNome(userNome);
+                        Hash rehash = new Hash();
 
-                    try {
-                        String senhaDigitadaHash = rehash.geradorDeHash(new String(senhaDigitada));
-                        if (senhaDoBanco != null && senhaDoBanco.equals(senhaDigitadaHash)) {
-                            // Abre a tela de edição com os dados do usuário
-                            EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
-                            edicaoUsuarioFrame.setVisible(true);
-                            this.setVisible(false);
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Senha incorreta", "Erro", JOptionPane.ERROR_MESSAGE);
+                        try {
+                            String senhaDigitadaHash = rehash.geradorDeHash(new String(senhaDigitada));
+                            if (senhaDoBanco != null && senhaDoBanco.equals(senhaDigitadaHash)) {
+                                // Abre a tela de edição com os dados do usuário
+                                EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
+                                edicaoUsuarioFrame.setVisible(true);
+                                this.setVisible(false);
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Senha incorreta", "Erro", JOptionPane.ERROR_MESSAGE);
+                            }
+                        } catch (NoSuchAlgorithmException ex) {
+                            ex.printStackTrace();
                         }
-                    } catch (NoSuchAlgorithmException ex) {
-                        ex.printStackTrace();
                     }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Digite um nome de usuário válido", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Digite um nome de usuário válido", "Erro", JOptionPane.ERROR_MESSAGE);
+            // Usuário pressionou Cancelar
+            JOptionPane.showMessageDialog(this, "Operação cancelada pelo usuário", "Aviso", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_edicaoUserButtonActionPerformed
 

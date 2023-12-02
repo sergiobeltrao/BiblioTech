@@ -51,6 +51,30 @@ public class ImagemDAO {
         return imagemBytes;
     }
 
+    public byte[] buscarImagemPorNome(String livro) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        byte[] imagemBytes = null;
+
+        try {
+            String sql = "SELECT LIV_IMAGEM FROM LIVRO WHERE LIV_NOME_LIVRO = ?";
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, livro);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                imagemBytes = rs.getBytes("LIV_IMAGEM");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na busca: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return imagemBytes;
+    }
+
     public void excluirImagem(int livroId) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
