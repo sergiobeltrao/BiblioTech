@@ -366,6 +366,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastrar Usuarios");
 
+        cadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cadastro.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
 
         cadastroUsuario.setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -739,8 +740,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
                     .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel4)
                         .addComponent(jLabel26))
+                    .addComponent(jLabel5)
                     .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5)
                         .addComponent(jLabel6)
                         .addComponent(jLabel31)
                         .addComponent(jLabel35)))
