@@ -41,10 +41,12 @@ VALUES (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9), (
 
 -- Avaliações dos Livros
 -- O INT usado no AVA_ID_USUARIO é i ID do usuario da tabela usuario, o mesmo se aplica ao AVA_FK_LIVRO
-INSERT INTO AVALIACAO (AVA_ID_USUARIO, AVA_FK_LIVRO, AVA_USUARIO, AVA_COMENTARIO)
-VALUES (1, 1, 9.0,  'Um clássico da literatura brasileira.'), (2, 2, 7.8, 'Fascinante jornada pelo cosmos.'), (3, 3, 8, 'Uma história encantadora para todas as idades.'),
-(2, 1, 7.0, 'Um clássico da literatura brasileira.'), (2, 2, 2.8, 'Fascinante jornada pelo cosmos.'), (2, 3, 6.3, 'Uma história encantadora para todas as idades.'),
-(3, 1, 8.0, 'Um clássico da literatura brasileira.'), (3, 2, 1.8, 'Fascinante jornada pelo cosmos.'),(3, 3, 7.7, 'Uma história encantadora para todas as idades.');
+INSERT INTO AVALIACAO (AVA_ID_USUARIO, AVA_FK_LIVRO, AVA_USUARIO, AVA_COMENTARIO) VALUES
+(1, 1, 9,  'Uma história cativante, cheia de mistérios e reviravoltas inesperadas!'), (1, 2, 7, 'Uma jornada incrível, repleta de lições profundas sobre a vida e seus caminhos.'),
+(1, 3, 8, 'Um clássico que continua relevante, porém algumas passagens poderiam ser mais dinâmicas.'), (2, 1, 7, 'Um enredo interessante, mas alguns pontos poderiam ter sido mais desenvolvidos.'),
+(2, 2, 2, 'Difícil conexão com a narrativa, falta de clareza nos temas abordados.'), (2, 3, 6, 'História interessante, mas a construção dos personagens deixou a desejar.'),
+(3, 1, 8, 'Personagens envolventes, porém o desfecho deixou um pouco a desejar.'), (3, 2, 1, 'Narrativa confusa e sem direção, não consegui me envolver com a história.'),
+(3, 3, 7, 'Envolvente e instigante, porém o desfecho merecia mais profundidade.');
 
 /* 
 estes so vão funcionar quando tiverem no miniumo 10 usuarios inseridos no banco
