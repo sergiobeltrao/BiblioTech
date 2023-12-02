@@ -166,6 +166,7 @@ public class LivroDAO {
             comboBox.removeAllItems();
             boolean encontrouResultado = false;
 
+            comboBox.addItem("Selecione");
             while (resultado.next()) {
                 encontrouResultado = true;
                 String nomePesquisado = resultado.getString("ID_E_NOME_LIVRO");
@@ -272,5 +273,4 @@ public class LivroDAO {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
     }
-
 }

@@ -262,4 +262,32 @@ public class UsuarioCadastroDAO {
         }
     }
 
+    public String selectIdDoUsuario(String busca) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String resultado = null;
+
+        try {
+            stmt = con.prepareStatement("SELECT USE_ID FROM USUARIO WHERE USE_NICK LIKE ?");
+            stmt.setString(1, "%" + busca + "%");
+
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                resultado = rs.getString("USE_ID");
+            } else {
+                // Para evitar um NullPointerException caso o select não retorne nada.
+                resultado = "";
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na consulta: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return resultado;
+    }
+
 }

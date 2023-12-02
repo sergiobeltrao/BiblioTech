@@ -204,4 +204,141 @@ public class AutorDAO {
         }
         return autores;
     }
+
+    public static void selectPesquisaAutorNome(JComboBox<String> comboBox, String busca) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement("SELECT CONCAT('ID ', ID_AUTOR, ' - ', AUT_NOME_AUTOR) AS ID_E_NOME_AUTOR FROM AUTOR WHERE AUT_NOME_AUTOR LIKE ?");
+
+            stmt.setString(1, "%" + busca + "%");
+
+            ResultSet resultado = stmt.executeQuery();
+
+            comboBox.removeAllItems();
+            boolean encontrouResultado = false;
+
+            while (resultado.next()) {
+                encontrouResultado = true;
+                String nomePesquisado = resultado.getString("ID_E_NOME_AUTOR");
+                comboBox.addItem(nomePesquisado);
+            }
+
+            if (!encontrouResultado) {
+                comboBox.addItem("Nada encontrado");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao ler a tabela de autores: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+
+    public static void selectGeralAutorNome(JComboBox<String> comboBox) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement("SELECT CONCAT('ID ', ID_AUTOR, ' - ', AUT_NOME_AUTOR) AS ID_E_NOME_AUTOR FROM AUTOR");
+
+            ResultSet resultado = stmt.executeQuery();
+
+            comboBox.removeAllItems();
+            boolean encontrouResultado = false;
+
+            comboBox.addItem("Selecione");
+            while (resultado.next()) {
+                encontrouResultado = true;
+                String nomePesquisado = resultado.getString("ID_E_NOME_AUTOR");
+                comboBox.addItem(nomePesquisado);
+            }
+
+            if (!encontrouResultado) {
+                comboBox.addItem("Nada encontrado");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao ler a tabela de autores: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+
+    public String selectIdDoAutor(String busca) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String resultado = null;
+
+        try {
+            stmt = con.prepareStatement("SELECT ID_AUTOR FROM AUTOR WHERE AUT_NOME_AUTOR LIKE ?");
+            stmt.setString(1, "%" + busca + "%");
+
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                resultado = rs.getString("ID_AUTOR");
+            } else {
+                // Para evitar um NullPointerException caso o select não retorne nada.
+                resultado = "";
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na consulta: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return resultado;
+    }
+
+    public Autor selectGeralComId(int idAutor) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Autor autor = new Autor();
+
+        try {
+            stmt = con.prepareStatement("SELECT AUT_NOME_AUTOR, AUT_NACIONALIDADE, AUT_SEXO FROM AUTOR WHERE ID_AUTOR = ?");
+            stmt.setInt(1, idAutor);
+
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                autor.setNome(rs.getString("AUT_NOME_AUTOR"));
+                autor.setNacionalidade(rs.getString("AUT_NACIONALIDADE"));
+                autor.setSexo(rs.getString("AUT_SEXO"));
+
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na consulta: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return autor;
+    }
+
+    public boolean atualizaInfoAutor(int idAutor, Autor autor) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            String sql = "UPDATE AUTOR SET AUT_NOME_AUTOR = ?, AUT_NACIONALIDADE = ?, AUT_SEXO = ? WHERE ID_AUTOR = ?";
+
+            stmt = con.prepareStatement(sql);
+
+            stmt.setString(1, autor.getNome());
+            stmt.setString(2, autor.getNacionalidade());
+            stmt.setString(3, autor.getSexo());
+            stmt.setInt(4, idAutor);
+
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0; // Retorna true se a atualização for bem-sucedida
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no update: " + ex);
+            return false;
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+    }
 }
