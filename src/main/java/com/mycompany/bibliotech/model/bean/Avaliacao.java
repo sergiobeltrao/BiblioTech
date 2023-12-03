@@ -30,6 +30,15 @@ public class Avaliacao {
     private String txtNomeLivro;
     private String txtNotaMax;
     private ImageIcon imagemLivro;
+    private String txtSinopse;
+
+    public String getTxtSinopse() {
+        return txtSinopse;
+    }
+
+    public void setTxtSinopse(String txtSinopse) {
+        this.txtSinopse = txtSinopse;
+    }
     
     public ImageIcon getImagemLivro() {
         return imagemLivro;

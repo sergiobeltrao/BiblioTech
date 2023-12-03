@@ -144,7 +144,8 @@ public class TelaAvaliacaoDAO {
     }
 
     public Avaliacao find(String pesquisar, JLabel imagemLivro) throws SQLException {
-        try (Connection con = ConnectionFactory.getConnection(); PreparedStatement stmtConsultaId = con.prepareStatement("SELECT ID_LIVRO FROM LIVRO WHERE LIV_NOME_LIVRO = ?"); PreparedStatement stmtLivro = con.prepareStatement("SELECT L.LIV_PAGINA, L.LIV_EDITORA, L.LIV_ISBN, L.LIV_ANO, L.LIV_IDIOMA, A.AUT_NOME_AUTOR, ROUND(AVG(AV.AVA_USUARIO), 1) AS MEDIA_NOTA, L.LIV_IMAGEM FROM LIVRO L JOIN LIVRO_AUTOR LA ON L.ID_LIVRO = LA.LIVRO_CHAVE JOIN AUTOR A ON LA.LIVRO_AUTOR = A.ID_AUTOR LEFT JOIN AVALIACAO AV ON L.ID_LIVRO = AV.AVA_FK_LIVRO WHERE L.ID_LIVRO = ? GROUP BY L.ID_LIVRO, A.AUT_NOME_AUTOR");) {
+        try (Connection con = ConnectionFactory.getConnection(); 
+            PreparedStatement stmtConsultaId = con.prepareStatement("SELECT ID_LIVRO FROM LIVRO WHERE LIV_NOME_LIVRO = ?"); PreparedStatement stmtLivro = con.prepareStatement("SELECT L.LIV_PAGINA, L.LIV_EDITORA, L.LIV_ISBN, L.LIV_ANO, L.LIV_IDIOMA, L.LIV_SINOPSE, A.AUT_NOME_AUTOR, ROUND(AVG(AV.AVA_USUARIO), 1) AS MEDIA_NOTA, L.LIV_IMAGEM FROM LIVRO L JOIN LIVRO_AUTOR LA ON L.ID_LIVRO = LA.LIVRO_CHAVE JOIN AUTOR A ON LA.LIVRO_AUTOR = A.ID_AUTOR LEFT JOIN AVALIACAO AV ON L.ID_LIVRO = AV.AVA_FK_LIVRO WHERE L.ID_LIVRO = ? GROUP BY L.ID_LIVRO, A.AUT_NOME_AUTOR");) {
             stmtConsultaId.setString(1, pesquisar);
             try (ResultSet resultado = stmtConsultaId.executeQuery()) {
                 int livroId = 0;
@@ -164,6 +165,7 @@ public class TelaAvaliacaoDAO {
                         pes.setTxtIsbn(rs.getString("LIV_ISBN"));
                         pes.setTxtAno(rs.getInt("LIV_ANO"));
                         pes.setTxtIdioma(rs.getString("LIV_IDIOMA"));
+                        pes.setTxtSinopse(rs.getString("LIV_SINOPSE"));
                         pes.setTxtNomeAutor(rs.getString("AUT_NOME_AUTOR"));
                         pes.setTxtNotaMax("Nota: " + rs.getString("MEDIA_NOTA"));
                         byte[] imagemBytes = rs.getBytes("LIV_IMAGEM");
