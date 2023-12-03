@@ -81,7 +81,29 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             txtPaginas.setText(String.valueOf(avaliacao.getTxtPaginas()));
             txtNotaMax.setText(avaliacao.getTxtNotaMax());
             imagemLivro.setIcon(avaliacao.getImagemLivro());
-            txtSinopse.setText(avaliacao.getTxtSinopse()); 
+            txtSinopse.setText(avaliacao.getTxtSinopse());
+            
+            // metodo para limitar o numero de linhas no txtSinopse
+            String sinopse = avaliacao.getTxtSinopse();
+            int comprimentoMaximoPorLinha = 30;
+            
+            if (sinopse != null && !sinopse.isEmpty()) {
+                StringBuilder sinopseFormatada = new StringBuilder();
+                int comprimentoAtual = 0;
+
+                for (char caractere : sinopse.toCharArray()) {
+                    sinopseFormatada.append(caractere);
+                    comprimentoAtual++;
+
+                    // Verifica se atingiu o comprimento máximo por linha
+                    if (comprimentoAtual >= comprimentoMaximoPorLinha && caractere == ' ') {
+                        sinopseFormatada.append("\n");  // Quebra a linha
+                        comprimentoAtual = 0;  // Reinicia o contador
+                    }
+                }
+
+                txtSinopse.setText(sinopseFormatada.toString());
+            }
 
         }
 
