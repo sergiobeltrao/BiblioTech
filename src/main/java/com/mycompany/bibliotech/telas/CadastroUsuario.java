@@ -11,6 +11,7 @@ import com.mycompany.bibliotech.dao.FavoritosDAO;
 import com.mycompany.bibliotech.model.bean.Favoritos;
 import com.mycompany.bibliotech.dao.CpfDAO;
 import com.mycompany.bibliotech.dao.ExcluirUserDAO;
+import com.mycompany.bibliotech.dao.UsuarioLoginDAO;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
 import com.mycompany.bibliotech.model.bean.Hash;
 import com.toedter.calendar.JCalendar;
@@ -318,7 +319,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        cadastroFavoritos = new javax.swing.JPanel();
         kGradientPanel4 = new keeptoo.KGradientPanel();
         cboxSubCategoria1 = new javax.swing.JComboBox<>();
         cboxCategoria1 = new javax.swing.JComboBox<>();
@@ -904,10 +905,15 @@ public class CadastroUsuario extends javax.swing.JFrame {
         }
         cepTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         cepTxt.setToolTipText("CEP da residencia");
+        cepTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cepTxtActionPerformed(evt);
+            }
+        });
 
         ProxCadLivButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         ProxCadLivButton.setForeground(new java.awt.Color(0, 0, 0));
-        ProxCadLivButton.setText("Próxima Aba");
+        ProxCadLivButton.setText("Próxima ");
         ProxCadLivButton.setToolTipText("ir para proxima aba");
         ProxCadLivButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ProxCadLivButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1232,18 +1238,18 @@ public class CadastroUsuario extends javax.swing.JFrame {
                         .addGap(231, 231, 231))))
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout cadastroFavoritosLayout = new javax.swing.GroupLayout(cadastroFavoritos);
+        cadastroFavoritos.setLayout(cadastroFavoritosLayout);
+        cadastroFavoritosLayout.setHorizontalGroup(
+            cadastroFavoritosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(kGradientPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        cadastroFavoritosLayout.setVerticalGroup(
+            cadastroFavoritosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(kGradientPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        cadastro.addTab("Tipos de livro favorito", jPanel2);
+        cadastro.addTab("Tipos de livro favorito", cadastroFavoritos);
 
         MenuPainel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1686,7 +1692,43 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
     private void LimparButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparButtonActionPerformed
         new CadastroUsuario().setVisible(true);
-        this.setVisible(false);
+        UsuarioLoginDAO usuarioLoginDao = new UsuarioLoginDAO();
+        
+        if (usuarioLoginDao.tipoDoUsuarioLogado()) {
+            new TelaPrincipalAdministrador().setVisible(true);
+            this.dispose();
+        } else {
+            new TelaPrincipalCliente().setVisible(true);
+            this.dispose();
+        }
+
+        UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
+        Usuario user = new Usuario();
+        Endereco endereco = new Endereco();
+        Favoritos favoritos = new Favoritos();
+        Telefone telefone = new Telefone();
+
+        // Solicita o nome do usuário ao usuário
+        String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:", "Edição de Usuario", JOptionPane.QUESTION_MESSAGE);
+
+        // Verifica se o usuário inseriu um nome
+        if (userNome != null && !userNome.isEmpty()) {
+            // Obtém o usuário com base no nome fornecido
+            user = userdao.obterUsuarioPorNome(userNome);
+
+            // Verifica se o usuário foi encontrado
+            if (user.getUserId() != 0) {
+                // Abre a tela de edição com os dados do usuário
+                EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
+                edicaoUsuarioFrame.setVisible(true);
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Digite um nome de usuário válido", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_LimparButtonActionPerformed
 
     private void cpfTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfTxtActionPerformed
@@ -1793,6 +1835,10 @@ public class CadastroUsuario extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnEdicaoDeLivroActionPerformed
 
+    private void cepTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cepTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cepTxtActionPerformed
+
     public void listarCategorias1() {
         LivroCategoriaDAO.listarCategorias(cboxCategoria1);
     }
@@ -1823,16 +1869,24 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroUsuario.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroUsuario.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroUsuario.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroUsuario.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -1858,6 +1912,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btnEncerrarSessao1;
     private javax.swing.JTabbedPane cadastro;
     private javax.swing.JPanel cadastroEndereco;
+    private javax.swing.JPanel cadastroFavoritos;
     private javax.swing.JPanel cadastroUsuario;
     private javax.swing.JComboBox<String> cargoBox;
     private javax.swing.JComboBox<String> cboxCategoria1;
@@ -1913,7 +1968,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel2;
     private keeptoo.KGradientPanel kGradientPanel1;
     private keeptoo.KGradientPanel kGradientPanel2;
     private keeptoo.KGradientPanel kGradientPanel3;

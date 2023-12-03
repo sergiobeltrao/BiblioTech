@@ -149,7 +149,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         MenuLateral = new javax.swing.JPanel();
         kGradientPanel2 = new keeptoo.KGradientPanel();
         jLabel11 = new javax.swing.JLabel();
-        AvaButton1 = new javax.swing.JButton();
         btnEncerrarSessao = new javax.swing.JButton();
         CadLivroButton = new javax.swing.JButton();
         txtVoltar = new javax.swing.JButton();
@@ -500,7 +499,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
                             .addComponent(txtNota, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnAvaliar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 36, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         txtTituloBusca.getAccessibleContext().setAccessibleName("");
@@ -515,16 +514,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         jLabel11.setText("Menu");
         jLabel11.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel11.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 0, 0)));
-
-        AvaButton1.setBackground(new java.awt.Color(102, 102, 102));
-        AvaButton1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        AvaButton1.setText("Avaliação");
-        AvaButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        AvaButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AvaButton1ActionPerformed(evt);
-            }
-        });
 
         btnEncerrarSessao.setBackground(new java.awt.Color(102, 102, 102));
         btnEncerrarSessao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -604,7 +593,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(edicaoUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(AvaButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                                 .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                                 .addComponent(CadLivroButton, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                                 .addComponent(txtVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
@@ -621,15 +609,13 @@ public class TelaAvaliacao extends javax.swing.JFrame {
                 .addComponent(txtVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(CadLivroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(AvaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addComponent(edicaoUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(ExcluirUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(CadUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 398, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
@@ -777,13 +763,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtVoltarActionPerformed
 
-    private void AvaButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AvaButton1ActionPerformed
-        Avaliacao avaliacao = new Avaliacao();
-        new TelaAvaliacao(avaliacao).setVisible(true);
-        this.setVisible(false);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AvaButton1ActionPerformed
-
     private void btnEncerrarSessaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncerrarSessaoActionPerformed
         // TODO add your handling code here:
         new TelaDeLogin().setVisible(true);
@@ -930,7 +909,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AvaButton1;
     private javax.swing.JButton CadLivroButton;
     private javax.swing.JButton CadUserButton;
     private javax.swing.JToggleButton ExcluirUserButton;
