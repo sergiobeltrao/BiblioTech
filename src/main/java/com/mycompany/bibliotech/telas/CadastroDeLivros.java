@@ -3,6 +3,7 @@ package com.mycompany.bibliotech.telas;
 import com.mycompany.bibliotech.dao.LivroCategoriaDAO;
 import com.mycompany.bibliotech.dao.AutorDAO;
 import com.mycompany.bibliotech.dao.AvaliacaoDAO;
+import com.mycompany.bibliotech.dao.ExcluirUserDAO;
 import com.mycompany.bibliotech.dao.LivroAutorDAO;
 import com.mycompany.bibliotech.dao.LivroDAO;
 import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;
@@ -48,6 +49,16 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         selectTabelaAvaliacao();
         // Impede que o ISBN seja setado sem selecionar o tipo quando abre a tela.
         formatedIsbn.setEditable(false);
+        UsuarioLoginDAO usuarioLoginDao = new UsuarioLoginDAO();
+
+        if (usuarioLoginDao.tipoDoUsuarioLogado()) {
+            CadUserButton.setVisible(true);
+            ExcluirUserButton.setVisible(true);
+        } else {
+            CadUserButton.setVisible(false);
+            ExcluirUserButton.setVisible(false);
+
+        }
     }
 
     public class CenterRenderer extends DefaultTableCellRenderer {
@@ -139,9 +150,11 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         AvaButton1 = new javax.swing.JButton();
         btnEncerrarSessao = new javax.swing.JButton();
-        CadLivroButton = new javax.swing.JButton();
         edicaoUserButton = new javax.swing.JButton();
         btnTelaPrinCadLivro = new javax.swing.JButton();
+        CadUserButton = new javax.swing.JButton();
+        ExcluirUserButton = new javax.swing.JToggleButton();
+        btnEdicaoDeLivro = new javax.swing.JButton();
         janelaDeAbas = new javax.swing.JTabbedPane();
         jpnLivro = new javax.swing.JPanel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
@@ -257,18 +270,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             }
         });
 
-        CadLivroButton.setBackground(new java.awt.Color(102, 102, 102));
-        CadLivroButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        CadLivroButton.setText("Cadastro de Livros");
-        CadLivroButton.setToolTipText("cadastrar livros novos");
-        CadLivroButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        CadLivroButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        CadLivroButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CadLivroButtonActionPerformed(evt);
-            }
-        });
-
         edicaoUserButton.setBackground(new java.awt.Color(102, 102, 102));
         edicaoUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         edicaoUserButton.setText("Edição de Usuario");
@@ -291,6 +292,36 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             }
         });
 
+        CadUserButton.setBackground(new java.awt.Color(102, 102, 102));
+        CadUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        CadUserButton.setText("Cadastro de Usuario");
+        CadUserButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        CadUserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadUserButtonActionPerformed(evt);
+            }
+        });
+
+        ExcluirUserButton.setBackground(new java.awt.Color(102, 102, 102));
+        ExcluirUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        ExcluirUserButton.setText("Excluir Usuarios");
+        ExcluirUserButton.setBorder(new javax.swing.border.MatteBorder(null));
+        ExcluirUserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExcluirUserButtonActionPerformed(evt);
+            }
+        });
+
+        btnEdicaoDeLivro.setBackground(new java.awt.Color(102, 102, 102));
+        btnEdicaoDeLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        btnEdicaoDeLivro.setText("Edição de Livro");
+        btnEdicaoDeLivro.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnEdicaoDeLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEdicaoDeLivroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout kGradientPanel2Layout = new javax.swing.GroupLayout(kGradientPanel2);
         kGradientPanel2.setLayout(kGradientPanel2Layout);
         kGradientPanel2Layout.setHorizontalGroup(
@@ -303,11 +334,13 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AvaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(edicaoUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnTelaPrinCadLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CadLivroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(CadUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ExcluirUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEdicaoDeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AvaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
         kGradientPanel2Layout.setVerticalGroup(
@@ -317,12 +350,16 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(8, 8, 8)
                 .addComponent(btnTelaPrinCadLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(CadLivroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addComponent(AvaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(CadUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(edicaoUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ExcluirUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEdicaoDeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(AvaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
@@ -1133,11 +1170,11 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         jpnAutor.setLayout(jpnAutorLayout);
         jpnAutorLayout.setHorizontalGroup(
             jpnAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1104, Short.MAX_VALUE)
+            .addComponent(kGradientPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1102, Short.MAX_VALUE)
         );
         jpnAutorLayout.setVerticalGroup(
             jpnAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
+            .addComponent(kGradientPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
         );
 
         janelaDeAbas.addTab("Autor", jpnAutor);
@@ -1304,12 +1341,12 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(MenuLateral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(janelaDeAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 1104, Short.MAX_VALUE))
+                .addComponent(janelaDeAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 1102, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(MenuLateral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(janelaDeAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)
+            .addComponent(janelaDeAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(1294, 694));
@@ -1745,11 +1782,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnEncerrarSessaoActionPerformed
 
-    private void CadLivroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadLivroButtonActionPerformed
-        new CadastroDeLivros().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_CadLivroButtonActionPerformed
-
     private void edicaoUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edicaoUserButtonActionPerformed
 
         UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
@@ -1820,6 +1852,22 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTituloActionPerformed
 
+    private void CadUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadUserButtonActionPerformed
+        new CadastroUsuario().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_CadUserButtonActionPerformed
+
+    private void ExcluirUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirUserButtonActionPerformed
+
+        ExcluirUserDAO ex = new ExcluirUserDAO();
+        ex.mostrarEExcluirUsuario();
+    }//GEN-LAST:event_ExcluirUserButtonActionPerformed
+
+    private void btnEdicaoDeLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdicaoDeLivroActionPerformed
+        new EdicaoDeLivro().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEdicaoDeLivroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1857,7 +1905,8 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AvaButton1;
-    private javax.swing.JButton CadLivroButton;
+    private javax.swing.JButton CadUserButton;
+    private javax.swing.JToggleButton ExcluirUserButton;
     private javax.swing.JPanel MenuLateral;
     private javax.swing.JScrollPane boxAutoresSelecionados;
     private javax.swing.JScrollPane boxComentarioAvaliacao;
@@ -1868,6 +1917,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     private javax.swing.JButton btnAutorNaoCadastrado;
     private javax.swing.JButton btnBuscarAutor;
     private javax.swing.JButton btnCadastraAutor;
+    private javax.swing.JButton btnEdicaoDeLivro;
     private javax.swing.JButton btnEncerrarSessao;
     private javax.swing.JButton btnFinalizarCadastro;
     private javax.swing.JButton btnLimparAutor;
