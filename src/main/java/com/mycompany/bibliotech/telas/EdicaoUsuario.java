@@ -1,5 +1,7 @@
 package com.mycompany.bibliotech.telas;
 
+import br.com.parg.viacep.ViaCEP;
+import br.com.parg.viacep.ViaCEPException;
 import com.mycompany.bibliotech.dao.LivroCategoriaDAO;
 import com.mycompany.bibliotech.model.bean.Usuario;
 import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;
@@ -159,6 +161,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        buscarCepButton = new javax.swing.JButton();
         edicaoFavorito = new javax.swing.JPanel();
         kGradientPanel4 = new keeptoo.KGradientPanel();
         cboxSubCategoria1 = new javax.swing.JComboBox<>();
@@ -715,6 +718,18 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         jLabel20.setText("CEP:");
         jLabel20.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
+        buscarCepButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        buscarCepButton.setForeground(new java.awt.Color(0, 0, 0));
+        buscarCepButton.setText("Buscar");
+        buscarCepButton.setToolTipText("limpar campos digitados");
+        buscarCepButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buscarCepButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buscarCepButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarCepButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout kGradientPanel3Layout = new javax.swing.GroupLayout(kGradientPanel3);
         kGradientPanel3.setLayout(kGradientPanel3Layout);
         kGradientPanel3Layout.setHorizontalGroup(
@@ -722,6 +737,13 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             .addGroup(kGradientPanel3Layout.createSequentialGroup()
                 .addContainerGap(242, Short.MAX_VALUE)
                 .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(kGradientPanel3Layout.createSequentialGroup()
+                        .addComponent(cepTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buscarCepButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(LimparButtonEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(endTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -745,42 +767,41 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                                     .addGap(82, 82, 82))))
                         .addGroup(kGradientPanel3Layout.createSequentialGroup()
                             .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(kGradientPanel3Layout.createSequentialGroup()
-                                        .addComponent(cidadeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel3Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jLabel18)
-                                        .addGap(288, 288, 288)))
                                 .addGroup(kGradientPanel3Layout.createSequentialGroup()
-                                    .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(paisTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(kGradientPanel3Layout.createSequentialGroup()
-                                            .addGap(8, 8, 8)
-                                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(44, 44, 44)))
+                                    .addComponent(cidadeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel3Layout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addComponent(jLabel18)
+                                    .addGap(265, 265, 265)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(kGradientPanel3Layout.createSequentialGroup()
-                                    .addComponent(LimparButtonEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(ProxEdUserButtonEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(kGradientPanel3Layout.createSequentialGroup()
-                                    .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cepTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(paisTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
                                     .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(ufTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(kGradientPanel3Layout.createSequentialGroup()
                                             .addGap(9, 9, 9)
                                             .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
                 .addContainerGap(242, Short.MAX_VALUE))
+            .addGroup(kGradientPanel3Layout.createSequentialGroup()
+                .addGap(472, 472, 472)
+                .addComponent(ProxEdUserButtonEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         kGradientPanel3Layout.setVerticalGroup(
             kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel3Layout.createSequentialGroup()
-                .addContainerGap(134, Short.MAX_VALUE)
+                .addContainerGap(63, Short.MAX_VALUE)
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cepTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarCepButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LimparButtonEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(endTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -801,25 +822,20 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                 .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(kGradientPanel3Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(jLabel18))
+                        .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel19)))
                     .addGroup(kGradientPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel16))))
+                        .addComponent(jLabel16)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cidadeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ufTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cepTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(paisTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ProxEdUserButtonEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LimparButtonEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(278, Short.MAX_VALUE))
+                    .addComponent(paisTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(ProxEdUserButtonEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(296, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout edicaoEnderecoLayout = new javax.swing.GroupLayout(edicaoEndereco);
@@ -1411,53 +1427,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         
     }//GEN-LAST:event_LimparButtonUserActionPerformed
 
-    private void bairroTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bairroTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bairroTxtActionPerformed
-
-    private void cidadeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidadeTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cidadeTxtActionPerformed
-
-    private void ufTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ufTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ufTxtActionPerformed
-
-    private void numTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_numTxtActionPerformed
-
-    private void compTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_compTxtActionPerformed
-
-    private void endTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_endTxtActionPerformed
-
-    private void paisTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paisTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_paisTxtActionPerformed
-
-    private void cepTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cepTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cepTxtActionPerformed
-
-    private void ProxEdUserButtonEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProxEdUserButtonEndActionPerformed
-        this.edicoes.setSelectedIndex(2);
-    }//GEN-LAST:event_ProxEdUserButtonEndActionPerformed
-
-    private void LimparButtonEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparButtonEndActionPerformed
-        endTxt.setText("");
-        numTxt.setText("");
-        bairroTxt.setText("");
-        compTxt.setText("");
-        cidadeTxt.setText("");
-        cepTxt.setText("");
-        ufTxt.setText("");
-        paisTxt.setText("");
-    }//GEN-LAST:event_LimparButtonEndActionPerformed
-
     private void foneTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foneTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_foneTxtActionPerformed
@@ -1494,6 +1463,67 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         new CadastroUsuario().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_CadUserButtonActionPerformed
+
+    private void LimparButtonEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparButtonEndActionPerformed
+        endTxt.setText("");
+        numTxt.setText("");
+        bairroTxt.setText("");
+        compTxt.setText("");
+        cidadeTxt.setText("");
+        cepTxt.setText("");
+        ufTxt.setText("");
+        paisTxt.setText("");
+    }//GEN-LAST:event_LimparButtonEndActionPerformed
+
+    private void ProxEdUserButtonEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProxEdUserButtonEndActionPerformed
+        this.edicoes.setSelectedIndex(2);
+    }//GEN-LAST:event_ProxEdUserButtonEndActionPerformed
+
+    private void cepTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cepTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cepTxtActionPerformed
+
+    private void paisTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paisTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_paisTxtActionPerformed
+
+    private void endTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_endTxtActionPerformed
+
+    private void compTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_compTxtActionPerformed
+
+    private void numTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numTxtActionPerformed
+
+    private void ufTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ufTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ufTxtActionPerformed
+
+    private void cidadeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidadeTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cidadeTxtActionPerformed
+
+    private void bairroTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bairroTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bairroTxtActionPerformed
+
+    private void buscarCepButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarCepButtonActionPerformed
+        ViaCEP vc = new ViaCEP();
+        try {
+            vc.buscar(cepTxt.getText());
+            endTxt.setText(vc.getLogradouro());
+            bairroTxt.setText(vc.getBairro());
+            cidadeTxt.setText(vc.getLocalidade());
+            ufTxt.setText(vc.getUf());
+
+        } catch (ViaCEPException ex) {
+            Logger.getLogger(EdicaoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_buscarCepButtonActionPerformed
 
     public void listarCategorias1() {
         LivroCategoriaDAO.listarCategorias(cboxCategoria1);
@@ -1561,6 +1591,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField bairroTxt;
     private javax.swing.JButton btnEdicaoDeLivro;
     private javax.swing.JButton btnEncerrarSessao1;
+    private javax.swing.JButton buscarCepButton;
     private javax.swing.JComboBox<String> cboxCategoria1;
     private javax.swing.JComboBox<String> cboxCategoria2;
     private javax.swing.JComboBox<String> cboxSubCategoria1;
