@@ -107,7 +107,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        edicoes = new javax.swing.JTabbedPane();
         edicaoUsuario = new javax.swing.JPanel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
         telefoneTipoBox = new javax.swing.JComboBox<>();
@@ -185,7 +185,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Atualização");
 
-        jTabbedPane1.setFont(new java.awt.Font("Serif", 0, 13)); // NOI18N
+        edicoes.setFont(new java.awt.Font("Serif", 0, 13)); // NOI18N
 
         edicaoUsuario.setPreferredSize(new java.awt.Dimension(1280, 720));
 
@@ -556,7 +556,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Edição usuario", edicaoUsuario);
+        edicoes.addTab("Edição usuario", edicaoUsuario);
 
         kGradientPanel3.setkEndColor(new java.awt.Color(51, 51, 51));
         kGradientPanel3.setkGradientFocus(350);
@@ -835,7 +835,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Edição endereço", edicaoEndereco);
+        edicoes.addTab("Edição endereço", edicaoEndereco);
 
         kGradientPanel4.setkEndColor(new java.awt.Color(51, 51, 51));
         kGradientPanel4.setkGradientFocus(350);
@@ -1010,7 +1010,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             .addComponent(kGradientPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Edição dde livro favorito", edicaoFavorito);
+        edicoes.addTab("Edição dde livro favorito", edicaoFavorito);
 
         MenuPainel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1173,12 +1173,12 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(MenuPainel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1109, Short.MAX_VALUE))
+                .addComponent(edicoes, javax.swing.GroupLayout.DEFAULT_SIZE, 1109, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(MenuPainel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+            .addComponent(edicoes, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(1294, 727));
@@ -1186,7 +1186,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ProxCadEndButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProxCadEndButtonActionPerformed
-        this.jTabbedPane1.setSelectedIndex(1);
+        this.edicoes.setSelectedIndex(1);
     }//GEN-LAST:event_ProxCadEndButtonActionPerformed
 
     private void edicaoUserButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edicaoUserButton1ActionPerformed
@@ -1494,6 +1494,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel edicaoFavorito;
     private javax.swing.JButton edicaoUserButton1;
     private javax.swing.JPanel edicaoUsuario;
+    private javax.swing.JTabbedPane edicoes;
     private javax.swing.JTextField emailTxt;
     private javax.swing.JTextField endTxt;
     private javax.swing.JButton enterButton2;
@@ -1527,7 +1528,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private keeptoo.KGradientPanel kGradientPanel1;
     private keeptoo.KGradientPanel kGradientPanel2;
     private keeptoo.KGradientPanel kGradientPanel3;
