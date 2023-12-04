@@ -29,14 +29,14 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="MenuPainel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="edicoes" pref="1109" max="32767" attributes="0"/>
+              <Component id="edicoes" pref="1107" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="MenuPainel" alignment="0" max="32767" attributes="0"/>
-          <Component id="edicoes" alignment="0" pref="720" max="32767" attributes="0"/>
+          <Component id="edicoes" alignment="0" pref="719" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -98,7 +98,7 @@
                                   <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="188" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="187" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace pref="163" max="32767" attributes="0"/>
@@ -117,14 +117,14 @@
                                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="LimparButton3" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="LimparButtonUser" min="-2" pref="100" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="ProxCadEndButton" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="ProxEdUserButtonUser" min="-2" pref="100" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="110" max="32767" attributes="0"/>
+                          <EmptySpace pref="109" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel11" min="-2" pref="39" max="-2" attributes="0"/>
@@ -177,7 +177,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="116" max="32767" attributes="0"/>
+                          <EmptySpace pref="115" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -264,8 +264,8 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="sexoBox" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="ProxCadEndButton" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="LimparButton3" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="ProxEdUserButtonUser" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="LimparButtonUser" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -480,7 +480,7 @@
                     <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="LimparButton3">
+                <Component class="javax.swing.JButton" name="LimparButtonUser">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="13" style="0"/>
@@ -500,10 +500,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LimparButton3ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LimparButtonUserActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="ProxCadEndButton">
+                <Component class="javax.swing.JButton" name="ProxEdUserButtonUser">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="13" style="0"/>
@@ -523,7 +523,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ProxCadEndButtonActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ProxEdUserButtonUserActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="idLabel">
@@ -774,7 +774,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="243" max="32767" attributes="0"/>
+                          <EmptySpace pref="242" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel13" alignment="0" min="-2" pref="88" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
@@ -829,9 +829,9 @@
                                       </Group>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="LimparButton4" min="-2" pref="120" max="-2" attributes="0"/>
+                                              <Component id="LimparButtonEnd" min="-2" pref="120" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="ProxCadLivButton2" min="-2" pref="120" max="-2" attributes="0"/>
+                                              <Component id="ProxEdUserButtonEnd" min="-2" pref="120" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
@@ -851,7 +851,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="243" max="32767" attributes="0"/>
+                          <EmptySpace pref="242" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -905,10 +905,10 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="paisTxt" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="ProxCadLivButton2" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="LimparButton4" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="ProxEdUserButtonEnd" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="LimparButtonEnd" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="279" max="32767" attributes="0"/>
+                          <EmptySpace pref="278" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1069,7 +1069,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cepTxtActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="ProxCadLivButton2">
+                <Component class="javax.swing.JButton" name="ProxEdUserButtonEnd">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="13" style="0"/>
@@ -1089,10 +1089,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ProxCadLivButton2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ProxEdUserButtonEndActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="LimparButton4">
+                <Component class="javax.swing.JButton" name="LimparButtonEnd">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="13" style="0"/>
@@ -1112,7 +1112,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LimparButton4ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LimparButtonEndActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel13">
@@ -1280,19 +1280,19 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="438" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="LimparButton2" min="-2" pref="120" max="-2" attributes="0"/>
-                                      <Component id="enterButton2" min="-2" pref="120" max="-2" attributes="0"/>
+                                      <Component id="LimparButtonFav" min="-2" pref="120" max="-2" attributes="0"/>
+                                      <Component id="enterButton" min="-2" pref="120" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="214" max="32767" attributes="0"/>
+                          <EmptySpace pref="212" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="114" max="32767" attributes="0"/>
+                          <EmptySpace pref="113" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1324,9 +1324,9 @@
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="LimparButton2" min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="LimparButtonFav" min="-2" pref="35" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                  <Component id="enterButton2" min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="enterButton" min="-2" pref="35" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -1503,7 +1503,7 @@
                     <Property name="verticalAlignment" type="int" value="3"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="enterButton2">
+                <Component class="javax.swing.JButton" name="enterButton">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="13" style="0"/>
@@ -1523,10 +1523,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enterButton2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enterButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="LimparButton2">
+                <Component class="javax.swing.JButton" name="LimparButtonFav">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="13" style="0"/>
@@ -1546,7 +1546,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LimparButton2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LimparButtonFavActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -1589,8 +1589,8 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
@@ -1599,22 +1599,23 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="CadLivroButton1" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                                          <Component id="AvaButton1" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                                          <Component id="ExcluirUserButton1" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                                          <Component id="btnEncerrarSessao1" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="btnEdicaoDeLivro" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="btnEncerrarSessao1" min="-2" pref="145" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="edicaoUserButton1" alignment="1" min="-2" pref="145" max="-2" attributes="0"/>
-                                  <Component id="txtMenu1" alignment="1" max="32767" attributes="0"/>
+                              <EmptySpace min="10" max="32767" attributes="0"/>
+                              <Component id="txtMenu1" min="-2" pref="145" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="AvaButton1" min="-2" pref="145" max="-2" attributes="0"/>
+                                  <Component id="btnEdicaoDeLivro" min="-2" pref="145" max="-2" attributes="0"/>
+                                  <Component id="CadLivroButton1" min="-2" pref="145" max="-2" attributes="0"/>
+                                  <Component id="ExcluirUserButton" min="-2" pref="145" max="-2" attributes="0"/>
+                                  <Component id="CadUserButton" min="-2" pref="145" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -1629,16 +1630,16 @@
                       <Component id="menu" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Component id="txtMenu1" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                      <Component id="edicaoUserButton1" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="CadUserButton" min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="ExcluirUserButton" min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="CadLivroButton1" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnEdicaoDeLivro" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="AvaButton1" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                      <Component id="ExcluirUserButton1" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnEncerrarSessao1" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -1665,29 +1666,6 @@
                   </Border>
                 </Property>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="edicaoUserButton1">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="66" green="66" red="66" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="13" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Edi&#xe7;&#xe3;o de Usuario"/>
-                <Property name="toolTipText" type="java.lang.String" value="Editar usuario existente"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
-                  </Border>
-                </Property>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edicaoUserButton1ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="CadLivroButton1">
               <Properties>
@@ -1735,7 +1713,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AvaButton1ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JToggleButton" name="ExcluirUserButton1">
+            <Component class="javax.swing.JToggleButton" name="ExcluirUserButton">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="66" red="66" type="rgb"/>
@@ -1755,7 +1733,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExcluirUserButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExcluirUserButtonActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnEncerrarSessao1">
@@ -1821,6 +1799,25 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMenu1ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="CadUserButton">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="13" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Cadastro de Usuario"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CadUserButtonActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
