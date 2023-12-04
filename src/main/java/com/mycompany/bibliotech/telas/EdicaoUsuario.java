@@ -52,14 +52,14 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         idLabel.setVisible(false);
         UsuarioLoginDAO usuarioLoginDao = new UsuarioLoginDAO();
 
-        /*if (usuarioLoginDao.tipoDoUsuarioLogado()) {
+        if (usuarioLoginDao.tipoDoUsuarioLogado()) {
             CadUserButton.setVisible(true);
             ExcluirUserButton.setVisible(true);
         } else {
             CadUserButton.setVisible(false);
             ExcluirUserButton.setVisible(false);
 
-        } */
+        }
        
     }
     private void setUserValues(Usuario user) {
@@ -119,8 +119,8 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         cpfTxt = new javax.swing.JFormattedTextField();
         foneTxt = new javax.swing.JFormattedTextField();
         dataNascChooser = new com.toedter.calendar.JDateChooser();
-        LimparButton3 = new javax.swing.JButton();
-        ProxCadEndButton = new javax.swing.JButton();
+        LimparButtonUser = new javax.swing.JButton();
+        ProxEdUserButtonUser = new javax.swing.JButton();
         idLabel = new javax.swing.JLabel();
         avisoLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -149,8 +149,8 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         endTxt = new javax.swing.JTextField();
         paisTxt = new javax.swing.JTextField();
         cepTxt = new javax.swing.JFormattedTextField();
-        ProxCadLivButton2 = new javax.swing.JButton();
-        LimparButton4 = new javax.swing.JButton();
+        ProxEdUserButtonEnd = new javax.swing.JButton();
+        LimparButtonEnd = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -169,18 +169,18 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        enterButton2 = new javax.swing.JButton();
-        LimparButton2 = new javax.swing.JButton();
+        enterButton = new javax.swing.JButton();
+        LimparButtonFav = new javax.swing.JButton();
         MenuPainel = new javax.swing.JPanel();
         kGradientPanel2 = new keeptoo.KGradientPanel();
         menu = new javax.swing.JLabel();
-        edicaoUserButton1 = new javax.swing.JButton();
         CadLivroButton1 = new javax.swing.JButton();
         AvaButton1 = new javax.swing.JButton();
-        ExcluirUserButton1 = new javax.swing.JToggleButton();
+        ExcluirUserButton = new javax.swing.JToggleButton();
         btnEncerrarSessao1 = new javax.swing.JButton();
         btnEdicaoDeLivro = new javax.swing.JButton();
         txtMenu1 = new javax.swing.JButton();
+        CadUserButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Atualização");
@@ -297,27 +297,27 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         dataNascChooser.setToolTipText("2004-08-07");
         dataNascChooser.setDateFormatString("yyyy-MM-dd");
 
-        LimparButton3.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        LimparButton3.setForeground(new java.awt.Color(0, 0, 0));
-        LimparButton3.setText("Limpar");
-        LimparButton3.setToolTipText("limpar campos digitados");
-        LimparButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        LimparButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        LimparButton3.addActionListener(new java.awt.event.ActionListener() {
+        LimparButtonUser.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        LimparButtonUser.setForeground(new java.awt.Color(0, 0, 0));
+        LimparButtonUser.setText("Limpar");
+        LimparButtonUser.setToolTipText("limpar campos digitados");
+        LimparButtonUser.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        LimparButtonUser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        LimparButtonUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LimparButton3ActionPerformed(evt);
+                LimparButtonUserActionPerformed(evt);
             }
         });
 
-        ProxCadEndButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        ProxCadEndButton.setForeground(new java.awt.Color(0, 0, 0));
-        ProxCadEndButton.setText("Próxima");
-        ProxCadEndButton.setToolTipText("ir para proxima aba da atualização");
-        ProxCadEndButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ProxCadEndButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ProxCadEndButton.addActionListener(new java.awt.event.ActionListener() {
+        ProxEdUserButtonUser.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        ProxEdUserButtonUser.setForeground(new java.awt.Color(0, 0, 0));
+        ProxEdUserButtonUser.setText("Próxima");
+        ProxEdUserButtonUser.setToolTipText("ir para proxima aba da atualização");
+        ProxEdUserButtonUser.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ProxEdUserButtonUser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ProxEdUserButtonUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ProxCadEndButtonActionPerformed(evt);
+                ProxEdUserButtonUserActionPerformed(evt);
             }
         });
 
@@ -412,7 +412,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                         .addComponent(jLabel25)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
-                        .addGap(0, 188, Short.MAX_VALUE))
+                        .addGap(0, 187, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
                         .addContainerGap(163, Short.MAX_VALUE)
                         .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -428,10 +428,10 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel4))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
-                                .addComponent(LimparButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(LimparButtonUser, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ProxCadEndButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                                .addComponent(ProxEdUserButtonUser, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -470,7 +470,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                             .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel8))))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
@@ -538,8 +538,8 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(sexoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ProxCadEndButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LimparButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(ProxEdUserButtonUser, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LimparButtonUser, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
                 .addComponent(idLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75))
@@ -651,27 +651,27 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             }
         });
 
-        ProxCadLivButton2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        ProxCadLivButton2.setForeground(new java.awt.Color(0, 0, 0));
-        ProxCadLivButton2.setText("Próxima ");
-        ProxCadLivButton2.setToolTipText("ir para proxima aba");
-        ProxCadLivButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ProxCadLivButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ProxCadLivButton2.addActionListener(new java.awt.event.ActionListener() {
+        ProxEdUserButtonEnd.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        ProxEdUserButtonEnd.setForeground(new java.awt.Color(0, 0, 0));
+        ProxEdUserButtonEnd.setText("Próxima ");
+        ProxEdUserButtonEnd.setToolTipText("ir para proxima aba");
+        ProxEdUserButtonEnd.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ProxEdUserButtonEnd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ProxEdUserButtonEnd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ProxCadLivButton2ActionPerformed(evt);
+                ProxEdUserButtonEndActionPerformed(evt);
             }
         });
 
-        LimparButton4.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        LimparButton4.setForeground(new java.awt.Color(0, 0, 0));
-        LimparButton4.setText("Limpar");
-        LimparButton4.setToolTipText("limpar campos digitados");
-        LimparButton4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        LimparButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        LimparButton4.addActionListener(new java.awt.event.ActionListener() {
+        LimparButtonEnd.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        LimparButtonEnd.setForeground(new java.awt.Color(0, 0, 0));
+        LimparButtonEnd.setText("Limpar");
+        LimparButtonEnd.setToolTipText("limpar campos digitados");
+        LimparButtonEnd.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        LimparButtonEnd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        LimparButtonEnd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LimparButton4ActionPerformed(evt);
+                LimparButtonEndActionPerformed(evt);
             }
         });
 
@@ -720,7 +720,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         kGradientPanel3Layout.setHorizontalGroup(
             kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel3Layout.createSequentialGroup()
-                .addContainerGap(243, Short.MAX_VALUE)
+                .addContainerGap(242, Short.MAX_VALUE)
                 .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -762,9 +762,9 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                                     .addGap(44, 44, 44)))
                             .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(kGradientPanel3Layout.createSequentialGroup()
-                                    .addComponent(LimparButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(LimparButtonEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(ProxCadLivButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(ProxEdUserButtonEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(kGradientPanel3Layout.createSequentialGroup()
                                     .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(cepTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -775,7 +775,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                                         .addGroup(kGradientPanel3Layout.createSequentialGroup()
                                             .addGap(9, 9, 9)
                                             .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addContainerGap(242, Short.MAX_VALUE))
         );
         kGradientPanel3Layout.setVerticalGroup(
             kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -817,9 +817,9 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(kGradientPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(paisTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ProxCadLivButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LimparButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(279, Short.MAX_VALUE))
+                    .addComponent(ProxEdUserButtonEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LimparButtonEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(278, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout edicaoEnderecoLayout = new javax.swing.GroupLayout(edicaoEndereco);
@@ -909,27 +909,27 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         jLabel24.setText("Escolha segunda subcategoria de livro:");
         jLabel24.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        enterButton2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        enterButton2.setForeground(new java.awt.Color(0, 0, 0));
-        enterButton2.setText("Atualizar cadastro");
-        enterButton2.setToolTipText("atualizar cadastro do usuario");
-        enterButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        enterButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        enterButton2.addActionListener(new java.awt.event.ActionListener() {
+        enterButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        enterButton.setForeground(new java.awt.Color(0, 0, 0));
+        enterButton.setText("Atualizar cadastro");
+        enterButton.setToolTipText("atualizar cadastro do usuario");
+        enterButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        enterButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enterButton2ActionPerformed(evt);
+                enterButtonActionPerformed(evt);
             }
         });
 
-        LimparButton2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        LimparButton2.setForeground(new java.awt.Color(0, 0, 0));
-        LimparButton2.setText("Limpar");
-        LimparButton2.setToolTipText("limpa todos os campos da atualização de cadastro");
-        LimparButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        LimparButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        LimparButton2.addActionListener(new java.awt.event.ActionListener() {
+        LimparButtonFav.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        LimparButtonFav.setForeground(new java.awt.Color(0, 0, 0));
+        LimparButtonFav.setText("Limpar");
+        LimparButtonFav.setToolTipText("limpa todos os campos da atualização de cadastro");
+        LimparButtonFav.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        LimparButtonFav.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        LimparButtonFav.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LimparButton2ActionPerformed(evt);
+                LimparButtonFavActionPerformed(evt);
             }
         });
 
@@ -961,14 +961,14 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                     .addGroup(kGradientPanel4Layout.createSequentialGroup()
                         .addGap(438, 438, 438)
                         .addGroup(kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(LimparButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(enterButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(214, Short.MAX_VALUE))
+                            .addComponent(LimparButtonFav, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(enterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
         kGradientPanel4Layout.setVerticalGroup(
             kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel4Layout.createSequentialGroup()
-                .addContainerGap(114, Short.MAX_VALUE)
+                .addContainerGap(113, Short.MAX_VALUE)
                 .addGroup(kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
                     .addComponent(jLabel23))
@@ -993,9 +993,9 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                         .addGap(294, 294, 294))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LimparButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LimparButtonFav, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38)
-                        .addComponent(enterButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(enterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(210, 210, 210))))
         );
 
@@ -1024,18 +1024,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         menu.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         menu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 0, 0)));
 
-        edicaoUserButton1.setBackground(new java.awt.Color(102, 102, 102));
-        edicaoUserButton1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        edicaoUserButton1.setText("Edição de Usuario");
-        edicaoUserButton1.setToolTipText("Editar usuario existente");
-        edicaoUserButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        edicaoUserButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        edicaoUserButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edicaoUserButton1ActionPerformed(evt);
-            }
-        });
-
         CadLivroButton1.setBackground(new java.awt.Color(102, 102, 102));
         CadLivroButton1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         CadLivroButton1.setText("Cadastro de Livro");
@@ -1060,15 +1048,15 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             }
         });
 
-        ExcluirUserButton1.setBackground(new java.awt.Color(102, 102, 102));
-        ExcluirUserButton1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        ExcluirUserButton1.setText("Excluir Usuarios");
-        ExcluirUserButton1.setToolTipText("Excluir usuarios inativos");
-        ExcluirUserButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        ExcluirUserButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ExcluirUserButton1.addActionListener(new java.awt.event.ActionListener() {
+        ExcluirUserButton.setBackground(new java.awt.Color(102, 102, 102));
+        ExcluirUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        ExcluirUserButton.setText("Excluir Usuarios");
+        ExcluirUserButton.setToolTipText("Excluir usuarios inativos");
+        ExcluirUserButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        ExcluirUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ExcluirUserButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExcluirUserButton1ActionPerformed(evt);
+                ExcluirUserButtonActionPerformed(evt);
             }
         });
 
@@ -1106,31 +1094,42 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             }
         });
 
+        CadUserButton.setBackground(new java.awt.Color(102, 102, 102));
+        CadUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        CadUserButton.setText("Cadastro de Usuario");
+        CadUserButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        CadUserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadUserButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout kGradientPanel2Layout = new javax.swing.GroupLayout(kGradientPanel2);
         kGradientPanel2.setLayout(kGradientPanel2Layout);
         kGradientPanel2Layout.setHorizontalGroup(
             kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(kGradientPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel2Layout.createSequentialGroup()
+                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, kGradientPanel2Layout.createSequentialGroup()
                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(kGradientPanel2Layout.createSequentialGroup()
                                 .addGap(60, 60, 60)
                                 .addComponent(menu))
                             .addGroup(kGradientPanel2Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(CadLivroButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(AvaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ExcluirUserButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnEncerrarSessao1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnEdicaoDeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btnEncerrarSessao1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel2Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(edicaoUserButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMenu1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(AvaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEdicaoDeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CadLivroButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ExcluirUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CadUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(10, 10, 10))
         );
         kGradientPanel2Layout.setVerticalGroup(
@@ -1140,16 +1139,16 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                 .addComponent(menu)
                 .addGap(21, 21, 21)
                 .addComponent(txtMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(edicaoUserButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(CadUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(ExcluirUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(CadLivroButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEdicaoDeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(AvaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(ExcluirUserButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
@@ -1173,87 +1172,21 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(MenuPainel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(edicoes, javax.swing.GroupLayout.DEFAULT_SIZE, 1109, Short.MAX_VALUE))
+                .addComponent(edicoes, javax.swing.GroupLayout.DEFAULT_SIZE, 1107, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(MenuPainel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(edicoes, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+            .addComponent(edicoes, javax.swing.GroupLayout.DEFAULT_SIZE, 719, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(1294, 727));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ProxCadEndButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProxCadEndButtonActionPerformed
+    private void ProxEdUserButtonUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProxEdUserButtonUserActionPerformed
         this.edicoes.setSelectedIndex(1);
-    }//GEN-LAST:event_ProxCadEndButtonActionPerformed
-
-    private void edicaoUserButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edicaoUserButton1ActionPerformed
-
-        UsuarioCadastroDAO userdao = new UsuarioCadastroDAO();
-        Usuario user = new Usuario();
-        Endereco endereco = new Endereco();
-        Favoritos favoritos = new Favoritos();
-        Telefone telefone = new Telefone();
-
-        // Solicita o nome do usuário ao usuário
-        String userNome = JOptionPane.showInputDialog(this, "Digite o nick do usuário a ser editado:", "Edição de Usuario", JOptionPane.QUESTION_MESSAGE);
-
-        // Verifica se o usuário inseriu um nome
-        if (userNome != null) {
-            // Verifica se o nome fornecido não está vazio
-            if (!userNome.isEmpty()) {
-                // Obtém o usuário com base no nome fornecido
-                user = userdao.obterUsuarioPorNome(userNome);
-
-                // Verifica se o usuário foi encontrado
-                if (user.getUserId() != 0) {
-                    // Criar um JPanel personalizado com um JPasswordField
-                    JPanel panel = new JPanel();
-                    JLabel label = new JLabel("Senha:");
-                    JPasswordField passwordField = new JPasswordField(10);
-                    panel.add(label);
-                    panel.add(passwordField);
-
-                    // Exibir o JOptionPane com o JPanel personalizado
-                    int result = JOptionPane.showOptionDialog(null, panel, "Digite a senha",
-                        JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
-
-                    // Verificar a resposta do JOptionPane
-                    if (result == JOptionPane.OK_OPTION) {
-                        // Obtém a senha do usuário
-                        char[] senhaDigitada = passwordField.getPassword();
-
-                        // Verifica se a senha digitada coincide com a senha do banco
-                        String senhaDoBanco = userdao.obterSenhaPorNome(userNome);
-                        Hash rehash = new Hash();
-
-                        try {
-                            String senhaDigitadaHash = rehash.geradorDeHash(new String(senhaDigitada));
-                            if (senhaDoBanco != null && senhaDoBanco.equals(senhaDigitadaHash)) {
-                                // Abre a tela de edição com os dados do usuário
-                                EdicaoUsuario edicaoUsuarioFrame = new EdicaoUsuario(user, endereco, telefone, favoritos);
-                                edicaoUsuarioFrame.setVisible(true);
-                                this.setVisible(false);
-                            } else {
-                                JOptionPane.showMessageDialog(this, "Senha incorreta", "Erro", JOptionPane.ERROR_MESSAGE);
-                            }
-                        } catch (NoSuchAlgorithmException ex) {
-                            ex.printStackTrace();
-                        }
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Digite um nome de usuário válido", "Erro", JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            // Usuário pressionou Cancelar
-            JOptionPane.showMessageDialog(this, "Operação cancelada pelo usuário", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }//GEN-LAST:event_edicaoUserButton1ActionPerformed
+    }//GEN-LAST:event_ProxEdUserButtonUserActionPerformed
 
     private void CadLivroButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadLivroButton1ActionPerformed
         new CadastroDeLivros().setVisible(true);
@@ -1267,11 +1200,11 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_AvaButton1ActionPerformed
 
-    private void ExcluirUserButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirUserButton1ActionPerformed
+    private void ExcluirUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirUserButtonActionPerformed
 
         ExcluirUserDAO ex = new ExcluirUserDAO();
         ex.mostrarEExcluirUsuario();
-    }//GEN-LAST:event_ExcluirUserButton1ActionPerformed
+    }//GEN-LAST:event_ExcluirUserButtonActionPerformed
 
     private void btnEncerrarSessao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncerrarSessao1ActionPerformed
         // TODO add your handling code here:
@@ -1332,17 +1265,151 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cboxCategoria2ActionPerformed
 
-    private void enterButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_enterButton2ActionPerformed
+    private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonActionPerformed
+        Usuario user = new Usuario();
+        Endereco end = new Endereco();
+        Favoritos fav = new Favoritos();
+        Telefone tel = new Telefone();
+        UsuarioCadastroDAO dao = new UsuarioCadastroDAO();
+        EnderecoDAO enddao = new EnderecoDAO();
+        FavoritosDAO favdao = new FavoritosDAO();
+        TelefoneDAO fonedao = new TelefoneDAO();
+        String cpf = cpfTxt.getText();
+        CpfDAO cpfdao = new CpfDAO(cpf);
+        
+        //Informações Usuario
+        user.setUserNick(nickTxt.getText());
+        /*
+        String valorUserCargo = cargoBox.getSelectedItem().toString();
+        String valorSelecionado = "CLIENTE";
 
-    private void LimparButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LimparButton2ActionPerformed
+        if (valorUserCargo.equals("ADMIN")) {
+            valorSelecionado = "ADMIN";
+        } else {
+            valorSelecionado = "CLIENTE";
+        }
+        user.setUserType(valorSelecionado);
+        */
+        user.setUserNome(nomeTxt.getText());
+        user.setUserSobrenome(sobrenomeTxt.getText());
+        user.setUserEmail(emailTxt.getText());
+        
+        String valorUserSexo = sexoBox.getSelectedItem().toString();
+        String valorSelecionad = "OUTRO";
 
-    private void LimparButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LimparButton3ActionPerformed
+        if (valorUserSexo.equals("MASC")) {
+            valorSelecionad = "MASC";
+        } else if (valorUserSexo.equals("FEM")) {
+            valorSelecionad = "FEM";
+        } else {
+            valorSelecionad = "OUTRO";
+        }
+        user.setUserSexo(valorSelecionad);
+        
+        String userId = idLabel.getText();
+        
+        //Informações Telefone
+        String valorTipo = telefoneTipoBox.getSelectedItem().toString();
+        String valorSelecionada = "CELULAR";
+
+        if (valorTipo.equals("CELULAR")) {
+            valorSelecionada = "CELULAR";
+        } else if (valorTipo.equals("COMERCIAL")) {
+            valorSelecionada = "COMERCIAL";
+        } else {
+            valorSelecionada = "RESIDENCIAL";
+        }
+        tel.setTipo(valorSelecionada);
+        
+        tel.setTelefone(foneTxt.getText());
+
+        //Informações Endereço
+        end.setCep(cepTxt.getText());
+        end.setPais(paisTxt.getText());
+        end.setRua(endTxt.getText());
+        end.setUf(ufTxt.getText());
+        end.setComp(compTxt.getText());
+        end.setCidade(cidadeTxt.getText());
+
+        String text = numTxt.getText();
+        int numb = 0;
+        try {
+            numb = Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+        }
+        end.setNum(numb);
+        end.setBairro(bairroTxt.getText());
+        
+        //Informações favoritos
+        String categoriaSelecionada = cboxCategoria1.getSelectedItem().toString();
+        String subCategoriaSelecionada = cboxSubCategoria1.getSelectedItem().toString();
+        fav.setFavCategoria1(categoriaSelecionada);
+        fav.setFavSub1(subCategoriaSelecionada);
+        String categoriaSelecionad = cboxCategoria2.getSelectedItem().toString();
+        String subCategoriaSelecionad = cboxSubCategoria2.getSelectedItem().toString();
+        fav.setFavCategoria2(categoriaSelecionad);
+        fav.setFavSub2(subCategoriaSelecionad);
+
+        //Verificadores de data e CPF:
+        
+        // Obtém a data de nascimento do JDateChooser
+        java.util.Date dataNascimentoUtil = dataNascChooser.getDate();
+
+        // Verifica se a data de nascimento é válida
+        if (dataNascimentoUtil != null) {
+            // Converte LocalDate para Date
+            LocalDate localDateNascimento = dataNascimentoUtil.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            Date dateNascimento = java.sql.Date.valueOf(localDateNascimento);
+
+            LocalDate currentDate = LocalDate.now();
+
+            if (localDateNascimento.isAfter(currentDate)) {
+                JOptionPane.showMessageDialog(rootPane, "Data de nascimento não pode ser no futuro!");
+                return; // Não prossegue com o cadastro se a data de nascimento for no futuro
+            }
+
+            user.setUserDataNasc(dateNascimento);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma data de nascimento válida!");
+            return; // Não prossegue com o cadastro se a data de nascimento não foi selecionada
+        }
+        
+        // Validador de CPF
+         if (cpfdao.isCPF()) {
+            user.setUserCpf(cpfTxt.getText());
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "CPF inválido!!");
+            return;
+        }
+         
+         //Metodos Atualizar
+        dao.atualizar(user, userId);
+        enddao.atualizar(end, userId);
+        fonedao.atualizar(tel, userId);
+        favdao.atualizar(fav, userId);
+    }//GEN-LAST:event_enterButtonActionPerformed
+
+    private void LimparButtonFavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparButtonFavActionPerformed
+         cboxCategoria1.setSelectedItem("Selecione");
+        cboxSubCategoria1.setSelectedItem("Selecione");
+        cboxCategoria2.setSelectedItem("Selecione");
+        cboxSubCategoria2.setSelectedItem("Selecione");
+    }//GEN-LAST:event_LimparButtonFavActionPerformed
+
+    private void LimparButtonUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparButtonUserActionPerformed
+        nomeTxt.setText("");
+        nickTxt.setText("");
+        cpfTxt.setText("");
+        sobrenomeTxt.setText("");
+        foneTxt.setText("");
+        emailTxt.setText("");
+        dataNascChooser.setDate(null);
+        telefoneTipoBox.setSelectedItem("RESIDENCIAL");
+        sexoBox.setSelectedItem("OUTRO");
+        
+
+        
+    }//GEN-LAST:event_LimparButtonUserActionPerformed
 
     private void bairroTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bairroTxtActionPerformed
         // TODO add your handling code here:
@@ -1376,13 +1443,20 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cepTxtActionPerformed
 
-    private void ProxCadLivButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProxCadLivButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ProxCadLivButton2ActionPerformed
+    private void ProxEdUserButtonEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProxEdUserButtonEndActionPerformed
+        this.edicoes.setSelectedIndex(2);
+    }//GEN-LAST:event_ProxEdUserButtonEndActionPerformed
 
-    private void LimparButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LimparButton4ActionPerformed
+    private void LimparButtonEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparButtonEndActionPerformed
+        endTxt.setText("");
+        numTxt.setText("");
+        bairroTxt.setText("");
+        compTxt.setText("");
+        cidadeTxt.setText("");
+        cepTxt.setText("");
+        ufTxt.setText("");
+        paisTxt.setText("");
+    }//GEN-LAST:event_LimparButtonEndActionPerformed
 
     private void foneTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foneTxtActionPerformed
         // TODO add your handling code here:
@@ -1415,6 +1489,11 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     private void telefoneTipoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefoneTipoBoxActionPerformed
 
     }//GEN-LAST:event_telefoneTipoBoxActionPerformed
+
+    private void CadUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadUserButtonActionPerformed
+        new CadastroUsuario().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_CadUserButtonActionPerformed
 
     public void listarCategorias1() {
         LivroCategoriaDAO.listarCategorias(cboxCategoria1);
@@ -1470,13 +1549,14 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AvaButton1;
     private javax.swing.JButton CadLivroButton1;
-    private javax.swing.JToggleButton ExcluirUserButton1;
-    private javax.swing.JButton LimparButton2;
-    private javax.swing.JButton LimparButton3;
-    private javax.swing.JButton LimparButton4;
+    private javax.swing.JButton CadUserButton;
+    private javax.swing.JToggleButton ExcluirUserButton;
+    private javax.swing.JButton LimparButtonEnd;
+    private javax.swing.JButton LimparButtonFav;
+    private javax.swing.JButton LimparButtonUser;
     private javax.swing.JPanel MenuPainel;
-    private javax.swing.JButton ProxCadEndButton;
-    private javax.swing.JButton ProxCadLivButton2;
+    private javax.swing.JButton ProxEdUserButtonEnd;
+    private javax.swing.JButton ProxEdUserButtonUser;
     private javax.swing.JLabel avisoLabel;
     private javax.swing.JTextField bairroTxt;
     private javax.swing.JButton btnEdicaoDeLivro;
@@ -1492,12 +1572,11 @@ public class EdicaoUsuario extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dataNascChooser;
     private javax.swing.JPanel edicaoEndereco;
     private javax.swing.JPanel edicaoFavorito;
-    private javax.swing.JButton edicaoUserButton1;
     private javax.swing.JPanel edicaoUsuario;
     private javax.swing.JTabbedPane edicoes;
     private javax.swing.JTextField emailTxt;
     private javax.swing.JTextField endTxt;
-    private javax.swing.JButton enterButton2;
+    private javax.swing.JButton enterButton;
     private javax.swing.JFormattedTextField foneTxt;
     private javax.swing.JLabel idLabel;
     private javax.swing.JLabel jLabel11;
