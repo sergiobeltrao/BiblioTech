@@ -1,5 +1,5 @@
 //Obtem um CEP no ViaCEP
-package br.com.parg.viacep;
+package com.mycompany.bibliotech.viacep;
 
 //Interface para os eventos
 public interface ViaCEPEvents {

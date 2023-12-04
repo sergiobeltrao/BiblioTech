@@ -1,7 +1,7 @@
 package com.mycompany.bibliotech.telas;
 
-import br.com.parg.viacep.ViaCEP;
-import br.com.parg.viacep.ViaCEPException;
+import com.mycompany.bibliotech.viacep.ViaCEP;
+import com.mycompany.bibliotech.viacep.ViaCEPException;
 import com.mycompany.bibliotech.dao.LivroCategoriaDAO;
 import com.mycompany.bibliotech.model.bean.Usuario;
 import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;

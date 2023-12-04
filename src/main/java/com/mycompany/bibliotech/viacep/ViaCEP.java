@@ -1,5 +1,5 @@
 //Obtem um CEP no ViaCEP
-package br.com.parg.viacep;
+package com.mycompany.bibliotech.viacep;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -30,7 +30,7 @@ public class ViaCEP extends ViaCEPBase {
      *
      * @param events eventos para a classe
      * @param cep
-     * @throws br.com.parg.viacep.ViaCEPException caso ocorra algum erro
+     * @throws com.mycompany.bibliotech.viacep.ViaCEPException caso ocorra algum erro
      */
     public ViaCEP(String cep, ViaCEPEvents events) throws ViaCEPException {
         super();
@@ -42,7 +42,7 @@ public class ViaCEP extends ViaCEPBase {
      * Constrói uma nova classe e busca um CEP no ViaCEP
      *
      * @param cep
-     * @throws br.com.parg.viacep.ViaCEPException caso ocorra algum erro
+     * @throws com.mycompany.bibliotech.viacep.ViaCEPException caso ocorra algum erro
      */
     public ViaCEP(String cep) throws ViaCEPException {
         super();
@@ -53,7 +53,7 @@ public class ViaCEP extends ViaCEPBase {
      * Busca um CEP no ViaCEP
      *
      * @param cep
-     * @throws br.com.parg.viacep.ViaCEPException caso ocorra algum erro
+     * @throws com.mycompany.bibliotech.viacep.ViaCEPException caso ocorra algum erro
      */
     @Override
     public final void buscar(String cep) throws ViaCEPException {

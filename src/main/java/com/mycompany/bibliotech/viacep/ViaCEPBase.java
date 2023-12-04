@@ -1,5 +1,5 @@
 //Obtem um CEP no ViaCEP
-package br.com.parg.viacep;
+package com.mycompany.bibliotech.viacep;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -39,7 +39,7 @@ public abstract class ViaCEPBase {
      * @param Uf estado
      * @param Localidade cidade
      * @param Logradouro nome ou parte do nome da rua, av, viela...
-     * @throws br.com.parg.viacep.ViaCEPException
+     * @throws com.mycompany.bibliotech.viacep.ViaCEPException
      */
     public void buscarCEP(String Uf, String Localidade, String Logradouro) throws ViaCEPException {
         buscarCEP(new CEP(Logradouro, Localidade, Uf));
@@ -138,7 +138,7 @@ public abstract class ViaCEPBase {
      *
      * @param urlToRead endereço
      * @return conteúdo remoto
-     * @throws br.com.parg.viacep.ViaCEPException caso ocorra algum erro
+     * @throws com.mycompany.bibliotech.viacep.ViaCEPException caso ocorra algum erro
      */
     public final String getHttpGET(String urlToRead) throws ViaCEPException {
         StringBuilder result = new StringBuilder();
