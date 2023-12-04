@@ -106,6 +106,8 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
         cboxCategoriaLivro = new javax.swing.JComboBox<>();
         cboxIsbnSelect = new javax.swing.JComboBox<>();
         formatedIsbn = new javax.swing.JFormattedTextField();
+        boxSinopse = new javax.swing.JScrollPane();
+        txtSinopseDoLivro = new javax.swing.JTextArea();
         txtBuscaLivro = new javax.swing.JTextField();
         txtTituloLivro = new javax.swing.JTextField();
         txtNumeroDePaginas = new javax.swing.JTextField();
@@ -115,8 +117,6 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
         btnMostraTodosLivro = new javax.swing.JButton();
         btnPesquisaLivro = new javax.swing.JButton();
         btnLimparTelaLivro = new javax.swing.JButton();
-        boxSinopse = new javax.swing.JScrollPane();
-        txtSinopseDoLivro = new javax.swing.JTextArea();
         btnSalvarAlteracoesLivro = new javax.swing.JButton();
         btnExcluirImagem = new javax.swing.JButton();
         btnBuscarImagem = new javax.swing.JButton();
@@ -167,16 +167,20 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         jpnAvaliacao = new javax.swing.JPanel();
+        kGradientPanel4 = new keeptoo.KGradientPanel();
+        cboxUsuarioAvaliacao = new javax.swing.JComboBox<>();
+        cboxLivroAvaliacao = new javax.swing.JComboBox<>();
+        cboxNotaAvaliacao = new javax.swing.JComboBox<>();
         panComentarioAvaliacao = new javax.swing.JScrollPane();
         txtComentarioAvaliacao = new javax.swing.JTextArea();
         txtDataAvaliacao = new javax.swing.JTextField();
-        txtDeBoasVindasAvaliacao = new javax.swing.JTextField();
-        cboxUsuarioAvaliacao = new javax.swing.JComboBox<>();
-        cboxNotaAvaliacao = new javax.swing.JComboBox<>();
         btnLimparTelaAvaliacao = new javax.swing.JButton();
         btnSalvarAlteracoesAvaliacao = new javax.swing.JButton();
-        cboxLivroAvaliacao = new javax.swing.JComboBox<>();
         btnAvaliacaoFiltroAtualizar = new javax.swing.JButton();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
         MenuPainel = new javax.swing.JPanel();
         kGradientPanel2 = new keeptoo.KGradientPanel();
         menu = new javax.swing.JLabel();
@@ -271,6 +275,19 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
                 formatedIsbnActionPerformed(evt);
             }
         });
+
+        boxSinopse.setBackground(new java.awt.Color(255, 255, 255));
+        boxSinopse.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Sinopse do Livro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13), new java.awt.Color(0, 0, 0))); // NOI18N
+        boxSinopse.setToolTipText("escreva a sinopse do livro selecionado");
+
+        txtSinopseDoLivro.setColumns(20);
+        txtSinopseDoLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txtSinopseDoLivro.setForeground(new java.awt.Color(0, 0, 0));
+        txtSinopseDoLivro.setLineWrap(true);
+        txtSinopseDoLivro.setRows(5);
+        txtSinopseDoLivro.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtSinopseDoLivro.setEnabled(false);
+        boxSinopse.setViewportView(txtSinopseDoLivro);
 
         txtBuscaLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtBuscaLivro.setForeground(new java.awt.Color(0, 0, 0));
@@ -383,19 +400,6 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
                 btnLimparTelaLivroActionPerformed(evt);
             }
         });
-
-        boxSinopse.setBackground(new java.awt.Color(255, 255, 255));
-        boxSinopse.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Sinopse do Livro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13), new java.awt.Color(0, 0, 0))); // NOI18N
-        boxSinopse.setToolTipText("escreva a sinopse do livro selecionado");
-
-        txtSinopseDoLivro.setColumns(20);
-        txtSinopseDoLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtSinopseDoLivro.setForeground(new java.awt.Color(0, 0, 0));
-        txtSinopseDoLivro.setLineWrap(true);
-        txtSinopseDoLivro.setRows(5);
-        txtSinopseDoLivro.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtSinopseDoLivro.setEnabled(false);
-        boxSinopse.setViewportView(txtSinopseDoLivro);
 
         btnSalvarAlteracoesLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         btnSalvarAlteracoesLivro.setForeground(new java.awt.Color(0, 0, 0));
@@ -1028,45 +1032,56 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
 
         jpnAvaliacao.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtComentarioAvaliacao.setColumns(20);
-        txtComentarioAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtComentarioAvaliacao.setLineWrap(true);
-        txtComentarioAvaliacao.setRows(5);
-        txtComentarioAvaliacao.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Comentário", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
-        txtComentarioAvaliacao.setEnabled(false);
-        panComentarioAvaliacao.setViewportView(txtComentarioAvaliacao);
-
-        txtDataAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtDataAvaliacao.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Data da Avaliação", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
-        txtDataAvaliacao.setEnabled(false);
-
-        txtDeBoasVindasAvaliacao.setEditable(false);
-        txtDeBoasVindasAvaliacao.setBackground(new java.awt.Color(255, 255, 255));
-        txtDeBoasVindasAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtDeBoasVindasAvaliacao.setText("Os campo com asterisco são de preenchimento obrigatório.");
-        txtDeBoasVindasAvaliacao.setBorder(null);
-        txtDeBoasVindasAvaliacao.setFocusable(false);
-        txtDeBoasVindasAvaliacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDeBoasVindasAvaliacaoActionPerformed(evt);
-            }
-        });
+        kGradientPanel4.setkEndColor(new java.awt.Color(51, 51, 51));
+        kGradientPanel4.setkGradientFocus(350);
+        kGradientPanel4.setkStartColor(new java.awt.Color(255, 255, 255));
 
         cboxUsuarioAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxUsuarioAvaliacao.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Usuário Que Avaliou", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        cboxUsuarioAvaliacao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         cboxUsuarioAvaliacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxUsuarioAvaliacaoActionPerformed(evt);
             }
         });
 
+        cboxLivroAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        cboxLivroAvaliacao.setForeground(new java.awt.Color(0, 0, 0));
+        cboxLivroAvaliacao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        cboxLivroAvaliacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxLivroAvaliacaoActionPerformed(evt);
+            }
+        });
+
         cboxNotaAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        cboxNotaAvaliacao.setForeground(new java.awt.Color(0, 0, 0));
         cboxNotaAvaliacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada", "10 - Excelente", "9 - Ótimo", "8 - Muito Bom", "7 - Bom", "6 - Satisfatório", "5 - Regular", "4 - Abaixo da Média", "3 - Ruim", "2 - Muito Ruim", "1 - Péssimo", "0 - Inaceitável" }));
-        cboxNotaAvaliacao.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Avaliação", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
+        cboxNotaAvaliacao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         cboxNotaAvaliacao.setEnabled(false);
 
+        txtComentarioAvaliacao.setColumns(20);
+        txtComentarioAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txtComentarioAvaliacao.setForeground(new java.awt.Color(0, 0, 0));
+        txtComentarioAvaliacao.setLineWrap(true);
+        txtComentarioAvaliacao.setRows(5);
+        txtComentarioAvaliacao.setToolTipText("escreva seu comentario sobre o livro");
+        txtComentarioAvaliacao.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Comentário", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13), new java.awt.Color(0, 0, 0))); // NOI18N
+        txtComentarioAvaliacao.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtComentarioAvaliacao.setEnabled(false);
+        panComentarioAvaliacao.setViewportView(txtComentarioAvaliacao);
+
+        txtDataAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txtDataAvaliacao.setForeground(new java.awt.Color(0, 0, 0));
+        txtDataAvaliacao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtDataAvaliacao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        txtDataAvaliacao.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtDataAvaliacao.setEnabled(false);
+
         btnLimparTelaAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        btnLimparTelaAvaliacao.setForeground(new java.awt.Color(0, 0, 0));
         btnLimparTelaAvaliacao.setText("Limpar");
+        btnLimparTelaAvaliacao.setToolTipText("limpar todos os campos");
+        btnLimparTelaAvaliacao.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnLimparTelaAvaliacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparTelaAvaliacaoActionPerformed(evt);
@@ -1074,7 +1089,10 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
         });
 
         btnSalvarAlteracoesAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        btnSalvarAlteracoesAvaliacao.setForeground(new java.awt.Color(0, 0, 0));
         btnSalvarAlteracoesAvaliacao.setText("Salvar Alterações");
+        btnSalvarAlteracoesAvaliacao.setToolTipText("salvar todas as informações");
+        btnSalvarAlteracoesAvaliacao.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSalvarAlteracoesAvaliacao.setEnabled(false);
         btnSalvarAlteracoesAvaliacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1082,72 +1100,101 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
             }
         });
 
-        cboxLivroAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxLivroAvaliacao.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Livro Avaliado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
-        cboxLivroAvaliacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboxLivroAvaliacaoActionPerformed(evt);
-            }
-        });
-
         btnAvaliacaoFiltroAtualizar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        btnAvaliacaoFiltroAtualizar.setForeground(new java.awt.Color(0, 0, 0));
         btnAvaliacaoFiltroAtualizar.setText("Atualizar");
+        btnAvaliacaoFiltroAtualizar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnAvaliacaoFiltroAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAvaliacaoFiltroAtualizarActionPerformed(evt);
             }
         });
 
+        jLabel32.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel32.setText("Livro avaliado:");
+        jLabel32.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jLabel39.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel39.setText("Usuário que avaliou:");
+        jLabel39.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jLabel41.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel41.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel41.setText("Avaliação:");
+        jLabel41.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        jLabel42.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel42.setText("Data da avaliação:");
+        jLabel42.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        javax.swing.GroupLayout kGradientPanel4Layout = new javax.swing.GroupLayout(kGradientPanel4);
+        kGradientPanel4.setLayout(kGradientPanel4Layout);
+        kGradientPanel4Layout.setHorizontalGroup(
+            kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kGradientPanel4Layout.createSequentialGroup()
+                .addContainerGap(52, Short.MAX_VALUE)
+                .addGroup(kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(cboxUsuarioAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cboxLivroAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel32)
+                        .addComponent(jLabel39))
+                    .addComponent(btnAvaliacaoFiltroAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
+                .addGroup(kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel42)
+                    .addComponent(cboxNotaAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDataAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(kGradientPanel4Layout.createSequentialGroup()
+                        .addComponent(btnLimparTelaAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(120, 120, 120)
+                        .addComponent(btnSalvarAlteracoesAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel41)
+                    .addComponent(panComentarioAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(171, Short.MAX_VALUE))
+        );
+        kGradientPanel4Layout.setVerticalGroup(
+            kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kGradientPanel4Layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addGroup(kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel32)
+                    .addComponent(jLabel42))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboxLivroAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDataAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel39)
+                    .addComponent(jLabel41))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboxUsuarioAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboxNotaAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAvaliacaoFiltroAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panComentarioAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLimparTelaAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalvarAlteracoesAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(156, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jpnAvaliacaoLayout = new javax.swing.GroupLayout(jpnAvaliacao);
         jpnAvaliacao.setLayout(jpnAvaliacaoLayout);
         jpnAvaliacaoLayout.setHorizontalGroup(
             jpnAvaliacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnAvaliacaoLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jpnAvaliacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDeBoasVindasAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jpnAvaliacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(cboxUsuarioAvaliacao, 0, 390, Short.MAX_VALUE)
-                        .addComponent(cboxLivroAvaliacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btnAvaliacaoFiltroAtualizar, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(56, 56, 56)
-                .addGroup(jpnAvaliacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpnAvaliacaoLayout.createSequentialGroup()
-                        .addComponent(btnLimparTelaAvaliacao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSalvarAlteracoesAvaliacao))
-                    .addComponent(panComentarioAvaliacao, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
-                    .addComponent(cboxNotaAvaliacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtDataAvaliacao))
-                .addContainerGap(246, Short.MAX_VALUE))
+            .addComponent(kGradientPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jpnAvaliacaoLayout.setVerticalGroup(
             jpnAvaliacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnAvaliacaoLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(txtDeBoasVindasAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jpnAvaliacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpnAvaliacaoLayout.createSequentialGroup()
-                        .addComponent(txtDataAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cboxNotaAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpnAvaliacaoLayout.createSequentialGroup()
-                        .addComponent(cboxLivroAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cboxUsuarioAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jpnAvaliacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpnAvaliacaoLayout.createSequentialGroup()
-                        .addComponent(btnAvaliacaoFiltroAtualizar)
-                        .addGap(17, 488, Short.MAX_VALUE))
-                    .addGroup(jpnAvaliacaoLayout.createSequentialGroup()
-                        .addComponent(panComentarioAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jpnAvaliacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnLimparTelaAvaliacao)
-                            .addComponent(btnSalvarAlteracoesAvaliacao))
-                        .addContainerGap(310, Short.MAX_VALUE))))
+            .addComponent(kGradientPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         EdicaoLivro.addTab("Avaliação", jpnAvaliacao);
@@ -1334,10 +1381,6 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
         cboxSexoAutor.addItem("Masculino");
         cboxSexoAutor.addItem("Feminino");
     }
-
-    private void txtDeBoasVindasAvaliacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDeBoasVindasAvaliacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDeBoasVindasAvaliacaoActionPerformed
 
     private void txtBuscaAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaAutorActionPerformed
         // TODO add your handling code here:
@@ -2350,12 +2393,16 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -2366,6 +2413,7 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
     private keeptoo.KGradientPanel kGradientPanel1;
     private keeptoo.KGradientPanel kGradientPanel2;
     private keeptoo.KGradientPanel kGradientPanel3;
+    private keeptoo.KGradientPanel kGradientPanel4;
     private javax.swing.JLabel menu;
     private javax.swing.JScrollPane panComentarioAvaliacao;
     private javax.swing.JTextField txtAnoDePublicacao;
@@ -2373,7 +2421,6 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
     private javax.swing.JTextField txtBuscaLivro;
     private javax.swing.JTextArea txtComentarioAvaliacao;
     private javax.swing.JTextField txtDataAvaliacao;
-    private javax.swing.JTextField txtDeBoasVindasAvaliacao;
     private javax.swing.JTextField txtIdAutor;
     private javax.swing.JTextField txtIdLivro;
     private javax.swing.JButton txtMenu;
