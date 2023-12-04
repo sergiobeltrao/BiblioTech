@@ -388,7 +388,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         kGradientPanel1.setkStartColor(new java.awt.Color(255, 255, 255));
 
         cboxCategoria.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxCategoria.setForeground(new java.awt.Color(0, 0, 0));
         cboxCategoria.setToolTipText("escolha a categoria principal do livro");
         cboxCategoria.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         cboxCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -399,7 +398,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         });
 
         cboxSubCategoria.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxSubCategoria.setForeground(new java.awt.Color(0, 0, 0));
         cboxSubCategoria.setToolTipText("escolha a sub-categoria do livro");
         cboxSubCategoria.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         cboxSubCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -410,13 +408,11 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         });
 
         cboxLivroIdioma.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxLivroIdioma.setForeground(new java.awt.Color(0, 0, 0));
         cboxLivroIdioma.setToolTipText("escolha o idioma do livro");
         cboxLivroIdioma.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         cboxLivroIdioma.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         cboxIsbnSelect.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxIsbnSelect.setForeground(new java.awt.Color(0, 0, 0));
         cboxIsbnSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "ISBN-13", "ISBN-10" }));
         cboxIsbnSelect.setToolTipText("escolha o tipo de ISBN do livro");
         cboxIsbnSelect.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -428,11 +424,9 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         });
 
         txtTitulo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtTitulo.setForeground(new java.awt.Color(0, 0, 0));
         txtTitulo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTitulo.setToolTipText("insira o nome do livro à cadastrar");
         txtTitulo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        txtTitulo.setCaretColor(new java.awt.Color(0, 0, 0));
         txtTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTituloActionPerformed(evt);
@@ -440,11 +434,9 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         });
 
         txtNumeroDePaginas.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtNumeroDePaginas.setForeground(new java.awt.Color(0, 0, 0));
         txtNumeroDePaginas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtNumeroDePaginas.setToolTipText("insira o numero de paginas do livro");
         txtNumeroDePaginas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        txtNumeroDePaginas.setCaretColor(new java.awt.Color(0, 0, 0));
         txtNumeroDePaginas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumeroDePaginasActionPerformed(evt);
@@ -460,14 +452,11 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         });
 
         txtNomeDaEditora.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtNomeDaEditora.setForeground(new java.awt.Color(0, 0, 0));
         txtNomeDaEditora.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtNomeDaEditora.setToolTipText("insira o nome da editora");
         txtNomeDaEditora.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        txtNomeDaEditora.setCaretColor(new java.awt.Color(0, 0, 0));
 
         formatedIsbn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        formatedIsbn.setForeground(new java.awt.Color(0, 0, 0));
         try {
             formatedIsbn.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("")));
         } catch (java.text.ParseException ex) {
@@ -475,7 +464,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         }
         formatedIsbn.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         formatedIsbn.setToolTipText("insira o ISBN do livro");
-        formatedIsbn.setCaretColor(new java.awt.Color(0, 0, 0));
         formatedIsbn.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         formatedIsbn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -484,20 +472,17 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         });
 
         boxSinopse.setBackground(new java.awt.Color(204, 204, 204));
-        boxSinopse.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Sinopse do Livro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13), new java.awt.Color(0, 0, 0))); // NOI18N
+        boxSinopse.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Sinopse do Livro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
 
         txtSinopseDoLivro.setBackground(new java.awt.Color(204, 204, 204));
         txtSinopseDoLivro.setColumns(20);
         txtSinopseDoLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtSinopseDoLivro.setForeground(new java.awt.Color(0, 0, 0));
         txtSinopseDoLivro.setLineWrap(true);
         txtSinopseDoLivro.setRows(5);
         txtSinopseDoLivro.setToolTipText("insira a sinopse do livro");
-        txtSinopseDoLivro.setCaretColor(new java.awt.Color(0, 0, 0));
         boxSinopse.setViewportView(txtSinopseDoLivro);
 
         tbLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        tbLivro.setForeground(new java.awt.Color(0, 0, 0));
         tbLivro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -533,7 +518,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         });
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Inserir");
         jButton1.setToolTipText("inserir imagem do livro");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -552,14 +536,12 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Os campo com * são de preenchimento obrigatório.");
 
         jLabel3.setForeground(new java.awt.Color(255, 0, 0));
         jLabel3.setText("*");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Titulo:");
         jLabel4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
@@ -567,25 +549,21 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         jLabel5.setText("*");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel6.setText("ISBN:");
         jLabel6.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel7.setText("Ano:");
         jLabel7.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel8.setText("Tipo:");
         jLabel8.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel9.setText("Páginas:");
         jLabel9.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
@@ -612,31 +590,26 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         jLabel16.setText("*");
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel17.setText("Categoria:");
         jLabel17.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel18.setText("Sub-categoria:");
         jLabel18.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel19.setText("Idioma:");
         jLabel19.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel20.setText("Editora:");
         jLabel20.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel21.setText("Imagem:");
         jLabel21.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
@@ -645,11 +618,9 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         jLabel22.setText("*");
 
         txtAnoDePublicacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtAnoDePublicacao.setForeground(new java.awt.Color(0, 0, 0));
         txtAnoDePublicacao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtAnoDePublicacao.setToolTipText("escreva o ano de publicação do livro");
         txtAnoDePublicacao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        txtAnoDePublicacao.setCaretColor(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
@@ -843,7 +814,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         kGradientPanel3.setPreferredSize(new java.awt.Dimension(1109, 685));
 
         cboxNacionalidadeDoAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxNacionalidadeDoAutor.setForeground(new java.awt.Color(0, 0, 0));
         cboxNacionalidadeDoAutor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada" }));
         cboxNacionalidadeDoAutor.setToolTipText("Escolha a nacionalidade do autor");
         cboxNacionalidadeDoAutor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -856,7 +826,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         });
 
         cboxSexoDoAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxSexoDoAutor.setForeground(new java.awt.Color(0, 0, 0));
         cboxSexoDoAutor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informado", "Masculino", "Feminino" }));
         cboxSexoDoAutor.setToolTipText("escolha uma das opções");
         cboxSexoDoAutor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -869,7 +838,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         });
 
         cboxResultadoBuscaAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxResultadoBuscaAutor.setForeground(new java.awt.Color(0, 0, 0));
         cboxResultadoBuscaAutor.setToolTipText("resultado a pesquisa de autor");
         cboxResultadoBuscaAutor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         cboxResultadoBuscaAutor.addActionListener(new java.awt.event.ActionListener() {
@@ -907,17 +875,13 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         boxTabelaAutor.setViewportView(tbAutor);
 
         txtAutorPesquisado.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtAutorPesquisado.setForeground(new java.awt.Color(0, 0, 0));
         txtAutorPesquisado.setToolTipText("insira o nome do autor a ser pesquisado");
         txtAutorPesquisado.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        txtAutorPesquisado.setCaretColor(new java.awt.Color(0, 0, 0));
 
         txtNomeDoAutor.setEditable(false);
         txtNomeDoAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtNomeDoAutor.setForeground(new java.awt.Color(0, 0, 0));
         txtNomeDoAutor.setToolTipText("nome do novo autor");
         txtNomeDoAutor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        txtNomeDoAutor.setCaretColor(new java.awt.Color(0, 0, 0));
         txtNomeDoAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtNomeDoAutor.setFocusable(false);
         txtNomeDoAutor.addActionListener(new java.awt.event.ActionListener() {
@@ -928,7 +892,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         btnAutorNaoCadastrado.setBackground(new java.awt.Color(102, 102, 102));
         btnAutorNaoCadastrado.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnAutorNaoCadastrado.setForeground(new java.awt.Color(0, 0, 0));
         btnAutorNaoCadastrado.setText("Cadastrar novo");
         btnAutorNaoCadastrado.setToolTipText("Cadastrar novo autor");
         btnAutorNaoCadastrado.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -940,7 +903,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         btnLimparAutor.setBackground(new java.awt.Color(102, 102, 102));
         btnLimparAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnLimparAutor.setForeground(new java.awt.Color(0, 0, 0));
         btnLimparAutor.setText("Limpar");
         btnLimparAutor.setToolTipText("limpar busca ");
         btnLimparAutor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -952,7 +914,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         btnProximaAbaAutor.setBackground(new java.awt.Color(102, 102, 102));
         btnProximaAbaAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnProximaAbaAutor.setForeground(new java.awt.Color(0, 0, 0));
         btnProximaAbaAutor.setText("Próxima ");
         btnProximaAbaAutor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnProximaAbaAutor.addActionListener(new java.awt.event.ActionListener() {
@@ -963,7 +924,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         btnLimparAutoresSelecionados.setBackground(new java.awt.Color(102, 102, 102));
         btnLimparAutoresSelecionados.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnLimparAutoresSelecionados.setForeground(new java.awt.Color(0, 0, 0));
         btnLimparAutoresSelecionados.setText("Limpar");
         btnLimparAutoresSelecionados.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnLimparAutoresSelecionados.addActionListener(new java.awt.event.ActionListener() {
@@ -974,7 +934,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         btnSelecionarResultadoAutor.setBackground(new java.awt.Color(102, 102, 102));
         btnSelecionarResultadoAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnSelecionarResultadoAutor.setForeground(new java.awt.Color(0, 0, 0));
         btnSelecionarResultadoAutor.setText("Selecionar");
         btnSelecionarResultadoAutor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSelecionarResultadoAutor.addActionListener(new java.awt.event.ActionListener() {
@@ -985,7 +944,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         btnBuscarAutor.setBackground(new java.awt.Color(102, 102, 102));
         btnBuscarAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnBuscarAutor.setForeground(new java.awt.Color(0, 0, 0));
         btnBuscarAutor.setText("Buscar");
         btnBuscarAutor.setToolTipText("buscar autor");
         btnBuscarAutor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -998,7 +956,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         btnCadastraAutor.setBackground(new java.awt.Color(102, 102, 102));
         btnCadastraAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnCadastraAutor.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastraAutor.setText("Cadastrar");
         btnCadastraAutor.setToolTipText("cadastrar novo autor");
         btnCadastraAutor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1010,31 +967,25 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         });
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
         jLabel23.setText("Os campo com * são de preenchimento obrigatório.");
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
         jLabel24.setText("Resultado:");
         jLabel24.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(0, 0, 0));
         jLabel25.setText("Pesquisar Autor:");
         jLabel25.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(0, 0, 0));
         jLabel26.setText("Sexo:");
         jLabel26.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(0, 0, 0));
         jLabel27.setText("Nacionalidade:");
         jLabel27.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(0, 0, 0));
         jLabel28.setText("Novo Autor:");
         jLabel28.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
@@ -1187,7 +1138,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         kGradientPanel4.setkStartColor(new java.awt.Color(255, 255, 255));
 
         cboxAvaliacaoDoLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxAvaliacaoDoLivro.setForeground(new java.awt.Color(0, 0, 0));
         cboxAvaliacaoDoLivro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada", "10 - Excelente", "9 - Ótimo", "8 - Muito Bom", "7 - Bom", "6 - Satisfatório", "5 - Regular", "4 - Abaixo da Média", "3 - Ruim", "2 - Muito Ruim", "1 - Péssimo", "0 - Inaceitável" }));
         cboxAvaliacaoDoLivro.setToolTipText("escolha a nota de avaliação do livro");
         cboxAvaliacaoDoLivro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -1201,15 +1151,12 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         txtComentarioAvaliacao.setColumns(20);
         txtComentarioAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtComentarioAvaliacao.setForeground(new java.awt.Color(0, 0, 0));
         txtComentarioAvaliacao.setLineWrap(true);
         txtComentarioAvaliacao.setRows(5);
         txtComentarioAvaliacao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        txtComentarioAvaliacao.setCaretColor(new java.awt.Color(0, 0, 0));
         boxComentarioAvaliacao.setViewportView(txtComentarioAvaliacao);
 
         tbAvaliacao.setFont(new java.awt.Font("Serif", 0, 13)); // NOI18N
-        tbAvaliacao.setForeground(new java.awt.Color(0, 0, 0));
         tbAvaliacao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -1229,7 +1176,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         boxTabelaAvaliacao.setViewportView(tbAvaliacao);
 
         btnLimparAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnLimparAvaliacao.setForeground(new java.awt.Color(0, 0, 0));
         btnLimparAvaliacao.setText("Limpar");
         btnLimparAvaliacao.setToolTipText("limpar toda avaliação");
         btnLimparAvaliacao.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1240,7 +1186,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         });
 
         btnFinalizarCadastro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnFinalizarCadastro.setForeground(new java.awt.Color(0, 0, 0));
         btnFinalizarCadastro.setText("Finalizar Cadastro");
         btnFinalizarCadastro.setToolTipText("cinalizar o cadastro do livro");
         btnFinalizarCadastro.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1259,11 +1204,9 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         jLabel33.setText("*");
 
         jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(0, 0, 0));
         jLabel34.setText("Nota da Avaliação:");
 
         jLabel35.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(0, 0, 0));
         jLabel35.setText("Comentario sobre o livro");
 
         javax.swing.GroupLayout kGradientPanel4Layout = new javax.swing.GroupLayout(kGradientPanel4);
@@ -1447,7 +1390,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         }
 
         // Livro sem idioma.
-        if (cboxLivroIdioma.getSelectedItem().toString().equals("Não Informado")) {
+        if (cboxLivroIdioma.getSelectedItem().toString().equals("Selecione")) {
             mensagemDeErro = "Selecione um idioma para o livro.";
         }
 
@@ -1455,7 +1398,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         String subCategoriaSelecionada = cboxSubCategoria.getSelectedItem().toString();
 
         // Livro sem categoria ou subcategoria.
-        if (categoriaSelecionada.equals("Não Informada") || subCategoriaSelecionada.equals("Não Informada")) {
+        if (categoriaSelecionada.equals("Selecione") || subCategoriaSelecionada.equals("Selecione")) {
             mensagemDeErro = "Você precisa selecionar a categoria e sub-categoria do livro.";
         }
 
@@ -1540,10 +1483,10 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         formatedIsbn.setText(null);
         txtAnoDePublicacao.setText("");
         txtNumeroDePaginas.setText("");
-        cboxCategoria.setSelectedItem("Não Informada");
-        cboxSubCategoria.setSelectedItem("Não Informada");
+        cboxCategoria.setSelectedItem("Selecione");
+        cboxSubCategoria.setSelectedItem("Selecione");
         txtNomeDaEditora.setText("");
-        cboxLivroIdioma.setSelectedItem("Não Informado");
+        cboxLivroIdioma.setSelectedItem("Selecione");
         txtSinopseDoLivro.setText("");
     }//GEN-LAST:event_btnLimparLivroActionPerformed
 
@@ -1583,8 +1526,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         txtNomeDoAutor.setText("");
         cboxSexoDoAutor.setSelectedItem("Não Informado");
         cboxNacionalidadeDoAutor.setSelectedItem("Não Informada");
-        txtCampoDeAutoresSelecionados.setText("");
-
     }//GEN-LAST:event_btnLimparAutorActionPerformed
 
     private void btnLimparAvaliacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparAvaliacaoActionPerformed
@@ -1673,24 +1614,28 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarAutorActionPerformed
 
     private void btnSelecionarResultadoAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarResultadoAutorActionPerformed
-        String cboxSelecionarAuto = cboxResultadoBuscaAutor.getSelectedItem().toString();
-        String caixaDeAutoresSelecionados = txtCampoDeAutoresSelecionados.getText();
+        if (cboxResultadoBuscaAutor.getSelectedItem() != null) {
 
-        if (cboxSelecionarAuto.equals("Nada encontrado")) {
-            JOptionPane.showMessageDialog(null, "Selecione um valor válido.");
-        } else {
+            String cboxSelecionarAuto = cboxResultadoBuscaAutor.getSelectedItem().toString();
+            String caixaDeAutoresSelecionados = txtCampoDeAutoresSelecionados.getText();
 
-            if (caixaDeAutoresSelecionados.isEmpty()) {
-                txtCampoDeAutoresSelecionados.setText(cboxSelecionarAuto);
+            if (cboxSelecionarAuto.equals("Nada encontrado")) {
+                JOptionPane.showMessageDialog(null, "Selecione um valor válido.");
             } else {
-                txtCampoDeAutoresSelecionados.setText(caixaDeAutoresSelecionados + "\n" + cboxResultadoBuscaAutor.getSelectedItem().toString());
+
+                if (caixaDeAutoresSelecionados.isEmpty()) {
+                    txtCampoDeAutoresSelecionados.setText(cboxSelecionarAuto);
+                } else {
+                    txtCampoDeAutoresSelecionados.setText(caixaDeAutoresSelecionados + "\n" + cboxResultadoBuscaAutor.getSelectedItem().toString());
+                }
             }
+
+            // Limpa os campos depois da adicionar o autor.
+            txtAutorPesquisado.setText("");
+            cboxResultadoBuscaAutor.removeAllItems();
+        } else {
+        JOptionPane.showMessageDialog(null, "Não existe nenhum autor na ComboBox.");
         }
-
-        // Limpa os campos depois da adicionar o autor.
-        txtAutorPesquisado.setText("");
-        cboxResultadoBuscaAutor.removeAllItems();
-
     }//GEN-LAST:event_btnSelecionarResultadoAutorActionPerformed
 
     private void txtNomeDoAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeDoAutorActionPerformed
@@ -1699,6 +1644,8 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
     private void btnLimparAutoresSelecionadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparAutoresSelecionadosActionPerformed
         txtCampoDeAutoresSelecionados.setText("");
+        txtAutorPesquisado.setText("");
+        cboxResultadoBuscaAutor.removeAllItems();
     }//GEN-LAST:event_btnLimparAutoresSelecionadosActionPerformed
 
     private void btnCadastraAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastraAutorActionPerformed
@@ -1811,7 +1758,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
                     // Exibir o JOptionPane com o JPanel personalizado
                     int result = JOptionPane.showOptionDialog(null, panel, "Digite a senha",
-                        JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+                            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
 
                     // Verificar a resposta do JOptionPane
                     if (result == JOptionPane.OK_OPTION) {
