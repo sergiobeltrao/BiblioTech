@@ -6,7 +6,7 @@
     <Property name="title" type="java.lang.String" value="Cadastro de livro"/>
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-74,0,0,5,14"/>
+    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-40,0,0,5,16"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="0"/>
     <SyntheticProperty name="generateSize" type="boolean" value="true"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
@@ -29,14 +29,14 @@
           <Group type="102" alignment="1" attributes="0">
               <Component id="MenuLateral" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="janelaDeAbas" pref="1102" max="32767" attributes="0"/>
+              <Component id="janelaDeAbas" pref="1104" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="MenuLateral" max="32767" attributes="0"/>
-          <Component id="janelaDeAbas" pref="686" max="32767" attributes="0"/>
+          <Component id="janelaDeAbas" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -340,134 +340,120 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                  <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jLabel17" min="-2" pref="64" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jLabel15" min="-2" pref="7" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="cboxCategoria" min="-2" pref="235" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="cboxSubCategoria" min="-2" pref="206" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtNomeDaEditora" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                          <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel13" min="-2" pref="7" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jLabel17" min="-2" pref="64" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jLabel15" min="-2" pref="7" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+                                          <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="cboxIsbnSelect" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
-                                              <Group type="102" attributes="0">
-                                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" attributes="0">
-                                                          <Component id="jLabel5" min="-2" pref="6" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="jLabel6" min="-2" pref="37" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                              </Group>
-                                          </Group>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="txtNomeDaEditora" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                                          <Component id="jLabel13" min="-2" pref="7" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" attributes="0">
-                                                          <EmptySpace type="separate" max="32767" attributes="0"/>
-                                                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="32767" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <EmptySpace max="32767" attributes="0"/>
-                                                          <Component id="txtAnoDePublicacao" min="-2" pref="53" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Component id="jButton1" alignment="1" min="-2" pref="101" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                  <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
+                                          <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                          <Component id="txtTitulo" min="-2" pref="478" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="cboxLivroIdioma" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jButton1" min="-2" pref="101" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnLimparLivro" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel3" min="-2" pref="5" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabel4" min="-2" pref="37" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="cboxIsbnSelect" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" attributes="0">
+                                                      <Component id="jLabel5" min="-2" pref="6" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="jLabel6" min="-2" pref="37" max="-2" attributes="0"/>
+                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="formatedIsbn" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
                                                       <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
                                                       <Component id="jLabel9" min="-2" pref="53" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="formatedIsbn" min="-2" pref="211" max="-2" attributes="0"/>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="txtNumeroDePaginas" min="-2" pref="64" max="-2" attributes="0"/>
+                                                  <Component id="txtNumeroDePaginas" min="-2" pref="70" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txtAnoDePublicacao" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                                              <Component id="cboxLivroIdioma" min="-2" pref="164" max="-2" attributes="0"/>
                                           </Group>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="cboxCategoria" min="-2" pref="235" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="cboxSubCategoria" min="-2" pref="206" max="-2" attributes="0"/>
+                                          <Component id="txtTitulo" alignment="0" min="-2" pref="470" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="39" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" min="-2" pref="5" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel4" min="-2" pref="37" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="jLabel2" min="-2" pref="298" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                  <Component id="btnLimparLivro" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                                  <Component id="btnProximaAbaLivro" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="310" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="boxSinopse" min="-2" pref="507" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                                  <Component id="btnProximaAbaLivro" min="-2" pref="100" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <Component id="boxTabelaLivro" alignment="1" max="32767" attributes="0"/>
                   </Group>
@@ -476,59 +462,79 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel4" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
+                              <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="boxSinopse" pref="268" max="32767" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="btnLimparLivro" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Component id="btnProximaAbaLivro" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel4" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtTitulo" min="-2" pref="25" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel6" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
-                                      <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="cboxIsbnSelect" min="-2" pref="25" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel6" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="formatedIsbn" min="-2" pref="25" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel7" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="txtAnoDePublicacao" min="-2" pref="25" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
+                                          <Component id="txtNumeroDePaginas" min="-2" pref="25" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="formatedIsbn" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Component id="cboxLivroIdioma" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Component id="txtNumeroDePaginas" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="txtNomeDaEditora" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <Component id="jButton1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="cboxLivroIdioma" min="-2" pref="25" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel7" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="txtNomeDaEditora" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Component id="jButton1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Component id="cboxIsbnSelect" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Component id="txtAnoDePublicacao" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                                           <Component id="jLabel17" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
@@ -544,9 +550,15 @@
                                       <Component id="cboxCategoria" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                       <Component id="cboxSubCategoria" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
+                              <Component id="boxSinopse" max="32767" attributes="0"/>
                           </Group>
+                          <EmptySpace type="separate" pref="34" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnLimparLivro" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="btnProximaAbaLivro" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="boxTabelaLivro" min="-2" pref="320" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -727,11 +739,11 @@
                 <Container class="javax.swing.JScrollPane" name="boxSinopse">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder justification="2" title="Sinopse do Livro">
+                        <TitledBorder justification="2">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder roundedCorners="true"/>
                           </Border>
@@ -745,9 +757,6 @@
                   <SubComponents>
                     <Component class="javax.swing.JTextArea" name="txtSinopseDoLivro">
                       <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="cc" green="cc" red="cc" type="rgb"/>
-                        </Property>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="13" style="0"/>
@@ -875,6 +884,9 @@
                       <Color id="Hand Cursor"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnProximaAbaLivro">
                   <Properties>
@@ -904,7 +916,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="13" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Os campo com * s&#xe3;o de preenchimento obrigat&#xf3;rio."/>
+                    <Property name="text" type="java.lang.String" value="Os campo com asterisco s&#xe3;o de preenchimento obrigat&#xf3;rio."/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel3">
@@ -958,7 +970,7 @@
                       <Font name="Segoe UI" size="13" style="0"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="Tipo:"/>
+                    <Property name="text" type="java.lang.String" value="Tipo do ISBN:"/>
                     <Property name="verticalAlignment" type="int" value="3"/>
                   </Properties>
                 </Component>
@@ -1074,7 +1086,7 @@
                       <Font name="Segoe UI" size="13" style="0"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="Imagem:"/>
+                    <Property name="text" type="java.lang.String" value="Capa:"/>
                     <Property name="verticalAlignment" type="int" value="3"/>
                   </Properties>
                 </Component>
@@ -1098,6 +1110,30 @@
                         <LineBorder roundedCorners="true"/>
                       </Border>
                     </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAnoDePublicacaoActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtAnoDePublicacaoKeyPressed"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtAnoDePublicacaoKeyTyped"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel37">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="13" style="0"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="33" green="33" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="*"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel38">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="13" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Sinopse do Livro:"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -1124,12 +1160,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="kGradientPanel3" alignment="0" pref="1102" max="32767" attributes="0"/>
+                  <Component id="kGradientPanel3" alignment="0" pref="1104" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="kGradientPanel3" alignment="0" pref="651" max="32767" attributes="0"/>
+                  <Component id="kGradientPanel3" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -1151,149 +1187,156 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="47" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace pref="32" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                  <Component id="jLabel23" min="-2" pref="298" max="-2" attributes="0"/>
+                                  <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                               <Component id="boxAutoresSelecionados" alignment="0" min="-2" pref="406" max="-2" attributes="0"/>
+                              <Component id="jLabel25" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="btnLimparAutoresSelecionados" min="-2" pref="87" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="btnSelecionarResultadoAutor" min="-2" pref="87" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="btnBuscarAutor" min="-2" pref="87" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="cboxResultadoBuscaAutor" min="-2" pref="308" max="-2" attributes="0"/>
+                                  <Component id="txtAutorPesquisado" min="-2" pref="308" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnBuscarAutor" min="-2" pref="87" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="btnLimparAutoresSelecionados" min="-2" pref="87" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="btnAutorNaoCadastrado" min="-2" pref="128" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cboxResultadoBuscaAutor" alignment="0" min="-2" pref="308" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="txtAutorPesquisado" alignment="0" min="-2" pref="308" max="-2" attributes="0"/>
-                                      <Component id="jLabel25" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btnSelecionarResultadoAutor" min="-2" pref="87" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="42" max="32767" attributes="0"/>
+                          <EmptySpace pref="152" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="boxTabelaAutor" alignment="0" min="-2" pref="546" max="-2" attributes="0"/>
+                              <Component id="boxTabelaAutor" min="-2" pref="463" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="cboxSexoDoAutor" min="-2" pref="135" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="cboxNacionalidadeDoAutor" min="-2" pref="157" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="txtNomeDoAutor" min="-2" pref="319" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jLabel26" min="-2" pref="38" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-                                          <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jLabel27" min="-2" pref="116" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="btnAutorNaoCadastrado" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jLabel28" min="-2" pref="76" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="cboxSexoDoAutor" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Component id="jLabel26" min="-2" pref="38" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="btnLimparAutor" min="-2" pref="87" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="btnCadastraAutor" min="-2" pref="87" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
+                                                          <EmptySpace max="-2" attributes="0"/>
+                                                          <Component id="jLabel27" min="-2" pref="116" max="-2" attributes="0"/>
+                                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                      </Group>
+                                                      <Component id="cboxNacionalidadeDoAutor" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                          <Component id="txtNomeDoAutor" alignment="1" min="-2" pref="319" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnLimparAutor" min="-2" pref="87" max="-2" attributes="0"/>
-                                      <Component id="btnCadastraAutor" min="-2" pref="87" max="-2" attributes="0"/>
-                                      <Component id="btnProximaAbaAutor" min="-2" pref="87" max="-2" attributes="0"/>
-                                  </Group>
+                                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                                  <Component id="btnProximaAbaAutor" min="-2" pref="87" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="63" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="btnAutorNaoCadastrado" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                  <Component id="txtAutorPesquisado" min="-2" pref="25" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnLimparAutor" min="-2" pref="25" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="txtNomeDoAutor" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Component id="btnCadastraAutor" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                  <Component id="btnProximaAbaAutor" min="-2" pref="25" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="btnLimparAutoresSelecionados" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Component id="btnSelecionarResultadoAutor" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="txtAutorPesquisado" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                       <Component id="btnBuscarAutor" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="cboxResultadoBuscaAutor" min="-2" pref="25" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="btnSelecionarResultadoAutor" min="-2" pref="25" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="btnLimparAutoresSelecionados" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="btnAutorNaoCadastrado" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtNomeDoAutor" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel29" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="cboxResultadoBuscaAutor" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                       <Component id="cboxSexoDoAutor" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                       <Component id="cboxNacionalidadeDoAutor" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                   </Group>
-                              </Group>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="boxTabelaAutor" pref="0" max="32767" attributes="0"/>
-                                  <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                  <Component id="boxAutoresSelecionados" min="-2" pref="308" max="-2" attributes="0"/>
-                                  <EmptySpace pref="81" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="btnLimparAutor" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="btnCadastraAutor" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="btnProximaAbaAutor" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel40" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="boxTabelaAutor" pref="366" max="32767" attributes="0"/>
+                              <Component id="boxAutoresSelecionados" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1394,10 +1437,8 @@
                         </Property>
                         <Property name="rows" type="int" value="5"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                            <TitledBorder title="Autores Selecionados *">
-                              <Font PropertyName="font" name="Segoe UI" size="13" style="0"/>
-                            </TitledBorder>
+                          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                            <EtchetBorder/>
                           </Border>
                         </Property>
                         <Property name="focusable" type="boolean" value="false"/>
@@ -1630,7 +1671,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="13" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Os campo com * s&#xe3;o de preenchimento obrigat&#xf3;rio."/>
+                    <Property name="text" type="java.lang.String" value="Os campo com asterisco s&#xe3;o de preenchimento obrigat&#xf3;rio."/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel24">
@@ -1674,7 +1715,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="13" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Novo Autor:"/>
+                    <Property name="text" type="java.lang.String" value="Novo do Autor:"/>
                     <Property name="verticalAlignment" type="int" value="3"/>
                   </Properties>
                 </Component>
@@ -1709,6 +1750,25 @@
                       <Color blue="0" green="0" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="*"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel39">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="13" style="0"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="33" green="33" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="*"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel40">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="13" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Autores Selecionados"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -1761,67 +1821,64 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="boxTabelaAvaliacao" alignment="0" pref="1104" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="btnLimparAvaliacao" min="-2" pref="73" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="btnFinalizarCadastro" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                      <Component id="jLabel36" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="boxComentarioAvaliacao" max="32767" attributes="0"/>
+                                          <Component id="cboxAvaliacaoDoLivro" min="-2" pref="486" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabel35" min="-2" pref="159" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel34" min="-2" pref="116" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="boxComentarioAvaliacao" pref="486" max="32767" attributes="0"/>
-                                              <Component id="cboxAvaliacaoDoLivro" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="btnFinalizarCadastro" min="-2" max="-2" attributes="0"/>
-                                              <Component id="btnLimparAvaliacao" min="-2" pref="73" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
                                   </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                  <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel35" min="-2" pref="159" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
-                          <Component id="btnLimparAvaliacao" min="-2" pref="25" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="0" pref="47" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          <Component id="jLabel36" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cboxAvaliacaoDoLivro" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="btnFinalizarCadastro" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cboxAvaliacaoDoLivro" min="-2" pref="25" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="boxComentarioAvaliacao" min="-2" pref="223" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                          <Component id="boxTabelaAvaliacao" min="-2" pref="247" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="boxComentarioAvaliacao" min="-2" pref="178" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnLimparAvaliacao" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="btnFinalizarCadastro" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="boxTabelaAvaliacao" pref="310" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2005,7 +2062,15 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="13" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Comentario sobre o livro"/>
+                    <Property name="text" type="java.lang.String" value="Comentario da avalia&#xe7;&#xe3;o"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel36">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="13" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Os campo com asterisco s&#xe3;o de preenchimento obrigat&#xf3;rio."/>
                   </Properties>
                 </Component>
               </SubComponents>
