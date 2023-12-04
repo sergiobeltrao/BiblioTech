@@ -115,9 +115,9 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="CadLivroButton" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="AvaButton1" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="edicaoUserButton" min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="AvaButton1" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace pref="533" max="32767" attributes="0"/>
                       <Component id="btnEncerrarSessao" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
