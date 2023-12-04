@@ -1,9 +1,4 @@
-/*
- * PARG Desenvolvimento de Sistemas
- * Pablo Alexander - pablo@parg.com.br
- * 
- * Obtem um CEP no ViaCEP
- */
+//Obtem um CEP no ViaCEP
 package br.com.parg.viacep;
 
 import java.io.BufferedReader;
@@ -18,10 +13,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Serve como base para a classe ViaCEP
- * @author PABLO
- */
+//Serve como base para a classe ViaCEP
 public abstract class ViaCEPBase {
     // pripriedades do CEP
     protected List<CEP> CEPs;

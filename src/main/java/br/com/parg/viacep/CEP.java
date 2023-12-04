@@ -1,17 +1,10 @@
-/*
- * PARG Desenvolvimento de Sistemas
- * Pablo Alexander - pablo@parg.com.br
- * 
- * Obtem um CEP no ViaCEP
- */
+//Obtem um CEP no ViaCEP
 package br.com.parg.viacep;
 
-/**
- * Define um CEP
- * @author PABLO
- */
+
+//Define um CEP
 public class CEP {
-    // pripriedades do CEP
+    // propriedades do CEP
     public String CEP;
     public String Logradouro;
     public String Complemento;
@@ -20,10 +13,9 @@ public class CEP {
     public String Uf;
     public String Ibge;
     public String Gia;
+   
+ //Cria um novo CEP vazio
     
-    /**
-     * Cria um novo CEP vazio
-     */
     public CEP() {
         this.Logradouro = null;
         this.Complemento = null;

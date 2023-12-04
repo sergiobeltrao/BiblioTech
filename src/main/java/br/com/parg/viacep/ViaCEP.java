@@ -1,27 +1,16 @@
-/*
- * PARG Desenvolvimento de Sistemas
- * Pablo Alexander - pablo@parg.com.br
- * 
- * Obtem um CEP no ViaCEP
- */
+//Obtem um CEP no ViaCEP
 package br.com.parg.viacep;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-/**
- * Classe java para obter um CEP no ViaCEP
- *
- * @author Pablo Alexander da Rocha Gonçalves
- */
+//Classe java para obter um CEP no ViaCEP
 public class ViaCEP extends ViaCEPBase {
 
     // constantes
     public static final double VIACEP_VERSAO = 0.33;
 
-    /**
-     * Constrói uma nova classe
-     */
+    //Constrói uma nova classe
     public ViaCEP() {
         super();
     }
