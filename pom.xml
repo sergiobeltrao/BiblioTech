@@ -34,6 +34,11 @@
             <version>SNAPSHOT</version>
         </dependency>
         <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>-20231013</version>
+        </dependency>
+        <dependency>
             <groupId>unknown.binary</groupId>
             <artifactId>windows11-scrollbar</artifactId>
             <version>SNAPSHOT</version>
