@@ -997,7 +997,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         buscarCepButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         buscarCepButton.setForeground(new java.awt.Color(0, 0, 0));
         buscarCepButton.setText("Buscar");
-        buscarCepButton.setToolTipText("limpar campos digitados");
+        buscarCepButton.setToolTipText("buscar cep digitado");
         buscarCepButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buscarCepButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buscarCepButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1896,9 +1896,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
             bairroTxt.setText(vc.getBairro());
             cidadeTxt.setText(vc.getLocalidade());
             ufTxt.setText(vc.getUf());
+             paisTxt.setText("Brasil");
             
         } catch (ViaCEPException ex) {
             Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Digite um CEP válido!!", "Erro",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_buscarCepButtonActionPerformed
 
