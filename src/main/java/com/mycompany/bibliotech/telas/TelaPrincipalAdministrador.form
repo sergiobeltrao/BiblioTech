@@ -99,11 +99,11 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="edicaoUserButton" min="-2" pref="145" max="-2" attributes="0"/>
                                   <Component id="CadUserButton" min="-2" pref="145" max="-2" attributes="0"/>
-                                  <Component id="CadLivroButton" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                                   <Component id="AvaButton" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                                   <Component id="ExcluirUserButton" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                                   <Component id="btnEncerrarSessao" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                                   <Component id="btnEdicaoDeLivro" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
+                                  <Component id="CadLivroButton" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -120,15 +120,15 @@
                       <Component id="CadUserButton" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Component id="edicaoUserButton" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                      <Component id="CadLivroButton" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                      <Component id="btnEdicaoDeLivro" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                      <Component id="AvaButton" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="ExcluirUserButton" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace pref="480" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="CadLivroButton" min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnEdicaoDeLivro" min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="AvaButton" min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace pref="419" max="32767" attributes="0"/>
                       <Component id="btnEncerrarSessao" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
