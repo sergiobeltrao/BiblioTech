@@ -150,7 +150,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         cboxLivroIdioma = new javax.swing.JComboBox<>();
         cboxIsbnSelect = new javax.swing.JComboBox<>();
         txtTitulo = new javax.swing.JTextField();
-        txtAnoDePublicacao = new javax.swing.JTextField();
         txtNumeroDePaginas = new javax.swing.JTextField();
         txtNomeDaEditora = new javax.swing.JTextField();
         formatedIsbn = new javax.swing.JFormattedTextField();
@@ -182,6 +181,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
+        txtAnoDePublicacao = new javax.swing.JTextField();
         jpnAutor = new javax.swing.JPanel();
         kGradientPanel3 = new keeptoo.KGradientPanel();
         cboxNacionalidadeDoAutor = new javax.swing.JComboBox<>();
@@ -402,26 +402,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             }
         });
 
-        txtAnoDePublicacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtAnoDePublicacao.setForeground(new java.awt.Color(0, 0, 0));
-        txtAnoDePublicacao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtAnoDePublicacao.setToolTipText("insira o ano de publicação do livro");
-        txtAnoDePublicacao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        txtAnoDePublicacao.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtAnoDePublicacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAnoDePublicacaoActionPerformed(evt);
-            }
-        });
-        txtAnoDePublicacao.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtAnoDePublicacaoKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtAnoDePublicacaoKeyTyped(evt);
-            }
-        });
-
         txtNumeroDePaginas.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtNumeroDePaginas.setForeground(new java.awt.Color(0, 0, 0));
         txtNumeroDePaginas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -627,6 +607,13 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         jLabel22.setForeground(new java.awt.Color(255, 0, 0));
         jLabel22.setText("*");
 
+        txtAnoDePublicacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txtAnoDePublicacao.setForeground(new java.awt.Color(0, 0, 0));
+        txtAnoDePublicacao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtAnoDePublicacao.setToolTipText("escreva o ano de publicação do livro");
+        txtAnoDePublicacao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        txtAnoDePublicacao.setCaretColor(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
         kGradientPanel1Layout.setHorizontalGroup(
@@ -671,14 +658,17 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                                                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jLabel20)))
-                                        .addGap(18, 18, Short.MAX_VALUE)
                                         .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                                                .addGap(18, 18, Short.MAX_VALUE)
                                                 .addComponent(jLabel11)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel7))
-                                            .addComponent(txtAnoDePublicacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLabel7)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(txtAnoDePublicacao, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                                         .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel22)
@@ -712,14 +702,11 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                                 .addComponent(cboxSubCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE))
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
@@ -1579,39 +1566,9 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         this.janelaDeAbas.setSelectedIndex(2);
     }//GEN-LAST:event_btnProximaAbaAutorActionPerformed
 
-    private void txtAnoDePublicacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnoDePublicacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAnoDePublicacaoActionPerformed
-
     private void txtNumeroDePaginasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroDePaginasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroDePaginasActionPerformed
-
-    private void txtAnoDePublicacaoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnoDePublicacaoKeyPressed
-        String anoDePublicacao = txtAnoDePublicacao.getText();
-        int tamanho = anoDePublicacao.length();
-        char c = evt.getKeyChar();
-        int keyCode = evt.getExtendedKeyCode();
-
-        // Permite usar teclas como "Back Space" e "Delete" para corrigir algum erro.
-        if (keyCode == KeyEvent.VK_BACK_SPACE || keyCode == KeyEvent.VK_DELETE) {
-            txtAnoDePublicacao.setEditable(true);
-        } else if (!Character.isDigit(c)) {
-            evt.consume(); // Se não for um número, impede a entrada.
-        } else {
-            if (tamanho >= 4) {
-                txtAnoDePublicacao.setEditable(false); // Desabilita a edição.
-                Timer timer = new Timer(500, e -> {
-                    txtAnoDePublicacao.setEditable(true); // Habilita novamente após 500ms.
-                    ((Timer) e.getSource()).stop(); // Para o timer após a execução.
-                });
-                timer.setRepeats(false);
-                timer.start();
-            } else {
-                txtAnoDePublicacao.setEditable(true); // Permite a edição se ainda não atingiu o limite
-            }
-        }
-    }//GEN-LAST:event_txtAnoDePublicacaoKeyPressed
 
     private void txtNumeroDePaginasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroDePaginasKeyPressed
         String anoDePublicacao = txtNumeroDePaginas.getText();
@@ -1768,14 +1725,6 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         btnCadastraAutor.setEnabled(true);
     }//GEN-LAST:event_btnAutorNaoCadastradoActionPerformed
-
-    private void txtAnoDePublicacaoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnoDePublicacaoKeyTyped
-        // Impede que texto seja digitado no campo.
-        char c = evt.getKeyChar();
-        if (!Character.isDigit(c)) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtAnoDePublicacaoKeyTyped
 
     private void txtNumeroDePaginasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroDePaginasKeyTyped
         // Impede que texto seja digitado no campo.
