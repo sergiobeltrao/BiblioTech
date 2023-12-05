@@ -54,13 +54,14 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         idLabel.setVisible(false);
         UsuarioLoginDAO usuarioLoginDao = new UsuarioLoginDAO();
 
-        if (usuarioLoginDao.tipoDoUsuarioLogado()) {
+         if (usuarioLoginDao.tipoDoUsuarioLogado()) {
             CadUserButton.setVisible(true);
             ExcluirUserButton.setVisible(true);
+            btnEdicaoDeLivro.setVisible(true);
         } else {
             CadUserButton.setVisible(false);
             ExcluirUserButton.setVisible(false);
-
+            btnEdicaoDeLivro.setVisible(false);
         }
        
     }

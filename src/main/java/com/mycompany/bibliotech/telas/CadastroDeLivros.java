@@ -64,10 +64,11 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         if (usuarioLoginDao.tipoDoUsuarioLogado()) {
             CadUserButton.setVisible(true);
             ExcluirUserButton.setVisible(true);
+            btnEdicaoDeLivro.setVisible(true);
         } else {
             CadUserButton.setVisible(false);
             ExcluirUserButton.setVisible(false);
-
+            btnEdicaoDeLivro.setVisible(false);
         }
     }
 

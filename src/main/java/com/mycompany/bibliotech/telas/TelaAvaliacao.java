@@ -31,13 +31,14 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         setPesquisarValues(avaliacao);
         UsuarioLoginDAO usuarioLoginDao = new UsuarioLoginDAO();
 
-        if (usuarioLoginDao.tipoDoUsuarioLogado()) {
+         if (usuarioLoginDao.tipoDoUsuarioLogado()) {
             CadUserButton.setVisible(true);
             ExcluirUserButton.setVisible(true);
+            btnEdicaoDeLivro.setVisible(true);
         } else {
             CadUserButton.setVisible(false);
             ExcluirUserButton.setVisible(false);
-
+            btnEdicaoDeLivro.setVisible(false);
         }
 
         cboxNomeLivro.addActionListener(new ActionListener() {
