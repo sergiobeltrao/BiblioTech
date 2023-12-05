@@ -4,6 +4,7 @@ import com.mycompany.bibliotech.dao.AvaliacaoDAO;
 import com.mycompany.bibliotech.dao.EnderecoDAO;
 import com.mycompany.bibliotech.dao.ExcluirUserDAO;
 import com.mycompany.bibliotech.dao.FavoritosDAO;
+import com.mycompany.bibliotech.dao.HomeAdmDAO;
 import com.mycompany.bibliotech.dao.RankDAO;
 import com.mycompany.bibliotech.dao.TelefoneDAO;
 import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;
@@ -14,6 +15,7 @@ import com.mycompany.bibliotech.model.bean.Favoritos;
 import com.mycompany.bibliotech.model.bean.Hash;
 import com.mycompany.bibliotech.model.bean.Telefone;
 import com.mycompany.bibliotech.model.bean.Usuario;
+import com.mycompany.bibliotech.model.bean.UsuariosAvaliando;
 import java.awt.Component;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -31,10 +33,10 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
     public TelaPrincipalAdministrador() {
         initComponents();
-        List<String> rankList = RankDAO.ranking();
+        List<String> rankList = HomeAdmDAO.data();
         DefaultListModel<String> listModel = new DefaultListModel<>();
 
-        List<ContagemAvaliacoesLivro> contagensList = AvaliacaoDAO.numeroDeNotasPorLivro();
+        List<UsuariosAvaliando> contagensList = HomeAdmDAO.numeroDeNotasPorUser();
         DefaultListModel<String> listContagens = new DefaultListModel<>();
 
         if (rankList != null) {
@@ -48,7 +50,7 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         jList1.setCellRenderer(new TelaPrincipalAdministrador.CenteredTextRenderer());
         jList1.setModel(listModel);
 
-        List<String> recordList = RankDAO.record();
+        List<String> recordList = HomeAdmDAO.record();
         DefaultListModel<String> listRecord = new DefaultListModel<>();
 
         if (recordList != null) {
@@ -61,8 +63,8 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
         if (contagensList != null) {
             int rankNumber = 1;
-            for (ContagemAvaliacoesLivro item : contagensList) {
-                listContagens.addElement(rankNumber + ". " + item.getNomeLivro() + ": " + item.getQuantidadeAvaliacoes() + " avaliações");
+            for (UsuariosAvaliando item : contagensList) {
+                listContagens.addElement(rankNumber + ". " + item.getNomeUsuario() + ": " + item.getQuantidadeAvaliacoes() + " avaliações");
                 rankNumber++;
             }
         }
@@ -279,7 +281,7 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel2.setText("Últimos Lancamentos");
+        jLabel2.setText("Últimos Adicionados");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         listaComMaisAvaliacao.setBackground(new java.awt.Color(204, 204, 204));
