@@ -18,7 +18,7 @@ public class LivroDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("INSERT INTO LIVRO (ID_LIVRO, LIV_NOME_LIVRO, LIV_ISBN, LIV_ANO, LIV_PAGINA, LIV_CATEGORIA, LIV_SUBCATEGORIA, LIV_IDIOMA, LIV_EDITORA, LIV_SINOPSE) VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            stmt = con.prepareStatement("INSERT INTO LIVRO (ID_LIVRO, LIV_NOME_LIVRO, LIV_ISBN, LIV_ANO, LIV_PAGINA, LIV_CATEGORIA, LIV_SUBCATEGORIA, LIV_IDIOMA, LIV_EDITORA, LIV_SINOPSE, LIV_IMAGEM) VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             stmt.setString(1, lv.getTitulo());
             stmt.setString(2, lv.getIsbn());
@@ -29,6 +29,7 @@ public class LivroDAO {
             stmt.setString(7, lv.getIdioma());
             stmt.setString(8, lv.getEditora());
             stmt.setString(9, lv.getSinopse());
+            stmt.setBytes(10, lv.getImagem());
 
             // Para preparar o SQL e executar
             stmt.executeUpdate();
