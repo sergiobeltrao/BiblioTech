@@ -764,7 +764,7 @@
                                   <Component id="ExcluirUserButton" alignment="1" min="-2" pref="145" max="-2" attributes="0"/>
                                   <Component id="CadUserButton" alignment="1" min="-2" pref="145" max="-2" attributes="0"/>
                                   <Component id="btnEdicaoDeLivro" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                                  <Component id="btnEdicaoDeLivro1" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
+                                  <Component id="btnMinhasAvaliacoes" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -790,7 +790,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnEdicaoDeLivro" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnEdicaoDeLivro1" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="btnMinhasAvaliacoes" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnEncerrarSessao" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -956,7 +956,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEdicaoDeLivroActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnEdicaoDeLivro1">
+            <Component class="javax.swing.JButton" name="btnMinhasAvaliacoes">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="66" red="66" type="rgb"/>
@@ -972,7 +972,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEdicaoDeLivro1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMinhasAvaliacoesActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
