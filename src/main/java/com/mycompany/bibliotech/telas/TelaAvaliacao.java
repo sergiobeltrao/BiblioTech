@@ -31,14 +31,16 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         setPesquisarValues(avaliacao);
         UsuarioLoginDAO usuarioLoginDao = new UsuarioLoginDAO();
 
-        if (usuarioLoginDao.tipoDoUsuarioLogado()) {
+       if (usuarioLoginDao.tipoDoUsuarioLogado()) {
             CadUserButton.setVisible(true);
             ExcluirUserButton.setVisible(true);
             btnEdicaoDeLivro.setVisible(true);
+            EditAvaButton.setVisible(true);
         } else {
             CadUserButton.setVisible(false);
             ExcluirUserButton.setVisible(false);
             btnEdicaoDeLivro.setVisible(false);
+            EditAvaButton.setVisible(false);
         }
 
         cboxNomeLivro.addActionListener(new ActionListener() {
@@ -157,7 +159,8 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         ExcluirUserButton = new javax.swing.JToggleButton();
         CadUserButton = new javax.swing.JButton();
         btnEdicaoDeLivro = new javax.swing.JButton();
-        btnMinhasAvaliacoes = new javax.swing.JButton();
+        MinhasAvaButton = new javax.swing.JButton();
+        EditAvaButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Avaliacao");
@@ -590,13 +593,23 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             }
         });
 
-        btnMinhasAvaliacoes.setBackground(new java.awt.Color(102, 102, 102));
-        btnMinhasAvaliacoes.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnMinhasAvaliacoes.setText("Minhas Avaliações");
-        btnMinhasAvaliacoes.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnMinhasAvaliacoes.addActionListener(new java.awt.event.ActionListener() {
+        MinhasAvaButton.setBackground(new java.awt.Color(102, 102, 102));
+        MinhasAvaButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        MinhasAvaButton.setText("Minhas Avaliações");
+        MinhasAvaButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        MinhasAvaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMinhasAvaliacoesActionPerformed(evt);
+                MinhasAvaButtonActionPerformed(evt);
+            }
+        });
+
+        EditAvaButton.setBackground(new java.awt.Color(102, 102, 102));
+        EditAvaButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        EditAvaButton.setText("Editar Avaliações");
+        EditAvaButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        EditAvaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditAvaButtonActionPerformed(evt);
             }
         });
 
@@ -620,7 +633,8 @@ public class TelaAvaliacao extends javax.swing.JFrame {
                             .addComponent(ExcluirUserButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(CadUserButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEdicaoDeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnMinhasAvaliacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(EditAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MinhasAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         kGradientPanel2Layout.setVerticalGroup(
@@ -641,7 +655,9 @@ public class TelaAvaliacao extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEdicaoDeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnMinhasAvaliacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(EditAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(MinhasAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
@@ -895,10 +911,15 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnEdicaoDeLivroActionPerformed
 
-    private void btnMinhasAvaliacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinhasAvaliacoesActionPerformed
+    private void MinhasAvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinhasAvaButtonActionPerformed
         new TelaMinhasAvaliacoes().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_MinhasAvaButtonActionPerformed
+
+    private void EditAvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditAvaButtonActionPerformed
+        new EdicaoAvaliacoes().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btnMinhasAvaliacoesActionPerformed
+    }//GEN-LAST:event_EditAvaButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -948,14 +969,15 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CadLivroButton;
     private javax.swing.JButton CadUserButton;
+    private javax.swing.JButton EditAvaButton;
     private javax.swing.JToggleButton ExcluirUserButton;
     private javax.swing.JPanel MenuLateral;
+    private javax.swing.JButton MinhasAvaButton;
     private javax.swing.JSlider SliderNota;
     private javax.swing.JButton btnAvaliar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEdicaoDeLivro;
     private javax.swing.JButton btnEncerrarSessao;
-    private javax.swing.JButton btnMinhasAvaliacoes;
     private javax.swing.JComboBox<String> cboxAlfabeto;
     private javax.swing.JComboBox<String> cboxCategoriaBusca;
     private javax.swing.JComboBox<String> cboxNomeLivro;

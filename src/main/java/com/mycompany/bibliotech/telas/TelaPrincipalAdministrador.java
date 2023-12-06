@@ -104,6 +104,7 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         btnEncerrarSessao = new javax.swing.JButton();
         btnEdicaoDeLivro = new javax.swing.JButton();
         EditAvaButton = new javax.swing.JButton();
+        MinhasAvaButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
         rank = new javax.swing.JScrollPane();
@@ -210,6 +211,16 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
             }
         });
 
+        MinhasAvaButton.setBackground(new java.awt.Color(102, 102, 102));
+        MinhasAvaButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        MinhasAvaButton.setText("Minhas Avaliações");
+        MinhasAvaButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        MinhasAvaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MinhasAvaButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout kGradientPanel2Layout = new javax.swing.GroupLayout(kGradientPanel2);
         kGradientPanel2.setLayout(kGradientPanel2Layout);
         kGradientPanel2Layout.setHorizontalGroup(
@@ -229,7 +240,8 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
                             .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEdicaoDeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(CadLivroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(EditAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(EditAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MinhasAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         kGradientPanel2Layout.setVerticalGroup(
@@ -251,7 +263,9 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
                 .addComponent(AvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(EditAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 382, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(MinhasAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 345, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
@@ -491,6 +505,11 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_EditAvaButtonActionPerformed
 
+    private void MinhasAvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinhasAvaButtonActionPerformed
+        new TelaMinhasAvaliacoes().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_MinhasAvaButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -534,6 +553,7 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton EditAvaButton;
     private javax.swing.JToggleButton ExcluirUserButton;
     private javax.swing.JPanel MenuPainel;
+    private javax.swing.JButton MinhasAvaButton;
     private javax.swing.JScrollPane avaliado;
     private javax.swing.JButton btnEdicaoDeLivro;
     private javax.swing.JButton btnEncerrarSessao;

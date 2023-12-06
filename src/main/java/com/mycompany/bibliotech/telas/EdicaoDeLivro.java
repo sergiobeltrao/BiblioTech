@@ -54,13 +54,7 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
         //txtIdAutor.setVisible(false);
         UsuarioLoginDAO usuarioLoginDao = new UsuarioLoginDAO();
 
-        if (usuarioLoginDao.tipoDoUsuarioLogado()) {
-            CadUserButton.setVisible(true);
-            ExcluirUserButton.setVisible(true);
-        } else {
-            CadUserButton.setVisible(false);
-            ExcluirUserButton.setVisible(false);
-        }
+    
         LivroDAO.selectGeralLivroTitulo(cboxResultadoPesquisaLivro);
         AutorDAO.selectGeralAutorNome(cboxResultadoPesquisaAutor);
     }
@@ -206,6 +200,8 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
         btnEncerrarSessao1 = new javax.swing.JButton();
         txtMenu = new javax.swing.JButton();
         CadUserButton = new javax.swing.JButton();
+        MinhasAvaButton = new javax.swing.JButton();
+        EditAvaButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Atualizar Livros");
@@ -1240,6 +1236,26 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
             }
         });
 
+        MinhasAvaButton.setBackground(new java.awt.Color(102, 102, 102));
+        MinhasAvaButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        MinhasAvaButton.setText("Minhas Avaliações");
+        MinhasAvaButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        MinhasAvaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MinhasAvaButtonActionPerformed(evt);
+            }
+        });
+
+        EditAvaButton.setBackground(new java.awt.Color(102, 102, 102));
+        EditAvaButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        EditAvaButton.setText("Editar Avaliações");
+        EditAvaButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        EditAvaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditAvaButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout kGradientPanel2Layout = new javax.swing.GroupLayout(kGradientPanel2);
         kGradientPanel2.setLayout(kGradientPanel2Layout);
         kGradientPanel2Layout.setHorizontalGroup(
@@ -1266,7 +1282,10 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(edicaoUserButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ExcluirUserButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AvaButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(AvaButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(EditAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(MinhasAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         kGradientPanel2Layout.setVerticalGroup(
@@ -1286,6 +1305,10 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
                 .addComponent(CadLivroButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(AvaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(EditAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(MinhasAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
@@ -2003,6 +2026,16 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_CadUserButtonActionPerformed
 
+    private void MinhasAvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinhasAvaButtonActionPerformed
+        new TelaMinhasAvaliacoes().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_MinhasAvaButtonActionPerformed
+
+    private void EditAvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditAvaButtonActionPerformed
+        new EdicaoAvaliacoes().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_EditAvaButtonActionPerformed
+
     public void listarIdiomasDoLivro() {
         LivroDAO.listaDeIdiomas(cboxLivroIdioma);
     }
@@ -2288,8 +2321,10 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
     private javax.swing.JButton CadLivroButton1;
     private javax.swing.JButton CadUserButton;
     private javax.swing.JTabbedPane EdicaoLivro;
+    private javax.swing.JButton EditAvaButton;
     private javax.swing.JToggleButton ExcluirUserButton;
     private javax.swing.JPanel MenuPainel;
+    private javax.swing.JButton MinhasAvaButton;
     private javax.swing.JLabel avisoLabel;
     private javax.swing.JLabel avisoLabel1;
     private javax.swing.JLabel avisoLabel2;
