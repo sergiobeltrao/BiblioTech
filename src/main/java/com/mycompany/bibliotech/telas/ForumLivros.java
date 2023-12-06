@@ -509,69 +509,6 @@ public class ForumLivros extends javax.swing.JFrame {
                 a.getComentarioAvaliacao()
             });
         }
-          /*  if (itemSelecionado.equals("Selecione")) {
-                limpaLivroDados();
-            }
-
-            if (!itemSelecionado.equals("Nada encontrado") && !itemSelecionado.equals("Selecione")) {
-
-                LivroDAO livroDao = new LivroDAO();
-
-                Pattern pattern = Pattern.compile("-\\s(.*)");
-                Matcher matcher = pattern.matcher(itemSelecionado);
-
-                while (matcher.find()) {
-                    String textoCapturado = matcher.group(1);
-                    livroDao.selectIdDoLivro(textoCapturado);
-                    txtTituloLivro.setText(textoCapturado);
-                    txtIdLivro.setText(livroDao.selectIdDoLivro(textoCapturado));
-                }
-
-                int idDoLivro = Integer.parseInt(txtIdLivro.getText());
-                livroDao.selectGeralComId(idDoLivro);
-
-                // Tratamento do ISBN
-                String numeroIsbn = livroDao.selectGeralComId(idDoLivro).getIsbn();
-
-                if (numeroIsbn.replace("-", "").length() == 10) {
-                    cboxIsbnSelect.setSelectedItem("ISBN-10");
-                    formatedIsbn.setText(numeroIsbn);
-                } else {
-                    cboxIsbnSelect.setSelectedItem("ISBN-13");
-                    formatedIsbn.setText(numeroIsbn);
-                }
-
-                int anoDePublicacao = livroDao.selectGeralComId(idDoLivro).getAnoDePublicacao();
-                txtAnoDePublicacao.setText(Integer.toString(anoDePublicacao));
-                int numeroDePaginas = livroDao.selectGeralComId(idDoLivro).getNumeroDePaginas();
-                txtNumeroDePaginas.setText(Integer.toString(numeroDePaginas));
-                cboxCategoriaLivro.setSelectedItem(livroDao.selectGeralComId(idDoLivro).getCategoria());
-                cboxSubCategoriaLivro.setSelectedItem(livroDao.selectGeralComId(idDoLivro).getSubCategoria());
-                txtNomeDaEditora.setText(livroDao.selectGeralComId(idDoLivro).getEditora());
-                cboxLivroIdioma.setSelectedItem(livroDao.selectGeralComId(idDoLivro).getIdioma());
-                txtSinopseDoLivro.setText(livroDao.selectGeralComId(idDoLivro).getSinopse());
-
-                // Habilita os campos para edição
-                txtIdLivro.setEnabled(true);
-                txtTituloLivro.setEnabled(true);
-                cboxIsbnSelect.setEnabled(true);
-                formatedIsbn.setEnabled(true);
-                txtAnoDePublicacao.setEnabled(true);
-                txtNumeroDePaginas.setEnabled(true);
-                txtNomeDaEditora.setEnabled(true);
-                txtSinopseDoLivro.setEnabled(true);
-                jlbImagemCapaLivro.setEnabled(true);
-                cboxCategoriaLivro.setEnabled(true);
-                cboxSubCategoriaLivro.setEnabled(true);
-                cboxLivroIdioma.setEnabled(true);
-                btnBuscarImagem.setEnabled(true);
-                btnExcluirImagem.setEnabled(true);
-                btnSalvarAlteracoesLivro.setEnabled(true);
-
-                visualizadorDeImagem();
-
-            }
-        }*/
     }//GEN-LAST:event_cboxResultadoPesquisaLivroActionPerformed
     }
     private void jtbAvaliacoesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbAvaliacoesMouseClicked
