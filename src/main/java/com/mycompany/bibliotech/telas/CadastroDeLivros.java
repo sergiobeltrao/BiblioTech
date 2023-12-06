@@ -65,10 +65,12 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             CadUserButton.setVisible(true);
             ExcluirUserButton.setVisible(true);
             btnEdicaoDeLivro.setVisible(true);
+            EditAvaButton.setVisible(true);
         } else {
             CadUserButton.setVisible(false);
             ExcluirUserButton.setVisible(false);
             btnEdicaoDeLivro.setVisible(false);
+            EditAvaButton.setVisible(false);
         }
     }
 
@@ -166,6 +168,8 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         CadUserButton = new javax.swing.JButton();
         ExcluirUserButton = new javax.swing.JToggleButton();
         btnEdicaoDeLivro = new javax.swing.JButton();
+        MinhasAvaButton = new javax.swing.JButton();
+        EditAvaButton = new javax.swing.JButton();
         janelaDeAbas = new javax.swing.JTabbedPane();
         jpnLivro = new javax.swing.JPanel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
@@ -339,6 +343,26 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             }
         });
 
+        MinhasAvaButton.setBackground(new java.awt.Color(102, 102, 102));
+        MinhasAvaButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        MinhasAvaButton.setText("Minhas Avaliações");
+        MinhasAvaButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        MinhasAvaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MinhasAvaButtonActionPerformed(evt);
+            }
+        });
+
+        EditAvaButton.setBackground(new java.awt.Color(102, 102, 102));
+        EditAvaButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        EditAvaButton.setText("Editar Avaliações");
+        EditAvaButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        EditAvaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditAvaButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout kGradientPanel2Layout = new javax.swing.GroupLayout(kGradientPanel2);
         kGradientPanel2.setLayout(kGradientPanel2Layout);
         kGradientPanel2Layout.setHorizontalGroup(
@@ -357,7 +381,9 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                             .addComponent(CadUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ExcluirUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEdicaoDeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AvaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(AvaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EditAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MinhasAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
         kGradientPanel2Layout.setVerticalGroup(
@@ -377,6 +403,10 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                 .addComponent(btnEdicaoDeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(AvaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(EditAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(MinhasAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
@@ -765,8 +795,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
                             .addGroup(kGradientPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel37)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel38)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel38))
                             .addComponent(boxSinopse, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)))
                     .addComponent(btnProximaAbaLivro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
@@ -1993,6 +2022,16 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnInserirCapaActionPerformed
 
+    private void MinhasAvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinhasAvaButtonActionPerformed
+        new TelaMinhasAvaliacoes().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_MinhasAvaButtonActionPerformed
+
+    private void EditAvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditAvaButtonActionPerformed
+        new EdicaoAvaliacoes().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_EditAvaButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2031,8 +2070,10 @@ public class CadastroDeLivros extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AvaButton1;
     private javax.swing.JButton CadUserButton;
+    private javax.swing.JButton EditAvaButton;
     private javax.swing.JToggleButton ExcluirUserButton;
     private javax.swing.JPanel MenuLateral;
+    private javax.swing.JButton MinhasAvaButton;
     private javax.swing.JScrollPane boxAutoresSelecionados;
     private javax.swing.JScrollPane boxComentarioAvaliacao;
     private javax.swing.JScrollPane boxSinopse;
