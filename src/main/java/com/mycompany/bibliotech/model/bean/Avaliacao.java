@@ -110,6 +110,16 @@ public class Avaliacao {
     public void setLivro(Livro livro) {
         this.livro = livro;
     }
+    
+    private Usuario usuario; 
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     public String getTxtNomeLivro() {
         return txtNomeLivro;
