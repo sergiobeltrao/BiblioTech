@@ -348,6 +348,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         txtMenu = new javax.swing.JButton();
         MinhasAvaButton = new javax.swing.JButton();
         EditAvaButton = new javax.swing.JButton();
+        MinhasAvaButton1 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -1418,6 +1419,16 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
+        MinhasAvaButton1.setBackground(new java.awt.Color(102, 102, 102));
+        MinhasAvaButton1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        MinhasAvaButton1.setText("Forum Livros");
+        MinhasAvaButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        MinhasAvaButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MinhasAvaButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout kGradientPanel2Layout = new javax.swing.GroupLayout(kGradientPanel2);
         kGradientPanel2.setLayout(kGradientPanel2Layout);
         kGradientPanel2Layout.setHorizontalGroup(
@@ -1449,6 +1460,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
                             .addComponent(CadLivroButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ExcluirUserButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(10, 10, 10))
+            .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                    .addGap(10, 10, 10)
+                    .addComponent(MinhasAvaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(10, Short.MAX_VALUE)))
         );
         kGradientPanel2Layout.setVerticalGroup(
             kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1474,6 +1490,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
+            .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                    .addGap(347, 347, 347)
+                    .addComponent(MinhasAvaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(347, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout MenuPainelLayout = new javax.swing.GroupLayout(MenuPainel);
@@ -1940,6 +1961,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_EditAvaButtonActionPerformed
 
+    private void MinhasAvaButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinhasAvaButton1ActionPerformed
+        new ForumLivros().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_MinhasAvaButton1ActionPerformed
+
     public void listarCategorias1() {
         LivroCategoriaDAO.listarCategorias(cboxCategoria1);
     }
@@ -2009,6 +2035,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JButton LimparButtonUser;
     private javax.swing.JPanel MenuPainel;
     private javax.swing.JButton MinhasAvaButton;
+    private javax.swing.JButton MinhasAvaButton1;
     private javax.swing.JButton ProxCadEndButton;
     private javax.swing.JButton ProxCadLivButton;
     private javax.swing.JLabel avisoLabel;

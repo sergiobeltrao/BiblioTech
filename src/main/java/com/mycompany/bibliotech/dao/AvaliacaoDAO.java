@@ -343,6 +343,64 @@ public class AvaliacaoDAO {
 
     return avaliacoes;
 }
+     
+     public List<Avaliacao> avaliacoesPorLivro(String nomeLivro) {
+    Connection con = ConnectionFactory.getConnection();
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
+
+    List<Avaliacao> avaliacoes = new ArrayList<>();
+
+    try {
+        stmt = con.prepareStatement("SELECT\n" +
+                "    LIVRO.ID_LIVRO,\n" +
+                "    LIVRO.LIV_NOME_LIVRO,\n" +
+                "    USUARIO.USE_ID,\n" +
+                "    USUARIO.USE_NICK,\n" +
+                "    AVALIACAO.AVA_USUARIO,\n" +
+                "    AVALIACAO.AVA_COMENTARIO\n" +
+                "FROM\n" +
+                "    AVALIACAO\n" +
+                "INNER JOIN\n" +
+                "    LIVRO ON AVALIACAO.AVA_FK_LIVRO = LIVRO.ID_LIVRO\n" +
+                "INNER JOIN\n" +
+                "    USUARIO ON AVALIACAO.AVA_ID_USUARIO = USUARIO.USE_ID\n" +
+                "WHERE\n" +
+                "    LIVRO.LIV_NOME_LIVRO = ?");
+
+        stmt.setString(1, nomeLivro);  // Define o nome do livro como parâmetro
+
+        rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            Livro livro = new Livro();
+            Usuario usuario = new Usuario();
+            Avaliacao avaliacao = new Avaliacao();
+
+            livro.setId(rs.getInt("ID_LIVRO"));
+            livro.setTitulo(rs.getString("LIV_NOME_LIVRO"));
+
+            usuario.setUserId(rs.getInt("USE_ID"));
+            usuario.setUserNick(rs.getString("USE_NICK"));
+
+            avaliacao.setAvaliacaoDoUsuario(rs.getString("AVA_USUARIO"));
+            avaliacao.setComentarioAvaliacao(rs.getString("AVA_COMENTARIO"));
+            
+            // Associando a avaliação ao livro e ao usuário correspondentes
+            avaliacao.setLivro(livro);
+            avaliacao.setUsuario(usuario);
+
+            avaliacoes.add(avaliacao);
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Erro ao ler a tabela: " + ex);
+    } finally {
+        ConnectionFactory.closeConnection(con, stmt, rs);
+    }
+
+    return avaliacoes;
+}
+
 
 
     public boolean deletarAvaliacao(int idUsuario, double avaliacao, String comentario) {

@@ -1,99 +1,88 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package com.mycompany.bibliotech.telas;
 
 import com.mycompany.bibliotech.dao.AvaliacaoDAO;
-import com.mycompany.bibliotech.dao.EnderecoDAO;
 import com.mycompany.bibliotech.dao.ExcluirUserDAO;
-import com.mycompany.bibliotech.dao.FavoritosDAO;
-import com.mycompany.bibliotech.dao.HomeAdmDAO;
-import com.mycompany.bibliotech.dao.RankDAO;
-import com.mycompany.bibliotech.dao.TelefoneDAO;
+import com.mycompany.bibliotech.dao.LivroDAO;
 import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
-import com.mycompany.bibliotech.model.bean.ContagemAvaliacoesLivro;
 import com.mycompany.bibliotech.model.bean.Endereco;
 import com.mycompany.bibliotech.model.bean.Favoritos;
 import com.mycompany.bibliotech.model.bean.Hash;
 import com.mycompany.bibliotech.model.bean.Telefone;
 import com.mycompany.bibliotech.model.bean.Usuario;
-import com.mycompany.bibliotech.model.bean.UsuariosAvaliando;
-import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.DefaultListModel;
-
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTable;
+import static javax.swing.SwingConstants.CENTER;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableRowSorter;
 
-public class TelaPrincipalAdministrador extends javax.swing.JFrame {
+/**
+ *
+ * @author bruno
+ */
+public class ForumLivros extends javax.swing.JFrame {
 
-    public TelaPrincipalAdministrador() {
+    /**
+     * Creates new form ForumLivros
+     */
+    public ForumLivros() {
         initComponents();
-        List<String> rankList = HomeAdmDAO.data();
-        DefaultListModel<String> listModel = new DefaultListModel<>();
-
-        List<UsuariosAvaliando> contagensList = HomeAdmDAO.numeroDeNotasPorUser();
-        DefaultListModel<String> listContagens = new DefaultListModel<>();
-
-        if (rankList != null) {
-            int rankNumber = 1;
-            for (String item : rankList) {
-                listModel.addElement(rankNumber + ". " + item);
-                rankNumber++;
-            }
+        DefaultTableModel modelo = (DefaultTableModel) jtbAvaliacoes.getModel();
+        jtbAvaliacoes.setRowSorter(new TableRowSorter(modelo));
+        LivroDAO.selectGeralLivroTitulo(cboxResultadoPesquisaLivro);
+        
+        cboxResultadoPesquisaLivro.addActionListener(new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // Código a ser executado quando um item é selecionado na JComboBox
+        if (cboxResultadoPesquisaLivro.getSelectedItem() != null) {
+            String itemSelecionado = cboxResultadoPesquisaLivro.getSelectedItem().toString();
+            // Faça o que precisar com o item selecionado
+            System.out.println("Item selecionado: " + itemSelecionado);
+            // Chame seu método ou execute sua ação aqui
+            // ...
         }
-
-        jList1.setCellRenderer(new TelaPrincipalAdministrador.CenteredTextRenderer());
-        jList1.setModel(listModel);
-
-        List<String> recordList = HomeAdmDAO.record();
-        DefaultListModel<String> listRecord = new DefaultListModel<>();
-
-        if (recordList != null) {
-            int recordNumber = 1;
-            for (String item : recordList) {
-                listRecord.addElement(recordNumber + ". " + item);
-                recordNumber++;
-            }
-        }
-
-        if (contagensList != null) {
-            int rankNumber = 1;
-            for (UsuariosAvaliando item : contagensList) {
-                listContagens.addElement(rankNumber + ". " + item.getNomeUsuario() + ": " + item.getQuantidadeAvaliacoes() + " avaliações");
-                rankNumber++;
-            }
-        }
-
-        listaComMaisAvaliacao.setCellRenderer(new TelaPrincipalAdministrador.CenteredTextRenderer());
-        listaComMaisAvaliacao.setModel(listContagens);
-
-        jList2.setCellRenderer(new TelaPrincipalAdministrador.CenteredTextRenderer());
-        jList2.setModel(listRecord);
     }
+});
+    }
+    
+     public class CenterRenderer extends DefaultTableCellRenderer {
 
-    public class CenteredTextRenderer extends DefaultListCellRenderer {
+        // Pra centralizar o conteúdo da JTable
+        public CenterRenderer() {
+            setHorizontalAlignment(CENTER);
+        }
 
         @Override
-        public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-            super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-
-            // Configura o alinhamento do texto para o centro
-            setHorizontalAlignment(DefaultListCellRenderer.CENTER);
-
+        public java.awt.Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
             return this;
         }
     }
+     
+     
 
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        MenuPainel = new javax.swing.JPanel();
         kGradientPanel2 = new keeptoo.KGradientPanel();
         jLabel1 = new javax.swing.JLabel();
         CadUserButton = new javax.swing.JButton();
@@ -105,23 +94,14 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         btnEdicaoDeLivro = new javax.swing.JButton();
         EditAvaButton = new javax.swing.JButton();
         MinhasAvaButton = new javax.swing.JButton();
-        MinhasAvaButton1 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        txtMenu = new javax.swing.JButton();
         kGradientPanel1 = new keeptoo.KGradientPanel();
-        rank = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jLabel3 = new javax.swing.JLabel();
-        avaliado = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
-        jLabel2 = new javax.swing.JLabel();
-        numeroAvaliado = new javax.swing.JScrollPane();
-        listaComMaisAvaliacao = new javax.swing.JList<>();
-        jLabel4 = new javax.swing.JLabel();
+        cboxResultadoPesquisaLivro = new javax.swing.JComboBox<>();
+        tpnTabelaAvaliacoes = new javax.swing.JScrollPane();
+        jtbAvaliacoes = new javax.swing.JTable();
+        jLabel20 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Home");
-
-        MenuPainel.setBackground(new java.awt.Color(255, 255, 255));
 
         kGradientPanel2.setkEndColor(new java.awt.Color(0, 0, 0));
         kGradientPanel2.setkGradientFocus(350);
@@ -222,13 +202,15 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
             }
         });
 
-        MinhasAvaButton1.setBackground(new java.awt.Color(102, 102, 102));
-        MinhasAvaButton1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        MinhasAvaButton1.setText("Forum Livros");
-        MinhasAvaButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        MinhasAvaButton1.addActionListener(new java.awt.event.ActionListener() {
+        txtMenu.setBackground(new java.awt.Color(102, 102, 102));
+        txtMenu.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txtMenu.setText("Inicio");
+        txtMenu.setToolTipText("Ir para o Inicio");
+        txtMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MinhasAvaButton1ActionPerformed(evt);
+                txtMenuActionPerformed(evt);
             }
         });
 
@@ -253,7 +235,7 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
                             .addComponent(CadLivroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(EditAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(MinhasAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(MinhasAvaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         kGradientPanel2Layout.setVerticalGroup(
@@ -261,6 +243,8 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
             .addGroup(kGradientPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
+                .addGap(13, 13, 13)
+                .addComponent(txtMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(CadUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
@@ -277,119 +261,88 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
                 .addComponent(EditAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(MinhasAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(MinhasAvaButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 308, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 320, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
 
-        javax.swing.GroupLayout MenuPainelLayout = new javax.swing.GroupLayout(MenuPainel);
-        MenuPainel.setLayout(MenuPainelLayout);
-        MenuPainelLayout.setHorizontalGroup(
-            MenuPainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 177, Short.MAX_VALUE)
-            .addGroup(MenuPainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(MenuPainelLayout.createSequentialGroup()
-                    .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        MenuPainelLayout.setVerticalGroup(
-            MenuPainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(MenuPainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(kGradientPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        kGradientPanel1.setkEndColor(new java.awt.Color(0, 0, 0));
+        kGradientPanel1.setkGradientFocus(350);
+        kGradientPanel1.setkStartColor(new java.awt.Color(255, 255, 255));
+        kGradientPanel1.setkTransparentControls(false);
+        kGradientPanel1.setMinimumSize(new java.awt.Dimension(0, 0));
+        kGradientPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        jPanel2.setBackground(new java.awt.Color(255, 102, 102));
+        cboxResultadoPesquisaLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        cboxResultadoPesquisaLivro.setToolTipText("resultado a busca de livro");
+        cboxResultadoPesquisaLivro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        cboxResultadoPesquisaLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxResultadoPesquisaLivroActionPerformed(evt);
+            }
+        });
 
-        kGradientPanel1.setkEndColor(new java.awt.Color(15, 14, 14));
-        kGradientPanel1.setkGradientFocus(800);
-        kGradientPanel1.setkStartColor(new java.awt.Color(204, 204, 204));
+        jtbAvaliacoes.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jtbAvaliacoes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nick do Usuario", "Títlulo", "Nota", "Comentário"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
-        jList1.setBackground(new java.awt.Color(204, 204, 204));
-        jList1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jList1.setToolTipText("");
-        rank.setViewportView(jList1);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jtbAvaliacoes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtbAvaliacoesMouseClicked(evt);
+            }
+        });
+        tpnTabelaAvaliacoes.setViewportView(jtbAvaliacoes);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel3.setText("Por Avaliações Mais Recentes");
-        jLabel3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        jList2.setBackground(new java.awt.Color(204, 204, 204));
-        jList2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        avaliado.setViewportView(jList2);
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel2.setText("Últimos Adicionados");
-        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        listaComMaisAvaliacao.setBackground(new java.awt.Color(204, 204, 204));
-        listaComMaisAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        listaComMaisAvaliacao.setToolTipText("");
-        numeroAvaliado.setViewportView(listaComMaisAvaliacao);
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel4.setText("Por Número de Avaliações");
-        jLabel4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel20.setText("Selecione um livro:");
+        jLabel20.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
         kGradientPanel1Layout.setHorizontalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                        .addContainerGap(97, Short.MAX_VALUE)
-                        .addComponent(rank, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(avaliado, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40))
-                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(109, 109, 109)))
+                .addGap(28, 28, 28)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(numeroAvaliado, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel4)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                    .addComponent(jLabel20)
+                    .addComponent(cboxResultadoPesquisaLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(952, Short.MAX_VALUE))
+            .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(tpnTabelaAvaliacoes)
+                    .addContainerGap()))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(avaliado)
-                    .addComponent(rank, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
-                    .addComponent(numeroAvaliado))
-                .addGap(179, 179, 179))
-        );
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1091, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(kGradientPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 714, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(kGradientPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(cboxResultadoPesquisaLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(607, Short.MAX_VALUE))
+            .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                    .addGap(132, 132, 132)
+                    .addComponent(tpnTabelaAvaliacoes, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -397,44 +350,31 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(MenuPainel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(180, 180, 180)
+                .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MenuPainel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(kGradientPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(1294, 727));
-        setLocationRelativeTo(null);
+        pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnEncerrarSessaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncerrarSessaoActionPerformed
-        // TODO add your handling code here:
-        new TelaDeLogin().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnEncerrarSessaoActionPerformed
-
-    private void CadLivroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadLivroButtonActionPerformed
-        new CadastroDeLivros().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_CadLivroButtonActionPerformed
 
     private void CadUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadUserButtonActionPerformed
         new CadastroUsuario().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_CadUserButtonActionPerformed
-
-    private void ExcluirUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirUserButtonActionPerformed
-
-        ExcluirUserDAO ex = new ExcluirUserDAO();
-        ex.mostrarEExcluirUsuario();
-    }//GEN-LAST:event_ExcluirUserButtonActionPerformed
 
     private void edicaoUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edicaoUserButtonActionPerformed
 
@@ -465,7 +405,7 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
                     // Exibir o JOptionPane com o JPanel personalizado
                     int result = JOptionPane.showOptionDialog(null, panel, "Digite a senha",
-                            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+                        JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
 
                     // Verificar a resposta do JOptionPane
                     if (result == JOptionPane.OK_OPTION) {
@@ -502,12 +442,29 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_edicaoUserButtonActionPerformed
 
+    private void CadLivroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadLivroButtonActionPerformed
+        new CadastroDeLivros().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_CadLivroButtonActionPerformed
+
     private void AvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AvaButtonActionPerformed
         Avaliacao avaliacao = new Avaliacao();
         new TelaAvaliacao(avaliacao).setVisible(true);
         this.setVisible(false);
-// TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_AvaButtonActionPerformed
+
+    private void ExcluirUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirUserButtonActionPerformed
+
+        ExcluirUserDAO ex = new ExcluirUserDAO();
+        ex.mostrarEExcluirUsuario();
+    }//GEN-LAST:event_ExcluirUserButtonActionPerformed
+
+    private void btnEncerrarSessaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncerrarSessaoActionPerformed
+        // TODO add your handling code here:
+        new TelaDeLogin().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEncerrarSessaoActionPerformed
 
     private void btnEdicaoDeLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdicaoDeLivroActionPerformed
         new EdicaoDeLivro().setVisible(true);
@@ -524,10 +481,107 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_MinhasAvaButtonActionPerformed
 
-    private void MinhasAvaButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinhasAvaButton1ActionPerformed
-        new ForumLivros().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_MinhasAvaButton1ActionPerformed
+    private void cboxResultadoPesquisaLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxResultadoPesquisaLivroActionPerformed
+        if (cboxResultadoPesquisaLivro.getSelectedItem() != null) {
+
+            String itemSelecionado = cboxResultadoPesquisaLivro.getSelectedItem().toString();
+             String tituloLivro = itemSelecionado.replaceFirst("ID \\d+ - ", "");
+            System.out.println("Título do Livro: " + tituloLivro);
+             DefaultTableModel modelo = (DefaultTableModel) jtbAvaliacoes.getModel();
+        jtbAvaliacoes.setDefaultRenderer(Object.class, new ForumLivros.CenterRenderer());
+        JTableHeader header = jtbAvaliacoes.getTableHeader();
+        header.setDefaultRenderer(new ForumLivros.CenterRenderer());
+        
+        
+
+        // Para evitar que todos os dados sejam duplicados após um insert
+        modelo.setNumRows(0);
+
+        AvaliacaoDAO avdao = new AvaliacaoDAO();
+
+        for (Avaliacao a : avdao.avaliacoesPorLivro(tituloLivro)) {
+            modelo.addRow(new Object[]{
+              //  a.getUsuario().getUserId(),
+                a.getUsuario().getUserNick(),
+              //  a.getLivro().getId(),
+                a.getLivro().getTitulo(),
+                a.getAvaliacaoDoUsuario(),
+                a.getComentarioAvaliacao()
+            });
+        }
+          /*  if (itemSelecionado.equals("Selecione")) {
+                limpaLivroDados();
+            }
+
+            if (!itemSelecionado.equals("Nada encontrado") && !itemSelecionado.equals("Selecione")) {
+
+                LivroDAO livroDao = new LivroDAO();
+
+                Pattern pattern = Pattern.compile("-\\s(.*)");
+                Matcher matcher = pattern.matcher(itemSelecionado);
+
+                while (matcher.find()) {
+                    String textoCapturado = matcher.group(1);
+                    livroDao.selectIdDoLivro(textoCapturado);
+                    txtTituloLivro.setText(textoCapturado);
+                    txtIdLivro.setText(livroDao.selectIdDoLivro(textoCapturado));
+                }
+
+                int idDoLivro = Integer.parseInt(txtIdLivro.getText());
+                livroDao.selectGeralComId(idDoLivro);
+
+                // Tratamento do ISBN
+                String numeroIsbn = livroDao.selectGeralComId(idDoLivro).getIsbn();
+
+                if (numeroIsbn.replace("-", "").length() == 10) {
+                    cboxIsbnSelect.setSelectedItem("ISBN-10");
+                    formatedIsbn.setText(numeroIsbn);
+                } else {
+                    cboxIsbnSelect.setSelectedItem("ISBN-13");
+                    formatedIsbn.setText(numeroIsbn);
+                }
+
+                int anoDePublicacao = livroDao.selectGeralComId(idDoLivro).getAnoDePublicacao();
+                txtAnoDePublicacao.setText(Integer.toString(anoDePublicacao));
+                int numeroDePaginas = livroDao.selectGeralComId(idDoLivro).getNumeroDePaginas();
+                txtNumeroDePaginas.setText(Integer.toString(numeroDePaginas));
+                cboxCategoriaLivro.setSelectedItem(livroDao.selectGeralComId(idDoLivro).getCategoria());
+                cboxSubCategoriaLivro.setSelectedItem(livroDao.selectGeralComId(idDoLivro).getSubCategoria());
+                txtNomeDaEditora.setText(livroDao.selectGeralComId(idDoLivro).getEditora());
+                cboxLivroIdioma.setSelectedItem(livroDao.selectGeralComId(idDoLivro).getIdioma());
+                txtSinopseDoLivro.setText(livroDao.selectGeralComId(idDoLivro).getSinopse());
+
+                // Habilita os campos para edição
+                txtIdLivro.setEnabled(true);
+                txtTituloLivro.setEnabled(true);
+                cboxIsbnSelect.setEnabled(true);
+                formatedIsbn.setEnabled(true);
+                txtAnoDePublicacao.setEnabled(true);
+                txtNumeroDePaginas.setEnabled(true);
+                txtNomeDaEditora.setEnabled(true);
+                txtSinopseDoLivro.setEnabled(true);
+                jlbImagemCapaLivro.setEnabled(true);
+                cboxCategoriaLivro.setEnabled(true);
+                cboxSubCategoriaLivro.setEnabled(true);
+                cboxLivroIdioma.setEnabled(true);
+                btnBuscarImagem.setEnabled(true);
+                btnExcluirImagem.setEnabled(true);
+                btnSalvarAlteracoesLivro.setEnabled(true);
+
+                visualizadorDeImagem();
+
+            }
+        }*/
+    }//GEN-LAST:event_cboxResultadoPesquisaLivroActionPerformed
+    }
+    private void jtbAvaliacoesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbAvaliacoesMouseClicked
+
+    }//GEN-LAST:event_jtbAvaliacoesMouseClicked
+
+    private void txtMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenuActionPerformed
+        new TelaPrincipalAdministrador().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_txtMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -540,27 +594,26 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipalAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ForumLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipalAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ForumLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipalAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ForumLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipalAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ForumLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaPrincipalAdministrador().setVisible(true);
+                new ForumLivros().setVisible(true);
             }
         });
     }
@@ -571,24 +624,17 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton CadUserButton;
     private javax.swing.JButton EditAvaButton;
     private javax.swing.JToggleButton ExcluirUserButton;
-    private javax.swing.JPanel MenuPainel;
     private javax.swing.JButton MinhasAvaButton;
-    private javax.swing.JButton MinhasAvaButton1;
-    private javax.swing.JScrollPane avaliado;
     private javax.swing.JButton btnEdicaoDeLivro;
     private javax.swing.JButton btnEncerrarSessao;
+    private javax.swing.JComboBox<String> cboxResultadoPesquisaLivro;
     private javax.swing.JButton edicaoUserButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JTable jtbAvaliacoes;
     private keeptoo.KGradientPanel kGradientPanel1;
     private keeptoo.KGradientPanel kGradientPanel2;
-    private javax.swing.JList<String> listaComMaisAvaliacao;
-    private javax.swing.JScrollPane numeroAvaliado;
-    private javax.swing.JScrollPane rank;
+    private javax.swing.JScrollPane tpnTabelaAvaliacoes;
+    private javax.swing.JButton txtMenu;
     // End of variables declaration//GEN-END:variables
 }
