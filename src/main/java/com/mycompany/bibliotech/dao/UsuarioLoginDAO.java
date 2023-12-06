@@ -76,4 +76,31 @@ public class UsuarioLoginDAO {
         return usuarioAdministrador;
     }
 
+    public String idDoUsuarioLogado() {
+
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet resultado = null;
+
+        Login login = ApplicationContext.getLogin();
+
+        String idDoUsuario = null;
+
+        try {
+            stmt = con.prepareStatement("SELECT USE_ID FROM USUARIO WHERE USE_NICK = ?");
+            stmt.setString(1, login.getNick());
+
+            resultado = stmt.executeQuery();
+
+            if (resultado.next()) {
+                idDoUsuario = resultado.getString("USE_ID");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na verificação do autor: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, resultado);
+        }
+        return idDoUsuario;
+    }
 }

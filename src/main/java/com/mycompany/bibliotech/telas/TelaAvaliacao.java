@@ -31,7 +31,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         setPesquisarValues(avaliacao);
         UsuarioLoginDAO usuarioLoginDao = new UsuarioLoginDAO();
 
-         if (usuarioLoginDao.tipoDoUsuarioLogado()) {
+        if (usuarioLoginDao.tipoDoUsuarioLogado()) {
             CadUserButton.setVisible(true);
             ExcluirUserButton.setVisible(true);
             btnEdicaoDeLivro.setVisible(true);
@@ -83,11 +83,11 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             txtNotaMax.setText(avaliacao.getTxtNotaMax());
             imagemLivro.setIcon(avaliacao.getImagemLivro());
             txtSinopse.setText(avaliacao.getTxtSinopse());
-            
+
             // metodo para limitar o numero de linhas no txtSinopse
             String sinopse = avaliacao.getTxtSinopse();
             int comprimentoMaximoPorLinha = 30;
-            
+
             if (sinopse != null && !sinopse.isEmpty()) {
                 StringBuilder sinopseFormatada = new StringBuilder();
                 int comprimentoAtual = 0;
@@ -157,6 +157,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         ExcluirUserButton = new javax.swing.JToggleButton();
         CadUserButton = new javax.swing.JButton();
         btnEdicaoDeLivro = new javax.swing.JButton();
+        btnEdicaoDeLivro1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Avaliacao");
@@ -363,9 +364,8 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         txtSinopse.setEditable(false);
         txtSinopse.setColumns(20);
         txtSinopse.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        txtSinopse.setForeground(new java.awt.Color(0, 0, 0));
         txtSinopse.setRows(5);
-        txtSinopse.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Sinopse:", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        txtSinopse.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Sinopse:", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         jScrollPane2.setViewportView(txtSinopse);
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
@@ -590,6 +590,16 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             }
         });
 
+        btnEdicaoDeLivro1.setBackground(new java.awt.Color(102, 102, 102));
+        btnEdicaoDeLivro1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        btnEdicaoDeLivro1.setText("Minhas Avaliações");
+        btnEdicaoDeLivro1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnEdicaoDeLivro1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEdicaoDeLivro1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout kGradientPanel2Layout = new javax.swing.GroupLayout(kGradientPanel2);
         kGradientPanel2.setLayout(kGradientPanel2Layout);
         kGradientPanel2Layout.setHorizontalGroup(
@@ -609,7 +619,8 @@ public class TelaAvaliacao extends javax.swing.JFrame {
                                 .addComponent(txtVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
                             .addComponent(ExcluirUserButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(CadUserButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEdicaoDeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnEdicaoDeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEdicaoDeLivro1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         kGradientPanel2Layout.setVerticalGroup(
@@ -629,6 +640,8 @@ public class TelaAvaliacao extends javax.swing.JFrame {
                 .addComponent(CadLivroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEdicaoDeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEdicaoDeLivro1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
@@ -882,6 +895,11 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnEdicaoDeLivroActionPerformed
 
+    private void btnEdicaoDeLivro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdicaoDeLivro1ActionPerformed
+        new TelaMinhasAvaliacoes().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEdicaoDeLivro1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -936,6 +954,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     private javax.swing.JButton btnAvaliar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEdicaoDeLivro;
+    private javax.swing.JButton btnEdicaoDeLivro1;
     private javax.swing.JButton btnEncerrarSessao;
     private javax.swing.JComboBox<String> cboxAlfabeto;
     private javax.swing.JComboBox<String> cboxCategoriaBusca;

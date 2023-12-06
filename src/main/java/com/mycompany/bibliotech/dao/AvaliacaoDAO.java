@@ -258,4 +258,78 @@ public class AvaliacaoDAO {
         }
     }
 
+    public List<Avaliacao> avaliacoesDoUsuario(int idDoUsuario) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Avaliacao> avaliacoes = new ArrayList<>();
+
+        try {
+            stmt = con.prepareCall("SELECT LIVRO.ID_LIVRO, LIVRO.LIV_NOME_LIVRO, AVALIACAO.AVA_USUARIO, AVALIACAO.AVA_COMENTARIO FROM AVALIACAO INNER JOIN LIVRO ON AVALIACAO.AVA_FK_LIVRO = LIVRO.ID_LIVRO WHERE AVALIACAO.AVA_ID_USUARIO = ?");
+            stmt.setInt(1, idDoUsuario);
+
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Livro livro = new Livro();
+                Avaliacao avaliacao = new Avaliacao();
+                livro.setId(rs.getInt("ID_LIVRO"));
+                livro.setTitulo(rs.getString("LIV_NOME_LIVRO"));
+                avaliacao.setAvaliacaoDoUsuario(rs.getString("AVA_USUARIO"));
+                avaliacao.setComentarioAvaliacao(rs.getString("AVA_COMENTARIO"));
+                avaliacao.setLivro(livro); // Associando a avaliação ao livro correspondente
+
+                avaliacoes.add(avaliacao);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao ler a tabela: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return avaliacoes;
+    }
+
+    public boolean deletarAvaliacao(int idUsuario, double avaliacao, String comentario) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+
+        try {
+            String sql = "DELETE FROM AVALIACAO WHERE AVA_ID_USUARIO = ? AND AVA_USUARIO = ? AND AVA_COMENTARIO = ?";
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, idUsuario);
+            stmt.setDouble(2, avaliacao);
+            stmt.setString(3, comentario);
+
+            int rowsDeleted = stmt.executeUpdate();
+            return rowsDeleted > 0;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro: " + ex);
+            return false;
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+
+    public boolean atualizarAvaliacao(int idUsuario, String novoValorDaNota, String novoComentario, String idLivro) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+
+        try {
+            String sql = "UPDATE AVALIACAO SET AVA_USUARIO = ?, AVA_COMENTARIO = ? WHERE AVA_FK_LIVRO = ? AND AVA_ID_USUARIO = ?";
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, novoValorDaNota);
+            stmt.setString(2, novoComentario);
+            stmt.setString(3, idLivro);
+            stmt.setInt(4, idUsuario);
+
+            int rowsUpdated = stmt.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro: " + ex);
+            return false;
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
 }
