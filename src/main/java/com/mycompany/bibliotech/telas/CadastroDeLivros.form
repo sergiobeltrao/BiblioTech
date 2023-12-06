@@ -93,6 +93,7 @@
                                   <Component id="AvaButton1" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                                   <Component id="EditAvaButton" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                                   <Component id="MinhasAvaButton" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
+                                  <Component id="MinhasAvaButton1" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -121,6 +122,8 @@
                       <Component id="EditAvaButton" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="MinhasAvaButton" min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="MinhasAvaButton1" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnEncerrarSessao" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -318,6 +321,25 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditAvaButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="MinhasAvaButton1">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="13" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Forum Livros"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MinhasAvaButton1ActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
