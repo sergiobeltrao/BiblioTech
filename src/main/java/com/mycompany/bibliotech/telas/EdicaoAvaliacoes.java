@@ -317,7 +317,7 @@ public class EdicaoAvaliacoes extends javax.swing.JFrame {
 
             DefaultTableModel modelo = (DefaultTableModel) jtbAvaliacoes.getModel();
 
-            String valorDaNotaString = modelo.getValueAt(linha, 2).toString();
+            String valorDaNotaString = modelo.getValueAt(linha, 4).toString();
             double valorDaNotaDouble = Double.parseDouble(valorDaNotaString);
             String comentario = txtComentarioLivro.getText();
             //String userNick = userTxt.getText();
