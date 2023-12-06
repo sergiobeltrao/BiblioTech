@@ -50,20 +50,34 @@
         <maven.compiler.target>17</maven.compiler.target>
         <exec.mainClass>com.mycompany.bibliotech.BiblioTech</exec.mainClass>
     </properties>
-           <build>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <configuration>
-                        <archive>
-                            <manifest>
-                                <addClasspath>true</addClasspath>
-                                <mainClass>com.mycompany.bibliotech.telas.TelaDeLogin</mainClass>
-                            </manifest>
-                        </archive>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.4.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <shadedArtifactAttached>true</shadedArtifactAttached>
+                            <shadedClassifierName>launcher</shadedClassifierName>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <manifestEntries>
+                                        <Main-Class>com.mycompany.bibliotech.telas.TelaDeLogin</Main-Class>
+                                        <Build-Number>123</Build-Number>
+                                    </manifestEntries>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>            
+        </plugins>
+    </build>
 </project>
