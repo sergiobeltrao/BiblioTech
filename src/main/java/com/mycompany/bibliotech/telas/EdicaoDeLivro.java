@@ -60,8 +60,9 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
         } else {
             CadUserButton.setVisible(false);
             ExcluirUserButton.setVisible(false);
-
         }
+        LivroDAO.selectGeralLivroTitulo(cboxResultadoPesquisaLivro);
+        AutorDAO.selectGeralAutorNome(cboxResultadoPesquisaAutor);
     }
 
     private void visualizadorDeImagem() {
@@ -1463,6 +1464,7 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
     private void btnLimparTelaAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparTelaAutorActionPerformed
         limpaAutorBusca();
         limpaAutorDados();
+        AutorDAO.selectGeralAutorNome(cboxResultadoPesquisaAutor);
     }//GEN-LAST:event_btnLimparTelaAutorActionPerformed
 
     private void btnSalvarAlteracoesAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarAlteracoesAutorActionPerformed
@@ -1493,7 +1495,7 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
 
         limpaAutorBusca();
         limpaAutorDados();
-
+        AutorDAO.selectGeralAutorNome(cboxResultadoPesquisaAutor);
     }//GEN-LAST:event_btnSalvarAlteracoesAutorActionPerformed
 
     private void cboxLivroAvaliacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxLivroAvaliacaoActionPerformed
@@ -1653,7 +1655,7 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
 
                     // Exibir o JOptionPane com o JPanel personalizado
                     int result = JOptionPane.showOptionDialog(null, panel, "Digite a senha",
-                        JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+                            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
 
                     // Verificar a resposta do JOptionPane
                     if (result == JOptionPane.OK_OPTION) {
@@ -1745,6 +1747,7 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
             }
         } else {
             System.out.println("Nenhuma imagem foi selecionada.");
+            LivroDAO.selectGeralLivroTitulo(cboxResultadoPesquisaLivro);
         }
     }//GEN-LAST:event_btnBuscarImagemActionPerformed
 
@@ -1826,6 +1829,7 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
                 }
                 limpaLivroBusca();
                 limpaLivroDados();
+                LivroDAO.selectGeralLivroTitulo(cboxResultadoPesquisaLivro);
             }
 
         }
@@ -1834,6 +1838,7 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
     private void btnLimparTelaLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparTelaLivroActionPerformed
         limpaLivroBusca();
         limpaLivroDados();
+        LivroDAO.selectGeralLivroTitulo(cboxResultadoPesquisaLivro);
     }//GEN-LAST:event_btnLimparTelaLivroActionPerformed
 
     private void btnPesquisaLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaLivroActionPerformed

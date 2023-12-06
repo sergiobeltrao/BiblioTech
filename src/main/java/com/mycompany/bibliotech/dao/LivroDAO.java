@@ -147,7 +147,8 @@ public class LivroDAO {
             }
 
             if (!encontrouResultado) {
-                comboBox.addItem("Nada encontrado");
+                JOptionPane.showMessageDialog(null, "Nada encontrado");
+                selectGeralLivroTitulo(comboBox);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao ler a tabela de livros: " + ex);

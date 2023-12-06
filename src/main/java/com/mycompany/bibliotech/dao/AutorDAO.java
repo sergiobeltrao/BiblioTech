@@ -225,7 +225,8 @@ public class AutorDAO {
             }
 
             if (!encontrouResultado) {
-                comboBox.addItem("Nada encontrado");
+                 JOptionPane.showMessageDialog(null, "Nada encontrado");
+                selectGeralAutorNome(comboBox);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao ler a tabela de autores: " + ex);
