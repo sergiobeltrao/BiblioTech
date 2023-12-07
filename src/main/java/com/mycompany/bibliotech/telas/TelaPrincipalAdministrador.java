@@ -54,10 +54,8 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         DefaultListModel<String> listRecord = new DefaultListModel<>();
 
         if (recordList != null) {
-            int recordNumber = 1;
             for (String item : recordList) {
-                listRecord.addElement(recordNumber + ". " + item);
-                recordNumber++;
+                listRecord.addElement(item);
             }
         }
 
