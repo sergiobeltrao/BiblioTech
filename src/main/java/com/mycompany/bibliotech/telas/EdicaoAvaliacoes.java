@@ -32,6 +32,7 @@ public class EdicaoAvaliacoes extends javax.swing.JFrame {
         jtbAvaliacoes.setRowSorter(new TableRowSorter(modelo));
         selectTabelaLivro();
         userTxt.setEnabled(false);
+        cboxNotaLivro.setEnabled(false);
     }
 
     public class CenterRenderer extends DefaultTableCellRenderer {
@@ -440,7 +441,7 @@ public class EdicaoAvaliacoes extends javax.swing.JFrame {
 
         if (linha != -1) {
 
-            cboxNotaLivro.setEnabled(true);
+            cboxNotaLivro.setEnabled(false);
             txtComentarioLivro.setEnabled(true);
             jlbCapaDoLivro.setEnabled(true);
 
@@ -506,6 +507,8 @@ public class EdicaoAvaliacoes extends javax.swing.JFrame {
         txtComentarioLivro.setText("");
         jlbCapaDoLivro.setIcon(null);
         userTxt.setText(null);
+        cboxNotaLivro.setEnabled(false);
+        userTxt.setEnabled(false);
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
