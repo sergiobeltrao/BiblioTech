@@ -169,7 +169,7 @@ public class ForumLivros extends javax.swing.JFrame {
         ExcluirUserButton.setBackground(new java.awt.Color(102, 102, 102));
         ExcluirUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         ExcluirUserButton.setText("Excluir Usuarios");
-        ExcluirUserButton.setBorder(new javax.swing.border.MatteBorder(null));
+        ExcluirUserButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         ExcluirUserButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExcluirUserButtonActionPerformed(evt);
