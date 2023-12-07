@@ -606,6 +606,29 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         tbLivro.setColumnSelectionAllowed(true);
         boxTabelaLivro.setViewportView(tbLivro);
         tbLivro.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (tbLivro.getColumnModel().getColumnCount() > 0) {
+            tbLivro.getColumnModel().getColumn(1).setMinWidth(165);
+            tbLivro.getColumnModel().getColumn(1).setPreferredWidth(170);
+            tbLivro.getColumnModel().getColumn(1).setMaxWidth(175);
+            tbLivro.getColumnModel().getColumn(2).setMinWidth(55);
+            tbLivro.getColumnModel().getColumn(2).setPreferredWidth(60);
+            tbLivro.getColumnModel().getColumn(2).setMaxWidth(65);
+            tbLivro.getColumnModel().getColumn(3).setMinWidth(55);
+            tbLivro.getColumnModel().getColumn(3).setPreferredWidth(60);
+            tbLivro.getColumnModel().getColumn(3).setMaxWidth(65);
+            tbLivro.getColumnModel().getColumn(4).setMinWidth(115);
+            tbLivro.getColumnModel().getColumn(4).setPreferredWidth(120);
+            tbLivro.getColumnModel().getColumn(4).setMaxWidth(125);
+            tbLivro.getColumnModel().getColumn(5).setMinWidth(125);
+            tbLivro.getColumnModel().getColumn(5).setPreferredWidth(130);
+            tbLivro.getColumnModel().getColumn(5).setMaxWidth(135);
+            tbLivro.getColumnModel().getColumn(6).setMinWidth(125);
+            tbLivro.getColumnModel().getColumn(6).setPreferredWidth(130);
+            tbLivro.getColumnModel().getColumn(6).setMaxWidth(135);
+            tbLivro.getColumnModel().getColumn(7).setMinWidth(125);
+            tbLivro.getColumnModel().getColumn(7).setPreferredWidth(130);
+            tbLivro.getColumnModel().getColumn(7).setMaxWidth(135);
+        }
 
         btnLimparLivro.setBackground(new java.awt.Color(102, 102, 102));
         btnLimparLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -1035,6 +1058,11 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             }
         });
         boxTabelaAutor.setViewportView(tbAutor);
+        if (tbAutor.getColumnModel().getColumnCount() > 0) {
+            tbAutor.getColumnModel().getColumn(2).setMinWidth(55);
+            tbAutor.getColumnModel().getColumn(2).setPreferredWidth(60);
+            tbAutor.getColumnModel().getColumn(2).setMaxWidth(65);
+        }
 
         txtAutorPesquisado.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txtAutorPesquisado.setForeground(new java.awt.Color(0, 0, 0));
@@ -1358,6 +1386,14 @@ public class CadastroDeLivros extends javax.swing.JFrame {
             }
         });
         boxTabelaAvaliacao.setViewportView(tbAvaliacao);
+        if (tbAvaliacao.getColumnModel().getColumnCount() > 0) {
+            tbAvaliacao.getColumnModel().getColumn(0).setMinWidth(390);
+            tbAvaliacao.getColumnModel().getColumn(0).setPreferredWidth(400);
+            tbAvaliacao.getColumnModel().getColumn(0).setMaxWidth(405);
+            tbAvaliacao.getColumnModel().getColumn(1).setMinWidth(55);
+            tbAvaliacao.getColumnModel().getColumn(1).setPreferredWidth(60);
+            tbAvaliacao.getColumnModel().getColumn(1).setMaxWidth(65);
+        }
 
         btnLimparAvaliacao.setBackground(new java.awt.Color(102, 102, 102));
         btnLimparAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N

@@ -185,7 +185,7 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -198,6 +198,17 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
             }
         });
         tpnTabelaAvaliacoes.setViewportView(jtbAvaliacoes);
+        if (jtbAvaliacoes.getColumnModel().getColumnCount() > 0) {
+            jtbAvaliacoes.getColumnModel().getColumn(0).setMinWidth(65);
+            jtbAvaliacoes.getColumnModel().getColumn(0).setPreferredWidth(70);
+            jtbAvaliacoes.getColumnModel().getColumn(0).setMaxWidth(75);
+            jtbAvaliacoes.getColumnModel().getColumn(1).setMinWidth(390);
+            jtbAvaliacoes.getColumnModel().getColumn(1).setPreferredWidth(400);
+            jtbAvaliacoes.getColumnModel().getColumn(1).setMaxWidth(405);
+            jtbAvaliacoes.getColumnModel().getColumn(2).setMinWidth(65);
+            jtbAvaliacoes.getColumnModel().getColumn(2).setPreferredWidth(70);
+            jtbAvaliacoes.getColumnModel().getColumn(2).setMaxWidth(75);
+        }
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);

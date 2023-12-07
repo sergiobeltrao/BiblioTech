@@ -97,7 +97,8 @@ public class ForumLivros extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        kGradientPanel2 = new keeptoo.KGradientPanel();
+        painelMenu = new javax.swing.JPanel();
+        menuLateral = new keeptoo.KGradientPanel();
         jLabel1 = new javax.swing.JLabel();
         CadUserButton = new javax.swing.JButton();
         edicaoUserButton = new javax.swing.JButton();
@@ -109,6 +110,7 @@ public class ForumLivros extends javax.swing.JFrame {
         EditAvaButton = new javax.swing.JButton();
         MinhasAvaButton = new javax.swing.JButton();
         txtMenu = new javax.swing.JButton();
+        forum = new javax.swing.JPanel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
         cboxResultadoPesquisaLivro = new javax.swing.JComboBox<>();
         tpnTabelaAvaliacoes = new javax.swing.JScrollPane();
@@ -116,20 +118,27 @@ public class ForumLivros extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Forum");
 
-        kGradientPanel2.setkEndColor(new java.awt.Color(0, 0, 0));
-        kGradientPanel2.setkGradientFocus(350);
-        kGradientPanel2.setkStartColor(new java.awt.Color(255, 255, 255));
+        painelMenu.setBackground(new java.awt.Color(255, 255, 255));
+
+        menuLateral.setkEndColor(new java.awt.Color(0, 0, 0));
+        menuLateral.setkGradientFocus(350);
+        menuLateral.setkStartColor(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Menu");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 0, 0)));
 
         CadUserButton.setBackground(new java.awt.Color(102, 102, 102));
         CadUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        CadUserButton.setForeground(new java.awt.Color(0, 0, 0));
         CadUserButton.setText("Cadastro de Usuario");
+        CadUserButton.setToolTipText("cadastrar novos usuarios");
         CadUserButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        CadUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CadUserButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CadUserButtonActionPerformed(evt);
@@ -138,8 +147,11 @@ public class ForumLivros extends javax.swing.JFrame {
 
         edicaoUserButton.setBackground(new java.awt.Color(102, 102, 102));
         edicaoUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        edicaoUserButton.setForeground(new java.awt.Color(0, 0, 0));
         edicaoUserButton.setText("Edição de Usuario");
+        edicaoUserButton.setToolTipText("edição de usuarios cadastrados");
         edicaoUserButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        edicaoUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         edicaoUserButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edicaoUserButtonActionPerformed(evt);
@@ -148,8 +160,11 @@ public class ForumLivros extends javax.swing.JFrame {
 
         CadLivroButton.setBackground(new java.awt.Color(102, 102, 102));
         CadLivroButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        CadLivroButton.setForeground(new java.awt.Color(0, 0, 0));
         CadLivroButton.setText("Cadastro de Livro");
+        CadLivroButton.setToolTipText("cadastrar novos livros");
         CadLivroButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        CadLivroButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CadLivroButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CadLivroButtonActionPerformed(evt);
@@ -158,8 +173,11 @@ public class ForumLivros extends javax.swing.JFrame {
 
         AvaButton.setBackground(new java.awt.Color(102, 102, 102));
         AvaButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        AvaButton.setForeground(new java.awt.Color(0, 0, 0));
         AvaButton.setText("Avaliação");
+        AvaButton.setToolTipText("ir para avaliações de livros");
         AvaButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        AvaButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         AvaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AvaButtonActionPerformed(evt);
@@ -168,8 +186,11 @@ public class ForumLivros extends javax.swing.JFrame {
 
         ExcluirUserButton.setBackground(new java.awt.Color(102, 102, 102));
         ExcluirUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        ExcluirUserButton.setForeground(new java.awt.Color(0, 0, 0));
         ExcluirUserButton.setText("Excluir Usuarios");
+        ExcluirUserButton.setToolTipText("exclir usuarios cadasdtrado");
         ExcluirUserButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        ExcluirUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ExcluirUserButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExcluirUserButtonActionPerformed(evt);
@@ -178,8 +199,11 @@ public class ForumLivros extends javax.swing.JFrame {
 
         btnEncerrarSessao.setBackground(new java.awt.Color(102, 102, 102));
         btnEncerrarSessao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        btnEncerrarSessao.setForeground(new java.awt.Color(0, 0, 0));
         btnEncerrarSessao.setText("Encerrar Sessão");
+        btnEncerrarSessao.setToolTipText("encerrar sessão atual");
         btnEncerrarSessao.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnEncerrarSessao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEncerrarSessao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEncerrarSessaoActionPerformed(evt);
@@ -188,8 +212,11 @@ public class ForumLivros extends javax.swing.JFrame {
 
         btnEdicaoDeLivro.setBackground(new java.awt.Color(102, 102, 102));
         btnEdicaoDeLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        btnEdicaoDeLivro.setForeground(new java.awt.Color(0, 0, 0));
         btnEdicaoDeLivro.setText("Edição de Livro");
+        btnEdicaoDeLivro.setToolTipText("diatar livors cadastrados");
         btnEdicaoDeLivro.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnEdicaoDeLivro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEdicaoDeLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEdicaoDeLivroActionPerformed(evt);
@@ -198,8 +225,11 @@ public class ForumLivros extends javax.swing.JFrame {
 
         EditAvaButton.setBackground(new java.awt.Color(102, 102, 102));
         EditAvaButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        EditAvaButton.setForeground(new java.awt.Color(0, 0, 0));
         EditAvaButton.setText("Editar Avaliações");
+        EditAvaButton.setToolTipText("editar avaliações de usuarios");
         EditAvaButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        EditAvaButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         EditAvaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EditAvaButtonActionPerformed(evt);
@@ -208,8 +238,11 @@ public class ForumLivros extends javax.swing.JFrame {
 
         MinhasAvaButton.setBackground(new java.awt.Color(102, 102, 102));
         MinhasAvaButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        MinhasAvaButton.setForeground(new java.awt.Color(0, 0, 0));
         MinhasAvaButton.setText("Minhas Avaliações");
+        MinhasAvaButton.setToolTipText("ir  para minha avaliações de livros");
         MinhasAvaButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        MinhasAvaButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         MinhasAvaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MinhasAvaButtonActionPerformed(evt);
@@ -218,6 +251,7 @@ public class ForumLivros extends javax.swing.JFrame {
 
         txtMenu.setBackground(new java.awt.Color(102, 102, 102));
         txtMenu.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txtMenu.setForeground(new java.awt.Color(0, 0, 0));
         txtMenu.setText("Inicio");
         txtMenu.setToolTipText("Ir para o Inicio");
         txtMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -228,18 +262,18 @@ public class ForumLivros extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout kGradientPanel2Layout = new javax.swing.GroupLayout(kGradientPanel2);
-        kGradientPanel2.setLayout(kGradientPanel2Layout);
-        kGradientPanel2Layout.setHorizontalGroup(
-            kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(kGradientPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout menuLateralLayout = new javax.swing.GroupLayout(menuLateral);
+        menuLateral.setLayout(menuLateralLayout);
+        menuLateralLayout.setHorizontalGroup(
+            menuLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuLateralLayout.createSequentialGroup()
+                .addGroup(menuLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menuLateralLayout.createSequentialGroup()
                         .addGap(60, 60, 60)
                         .addComponent(jLabel1))
-                    .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menuLateralLayout.createSequentialGroup()
+                        .addContainerGap(15, Short.MAX_VALUE)
+                        .addGroup(menuLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(edicaoUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(CadUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(AvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -250,35 +284,48 @@ public class ForumLivros extends javax.swing.JFrame {
                             .addComponent(EditAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(MinhasAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
-        kGradientPanel2Layout.setVerticalGroup(
-            kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(kGradientPanel2Layout.createSequentialGroup()
+        menuLateralLayout.setVerticalGroup(
+            menuLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuLateralLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(13, 13, 13)
                 .addComponent(txtMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(15, 15, 15)
                 .addComponent(CadUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(edicaoUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(15, 15, 15)
                 .addComponent(ExcluirUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(15, 15, 15)
                 .addComponent(CadLivroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(15, 15, 15)
                 .addComponent(btnEdicaoDeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(15, 15, 15)
                 .addComponent(AvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(15, 15, 15)
                 .addComponent(EditAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(15, 15, 15)
                 .addComponent(MinhasAvaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 320, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 287, Short.MAX_VALUE)
                 .addComponent(btnEncerrarSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
+
+        javax.swing.GroupLayout painelMenuLayout = new javax.swing.GroupLayout(painelMenu);
+        painelMenu.setLayout(painelMenuLayout);
+        painelMenuLayout.setHorizontalGroup(
+            painelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(menuLateral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        painelMenuLayout.setVerticalGroup(
+            painelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(menuLateral, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        forum.setBackground(new java.awt.Color(255, 255, 255));
 
         kGradientPanel1.setkEndColor(new java.awt.Color(51, 51, 51));
         kGradientPanel1.setkGradientFocus(800);
@@ -288,8 +335,10 @@ public class ForumLivros extends javax.swing.JFrame {
         kGradientPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
 
         cboxResultadoPesquisaLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        cboxResultadoPesquisaLivro.setForeground(new java.awt.Color(0, 0, 0));
         cboxResultadoPesquisaLivro.setToolTipText("resultado a busca de livro");
         cboxResultadoPesquisaLivro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        cboxResultadoPesquisaLivro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cboxResultadoPesquisaLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxResultadoPesquisaLivroActionPerformed(evt);
@@ -297,8 +346,11 @@ public class ForumLivros extends javax.swing.JFrame {
         });
 
         jtbAvaliacoes.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jtbAvaliacoes.setForeground(new java.awt.Color(0, 0, 0));
         jtbAvaliacoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -322,8 +374,20 @@ public class ForumLivros extends javax.swing.JFrame {
             }
         });
         tpnTabelaAvaliacoes.setViewportView(jtbAvaliacoes);
+        if (jtbAvaliacoes.getColumnModel().getColumnCount() > 0) {
+            jtbAvaliacoes.getColumnModel().getColumn(0).setMinWidth(175);
+            jtbAvaliacoes.getColumnModel().getColumn(0).setPreferredWidth(180);
+            jtbAvaliacoes.getColumnModel().getColumn(0).setMaxWidth(185);
+            jtbAvaliacoes.getColumnModel().getColumn(1).setMinWidth(230);
+            jtbAvaliacoes.getColumnModel().getColumn(1).setPreferredWidth(240);
+            jtbAvaliacoes.getColumnModel().getColumn(1).setMaxWidth(250);
+            jtbAvaliacoes.getColumnModel().getColumn(2).setMinWidth(50);
+            jtbAvaliacoes.getColumnModel().getColumn(2).setPreferredWidth(60);
+            jtbAvaliacoes.getColumnModel().getColumn(2).setMaxWidth(70);
+        }
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel20.setText("Selecione um livro:");
         jLabel20.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
@@ -333,16 +397,12 @@ public class ForumLivros extends javax.swing.JFrame {
         kGradientPanel1Layout.setHorizontalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tpnTabelaAvaliacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 1039, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20)
                     .addComponent(cboxResultadoPesquisaLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(952, Short.MAX_VALUE))
-            .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(tpnTabelaAvaliacoes)
-                    .addContainerGap()))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,38 +411,39 @@ public class ForumLivros extends javax.swing.JFrame {
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cboxResultadoPesquisaLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(607, Short.MAX_VALUE))
-            .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                    .addGap(132, 132, 132)
-                    .addComponent(tpnTabelaAvaliacoes, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addGap(18, 18, 18)
+                .addComponent(tpnTabelaAvaliacoes, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
+                .addGap(7, 7, 7))
+        );
+
+        javax.swing.GroupLayout forumLayout = new javax.swing.GroupLayout(forum);
+        forum.setLayout(forumLayout);
+        forumLayout.setHorizontalGroup(
+            forumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1099, Short.MAX_VALUE)
+        );
+        forumLayout.setVerticalGroup(
+            forumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(180, 180, 180)
-                .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(painelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(forum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(kGradientPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(painelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(forum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pack();
+        setSize(new java.awt.Dimension(1294, 727));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void CadUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadUserButtonActionPerformed
@@ -587,11 +648,13 @@ public class ForumLivros extends javax.swing.JFrame {
     private javax.swing.JButton btnEncerrarSessao;
     private javax.swing.JComboBox<String> cboxResultadoPesquisaLivro;
     private javax.swing.JButton edicaoUserButton;
+    private javax.swing.JPanel forum;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JTable jtbAvaliacoes;
     private keeptoo.KGradientPanel kGradientPanel1;
-    private keeptoo.KGradientPanel kGradientPanel2;
+    private keeptoo.KGradientPanel menuLateral;
+    private javax.swing.JPanel painelMenu;
     private javax.swing.JScrollPane tpnTabelaAvaliacoes;
     private javax.swing.JButton txtMenu;
     // End of variables declaration//GEN-END:variables
