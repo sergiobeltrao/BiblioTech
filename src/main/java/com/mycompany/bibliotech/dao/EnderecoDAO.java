@@ -82,7 +82,7 @@ public class EnderecoDAO {
     }
     
     public void atualizar(Endereco end, String userId) {
-    Connection con = ConnectionFactory.getConnection();
+        Connection con = ConnectionFactory.getConnection();
     PreparedStatement stmt = null;
 
     try {
@@ -93,25 +93,16 @@ public class EnderecoDAO {
 
         con.setAutoCommit(false);  // Desativa o autocommit
         
-        String consultaEnderecoExistenteSQL = "SELECT END_ID FROM USUARIO U\n" +
-"LEFT JOIN ENDERECO_USUARIO EU ON U.USE_ID = EU.ENDERECO_USER\n" +
-"LEFT JOIN ENDERECO E ON EU.ENDERECO_CHAVE = E.END_ID\n" +
-"LEFT JOIN TELEFONE_USUARIO TU ON U.USE_ID = TU.TELEFONE_USER\n" +
-"LEFT JOIN TELEFONE T ON TU.TELEFONE_FONE = T.TEL_ID\n" +
-"LEFT JOIN FAVORITO F ON U.USE_ID = F.FAV_ID_USUARIO WHERE USE_ID = ?";
-            stmt = con.prepareStatement(consultaEnderecoExistenteSQL);
-            stmt.setString(1, userId);
-            ResultSet resultadoEnderecoExistente = stmt.executeQuery();
+       // Verificar se o endereço existe para o usuário
+        int enderecoExistenteId = obterIdEnderecoUsuario(userId);
 
-            int enderecoExistenteId = 0;
-
-            // Se um registro existente for encontrado
-            if (resultadoEnderecoExistente.next()) {
-                enderecoExistenteId = resultadoEnderecoExistente.getInt("END_ID");
-            } else {
-                JOptionPane.showMessageDialog(null, "Erro ao consultar END_ID para tabela de endereço");
-                return;  // Encerre o método se não encontrar o usuário
-            }
+        if (enderecoExistenteId == 0) {
+            // Se o endereço não existe, chama o método cadastrarEndereco para criar um novo endereço
+            
+            cadastrarEndereco(end, obterNickPorId(userId), end.getCep(), end.getNum());
+            // Obtém o ID do endereço recém-criado
+            enderecoExistenteId = obterIdEnderecoUsuario(userId);
+        }
             
 
         // Montar instrução SQL
@@ -153,5 +144,66 @@ public class EnderecoDAO {
         ConnectionFactory.closeConnection(con, stmt);
     }
 }
+private int obterIdEnderecoUsuario(String userId) {
+    Connection con = ConnectionFactory.getConnection();
+    PreparedStatement stmt = null;
+    ResultSet result = null;
+
+    try {
+        if (con == null) {
+            JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados.");
+            return 0;
+        }
+
+        String consultaEnderecoExistenteSQL = "SELECT E.END_ID FROM USUARIO U\n" +
+                "LEFT JOIN ENDERECO_USUARIO EU ON U.USE_ID = EU.ENDERECO_USER\n" +
+                "LEFT JOIN ENDERECO E ON EU.ENDERECO_CHAVE = E.END_ID\n" +
+                "WHERE U.USE_ID = ?";
+        
+        stmt = con.prepareStatement(consultaEnderecoExistenteSQL);
+        stmt.setString(1, userId);
+        result = stmt.executeQuery();
+
+        if (result.next()) {
+            return result.getInt("END_ID");
+        } else {
+            return 0;  // Se não encontrar o endereço, retorna 0
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Erro ao obter ID do endereço: " + ex.getMessage());
+        return 0;
+    } finally {
+        ConnectionFactory.closeConnection(con, stmt, result);
+    }
+}
+private String obterNickPorId(String userId) {
+    Connection con = ConnectionFactory.getConnection();
+    PreparedStatement stmt = null;
+    ResultSet result = null;
+
+    try {
+        if (con == null) {
+            JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados.");
+            return null;
+        }
+
+        String consultaSQL = "SELECT USE_NICK FROM USUARIO WHERE USE_ID = ?";
+        stmt = con.prepareStatement(consultaSQL);
+        stmt.setString(1, userId);
+        result = stmt.executeQuery();
+
+        if (result.next()) {
+            return result.getString("USE_NICK");
+        } else {
+            return null;  // Se não encontrar o usuário, retorna null
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Erro ao obter USE_NICK por ID: " + ex.getMessage());
+        return null;
+    } finally {
+        ConnectionFactory.closeConnection(con, stmt, result);
+    }
+}
+
 
 }
