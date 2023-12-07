@@ -88,24 +88,39 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         ufTxt.setText(endereco.getUf());
         compTxt.setText(endereco.getComp());
         cidadeTxt.setText(endereco.getCidade());
-        numTxt.setText(String.valueOf(endereco.getNum()));        
-        bairroTxt.setText(endereco.getBairro());
+
+        // Verifica se endereco.getNum() é null antes de definir o texto em numTxt
+        if (endereco.getNum() != 0) {
+            numTxt.setText(String.valueOf(endereco.getNum()));
+        } else {
+            numTxt.setText(null);
         }
+
+        bairroTxt.setText(endereco.getBairro());
     }
+}
+
     private void setTelefoneValues(Telefone telefone) {
     if (telefone != null) {
         telefoneTipoBox.setSelectedItem(telefone.getTipo());
         foneTxt.setText(telefone.getTelefone());
         }
     }
-    private void setFavoritosValues(Favoritos favoritos) {
+   private void setFavoritosValues(Favoritos favoritos) {
     if (favoritos != null) {
-         cboxCategoria1.setSelectedItem(favoritos.getFavCategoria1());
-        cboxSubCategoria1.setSelectedItem(favoritos.getFavSub1());
-        cboxCategoria2.setSelectedItem(favoritos.getFavCategoria2());
-        cboxSubCategoria2.setSelectedItem(favoritos.getFavSub2());
-         }
+        cboxCategoria1.setSelectedItem(favoritos.getFavCategoria1() != null ? favoritos.getFavCategoria1() : "Não Informada");
+        cboxSubCategoria1.setSelectedItem(favoritos.getFavSub1() != null ? favoritos.getFavSub1() : "Não Informada");
+        cboxCategoria2.setSelectedItem(favoritos.getFavCategoria2() != null ? favoritos.getFavCategoria2() : "Não Informada");
+        cboxSubCategoria2.setSelectedItem(favoritos.getFavSub2() != null ? favoritos.getFavSub2() : "Não Informada");
+    } else {
+        // Se favoritos for null, defina os valores como "Não Informada"
+        cboxCategoria1.setSelectedItem("Não Informada");
+        cboxSubCategoria1.setSelectedItem("Não Informada");
+        cboxCategoria2.setSelectedItem("Não Informada");
+        cboxSubCategoria2.setSelectedItem("Não Informada");
     }
+}
+
     
 
     @SuppressWarnings("unchecked")
