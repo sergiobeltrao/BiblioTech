@@ -166,9 +166,9 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Avaliacao");
 
-        kGradientPanel1.setkEndColor(new java.awt.Color(19, 18, 18));
-        kGradientPanel1.setkGradientFocus(100);
-        kGradientPanel1.setkStartColor(new java.awt.Color(204, 204, 204));
+        kGradientPanel1.setkEndColor(new java.awt.Color(51, 51, 51));
+        kGradientPanel1.setkGradientFocus(800);
+        kGradientPanel1.setkStartColor(new java.awt.Color(255, 255, 255));
 
         cboxNomeLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         cboxNomeLivro.setToolTipText("Lista de livro escolhido");
@@ -511,9 +511,9 @@ public class TelaAvaliacao extends javax.swing.JFrame {
 
         MenuLateral.setBackground(new java.awt.Color(255, 255, 255));
 
-        kGradientPanel2.setkEndColor(new java.awt.Color(255, 255, 255));
+        kGradientPanel2.setkEndColor(new java.awt.Color(0, 0, 0));
         kGradientPanel2.setkGradientFocus(350);
-        kGradientPanel2.setkStartColor(new java.awt.Color(114, 114, 133));
+        kGradientPanel2.setkStartColor(new java.awt.Color(255, 255, 255));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel11.setText("Menu");

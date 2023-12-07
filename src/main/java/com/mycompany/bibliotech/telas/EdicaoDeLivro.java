@@ -214,7 +214,7 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
         jpnLivro.setPreferredSize(new java.awt.Dimension(1280, 720));
 
         kGradientPanel1.setkEndColor(new java.awt.Color(51, 51, 51));
-        kGradientPanel1.setkGradientFocus(350);
+        kGradientPanel1.setkGradientFocus(800);
         kGradientPanel1.setkStartColor(new java.awt.Color(255, 255, 255));
 
         cboxResultadoPesquisaLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -737,7 +737,7 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
         jpnAutor.setBackground(new java.awt.Color(255, 255, 255));
 
         kGradientPanel3.setkEndColor(new java.awt.Color(51, 51, 51));
-        kGradientPanel3.setkGradientFocus(350);
+        kGradientPanel3.setkGradientFocus(800);
         kGradientPanel3.setkStartColor(new java.awt.Color(255, 255, 255));
 
         cboxSexoAutor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -963,7 +963,7 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
         jpnAvaliacao.setBackground(new java.awt.Color(255, 255, 255));
 
         kGradientPanel4.setkEndColor(new java.awt.Color(51, 51, 51));
-        kGradientPanel4.setkGradientFocus(350);
+        kGradientPanel4.setkGradientFocus(800);
         kGradientPanel4.setkStartColor(new java.awt.Color(255, 255, 255));
 
         cboxUsuarioAvaliacao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N

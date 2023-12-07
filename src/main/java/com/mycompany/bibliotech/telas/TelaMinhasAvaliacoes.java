@@ -116,8 +116,8 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        kGradientPanel1.setkEndColor(new java.awt.Color(0, 0, 0));
-        kGradientPanel1.setkGradientFocus(350);
+        kGradientPanel1.setkEndColor(new java.awt.Color(51, 51, 51));
+        kGradientPanel1.setkGradientFocus(800);
         kGradientPanel1.setkStartColor(new java.awt.Color(255, 255, 255));
         kGradientPanel1.setMinimumSize(new java.awt.Dimension(0, 0));
         kGradientPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));

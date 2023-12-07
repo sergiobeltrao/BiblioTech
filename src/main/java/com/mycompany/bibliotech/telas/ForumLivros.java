@@ -280,8 +280,8 @@ public class ForumLivros extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
-        kGradientPanel1.setkEndColor(new java.awt.Color(0, 0, 0));
-        kGradientPanel1.setkGradientFocus(350);
+        kGradientPanel1.setkEndColor(new java.awt.Color(51, 51, 51));
+        kGradientPanel1.setkGradientFocus(800);
         kGradientPanel1.setkStartColor(new java.awt.Color(255, 255, 255));
         kGradientPanel1.setkTransparentControls(false);
         kGradientPanel1.setMinimumSize(new java.awt.Dimension(0, 0));

@@ -263,9 +263,9 @@ public class CadastroDeLivros extends javax.swing.JFrame {
 
         MenuLateral.setBackground(new java.awt.Color(255, 255, 255));
 
-        kGradientPanel2.setkEndColor(new java.awt.Color(255, 255, 255));
-        kGradientPanel2.setkGradientFocus(900);
-        kGradientPanel2.setkStartColor(new java.awt.Color(102, 102, 102));
+        kGradientPanel2.setkEndColor(new java.awt.Color(0, 0, 0));
+        kGradientPanel2.setkGradientFocus(350);
+        kGradientPanel2.setkStartColor(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel1.setText("Menu");
@@ -445,7 +445,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         jpnLivro.setPreferredSize(new java.awt.Dimension(1109, 685));
 
         kGradientPanel1.setkEndColor(new java.awt.Color(51, 51, 51));
-        kGradientPanel1.setkGradientFocus(350);
+        kGradientPanel1.setkGradientFocus(800);
         kGradientPanel1.setkStartColor(new java.awt.Color(255, 255, 255));
 
         cboxCategoria.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -920,7 +920,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         jpnAutor.setPreferredSize(new java.awt.Dimension(1109, 685));
 
         kGradientPanel3.setkEndColor(new java.awt.Color(51, 51, 51));
-        kGradientPanel3.setkGradientFocus(350);
+        kGradientPanel3.setkGradientFocus(800);
         kGradientPanel3.setkStartColor(new java.awt.Color(255, 255, 255));
         kGradientPanel3.setPreferredSize(new java.awt.Dimension(1109, 685));
 
@@ -1237,11 +1237,11 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         jpnAutor.setLayout(jpnAutorLayout);
         jpnAutorLayout.setHorizontalGroup(
             jpnAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1104, Short.MAX_VALUE)
+            .addComponent(kGradientPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1106, Short.MAX_VALUE)
         );
         jpnAutorLayout.setVerticalGroup(
             jpnAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(kGradientPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
         );
 
         janelaDeAbas.addTab("Autor", jpnAutor);
@@ -1250,7 +1250,7 @@ public class CadastroDeLivros extends javax.swing.JFrame {
         jpnAvaliacao.setPreferredSize(new java.awt.Dimension(1109, 685));
 
         kGradientPanel4.setkEndColor(new java.awt.Color(51, 51, 51));
-        kGradientPanel4.setkGradientFocus(350);
+        kGradientPanel4.setkGradientFocus(800);
         kGradientPanel4.setkStartColor(new java.awt.Color(255, 255, 255));
 
         cboxAvaliacaoDoLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
