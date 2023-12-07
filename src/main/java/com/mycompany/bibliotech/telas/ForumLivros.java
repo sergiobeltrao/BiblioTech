@@ -8,6 +8,7 @@ import com.mycompany.bibliotech.dao.AvaliacaoDAO;
 import com.mycompany.bibliotech.dao.ExcluirUserDAO;
 import com.mycompany.bibliotech.dao.LivroDAO;
 import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;
+import com.mycompany.bibliotech.dao.UsuarioLoginDAO;
 import com.mycompany.bibliotech.model.bean.Avaliacao;
 import com.mycompany.bibliotech.model.bean.Endereco;
 import com.mycompany.bibliotech.model.bean.Favoritos;
@@ -39,6 +40,19 @@ public class ForumLivros extends javax.swing.JFrame {
      */
     public ForumLivros() {
         initComponents();
+        UsuarioLoginDAO usuarioLoginDao = new UsuarioLoginDAO();
+
+       if (usuarioLoginDao.tipoDoUsuarioLogado()) {
+            CadUserButton.setVisible(true);
+            ExcluirUserButton.setVisible(true);
+            btnEdicaoDeLivro.setVisible(true);
+            EditAvaButton.setVisible(true);
+        } else {
+            CadUserButton.setVisible(false);
+            ExcluirUserButton.setVisible(false);
+            btnEdicaoDeLivro.setVisible(false);
+            EditAvaButton.setVisible(false);
+        }
         DefaultTableModel modelo = (DefaultTableModel) jtbAvaliacoes.getModel();
         jtbAvaliacoes.setRowSorter(new TableRowSorter(modelo));
         LivroDAO.selectGeralLivroTitulo(cboxResultadoPesquisaLivro);
@@ -516,8 +530,15 @@ public class ForumLivros extends javax.swing.JFrame {
     }//GEN-LAST:event_jtbAvaliacoesMouseClicked
 
     private void txtMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenuActionPerformed
-        new TelaPrincipalAdministrador().setVisible(true);
-        this.dispose();
+        UsuarioLoginDAO usuarioLoginDao = new UsuarioLoginDAO();
+
+        if (usuarioLoginDao.tipoDoUsuarioLogado()) {
+            new TelaPrincipalAdministrador().setVisible(true);
+            this.dispose();
+        } else {
+            new TelaPrincipalCliente().setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_txtMenuActionPerformed
 
     /**
