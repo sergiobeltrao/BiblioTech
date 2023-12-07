@@ -33,7 +33,7 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
         selectTabelaLivro();
         UsuarioLoginDAO usuarioLoginDao = new UsuarioLoginDAO();
 
-       if (usuarioLoginDao.tipoDoUsuarioLogado()) {
+        if (usuarioLoginDao.tipoDoUsuarioLogado()) {
             CadUserButton.setVisible(true);
             ExcluirUserButton.setVisible(true);
             btnEdicaoDeLivro.setVisible(true);
@@ -248,9 +248,9 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
                     .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jlbCapaDoLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                            .addComponent(txtTituloLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTituloLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(cboxNotaLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboxNotaLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(33, 33, 33)
                             .addComponent(tpnComentarioDoLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(btnSelecionar, javax.swing.GroupLayout.Alignment.TRAILING)))
@@ -551,6 +551,10 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
                 avaliacaoDao.deletarAvaliacao(idUsuario, valorDaNotaDouble, comentario);
                 JOptionPane.showMessageDialog(null, "Avaliação deletada");
                 selectTabelaLivro();
+                txtTituloLivro.setText("");
+                cboxNotaLivro.setSelectedItem("Não Informada");
+                txtComentarioLivro.setText("");
+                jlbCapaDoLivro.setIcon(null);
             } else {
                 JOptionPane.showMessageDialog(null, "Operação cancelada pelo usuário");
             }
@@ -611,6 +615,10 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
                 avaliacaoDao.atualizarAvaliacao(idUsuario, notaFormatada, comentarioLivro, valorIdLivro);
                 JOptionPane.showMessageDialog(null, "Avaliação atualizada com sucesso!");
                 selectTabelaLivro();
+                txtTituloLivro.setText("");
+                cboxNotaLivro.setSelectedItem("Não Informada");
+                txtComentarioLivro.setText("");
+                jlbCapaDoLivro.setIcon(null);
             } else {
                 JOptionPane.showMessageDialog(null, "Operação cancelada pelo usuário");
             }
@@ -651,7 +659,7 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
 
                     // Exibir o JOptionPane com o JPanel personalizado
                     int result = JOptionPane.showOptionDialog(null, panel, "Digite a senha",
-                        JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+                            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
 
                     // Verificar a resposta do JOptionPane
                     if (result == JOptionPane.OK_OPTION) {
