@@ -403,6 +403,7 @@ public class EdicaoAvaliacoes extends javax.swing.JFrame {
         });
 
         jtbAvaliacoes.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jtbAvaliacoes.setForeground(new java.awt.Color(0, 0, 0));
         jtbAvaliacoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
