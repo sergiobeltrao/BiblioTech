@@ -3,6 +3,7 @@ package com.mycompany.bibliotech.telas;
 import com.mycompany.bibliotech.dao.AvaliacaoDAO;
 import com.mycompany.bibliotech.dao.ExcluirUserDAO;
 import com.mycompany.bibliotech.dao.LivroCategoriaDAO;
+import com.mycompany.bibliotech.dao.LivroDAO;
 import com.mycompany.bibliotech.dao.TelaAvaliacaoDAO;
 import com.mycompany.bibliotech.dao.UsuarioCadastroDAO;
 import com.mycompany.bibliotech.dao.UsuarioLoginDAO;
@@ -29,6 +30,8 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     public TelaAvaliacao(Avaliacao avaliacao) {
         initComponents();
         setPesquisarValues(avaliacao);
+        cboxNomeLivro.setEnabled(true);
+         LivroDAO.selectGeralLivroTitulo(cboxNomeLivro);
         UsuarioLoginDAO usuarioLoginDao = new UsuarioLoginDAO();
 
        if (usuarioLoginDao.tipoDoUsuarioLogado()) {
@@ -48,9 +51,10 @@ public class TelaAvaliacao extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent evt) {
                 try {
                     String pesquisar = cboxNomeLivro.getSelectedItem().toString();
+                     String nomeLivro = extrairNomeLivro(pesquisar.toString());
                     if (pesquisar != null && !pesquisar.isEmpty()) {
                         TelaAvaliacaoDAO taDAO = new TelaAvaliacaoDAO();
-                        Avaliacao pes = taDAO.find(pesquisar, imagemLivro);
+                        Avaliacao pes = taDAO.find(nomeLivro, imagemLivro);
                         setPesquisarValues(pes);
                     }
                 } catch (SQLException ex) {
@@ -73,6 +77,24 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         listarCategorias();
 
     }
+
+    private String extrairNomeLivro(String textoCompleto) {
+    // Divide o texto usando "-" como delimitador
+    String[] partes = textoCompleto.split("-");
+
+    // Verifica se há pelo menos duas partes
+    if (partes.length > 1) {
+        // Pega a segunda parte e remove espaços extras
+        String nomeLivro = partes[1].trim();
+
+        // Remove números e pontos do início do nome do livro
+        nomeLivro = nomeLivro.replaceAll("^[0-9.]+", "").trim();
+
+        return nomeLivro;
+    }
+
+    return ""; // Retorna uma string vazia se não encontrar o nome do livro
+}
 
     private void setPesquisarValues(Avaliacao avaliacao) {
         if (avaliacao != null) {
@@ -785,11 +807,6 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cboxAlfabetoActionPerformed
 
-    private void cboxNomeLivroeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxNomeLivroeActionPerformed
-
-
-    }//GEN-LAST:event_cboxNomeLivroeActionPerformed
-
     public void listarCategorias() {
         LivroCategoriaDAO.listarCategorias(cboxCategoriaBusca);
     }
@@ -962,6 +979,10 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         new CentralDeAvaliacoes().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_MinhasAvaButton1ActionPerformed
+
+    private void cboxNomeLivroeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxNomeLivroeActionPerformed
+
+    }//GEN-LAST:event_cboxNomeLivroeActionPerformed
 
     /**
      * @param args the command line arguments
