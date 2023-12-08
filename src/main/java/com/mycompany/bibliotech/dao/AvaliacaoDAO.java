@@ -102,7 +102,7 @@ public class AvaliacaoDAO {
         PreparedStatement stmt = null;
 
         try {
-
+            con.setAutoCommit(false);  // Desativa o autocommit
             // Pega o ID_LIVRO que está sendo cadastrado
             String consultaSQL = "SELECT ID_LIVRO FROM LIVRO WHERE LIV_NOME_LIVRO = ?";
             stmt = con.prepareStatement(consultaSQL);
@@ -138,8 +138,7 @@ public class AvaliacaoDAO {
             stmt.setInt(2, idLivro);
             stmt.setString(3, rank);
             stmt.setString(4, comentario);
-            
-            
+
             int linhasAfetadas = stmt.executeUpdate();
 
             if (linhasAfetadas > 0) {

@@ -555,7 +555,7 @@
                         <LineBorder roundedCorners="true"/>
                       </Border>
                       <Font PropertyName="font" name="Segoe UI" size="12" style="1"/>
-                      <Color PropertyName="color" blue="0" green="0" red="0" type="rgb"/>
+                      <Color PropertyName="color" blue="0" green="0" red="ff" type="rgb"/>
                     </TitledBorder>
                   </Border>
                 </Property>
@@ -570,7 +570,7 @@
                         <LineBorder roundedCorners="true"/>
                       </Border>
                       <Font PropertyName="font" name="Segoe UI" size="12" style="1"/>
-                      <Color PropertyName="color" blue="0" green="0" red="0" type="rgb"/>
+                      <Color PropertyName="color" blue="0" green="0" red="ff" type="rgb"/>
                     </TitledBorder>
                   </Border>
                 </Property>
@@ -585,7 +585,7 @@
                         <LineBorder roundedCorners="true"/>
                       </Border>
                       <Font PropertyName="font" name="Segoe UI" size="12" style="1"/>
-                      <Color PropertyName="color" blue="0" green="0" red="0" type="rgb"/>
+                      <Color PropertyName="color" blue="0" green="0" red="ff" type="rgb"/>
                     </TitledBorder>
                   </Border>
                 </Property>
@@ -600,7 +600,7 @@
                         <LineBorder roundedCorners="true"/>
                       </Border>
                       <Font PropertyName="font" name="Segoe UI" size="12" style="1"/>
-                      <Color PropertyName="color" blue="0" green="0" red="0" type="rgb"/>
+                      <Color PropertyName="color" blue="0" green="0" red="ff" type="rgb"/>
                     </TitledBorder>
                   </Border>
                 </Property>
@@ -615,7 +615,7 @@
                         <LineBorder roundedCorners="true"/>
                       </Border>
                       <Font PropertyName="font" name="Segoe UI" size="12" style="1"/>
-                      <Color PropertyName="color" blue="0" green="0" red="0" type="rgb"/>
+                      <Color PropertyName="color" blue="0" green="0" red="ff" type="rgb"/>
                     </TitledBorder>
                   </Border>
                 </Property>
