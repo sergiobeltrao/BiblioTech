@@ -31,7 +31,7 @@ public class EdicaoAvaliacoes extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) jtbAvaliacoes.getModel();
         jtbAvaliacoes.setRowSorter(new TableRowSorter(modelo));
         selectTabelaLivro();
-        
+
     }
 
     public class CenterRenderer extends DefaultTableCellRenderer {
@@ -642,6 +642,14 @@ public class EdicaoAvaliacoes extends javax.swing.JFrame {
                 avaliacaoDao.deletarAvaliacao(idUsuario, valorDaNotaDouble, comentario);
                 JOptionPane.showMessageDialog(null, "Avaliação deletada");
                 selectTabelaLivro();
+                txtTituloLivro.setText("");
+                cboxNotaLivro.setSelectedItem("Não Informada");
+                txtComentarioLivro.setText("");
+                jlbCapaDoLivro.setIcon(null);
+                userTxt.setText(null);
+                cboxNotaLivro.setEnabled(false);
+                userTxt.setEnabled(false);
+
             } else {
                 JOptionPane.showMessageDialog(null, "Operação cancelada pelo usuário");
             }
@@ -741,7 +749,7 @@ public class EdicaoAvaliacoes extends javax.swing.JFrame {
 
                     // Exibir o JOptionPane com o JPanel personalizado
                     int result = JOptionPane.showOptionDialog(null, panel, "Digite a senha",
-                        JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+                            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
 
                     // Verificar a resposta do JOptionPane
                     if (result == JOptionPane.OK_OPTION) {
