@@ -1750,9 +1750,9 @@ public class EdicaoDeLivro extends javax.swing.JFrame {
         // Seta os dados caso nenhum erro seja encontrado ou mostra o erro na tela.
         if (verificaErroCadastro() != null) {
             JOptionPane.showMessageDialog(null, verificaErroCadastro());
-        } else if (livroDao.verificaDuplicidadeIsbn(formatedIsbn.getText()).equals(formatedIsbn.getText())) {
+        } /* else if (livroDao.verificaDuplicidadeIsbn(formatedIsbn.getText()).equals(formatedIsbn.getText())) {
             JOptionPane.showMessageDialog(null, "Esse ISBN já está cadastrado.");
-        } else {
+        } */ else {
             livro.setTitulo(txtTituloLivro.getText());
             livro.setIsbn(formatedIsbn.getText());
             livro.setAnoDePublicacao(Integer.parseInt(txtAnoDePublicacao.getText()));
