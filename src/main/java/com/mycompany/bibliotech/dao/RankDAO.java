@@ -20,7 +20,7 @@ public class RankDAO {
                     + "ROUND(AVG(AVALIACAO.AVA_USUARIO), 1) AS MEDIA_NOTA FROM LIVRO\n"
                     + "JOIN AVALIACAO ON LIVRO.ID_LIVRO = AVALIACAO.AVA_FK_LIVRO\n"
                     + "GROUP BY LIVRO.ID_LIVRO, LIVRO.LIV_NOME_LIVRO\n"
-                    + "ORDER BY MEDIA_NOTA DESC LIMIT 5;");
+                    + "ORDER BY MEDIA_NOTA DESC LIMIT 10;");
             ResultSet rank = stmt.executeQuery();
 
             List<String> resultList = new ArrayList<>();
@@ -73,7 +73,7 @@ public class RankDAO {
             stmt = con.prepareStatement("SELECT ROUND(AVG(AVALIACAO.AVA_USUARIO), 1) AS MEDIA_NOTA FROM LIVRO\n"
                     + "JOIN AVALIACAO ON LIVRO.ID_LIVRO = AVALIACAO.AVA_FK_LIVRO\n"
                     + "GROUP BY LIVRO.ID_LIVRO, LIVRO.LIV_NOME_LIVRO\n"
-                    + "ORDER BY MEDIA_NOTA DESC LIMIT 5;");
+                    + "ORDER BY MEDIA_NOTA DESC LIMIT 10;");
             ResultSet rank = stmt.executeQuery();
 
             List<String> resultList = new ArrayList<>();
