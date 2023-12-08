@@ -24,124 +24,99 @@ public class TelaAvaliacaoDAO {
 
     // Mostrar todos os livros. Sem filtrar.
     public static void listaTituloDosLivros(JComboBox<String> comboBox) {
-        try {
-            Connection con = ConnectionFactory.getConnection();
-            String sql = "SELECT * FROM LIVRO";
-            PreparedStatement comando = con.prepareStatement(sql);
-            ResultSet resultado = comando.executeQuery();
+    try {
+        Connection con = ConnectionFactory.getConnection();
+        String sql = "SELECT ID_LIVRO, CONCAT('ID ', ID_LIVRO, ' - ', LIV_NOME_LIVRO) AS ID_E_NOME_LIVRO FROM LIVRO";
+        PreparedStatement comando = con.prepareStatement(sql);
+        ResultSet resultado = comando.executeQuery();
 
-            comboBox.removeAllItems();
-            comboBox.addItem("");
+        comboBox.removeAllItems();
+        comboBox.addItem("");
 
-            while (resultado.next()) {
-                comboBox.addItem(resultado.getString("LIV_NOME_LIVRO"));
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao ler a tabela de livros: " + ex);
+        while (resultado.next()) {
+            comboBox.addItem(resultado.getString("ID_E_NOME_LIVRO"));
         }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Erro ao ler a tabela de livros: " + ex);
     }
+}
 
-    // Mostra os livros com base no que foi digitado.
-    public static void listaFiltrada(JComboBox<String> comboBox, String buscaTitulo) {
+public static void listaFiltrada(JComboBox<String> comboBox, String buscaTitulo) {
+    try {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = con.prepareStatement("SELECT ID_LIVRO, CONCAT('ID ', ID_LIVRO, ' - ', LIV_NOME_LIVRO) AS ID_E_NOME_LIVRO FROM LIVRO WHERE LIV_NOME_LIVRO LIKE ?");
+        stmt.setString(1, "%" + buscaTitulo + "%");
 
-        try {
-            Connection con = ConnectionFactory.getConnection();
-            PreparedStatement stmt = null;
+        ResultSet resultado = stmt.executeQuery();
 
-            stmt = con.prepareStatement("SELECT LIV_NOME_LIVRO FROM LIVRO WHERE LIV_NOME_LIVRO LIKE ?");
+        comboBox.removeAllItems();
+        comboBox.addItem("");
 
-            // Tive que mandar os % do comando SQL pra cá. Se usar direto no prepareStatement vai
-            // dar o erro "parameter index out of range (1 number of parameters which is 0)"
-            stmt.setString(1, "%" + buscaTitulo + "%");
-
-            //PreparedStatement comando = con.prepareStatement(sql);
-            ResultSet resultado = stmt.executeQuery();
-
-            comboBox.removeAllItems();
-            comboBox.addItem("");
-
-            while (resultado.next()) {
-                comboBox.addItem(resultado.getString("LIV_NOME_LIVRO"));
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao ler a tabela de livros: " + ex);
+        while (resultado.next()) {
+            comboBox.addItem(resultado.getString("ID_E_NOME_LIVRO"));
         }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Erro ao ler a tabela de livros: " + ex);
     }
+}
 
-    public static void listaAlfabeto(JComboBox<String> comboBox, String buscaAlfabetica) {
+public static void listaAlfabeto(JComboBox<String> comboBox, String buscaAlfabetica) {
+    try {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = con.prepareStatement("SELECT ID_LIVRO, CONCAT('ID ', ID_LIVRO, ' - ', LIV_NOME_LIVRO) AS ID_E_NOME_LIVRO FROM LIVRO WHERE LIV_NOME_LIVRO LIKE ?");
+        stmt.setString(1, buscaAlfabetica + "%");
 
-        try {
-            Connection con = ConnectionFactory.getConnection();
-            PreparedStatement stmt = null;
+        ResultSet resultado = stmt.executeQuery();
 
-            stmt = con.prepareStatement("SELECT LIV_NOME_LIVRO FROM LIVRO WHERE LIV_NOME_LIVRO LIKE ?");
+        comboBox.removeAllItems();
+        comboBox.addItem("");
 
-            stmt.setString(1, buscaAlfabetica + "%");
-
-            ResultSet resultado = stmt.executeQuery();
-
-            comboBox.removeAllItems();
-            comboBox.addItem("");
-
-            while (resultado.next()) {
-                comboBox.addItem(resultado.getString("LIV_NOME_LIVRO"));
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao bucar livro cabaço " + ex);
+        while (resultado.next()) {
+            comboBox.addItem(resultado.getString("ID_E_NOME_LIVRO"));
         }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Erro ao bucar livro cabaço " + ex);
     }
+}
 
-    public static void buscaCategorias(JComboBox<String> comboBox, String buscaCategorias) {
+public static void buscaCategorias(JComboBox<String> comboBox, String buscaCategorias) {
+    try {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = con.prepareStatement("SELECT ID_LIVRO, CONCAT('ID ', ID_LIVRO, ' - ', LIV_NOME_LIVRO) AS ID_E_NOME_LIVRO FROM LIVRO WHERE LIV_CATEGORIA = ?");
+        stmt.setString(1, buscaCategorias);
 
-        try {
+        ResultSet resultado = stmt.executeQuery();
 
-            Connection con = ConnectionFactory.getConnection();
-            PreparedStatement stmt = null;
+        comboBox.removeAllItems();
+        comboBox.addItem("");
 
-            stmt = con.prepareStatement("SELECT LIV_NOME_LIVRO FROM LIVRO WHERE LIV_CATEGORIA = ?");
-
-            stmt.setString(1, buscaCategorias);
-
-            ResultSet resultado = stmt.executeQuery();
-
-            comboBox.removeAllItems();
-            comboBox.addItem("");
-
-            while (resultado.next()) {
-                comboBox.addItem(resultado.getString("LIV_NOME_LIVRO"));
-            }
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Erro ao buscar livro " + ex);
+        while (resultado.next()) {
+            comboBox.addItem(resultado.getString("ID_E_NOME_LIVRO"));
         }
-
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, " Erro ao buscar livro " + ex);
     }
+}
 
-    public static void buscaSubCategorias(JComboBox<String> comboBox, String buscaSubCategorias) {
+public static void buscaSubCategorias(JComboBox<String> comboBox, String buscaSubCategorias) {
+    try {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = con.prepareStatement("SELECT ID_LIVRO, CONCAT('ID ', ID_LIVRO, ' - ', LIV_NOME_LIVRO) AS ID_E_NOME_LIVRO FROM LIVRO WHERE LIV_SUBCATEGORIA = ?");
+        stmt.setString(1, buscaSubCategorias);
 
-        try {
+        ResultSet resultado = stmt.executeQuery();
 
-            Connection con = ConnectionFactory.getConnection();
-            PreparedStatement stmt = null;
+        comboBox.removeAllItems();
+        comboBox.addItem("");
 
-            stmt = con.prepareStatement("SELECT LIV_NOME_LIVRO FROM LIVRO WHERE LIV_SUBCATEGORIA = ?");
-
-            stmt.setString(1, buscaSubCategorias);
-
-            ResultSet resultado = stmt.executeQuery();
-
-            comboBox.removeAllItems();
-            comboBox.addItem("");
-
-            while (resultado.next()) {
-                comboBox.addItem(resultado.getString("LIV_NOME_LIVRO"));
-            }
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Erro ao buscar livro " + ex);
+        while (resultado.next()) {
+            comboBox.addItem(resultado.getString("ID_E_NOME_LIVRO"));
         }
-
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, " Erro ao buscar livro " + ex);
     }
+}
+
 
     public Avaliacao find(String pesquisar, JLabel imagemLivro) throws SQLException {
         try (Connection con = ConnectionFactory.getConnection(); 

@@ -837,12 +837,13 @@ public class TelaAvaliacao extends javax.swing.JFrame {
 
     private void btnAvaliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvaliarActionPerformed
         String pesquisar = cboxNomeLivro.getSelectedItem().toString();
+          String nomeLivro = extrairNomeLivro(pesquisar.toString());
         Login login = ApplicationContext.getLogin();
         Avaliacao pes = new Avaliacao();
         AvaliacaoDAO notaDAO = new AvaliacaoDAO();
         String nota = txtNota.getText();
         String comentario = jTextArea1.getText();
-        notaDAO.rank(pes, pesquisar, login.getNick(), nota, comentario);
+        notaDAO.rank(pes, nomeLivro, login.getNick(), nota, comentario);
         Avaliacao avaliacao = new Avaliacao();
         new TelaAvaliacao(avaliacao).setVisible(true);
         this.setVisible(false);
