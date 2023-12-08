@@ -767,9 +767,9 @@ public class TelaAvaliacao extends javax.swing.JFrame {
 
         cboxNomeLivro.setEnabled(true);
 
-        cboxNomeLivro.setMaximumRowCount(5);
-        cboxNomeLivro.showPopup();
-
+        cboxNomeLivro.setMaximumRowCount(10);
+        //cboxNomeLivro.showPopup();
+        JOptionPane.showMessageDialog(null, "Selecione um livro na caixa ´´nome do livro``");
         String busca = txtTituloBusca.getText();
         String buscaCategorias = cboxCategoriaBusca.getSelectedItem().toString();
         String buscaSubCategorias = cboxSubCategoriaBusca.getSelectedItem().toString();
