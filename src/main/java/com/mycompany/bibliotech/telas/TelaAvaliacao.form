@@ -221,7 +221,7 @@
                       </Group>
                       <Component id="jScrollPane1" min="-2" pref="227" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="35" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="36" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -823,14 +823,14 @@
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="edicaoUserButton" alignment="1" min="-2" pref="145" max="-2" attributes="0"/>
+                                  <Component id="edicaoUserButton" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="btnEncerrarSessao" alignment="0" pref="145" max="32767" attributes="0"/>
                                       <Component id="CadLivroButton" alignment="0" pref="145" max="32767" attributes="0"/>
                                       <Component id="txtVoltar" alignment="0" pref="145" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="ExcluirUserButton" alignment="1" min="-2" pref="145" max="-2" attributes="0"/>
-                                  <Component id="CadUserButton" alignment="1" min="-2" pref="145" max="-2" attributes="0"/>
+                                  <Component id="ExcluirUserButton" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
+                                  <Component id="CadUserButton" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                                   <Component id="btnEdicaoDeLivro" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                                   <Component id="EditAvaButton" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                                   <Component id="MinhasAvaButton" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
@@ -854,22 +854,22 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtVoltar" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                      <Component id="CadUserButton" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                      <Component id="edicaoUserButton" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                      <Component id="ExcluirUserButton" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Component id="CadLivroButton" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                      <Component id="btnEdicaoDeLivro" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                      <Component id="EditAvaButton" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Component id="MinhasAvaButton" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Component id="MinhasAvaButton1" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace pref="294" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <Component id="edicaoUserButton" min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <Component id="EditAvaButton" min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <Component id="CadUserButton" min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <Component id="btnEdicaoDeLivro" min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <Component id="ExcluirUserButton" min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnEncerrarSessao" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
