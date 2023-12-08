@@ -126,15 +126,13 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         kGradientPanel2.setkStartColor(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Menu");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 0, 0)));
 
         CadUserButton.setBackground(new java.awt.Color(102, 102, 102));
         CadUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        CadUserButton.setForeground(new java.awt.Color(0, 0, 0));
-        CadUserButton.setText("Cadastro de Usuario");
+        CadUserButton.setText("Cadastro de Usuário");
         CadUserButton.setToolTipText("cadastrar novos usuarios");
         CadUserButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         CadUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -146,8 +144,7 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
         edicaoUserButton.setBackground(new java.awt.Color(102, 102, 102));
         edicaoUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        edicaoUserButton.setForeground(new java.awt.Color(0, 0, 0));
-        edicaoUserButton.setText("Edição de Usuario");
+        edicaoUserButton.setText("Edição de Usuário");
         edicaoUserButton.setToolTipText("editar usuarios cadastrados");
         edicaoUserButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         edicaoUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -159,7 +156,6 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
         CadLivroButton.setBackground(new java.awt.Color(102, 102, 102));
         CadLivroButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        CadLivroButton.setForeground(new java.awt.Color(0, 0, 0));
         CadLivroButton.setText("Cadastro de Livro");
         CadLivroButton.setToolTipText("cadastrar novos livros");
         CadLivroButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -172,7 +168,6 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
         AvaButton.setBackground(new java.awt.Color(102, 102, 102));
         AvaButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        AvaButton.setForeground(new java.awt.Color(0, 0, 0));
         AvaButton.setText("Avaliação");
         AvaButton.setToolTipText("ir para avaliações de livros");
         AvaButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -185,8 +180,7 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
         ExcluirUserButton.setBackground(new java.awt.Color(102, 102, 102));
         ExcluirUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        ExcluirUserButton.setForeground(new java.awt.Color(0, 0, 0));
-        ExcluirUserButton.setText("Excluir Usuarios");
+        ExcluirUserButton.setText("Excluir Usuários");
         ExcluirUserButton.setToolTipText("excluir usuarios cadastrados");
         ExcluirUserButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         ExcluirUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -198,7 +192,6 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
         btnEncerrarSessao.setBackground(new java.awt.Color(102, 102, 102));
         btnEncerrarSessao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnEncerrarSessao.setForeground(new java.awt.Color(0, 0, 0));
         btnEncerrarSessao.setText("Encerrar Sessão");
         btnEncerrarSessao.setToolTipText("encerrar a sessaão atual");
         btnEncerrarSessao.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -211,7 +204,6 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
         btnEdicaoDeLivro.setBackground(new java.awt.Color(102, 102, 102));
         btnEdicaoDeLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnEdicaoDeLivro.setForeground(new java.awt.Color(0, 0, 0));
         btnEdicaoDeLivro.setText("Edição de Livro");
         btnEdicaoDeLivro.setToolTipText("editar livros cadastrados");
         btnEdicaoDeLivro.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -224,7 +216,6 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
         EditAvaButton.setBackground(new java.awt.Color(102, 102, 102));
         EditAvaButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        EditAvaButton.setForeground(new java.awt.Color(0, 0, 0));
         EditAvaButton.setText("Editar Avaliações");
         EditAvaButton.setToolTipText("editar avaliações de usuarios");
         EditAvaButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -237,7 +228,6 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
         MinhasAvaButton.setBackground(new java.awt.Color(102, 102, 102));
         MinhasAvaButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        MinhasAvaButton.setForeground(new java.awt.Color(0, 0, 0));
         MinhasAvaButton.setText("Minhas Avaliações");
         MinhasAvaButton.setToolTipText("ir para minhas avaliações de livros");
         MinhasAvaButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -250,8 +240,7 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
 
         MinhasAvaButton1.setBackground(new java.awt.Color(102, 102, 102));
         MinhasAvaButton1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        MinhasAvaButton1.setForeground(new java.awt.Color(0, 0, 0));
-        MinhasAvaButton1.setText("Forum Livros");
+        MinhasAvaButton1.setText("Fórum Livros");
         MinhasAvaButton1.setToolTipText("ir para forum de livros");
         MinhasAvaButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         MinhasAvaButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -342,9 +331,8 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         rank.setViewportView(jList1);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Ultimas interações ");
+        jLabel3.setText("Últimas Interações ");
         jLabel3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jList2.setBackground(new java.awt.Color(204, 204, 204));
@@ -352,9 +340,8 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         avaliado.setViewportView(jList2);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Novos usuarios");
+        jLabel2.setText("Novos Usuários");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         listaComMaisAvaliacao.setBackground(new java.awt.Color(204, 204, 204));
@@ -363,9 +350,8 @@ public class TelaPrincipalAdministrador extends javax.swing.JFrame {
         numeroAvaliado.setViewportView(listaComMaisAvaliacao);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Usuarios mais ativos");
+        jLabel4.setText("Usuários Mais Ativos");
         jLabel4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);

@@ -128,15 +128,13 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
         kGradientPanel2.setkStartColor(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Menu");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 0, 0)));
 
         CadUserButton.setBackground(new java.awt.Color(102, 102, 102));
         CadUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        CadUserButton.setForeground(new java.awt.Color(0, 0, 0));
-        CadUserButton.setText("Cadastro de Usuario");
+        CadUserButton.setText("Cadastro de Usuário");
         CadUserButton.setToolTipText("cadastrar novos usuarios");
         CadUserButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         CadUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -148,8 +146,7 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
 
         edicaoUserButton.setBackground(new java.awt.Color(102, 102, 102));
         edicaoUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        edicaoUserButton.setForeground(new java.awt.Color(0, 0, 0));
-        edicaoUserButton.setText("Edição de Usuario");
+        edicaoUserButton.setText("Edição de Usuário");
         edicaoUserButton.setToolTipText("edição de usuarios  cadastrados");
         edicaoUserButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         edicaoUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -161,7 +158,6 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
 
         CadLivroButton.setBackground(new java.awt.Color(102, 102, 102));
         CadLivroButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        CadLivroButton.setForeground(new java.awt.Color(0, 0, 0));
         CadLivroButton.setText("Cadastro de Livro");
         CadLivroButton.setToolTipText("cadastrar novos livros");
         CadLivroButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -174,7 +170,6 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
 
         AvaButton.setBackground(new java.awt.Color(102, 102, 102));
         AvaButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        AvaButton.setForeground(new java.awt.Color(0, 0, 0));
         AvaButton.setText("Avaliação");
         AvaButton.setToolTipText("ir para avaliações de livros");
         AvaButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -187,8 +182,7 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
 
         ExcluirUserButton.setBackground(new java.awt.Color(102, 102, 102));
         ExcluirUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        ExcluirUserButton.setForeground(new java.awt.Color(0, 0, 0));
-        ExcluirUserButton.setText("Excluir Usuarios");
+        ExcluirUserButton.setText("Excluir Usuários");
         ExcluirUserButton.setToolTipText("excluir usuarios cadastrados");
         ExcluirUserButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         ExcluirUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -200,7 +194,6 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
 
         btnEncerrarSessao.setBackground(new java.awt.Color(102, 102, 102));
         btnEncerrarSessao.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnEncerrarSessao.setForeground(new java.awt.Color(0, 0, 0));
         btnEncerrarSessao.setText("Encerrar Sessão");
         btnEncerrarSessao.setToolTipText("encerrar sessão atual");
         btnEncerrarSessao.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -213,7 +206,6 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
 
         btnEdicaoDeLivro.setBackground(new java.awt.Color(102, 102, 102));
         btnEdicaoDeLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnEdicaoDeLivro.setForeground(new java.awt.Color(0, 0, 0));
         btnEdicaoDeLivro.setText("Edição de Livro");
         btnEdicaoDeLivro.setToolTipText("editar livros cadastrados");
         btnEdicaoDeLivro.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -226,7 +218,6 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
 
         EditAvaButton.setBackground(new java.awt.Color(102, 102, 102));
         EditAvaButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        EditAvaButton.setForeground(new java.awt.Color(0, 0, 0));
         EditAvaButton.setText("Editar Avaliações");
         EditAvaButton.setToolTipText("editar avaliações dos usuarios");
         EditAvaButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -239,8 +230,7 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
 
         MinhasAvaButton1.setBackground(new java.awt.Color(102, 102, 102));
         MinhasAvaButton1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        MinhasAvaButton1.setForeground(new java.awt.Color(0, 0, 0));
-        MinhasAvaButton1.setText("Forum Livros");
+        MinhasAvaButton1.setText("Fórum Livros");
         MinhasAvaButton1.setToolTipText("ir para forum de livros");
         MinhasAvaButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         MinhasAvaButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -252,8 +242,7 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
 
         txtMenu.setBackground(new java.awt.Color(102, 102, 102));
         txtMenu.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtMenu.setForeground(new java.awt.Color(0, 0, 0));
-        txtMenu.setText("Inicio");
+        txtMenu.setText("Início");
         txtMenu.setToolTipText("Ir para o Inicio");
         txtMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -339,11 +328,10 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
         kGradientPanel1.setMinimumSize(new java.awt.Dimension(0, 0));
         kGradientPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        jlbCapaDoLivro.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Imagem:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        jlbCapaDoLivro.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Imagem:"));
         jlbCapaDoLivro.setEnabled(false);
 
         cboxNotaLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxNotaLivro.setForeground(new java.awt.Color(0, 0, 0));
         cboxNotaLivro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada", "10 - Excelente", "9 - Ótimo", "8 - Muito Bom", "7 - Bom", "6 - Satisfatório", "5 - Regular", "4 - Abaixo da Média", "3 - Ruim", "2 - Muito Ruim", "1 - Péssimo", "0 - Inaceitável" }));
         cboxNotaLivro.setAutoscrolls(true);
         cboxNotaLivro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -352,15 +340,13 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
 
         txtComentarioLivro.setColumns(20);
         txtComentarioLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtComentarioLivro.setForeground(new java.awt.Color(0, 0, 0));
         txtComentarioLivro.setLineWrap(true);
         txtComentarioLivro.setRows(5);
-        txtComentarioLivro.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Comentario:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13), new java.awt.Color(0, 0, 0))); // NOI18N
+        txtComentarioLivro.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Comentario:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 13))); // NOI18N
         txtComentarioLivro.setEnabled(false);
         tpnComentarioDoLivro.setViewportView(txtComentarioLivro);
 
         btnSalvar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnSalvar.setForeground(new java.awt.Color(0, 0, 0));
         btnSalvar.setText("Salvar");
         btnSalvar.setToolTipText("salvar as alterações");
         btnSalvar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -371,7 +357,6 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
         });
 
         btnDeletar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnDeletar.setForeground(new java.awt.Color(0, 0, 0));
         btnDeletar.setText("Deletar");
         btnDeletar.setToolTipText("deletar avaliação selecionada");
         btnDeletar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -383,7 +368,6 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
         });
 
         btnSelecionar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnSelecionar.setForeground(new java.awt.Color(0, 0, 0));
         btnSelecionar.setText("Selecionar");
         btnSelecionar.setToolTipText("selecione uma avaliação");
         btnSelecionar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -395,7 +379,6 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
         });
 
         btnLimpar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnLimpar.setForeground(new java.awt.Color(0, 0, 0));
         btnLimpar.setText("Limpar");
         btnLimpar.setToolTipText("limpar seleções");
         btnLimpar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -408,7 +391,6 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
 
         txtTituloLivro.setEditable(false);
         txtTituloLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtTituloLivro.setForeground(new java.awt.Color(0, 0, 0));
         txtTituloLivro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTituloLivro.setToolTipText("nome do livro selecionado");
         txtTituloLivro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -458,12 +440,10 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
         }
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Título do Livro:");
         jLabel11.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Avaliação:");
         jLabel12.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
@@ -531,11 +511,11 @@ public class TelaMinhasAvaliacoes extends javax.swing.JFrame {
         menuPrincipal.setLayout(menuPrincipalLayout);
         menuPrincipalLayout.setHorizontalGroup(
             menuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1097, Short.MAX_VALUE)
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1095, Short.MAX_VALUE)
         );
         menuPrincipalLayout.setVerticalGroup(
             menuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 719, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

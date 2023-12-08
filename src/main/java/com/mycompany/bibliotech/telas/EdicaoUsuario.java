@@ -218,7 +218,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         kGradientPanel1.setkStartColor(new java.awt.Color(255, 255, 255));
 
         telefoneTipoBox.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        telefoneTipoBox.setForeground(new java.awt.Color(0, 0, 0));
         telefoneTipoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RESIDENCIAL", "COMERCIAL", "CELULAR" }));
         telefoneTipoBox.setToolTipText("Escolhao tipo de telefone.");
         telefoneTipoBox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -230,7 +229,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         sexoBox.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        sexoBox.setForeground(new java.awt.Color(0, 0, 0));
         sexoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MASC", "FEM", "OUTRO" }));
         sexoBox.setToolTipText("");
         sexoBox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -242,7 +240,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         nomeTxt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nomeTxt.setForeground(new java.awt.Color(0, 0, 0));
         nomeTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         nomeTxt.setToolTipText("insira o nome do usuario");
         nomeTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -255,7 +252,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         emailTxt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        emailTxt.setForeground(new java.awt.Color(0, 0, 0));
         emailTxt.setToolTipText("Insira o email");
         emailTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         emailTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -265,7 +261,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         nickTxt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        nickTxt.setForeground(new java.awt.Color(0, 0, 0));
         nickTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         nickTxt.setToolTipText("escolha o nick name");
         nickTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -276,7 +271,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         sobrenomeTxt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        sobrenomeTxt.setForeground(new java.awt.Color(0, 0, 0));
         sobrenomeTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sobrenomeTxt.setToolTipText("insira sobrenome completo");
         sobrenomeTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -287,7 +281,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         cpfTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        cpfTxt.setForeground(new java.awt.Color(0, 0, 0));
         try {
             cpfTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
@@ -302,7 +295,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         foneTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        foneTxt.setForeground(new java.awt.Color(0, 0, 0));
         try {
             foneTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
         } catch (java.text.ParseException ex) {
@@ -317,12 +309,10 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         dataNascChooser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        dataNascChooser.setForeground(new java.awt.Color(0, 0, 0));
         dataNascChooser.setToolTipText("2004-08-07");
         dataNascChooser.setDateFormatString("yyyy-MM-dd");
 
         LimparButtonUser.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        LimparButtonUser.setForeground(new java.awt.Color(0, 0, 0));
         LimparButtonUser.setText("Limpar");
         LimparButtonUser.setToolTipText("limpar campos digitados");
         LimparButtonUser.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -334,7 +324,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         ProxEdUserButtonUser.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        ProxEdUserButtonUser.setForeground(new java.awt.Color(0, 0, 0));
         ProxEdUserButtonUser.setText("Próxima");
         ProxEdUserButtonUser.setToolTipText("ir para proxima aba da atualização");
         ProxEdUserButtonUser.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -349,51 +338,41 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         idLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         avisoLabel.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        avisoLabel.setForeground(new java.awt.Color(0, 0, 0));
         avisoLabel.setText("Itens preenchidos com * são obrigatórios!!");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nome:");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Sobrenome:");
         jLabel3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Nick Name:");
         jLabel4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Numero telefone:");
         jLabel5.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Qual o tipo:");
         jLabel6.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Digite CPF:");
         jLabel7.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Email:");
         jLabel8.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Data de nascimento:");
         jLabel9.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Sexo:");
         jLabel11.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
@@ -439,7 +418,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                         .addComponent(avisoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addContainerGap(162, Short.MAX_VALUE)
+                .addContainerGap(160, Short.MAX_VALUE)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(nomeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
@@ -489,8 +468,8 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                                 .addGroup(kGradientPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel31)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(155, 155, 155)))
+                                    .addComponent(jLabel5)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                             .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(telefoneTipoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(kGradientPanel1Layout.createSequentialGroup()
@@ -553,7 +532,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
                         .addComponent(ProxEdUserButtonUser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(sexoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(dataNascChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
                 .addComponent(idLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75))
         );
@@ -569,14 +548,13 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        edicoes.addTab("Edição usuario", edicaoUsuario);
+        edicoes.addTab("Edição usuário", edicaoUsuario);
 
         kGradientPanel3.setkEndColor(new java.awt.Color(51, 51, 51));
         kGradientPanel3.setkGradientFocus(800);
         kGradientPanel3.setkStartColor(new java.awt.Color(255, 255, 255));
 
         bairroTxt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        bairroTxt.setForeground(new java.awt.Color(0, 0, 0));
         bairroTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         bairroTxt.setToolTipText("nome do bairro");
         bairroTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -587,7 +565,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         cidadeTxt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cidadeTxt.setForeground(new java.awt.Color(0, 0, 0));
         cidadeTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         cidadeTxt.setToolTipText("Nome da cidade");
         cidadeTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -598,7 +575,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         ufTxt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        ufTxt.setForeground(new java.awt.Color(0, 0, 0));
         ufTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         ufTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         ufTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -608,7 +584,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         numTxt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        numTxt.setForeground(new java.awt.Color(0, 0, 0));
         numTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         numTxt.setToolTipText("numero da residencia");
         numTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -629,7 +604,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         endTxt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        endTxt.setForeground(new java.awt.Color(0, 0, 0));
         endTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         endTxt.setToolTipText("Nome da rua");
         endTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -640,7 +614,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         paisTxt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        paisTxt.setForeground(new java.awt.Color(0, 0, 0));
         paisTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         paisTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         paisTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -650,7 +623,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         cepTxt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        cepTxt.setForeground(new java.awt.Color(0, 0, 0));
         try {
             cepTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
@@ -665,7 +637,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         ProxEdUserButtonEnd.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        ProxEdUserButtonEnd.setForeground(new java.awt.Color(0, 0, 0));
         ProxEdUserButtonEnd.setText("Próxima ");
         ProxEdUserButtonEnd.setToolTipText("ir para proxima aba");
         ProxEdUserButtonEnd.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -677,7 +648,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         LimparButtonEnd.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        LimparButtonEnd.setForeground(new java.awt.Color(0, 0, 0));
         LimparButtonEnd.setText("Limpar");
         LimparButtonEnd.setToolTipText("limpar campos digitados");
         LimparButtonEnd.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -689,47 +659,38 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Nome da rua:");
         jLabel13.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("Numero:");
+        jLabel14.setText("Número:");
         jLabel14.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Bairro:");
         jLabel15.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("UF:");
         jLabel16.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Complemento:");
         jLabel17.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Cidade:");
         jLabel18.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel19.setText("Pais:");
+        jLabel19.setText("País:");
         jLabel19.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setText("CEP:");
         jLabel20.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         buscarCepButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        buscarCepButton.setForeground(new java.awt.Color(0, 0, 0));
         buscarCepButton.setText("Buscar");
         buscarCepButton.setToolTipText("buscar cep digitado");
         buscarCepButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -866,7 +827,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         kGradientPanel4.setkStartColor(new java.awt.Color(255, 255, 255));
 
         cboxSubCategoria1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxSubCategoria1.setForeground(new java.awt.Color(0, 0, 0));
         cboxSubCategoria1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada" }));
         cboxSubCategoria1.setToolTipText("escolha uma subcategoria de livro favorito");
         cboxSubCategoria1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -878,7 +838,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         cboxCategoria1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxCategoria1.setForeground(new java.awt.Color(0, 0, 0));
         cboxCategoria1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada" }));
         cboxCategoria1.setToolTipText("escolha uma categoria de livro favorito");
         cboxCategoria1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -890,7 +849,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         cboxSubCategoria2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxSubCategoria2.setForeground(new java.awt.Color(0, 0, 0));
         cboxSubCategoria2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada" }));
         cboxSubCategoria2.setToolTipText("escolha segunda subcategoria de livro favorito");
         cboxSubCategoria2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -902,7 +860,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         cboxCategoria2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        cboxCategoria2.setForeground(new java.awt.Color(0, 0, 0));
         cboxCategoria2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não Informada" }));
         cboxCategoria2.setToolTipText("escolha segunda categoria de livro favorito");
         cboxCategoria2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -914,31 +871,26 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setText("Escolha uma categoria de livro:");
         jLabel21.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setText("Escolha segunda categoria de livro:");
         jLabel22.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText("Escolha uma subcategoria de livro:");
         jLabel23.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel24.setText("Escolha segunda subcategoria de livro:");
         jLabel24.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         enterButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        enterButton.setForeground(new java.awt.Color(0, 0, 0));
         enterButton.setText("Atualizar cadastro");
         enterButton.setToolTipText("atualizar cadastro do usuario");
         enterButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -950,7 +902,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         });
 
         LimparButtonFav.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        LimparButtonFav.setForeground(new java.awt.Color(0, 0, 0));
         LimparButtonFav.setText("Limpar");
         LimparButtonFav.setToolTipText("limpa todos os campos da atualização de cadastro");
         LimparButtonFav.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1024,7 +975,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
             .addComponent(kGradientPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        edicoes.addTab("Edição dde livro favorito", edicaoFavorito);
+        edicoes.addTab("Edição de livro favorito", edicaoFavorito);
 
         MenuPainel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1033,14 +984,12 @@ public class EdicaoUsuario extends javax.swing.JFrame {
         kGradientPanel2.setkStartColor(new java.awt.Color(255, 255, 255));
 
         menu.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        menu.setForeground(new java.awt.Color(0, 0, 0));
         menu.setText("Menu");
         menu.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         menu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 0, 0)));
 
         CadLivroButton1.setBackground(new java.awt.Color(102, 102, 102));
         CadLivroButton1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        CadLivroButton1.setForeground(new java.awt.Color(0, 0, 0));
         CadLivroButton1.setText("Cadastro de Livro");
         CadLivroButton1.setToolTipText("Cadastrar novos livros");
         CadLivroButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -1053,7 +1002,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
         AvaButton1.setBackground(new java.awt.Color(102, 102, 102));
         AvaButton1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        AvaButton1.setForeground(new java.awt.Color(0, 0, 0));
         AvaButton1.setText("Avaliação");
         AvaButton1.setToolTipText("Inserir Avaliação de livro");
         AvaButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -1066,8 +1014,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
         ExcluirUserButton.setBackground(new java.awt.Color(102, 102, 102));
         ExcluirUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        ExcluirUserButton.setForeground(new java.awt.Color(0, 0, 0));
-        ExcluirUserButton.setText("Excluir Usuarios");
+        ExcluirUserButton.setText("Excluir Usuários");
         ExcluirUserButton.setToolTipText("Excluir usuarios inativos");
         ExcluirUserButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         ExcluirUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1079,7 +1026,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
         btnEncerrarSessao1.setBackground(new java.awt.Color(102, 102, 102));
         btnEncerrarSessao1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnEncerrarSessao1.setForeground(new java.awt.Color(0, 0, 0));
         btnEncerrarSessao1.setText("Encerrar Sessão");
         btnEncerrarSessao1.setToolTipText("encerrar sessão atual");
         btnEncerrarSessao1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -1092,7 +1038,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
         btnEdicaoDeLivro.setBackground(new java.awt.Color(102, 102, 102));
         btnEdicaoDeLivro.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btnEdicaoDeLivro.setForeground(new java.awt.Color(0, 0, 0));
         btnEdicaoDeLivro.setText("Edição de Livro");
         btnEdicaoDeLivro.setToolTipText("Edição de livros existentes");
         btnEdicaoDeLivro.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -1105,8 +1050,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
         txtMenu1.setBackground(new java.awt.Color(102, 102, 102));
         txtMenu1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        txtMenu1.setForeground(new java.awt.Color(0, 0, 0));
-        txtMenu1.setText("Inicio");
+        txtMenu1.setText("Início");
         txtMenu1.setToolTipText("Ir para o Inicio");
         txtMenu1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1118,8 +1062,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
         CadUserButton.setBackground(new java.awt.Color(102, 102, 102));
         CadUserButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        CadUserButton.setForeground(new java.awt.Color(0, 0, 0));
-        CadUserButton.setText("Cadastro de Usuario");
+        CadUserButton.setText("Cadastro de Usuário");
         CadUserButton.setToolTipText("cadastrar novos usuarios");
         CadUserButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         CadUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1131,7 +1074,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
         MinhasAvaButton.setBackground(new java.awt.Color(102, 102, 102));
         MinhasAvaButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        MinhasAvaButton.setForeground(new java.awt.Color(0, 0, 0));
         MinhasAvaButton.setText("Minhas Avaliações");
         MinhasAvaButton.setToolTipText("ir para minhas avalições");
         MinhasAvaButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -1144,7 +1086,6 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
         EditAvaButton.setBackground(new java.awt.Color(102, 102, 102));
         EditAvaButton.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        EditAvaButton.setForeground(new java.awt.Color(0, 0, 0));
         EditAvaButton.setText("Editar Avaliações");
         EditAvaButton.setToolTipText("ir para edição de avaliações");
         EditAvaButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -1157,8 +1098,7 @@ public class EdicaoUsuario extends javax.swing.JFrame {
 
         MinhasAvaButton1.setBackground(new java.awt.Color(102, 102, 102));
         MinhasAvaButton1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        MinhasAvaButton1.setForeground(new java.awt.Color(0, 0, 0));
-        MinhasAvaButton1.setText("Forum Livros");
+        MinhasAvaButton1.setText("Fórum Livros");
         MinhasAvaButton1.setToolTipText("ir para forum");
         MinhasAvaButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         MinhasAvaButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
