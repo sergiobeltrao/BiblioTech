@@ -637,7 +637,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
 
         MinhasAvaButton1.setBackground(new java.awt.Color(102, 102, 102));
         MinhasAvaButton1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        MinhasAvaButton1.setText("Fórum Livros");
+        MinhasAvaButton1.setText("Central de Avaliações");
         MinhasAvaButton1.setToolTipText("ir para forum de livros ");
         MinhasAvaButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         MinhasAvaButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -959,7 +959,7 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     }//GEN-LAST:event_EditAvaButtonActionPerformed
 
     private void MinhasAvaButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinhasAvaButton1ActionPerformed
-        new ForumLivros().setVisible(true);
+        new CentralDeAvaliacoes().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_MinhasAvaButton1ActionPerformed
 

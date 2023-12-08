@@ -1043,7 +1043,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="13" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="F&#xf3;rum Livros"/>
+                <Property name="text" type="java.lang.String" value="Central de Avalia&#xe7;&#xf5;es"/>
                 <Property name="toolTipText" type="java.lang.String" value="ir para forum de livros "/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
