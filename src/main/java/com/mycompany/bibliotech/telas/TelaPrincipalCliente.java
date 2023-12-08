@@ -78,7 +78,7 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
                 rankNumber++;
             }
         }
- 
+
         /*jList1.setCellRenderer(new CenteredTextRenderer()); */
         jList1.setModel(listModel);
 
@@ -88,7 +88,7 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
         if (recordList != null) {
             int recordNumber = 1;
             for (String item : recordList) {
-                listRecord.addElement(recordNumber + ". " +  item );
+                listRecord.addElement(recordNumber + ". " + item);
                 recordNumber++;
             }
         }
@@ -104,7 +104,7 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
         /*listaComMaisAvaliacao.setCellRenderer(new CenteredTextRenderer()); */
         listaComMaisAvaliacao.setModel(listContagens);
 
-        jList2.setCellRenderer(new CenteredTextRenderer()); 
+        jList2.setCellRenderer(new CenteredTextRenderer());
         jList2.setModel(listRecord);
         visualizadorDeImagem();
 
@@ -140,11 +140,13 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
 
                 // Extrai apenas o nome do livro (parte antes do "   Nota:")
                 String nomeLivro = extrairNomeLivro(selectedValue.toString());
-
+                    System.out.println(selectedValue.toString());
+                    System.out.println(nomeLivro);
                 if (nomeLivro != null) {
                     byte[] bytesImagem = minhaImagemDao.buscarImagemPorNome(nomeLivro);
                     // Exibe a imagem no JLabel correspondente (top1, top2, ..., top5)
                     exibirImagem(bytesImagem, indexToSelect + 1);
+                    
                 }
             }
         }
@@ -216,6 +218,7 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
             // Lida com exceções durante a leitura da imagem
             e.printStackTrace();
         }
+
     }
 
     /**
@@ -403,7 +406,7 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
         );
         MenuLateralLayout.setVerticalGroup(
             MenuLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(MenuLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(kGradientPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -553,7 +556,7 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
                     .addComponent(bntTop3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bntTop4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bntTop5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -575,7 +578,9 @@ public class TelaPrincipalCliente extends javax.swing.JFrame {
         );
         MenuPrincipalLayout.setVerticalGroup(
             MenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(MenuPrincipalLayout.createSequentialGroup()
+                .addComponent(kGradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

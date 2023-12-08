@@ -27,7 +27,7 @@ public class RankDAO {
             while (rank.next()) {
                 String livroNome = rank.getString("LIVRO.LIV_NOME_LIVRO");
                 double mediaNota = rank.getDouble("MEDIA_NOTA");
-                resultList.add(livroNome + "Nota: " + mediaNota);
+                resultList.add(livroNome + "   Nota: " + mediaNota);
             }
 
             return resultList;
@@ -45,7 +45,7 @@ public class RankDAO {
 
         try {
             stmt = con.prepareStatement("SELECT ID_LIVRO, LIV_NOME_LIVRO FROM LIVRO\n"
-                    + "	ORDER BY ID_LIVRO DESC" 
+                    + "	ORDER BY ID_LIVRO DESC\n"
                     + "	LIMIT 10");
             ResultSet record = stmt.executeQuery();
 
