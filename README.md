@@ -5,8 +5,4 @@ O BiblioTech é um projeto que tem como objetivo desenvolver um sistema eficient
 
 
 ## Tecnologias Utilizadas
-Neste projeto, foi utilizada a linguagem de programação Java em sua versão 17, Maven para gerenciamento do projeto, MySQL 8.0 para o banco de dados e a IDE NetBeans para o desenvolvimento da interface gráfica e código.
-
-
-## Como Usar
-Em construção... :construction_worker:
+Neste projeto, foi utilizada a linguagem de programação Java em sua versão 17, Maven para o gerenciamento de dependências, MySQL 8.0 para o banco de dados e a IDE NetBeans para o desenvolvimento da interface gráfica e código.
