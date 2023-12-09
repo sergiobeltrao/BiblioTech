@@ -228,6 +228,11 @@ public class TelaAvaliacao extends javax.swing.JFrame {
         cboxSubCategoriaBusca.setToolTipText("Escolha uma Subcategoria");
         cboxSubCategoriaBusca.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         cboxSubCategoriaBusca.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cboxSubCategoriaBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxSubCategoriaBuscaActionPerformed(evt);
+            }
+        });
 
         txtTituloBusca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTituloBusca.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -984,6 +989,10 @@ public class TelaAvaliacao extends javax.swing.JFrame {
     private void cboxNomeLivroeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxNomeLivroeActionPerformed
 
     }//GEN-LAST:event_cboxNomeLivroeActionPerformed
+
+    private void cboxSubCategoriaBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxSubCategoriaBuscaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxSubCategoriaBuscaActionPerformed
 
     /**
      * @param args the command line arguments
